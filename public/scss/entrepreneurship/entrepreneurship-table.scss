@@ -1,0 +1,45 @@
+#tab-agent {
+    #content {
+        #entrepreneurship-table {
+            .list-container {
+                background-color: white;
+                padding: 0;
+                .list-table {
+                    width: 100%;
+                    color: $black;
+                    font-size: 14px;
+                    thead {
+                        font-family: "Poppins", sans-serif;
+                        border-bottom: 3px solid $softGray;
+                        th {
+                            font-weight: 300;
+                            text-align: center;
+                            padding: 5px 15px;
+                        }
+                    }
+                    .list-item {
+                        border-bottom: 1px solid #dddddd;
+                        td {
+                          vertical-align: top;
+                          padding: 20px;
+                        }
+                    }
+                    .details {
+                        h3 {
+                            color: $darkBlueText;
+                            font-size: 16px;
+                            font-weight: 400;
+                            margin-bottom: 5px;
+                        }
+                        span {
+                            color: $gray1;
+                            font-size: 14px;
+                            font-weight: 400;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

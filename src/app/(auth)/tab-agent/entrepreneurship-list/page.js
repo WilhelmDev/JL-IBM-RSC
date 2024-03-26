@@ -1,4 +1,9 @@
+import TableEntrepreneurship from "@/components/entrepreneurship/table";
 import React from "react";
+
+export const metadata = {
+  title: "Listado de emprendimientos || Homez - Real Estate NextJS Template",
+};
 
 export default function Listentrepreneurship() {
   return (
@@ -10,7 +15,7 @@ export default function Listentrepreneurship() {
         </span>
       </div>
       <div className="content-page">
-        
+        <TableEntrepreneurship />
       </div>
     </section>
   );
