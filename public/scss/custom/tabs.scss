@@ -1,0 +1,33 @@
+.tabs {
+  padding-bottom: 5%;
+  gap: 5%;
+  *.custom-color {
+    color: $softBlackCustom;
+  }
+  *.active-custom {
+    color: $navyBlue3;
+    border-color: transparent;
+  }
+  .item-container {
+    display: flex;
+    width: 100%;
+    gap: 2%;
+    .img {
+      border: 3px solid $yellowCustom;
+      padding: 5px;
+      height: fit-content;
+      border-radius: 50%;
+    }
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-items: flex-start;
+      flex: 1;
+    }
+    .more-info {
+      align-items: end;
+      cursor: pointer;
+    }
+  }
+}

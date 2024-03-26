@@ -1,0 +1,62 @@
+#new-entrepreneurship {
+  .content-page {
+    #entrepreneurship-tab-one {
+      .row {
+        .col-6 {
+          .h-custom {
+            height: 100px;
+          }
+        }
+      }
+    }
+    #entrepreneurship-tab-two {
+      #map-entrepreneurship {
+        margin-top: 5%;
+        height: 500px;
+      }
+    }
+    #entrepreneurship-tab-three{
+      .check-item {
+        display: flex;
+        gap: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: normal;
+      }
+    }
+    #entrepreneurship-tab-four{
+      .check-item {
+        display: flex;
+        gap: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: normal;
+      }
+      .title-add {
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: capitalize;
+      }
+    }
+    #entrepreneurship-tab-five{
+      #table-offerts {
+        input {
+          height: 50px;
+          width: 12rem;
+          border-radius: 5px;
+          outline: none !important;
+          appearance: none;
+          font-size: 16px;
+          font-weight: 400;
+          padding: 10px;
+        }
+        textarea {
+          outline: none;
+          &.large-input{
+            height: 80px;
+          }
+        }
+      }
+    }
+  }
+}

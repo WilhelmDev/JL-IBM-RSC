@@ -1,0 +1,104 @@
+.property {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  section {
+    padding: 0;
+    display: flex;
+  }
+  .content-container {
+    background-color: $softGray;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+  }
+  .img-property{ 
+    width: 100%;
+    height: 100%;
+  }
+  *small {
+    font-size: smaller;
+  }
+  *.icon {
+    width: min-content;
+    height: min-content;
+  }
+  .specs {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid $navyBlue2;
+    gap: 6px;
+    .spec {
+      display: flex;
+      gap: 3px;
+      align-items: center;
+      img {
+        width: min-content;
+        height: min-content;
+      }
+    }
+    .map-link {
+      text-decoration-line: underline;
+    }
+  }
+  .link {
+    display: flex;
+    margin-top: 2%;
+    small {
+      text-decoration-line: underline;
+      cursor: pointer;
+    }
+  }
+  .controls {
+    height: 40px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: $whiteCustom;
+    left: 4%;
+    bottom: 4%;
+    div {
+      display: flex;
+    }
+    .category  {
+      background-color:  $blueCustom2;
+      color: $white;
+      height: 100%;
+      align-items: center;
+    }
+    .price {
+      flex-direction: column;
+      line-height: normal;
+      small {
+        font-size: smaller;
+      }
+    }
+    .icons {
+      display: flex;
+      gap: 20px;
+      img{
+        border-left: 0.5px solid;
+      }
+    }
+    .pd-x {
+      padding: 0 15px 0 15px;
+    }
+    .pd-x-s {
+      padding: 0 5px 0 5px;
+    }
+    .pd {
+      padding: 10px 15px 10px 15px;
+    }
+  }
+  .owner-img {
+    position: absolute;
+    cursor: pointer;
+    width: min-content;
+    height: min-content;
+    z-index: 2;
+    bottom: -18%;
+    right: 0;
+  }
+}

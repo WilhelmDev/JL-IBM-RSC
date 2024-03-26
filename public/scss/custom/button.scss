@@ -1,0 +1,15 @@
+.buttton-container-custom {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  button {
+    background-color: $blueCustom1;
+    color: $white;
+    text-transform: uppercase;
+    appearance: none;
+    border: $blueCustom1;
+    padding: 0.4% 1.2% 0.4% 1.2%;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}

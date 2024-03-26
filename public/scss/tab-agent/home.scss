@@ -1,0 +1,108 @@
+#tab-agent {
+  #content {
+    #agent-tab-home {
+      padding: 7% 5%;
+      .info-user-cont {
+        color: $IntenseDarkBlue2;
+        display: flex;
+        flex-direction: column;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 15px;
+        .welcome-user {
+          font-size: 30px;
+          font-weight: 600;
+          line-height: 30px;
+        }
+      }
+      .general-info-cont {
+        margin-top: 5%;
+        display: flex;
+        color: $IntenseDarkBlue2;
+        gap: 20px;
+        .info-item {
+          background-color: #FFF;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-content: center;
+          padding: 0 3%;
+          height: 85px;
+          width: 100%;
+          max-width: 20em;
+          gap: 30px;
+          .item-data {
+            display: flex;
+            flex-direction: column;
+            font-weight: 400;
+            font-size: 14px;
+            width: 75%;
+            h2 {
+              line-height: normal;
+            }
+          }
+          .item-icon {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            width: 80px;
+            height: 50px;
+            max-width: 25%;
+            background-color: #F3F5F6;
+            border-radius: 50%;
+            .bg-custom {
+              height: 30px;
+              width: 30px;
+            }
+          }
+        }
+      }
+      .details-cont {
+        display: flex;
+        width: 100%;
+        margin-top: 5%;
+        gap: 20px;
+        color: $IntenseDarkBlue2;
+        .graph-cont {
+          display: flex;
+          width: 65%;
+          background-color: #fff;
+          height: 100%;
+          max-height: 600px;
+          flex-direction: column;
+          padding: 0 2%;
+          .title-graph {
+            padding: 3%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            font-weight: 600;
+            .links {
+              display: flex;
+              gap: 10px;
+              font-size: 14px;
+              color: #717171;
+              font-weight: 400;
+            }
+          }
+          .graph {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            margin-bottom: 15%;
+          }
+        }
+        .activity-cont {
+          width: 35%;
+          font-size: 17px;
+          font-weight: 600;
+          padding: 2%;
+          background-color: #FFF;
+        }
+      }
+    }
+  }
+}

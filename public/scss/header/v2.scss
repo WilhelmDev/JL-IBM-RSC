@@ -1,0 +1,101 @@
+.header-v2 {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: $whiteCustom;
+  .logo {
+    width: 25%;
+    background-color: transparent;
+  }
+  .navs-container {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+  }
+  .logo-img {
+    width: 100%;
+    padding: 8%;
+  }
+   .info-links {
+    background-color: $darkBlue2;
+    height: 40%;
+    padding: 0;
+   }
+   .nav-links {
+    height: 60%;
+    padding: 0;
+   }
+  .links-img {
+    width: 100%;
+    height: 100%;
+  }
+  .navs-img {
+    width: 100%;
+    // height: 100%;
+  }
+  .links-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    height: 100%;
+    align-items: center;
+    gap: 2%;
+    padding-right: 5%;
+  }
+  .link {
+    display: flex;
+    gap: 2px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .icon-header {
+    height: min-content;
+    width: min-content;
+  }
+  .paragraph {
+    color: $white;
+  }
+  .social {
+    gap: 15px;
+  }
+  .navs {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+    a {
+      appearance: none;
+    }
+  }
+  .active {
+    border-bottom: 2px solid ;
+  }
+  .login {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    cursor: pointer;
+    .user-logo {
+      width: min-content;
+      height: min-content;
+    }
+  }
+  .btn-custom {
+    appearance: none;
+    border: 1px solid $blueCustom3;
+    color: $blueCustom3;
+    background-color: $white;
+    padding: 0.5% 1% 0.5% 1%;
+    &:hover {
+      color: $white;
+      background-color: $blueCustom3;
+    }
+  }
+  .expand-logo {
+    width: min-content;
+    height: min-content;
+    cursor: pointer;
+  }
+}
+

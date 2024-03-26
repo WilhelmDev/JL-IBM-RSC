@@ -1,0 +1,40 @@
+#property-compare {
+  .container-property {
+    background-color: $softGray;
+    display: flex;
+    flex-direction: column;
+    .actions {
+      height: 50px;
+      width: 100%;
+      background-color: $softGray;
+    }
+    img {
+      height: min-content;
+      // width: min-content;
+      width: 100%;
+      // height: 100%;
+    }
+    .description {
+      display: flex;
+      flex-direction: column;
+      .specs {
+        display: flex;
+        width: 100%;
+        border-bottom: 1px solid $navyBlue2;
+        gap: 6px;
+        .spec {
+          display: flex;
+          gap: 3px;
+          align-items: center;
+          img.icon-spec {
+            width: min-content;
+            height: min-content;
+          }
+        }
+        .map-link {
+          text-decoration-line: underline;
+        }
+      }
+    }
+  }
+}

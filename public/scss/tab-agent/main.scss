@@ -1,0 +1,13 @@
+#tab-agent {
+  #content {
+    background-color: $gray2
+  }
+}
+@import "./sidebar.scss";
+@import "./footer.scss";
+@import "./home.scss";
+@import "./new-location.scss";
+@import "./new-neighborhood.scss";
+@import "./new-entrepeneurship.scss";
+@import "./new-property.scss";
+@import "./location-list.scss";

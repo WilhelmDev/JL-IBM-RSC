@@ -1,0 +1,40 @@
+#new-property {
+  .content-page {
+    #property-tab-one {
+      .row {
+        .h-custom {
+          height: 100px;
+        }
+      }
+    }
+    #property-tab-two {
+      #map-property {
+        margin-top: 5%;
+        height: 500px;
+      }
+    }
+    #property-tab-three{
+      .check-item {
+        display: flex;
+        gap: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: normal;
+      }
+    }
+    #property-tab-four{
+      .check-item {
+        display: flex;
+        gap: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: normal;
+      }
+      .title-add {
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: capitalize;
+      }
+    }
+  }
+}

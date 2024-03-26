@@ -1,0 +1,8 @@
+.locationform#nav-tab2 {
+  button.nav-link {
+    &.active {
+      background-color: $blueCustom4 !important;
+      color: $white !important;
+    }
+  }
+} 

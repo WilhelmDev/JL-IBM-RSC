@@ -1,0 +1,29 @@
+#new-neighborhood {
+  .content-page {
+    #neigborhood-tab-one {
+      .row {
+        .col-6 {
+          .h-custom {
+            height: 100px;
+          }
+        }
+      }
+    }
+    #neigborhood-tab-two {
+      #map-neighborhood {
+        margin-top: 5%;
+        height: 500px;
+        z-index: 1;
+      }
+    }
+    #neigborhood-tab-three{
+      .check-item {
+        display: flex;
+        gap: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: normal;
+      }
+    }
+  }
+}

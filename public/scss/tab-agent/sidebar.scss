@@ -1,0 +1,80 @@
+#tab-agent {
+  #sidebar-tab-agent {
+    .sidebar-container {
+      display: flex;
+      height: 100%;
+      background-color: white;
+      flex-direction: column;
+      color: $IntenseDarkBlue2;
+      .tab-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $IntenseDarkBlue2;
+        color: white;
+        height: 50px;
+        max-width: 160px;
+        gap: 5px;
+        font-weight: 600;
+        font-size: 18px;
+        .img {
+          width: min-content;
+          height: min-content;
+        }
+      }
+      .list-managment {
+        font-size: 15px;
+        font-weight: 400;
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        color: $IntenseDarkBlue2;
+        .section-container {
+          display: flex;
+          flex-direction: column;
+          .section-link {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 5%;
+            .link-container {
+              max-height: 50px;
+              height: 100%;
+              align-items: center;
+              display: flex;
+              gap: 5px;
+              padding-left: 10%;
+              font-size: 18px;
+              font-weight: 600;
+              line-height: 26px;
+            }
+          }
+        }
+      }
+      .account-managment {
+        font-size: 20px;
+        margin-top: 10%;
+        display: flex;
+        flex-direction: column;
+        .links-account {
+          flex-direction: column;
+          color: $IntenseDarkBlue2;
+          .link {
+            height: 55px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            padding-left: 2%;
+          }
+        }
+      }
+      .title {
+        font-size: 20px;
+        font-weight: 500;
+        padding-top: 10%;
+      }
+    }
+  }
+}
