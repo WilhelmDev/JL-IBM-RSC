@@ -48,6 +48,7 @@ export default function Pagination({pages, range, callback}) {
     callback(+label)
     return
   }
+  
   return (
     <div className='pagination-body'>
       <div className='controls'>

@@ -1,30 +1,46 @@
 'use client'
-import React from 'react'
-import Pagination from "@/components/common/list/pagination";
-import TableEntrepreneurship from "@/components/entrepreneurship/table";
-import { useSearchParams } from 'next/navigation';
-import { parsePagination } from '@/utilis/parsers';
-import { useState, useEffect } from 'react';
-import FilterButons from './FilterButons';
-import { getEntrepreneurshipsList } from '@/core/infrastructure/services/tab-agent.service';
+import React, { useState, useEffect } from 'react'
+import Pagination from "@/components/common/list/pagination"
+import TableEntrepreneurship from "@/components/entrepreneurship/table"
+import { parsePagination } from '@/utilis/parsers'
+import FilterButons from './FilterButons'
+import { getEntrepreneurshipsList } from '@/core/infrastructure/services/tab-agent.service'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 export default function PageEntrepreneurship() {
-
+    const pathname = usePathname()
+    const searchParams = useSearchParams()
     const [entrepreneurship, setEntrepreneurship] = useState([])
-        
-      useEffect(() => {
-        if (entrepreneurship !== undefined && entrepreneurship.length === 0) {
-          const fectchEntrepreneurship = async (page) => {
-            try {
-              const {data, meta} = await getEntrepreneurshipsList(page)
-              setEntrepreneurship(data)
-            } catch (error) {
-              setEntrepreneurship(undefined)
-            }
-          }
-          fectchEntrepreneurship(1)
+    const [pages, setPages] = useState([])
+    const [page, setPage] = useState(Number(searchParams.get('page')) || 1)
+    const [lastPage, setLastPage] = useState(1)
+    const [range, setRange] = useState('')
+
+    const fetchEntrepreneurship = async (page) => {
+        try {
+            const {data, meta} = await getEntrepreneurshipsList(page)
+            const { allPages, range, lastPage } = parsePagination(meta, 'Emprendimientos')
+            setRange(range)
+            setPages(allPages)
+            setLastPage(lastPage)
+            setEntrepreneurship(data)
+        } catch (error) {
+            setEntrepreneurship(undefined)
         }
-      }, [entrepreneurship])
+    }
+
+    const handleChangePage = (newPage) => {
+        const newSearchParams = new URLSearchParams(searchParams.toString())
+        newSearchParams.set('page', newPage)
+        window.history.pushState({}, '', `${pathname}?${newSearchParams.toString()}`)
+        setEntrepreneurship([])
+        fetchEntrepreneurship(newPage)
+        setPage(newPage)
+    }
+
+    useEffect(() => {
+        fetchEntrepreneurship(page)
+    }, [page])
 
   return (
     <>
@@ -41,6 +57,9 @@ export default function PageEntrepreneurship() {
             <TableEntrepreneurship entrepreneurship = {entrepreneurship}/>
         </div>
 
+        <div className="pagination-container">
+          <Pagination pages={pages} range={range} callback={handleChangePage}/>
+        </div>
        
     </>
   )
