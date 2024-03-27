@@ -1,6 +1,7 @@
 #tab-agent {
     #content {
         #entrepreneurship-table {
+            margin-top: -2%;
             .list-container {
                 background-color: white;
                 padding: 0;
@@ -37,7 +38,124 @@
                             font-weight: 400;
                         }
                     }
-                    
+                    .price-x-operation {
+                        .price-x-operation-container {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 10px;
+                            div {
+                                width: 100%;
+                                padding: 0px 6px;
+                                background-color: $white;
+                                span {
+                                    display: block;
+                                    color: #06173D;
+                                    text-align: center;
+                                    height: 22px;
+                                }
+                                :nth-child(1) {
+                                    font-size: 14px;
+                                    font-weight: 600;
+                                }   
+                                :nth-child(2) {
+                                    margin-top: -5px;
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+
+                    .requests {
+                        .requests-container {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 10px;
+        
+                        .request-item {
+                            font-size: 14px;
+                            width: 100px;
+                            text-align: center;
+                            background-color: $blueCustom2;
+                            color: $gray2;
+                        }
+        
+                        .last-request {
+                            font-weight: 400;
+                            width: 100%;
+                            :nth-child(1) {
+                                font-size: 15px;
+                                margin: 0 4px;
+                                }
+                            :nth-child(2) {
+                                margin-top: -7px;
+                                font-size: 10px;
+                                }
+                            span {
+                                display: block;
+                                text-align: center;
+                                }
+                            }
+                        }
+                    }
+
+                    .fav-shared {
+                        .fav-shared-container {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+                            div {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+                            .favorite-image {
+                                &:hover {
+                                    filter: brightness(0) saturate(100%) invert(28%)
+                                    sepia(99%) saturate(6703%) hue-rotate(359deg)
+                                    brightness(100%) contrast(107%);
+                                    cursor: pointer;
+                                }   
+                            }
+                            .share-image {
+                                &:hover {
+                                    filter: invert(27%) sepia(95%) saturate(7489%)
+                                    hue-rotate(203deg) brightness(90%) contrast(101%);
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                    }
+
+                    .actions {
+                        .actions-container {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            gap: 10px;
+                            > button {
+                                width: 35%;
+                                background-color: white;
+                                color: $darkBlueText;
+                                aspect-ratio: 1;
+                                max-width: 4rem;
+                                max-height: 4rem;
+                                transition: all 300ms ease-out;
+                                > img {
+                                    width: max-content;
+                                    height: max-content;
+                                    color: white;
+                                }
+                                &:hover {
+                                transform: scale(1.1);
+                                box-shadow: 0 0 5px #333;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
