@@ -17,18 +17,14 @@ export default function PageEntrepreneurship() {
           const fectchEntrepreneurship = async (page) => {
             try {
               const {data, meta} = await getEntrepreneurshipsList(page)
-              const { allPages, range, lastPage } = parsePagination(meta, 'Emprendimientos')
-              setRange(range)
-              setPages(allPages)
-              setLastPage(lastPage)
               setEntrepreneurship(data)
             } catch (error) {
               setEntrepreneurship(undefined)
             }
           }
-          fectchEntrepreneurship(page)
+          fectchEntrepreneurship(1)
         }
-      }, [page, entrepreneurship])
+      }, [entrepreneurship])
 
   return (
     <>
