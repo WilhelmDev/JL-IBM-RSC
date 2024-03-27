@@ -11,9 +11,9 @@ export default function Detail({name, code, locality}) {
             height={143} 
         />
         <div className="d-flex flex-column details">
-            <h3>Nombre del emprendimiento</h3>
-            <span>codigo</span>
-            <span>localidad</span>
+            <h3>{name}</h3>
+            <span>{code}</span>
+            <span>{locality.locality.province} - {locality.locality.partido.name}</span>
         </div>
     </td>
   )

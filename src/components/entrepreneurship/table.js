@@ -3,17 +3,20 @@ import ListHeader from './list-entrepreneurship/ListHeader'
 import React from 'react'
 
 
-export default function TableEntrepreneurship() {
+export default function TableEntrepreneurship({entrepreneurship}) {
   return (
-    <section id='entrepreneurship-table'>
+    <div id='entrepreneurship-table'>
         <div className='list-container'>
             <table className='list-table'>
                 <ListHeader />
                 <tbody>
-                    <EntrepreneurshipTtem />
+                    {entrepreneurship.map((item, index) => (
+                        <EntrepreneurshipTtem key={index} ItemsData={item} />
+                    )
+                    )}
                 </tbody>
             </table>
         </div>
-    </section>
+    </div>
   )
 }

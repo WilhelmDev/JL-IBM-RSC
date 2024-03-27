@@ -1,21 +1,30 @@
 import React from "react";
 
-const PriceXOperation = ({ properties, enterprises }) => {
+const PriceXOperation = ({ properties }) => {
+
+  const calculateTotalSurfaceAndCount = (offers) => {
+    return offers.reduce((acc, offer) => {
+      if (!acc[offer.type]) {
+        acc[offer.type] = { totalSurface: 0, count: 0 };
+      }
+      acc[offer.type].totalSurface += offer.total_sourface;
+      acc[offer.type].count += 1;
+      return acc;
+    }, {});
+  };
+  
+  const result = calculateTotalSurfaceAndCount(properties);
+
   return (
     <td className="price-x-operation">
       <div className="price-x-operation-container">
-        <div>
-          <span className="fw-bold">$140,000 USD</span>
-          <span>4 - Duplex</span>
-        </div>
-        <div>
-          <span className="fw-bold">$14,000 USD</span>
-          <span>2- Monoambiente</span>
-        </div>
-        <div>
-          <span className="fw-bold">$35,000 USD</span>
-          <span>1 - Oficina</span>
-        </div>
+        {Object.keys(result).map((key) => (
+          <div key={key}>
+            <span>${result[key].totalSurface} USD</span>
+            <span>{result[key].count} - {key}</span>
+          </div>
+        ))}
+          
       </div>
     </td>
   );

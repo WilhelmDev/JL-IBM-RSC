@@ -11,27 +11,24 @@ import { getEntrepreneurshipsList } from '@/core/infrastructure/services/tab-age
 export default function PageEntrepreneurship() {
 
     const [entrepreneurship, setEntrepreneurship] = useState([])
-    const [pages, setPages] = useState([])
-    const [page, setPage] = useState(Number(useSearchParams().get('page')) || 1)
-    const [lastPage, setLastPage] = useState(1)
-    const [range, setRange] = useState('')
-
-    const params = useSearchParams()
-
-    useEffect(() => {
-        const actualPage = params.get('page')
-        if (actualPage && +actualPage !== page) {
-          setPage((Number(actualPage)))
-        }
-      }, [params, page])
-    
+        
       useEffect(() => {
         if (entrepreneurship !== undefined && entrepreneurship.length === 0) {
-            
+          const fectchEntrepreneurship = async (page) => {
+            try {
+              const {data, meta} = await getEntrepreneurshipsList(page)
+              const { allPages, range, lastPage } = parsePagination(meta, 'Emprendimientos')
+              setRange(range)
+              setPages(allPages)
+              setLastPage(lastPage)
+              setEntrepreneurship(data)
+            } catch (error) {
+              setEntrepreneurship(undefined)
+            }
+          }
+          fectchEntrepreneurship(page)
         }
       }, [page, entrepreneurship])
-
-          
 
   return (
     <>
@@ -45,14 +42,10 @@ export default function PageEntrepreneurship() {
         <FilterButons />
 
         <div>
-            <TableEntrepreneurship />
+            <TableEntrepreneurship entrepreneurship = {entrepreneurship}/>
         </div>
 
-        <div className="row p10">
-            <div className="pagination-container">
-                <Pagination pages={pages} lastPage={lastPage} range={range} actualPage={page}/>
-            </div>
-      </div>
+       
     </>
   )
 }

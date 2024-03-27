@@ -6,12 +6,12 @@ import Requests from './Request';
 import Action from './Action';
 import ShareFav from './ShareFav';
 
-export default function EntrepreneurshipTtem() {
+export default function EntrepreneurshipTtem({ItemsData}) {
   return (
     <tr className='list-item'>
-        <Detail />
+        <Detail name = {ItemsData.title} code={ItemsData.ref_code} locality={ItemsData.location}/>
 
-        <PriceXOperation />
+        <PriceXOperation properties={ItemsData.offers}/>
 
         <Requests />
 
