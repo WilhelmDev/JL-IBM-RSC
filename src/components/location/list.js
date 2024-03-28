@@ -60,7 +60,7 @@ export default function List() {
   return (
     <main id='list-locations-view'>
       <div className="row mb20 search-row">
-        <div className="col-3">
+        <div className="col-3"> 
           <input type="text" className="form-control" placeholder='Buscar'/>
         </div>
         <div className="col-4">

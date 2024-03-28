@@ -6,6 +6,7 @@ import { parsePagination } from '@/utilis/parsers'
 import FilterButons from './FilterButons'
 import { getEntrepreneurshipsList } from '@/core/infrastructure/services/tab-agent.service'
 import { usePathname, useSearchParams } from 'next/navigation'
+import debounce from 'just-debounce-it'
 
 export default function PageEntrepreneurship() {
     const pathname = usePathname()
@@ -15,10 +16,11 @@ export default function PageEntrepreneurship() {
     const [page, setPage] = useState(Number(searchParams.get('page')) || 1)
     const [lastPage, setLastPage] = useState(1)
     const [range, setRange] = useState('')
+    const [search , setSearch] = useState('')
 
-    const fetchEntrepreneurship = async (page) => {
+    const fetchEntrepreneurship = async (page, search) => {
         try {
-            const {data, meta} = await getEntrepreneurshipsList(page)
+            const {data, meta} = await getEntrepreneurshipsList(page, search)
             const { allPages, range, lastPage } = parsePagination(meta, 'Emprendimientos')
             setRange(range)
             setPages(allPages)
@@ -29,18 +31,22 @@ export default function PageEntrepreneurship() {
         }
     }
 
-    const handleChangePage = (newPage) => {
+    const handleChange = (newPage, newSearchTerm) => {
         const newSearchParams = new URLSearchParams(searchParams.toString())
         newSearchParams.set('page', newPage)
+        newSearchParams.set('search', newSearchTerm)
         window.history.pushState({}, '', `${pathname}?${newSearchParams.toString()}`)
-        setEntrepreneurship([])
-        fetchEntrepreneurship(newPage)
+        setSearch(newSearchTerm)
         setPage(newPage)
+        setEntrepreneurship([])
+        fetchEntrepreneurship(newPage, newSearchTerm)
     }
 
+    const handleChangeDebounced = debounce(handleChange, 1000)
+
     useEffect(() => {
-        fetchEntrepreneurship(page)
-    }, [page])
+        fetchEntrepreneurship(page, search)
+    }, [page, search])
 
   return (
     <>
@@ -51,14 +57,14 @@ export default function PageEntrepreneurship() {
                 </span>
         </div>
 
-        <FilterButons />
+        <FilterButons search={(newSearchTerm) => handleChangeDebounced(page, newSearchTerm)} />
 
         <div>
             <TableEntrepreneurship entrepreneurship = {entrepreneurship}/>
         </div>
 
         <div className="pagination-container">
-          <Pagination pages={pages} range={range} callback={handleChangePage}/>
+          <Pagination pages={pages} range={range} callback={(newPage) => handleChangeDebounced(newPage, search)}/>
         </div>
        
     </>

@@ -114,7 +114,7 @@ export const getNeighborhoods = async function () {
   return parsed
 }
 
-export const getEntrepreneurshipsList = async function (page: string | number) {
-  const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}`)
+export const getEntrepreneurshipsList = async function (page: string | number, search: string) {
+  const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}&search=${search}`)
   return data as EntreprenureshipsResponse
 }

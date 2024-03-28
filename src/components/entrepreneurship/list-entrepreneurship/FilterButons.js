@@ -25,13 +25,17 @@ const customStyles = {
     },
   };
 
-export default function FilterButons() {
+export default function FilterButons({search}) {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleChange = (option) => {
     setSelectedOption(option);
   };
+
+  const handleSearchChange = (e) => {
+    search(e.target.value)
+  }
 
 const SingleValue = ({ children, ...props }) => (
   <components.SingleValue {...props}>
@@ -51,7 +55,7 @@ const SingleValue = ({ children, ...props }) => (
           width={20}
           className="img"
           />
-          <input type="text" className="search-input" placeholder='Buscar'/>
+          <input type="text" className="search-input" placeholder='Buscar' onChange={handleSearchChange}/>
         </div>
         <div className="col-4">
           <div className="select-container">

@@ -13,7 +13,8 @@ export default function Detail({name, code, locality}) {
         <div className="d-flex flex-column details">
             <h3>{name}</h3>
             <span>{code}</span>
-            <span>{locality.locality.province} - {locality.locality.partido.name}</span>
+            <span>ubicacion, barrio</span>
+           {/* <span>{locality.locality.province} - {locality.locality.partido.name}</span>*/}
         </div>
     </td>
   )
