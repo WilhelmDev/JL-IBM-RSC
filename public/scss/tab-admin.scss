@@ -27,9 +27,9 @@
 }
 
 .admin-content-info-layout {
-  width: 400px;
-  height: 420px;
-  background: rgb(18, 150, 47);
+  width: 490px;
+  height: 600px;
+  background: rgba(255, 255, 255, 1);
   padding-top: 10px;
   box-shadow: 0px 1px 4px 0px rgba(24, 26, 32, 0.07);
 }
@@ -47,13 +47,13 @@
 
 .admin-content-info-row {
   width: 628px;
-  height: 52px;
+  height: 70px;
   top: 80px;
   left: 30px;
   display: flex;
+  opacity: 0px;
   margin-top: 10px;
   margin-bottom: 10px;
-  opacity: 0px;
 }
 
 .admin-content-info-icon {
@@ -71,20 +71,22 @@
 
 .admin-content-info {
   width: 358px;
-  height: 51.8px;
+  height: 80px;
   top: 0.4px;
   left: 56px;
   gap: 0px;
   opacity: 0px;
   font-size: 18px;
   font-weight: 700;
-  line-height: 25.9px;
   text-align: left;
 }
 
 .admin-content-info-span {
   font-size: 18px;
   font-weight: 400;
-  line-height: 25.9px;
   text-align: left;
+}
+
+.card-container {
+  width: 42%;
 }
