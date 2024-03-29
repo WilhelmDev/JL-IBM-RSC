@@ -4,11 +4,11 @@ import Select, { components } from 'react-select'
 import Image from 'next/image'
 
 const option = [
-    { value: '1', label: 'Nombre A - Z' },
-    { value: '2', label: 'Nombre Z - A' },
-    { value: '3', label: 'Cantidad de Propiedades (-) A (+)' },
-    { value: '4', label: 'Cantidad de Propiedades (+) A (-)' },
-  ];
+  { value: {field: 'title', order: 'asc'}, label: 'Nombre A - Z' },
+  { value: {field: 'title', order: 'desc'}, label: 'Nombre Z - A' },
+  { value: '3', label: 'Cantidad de Propiedades (-) A (+)' },
+  { value: '4', label: 'Cantidad de Propiedades (+) A (-)' },
+];
 
 const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
@@ -25,16 +25,17 @@ const customStyles = {
     },
   };
 
-export default function FilterButons({search}) {
+export default function FilterButons({callback}) {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleChange = (option) => {
-    setSelectedOption(option);
-  };
+    setSelectedOption(option)
+    callback({newSort: option.value.field, newOrder: option.value.order})
+  }
 
   const handleSearchChange = (e) => {
-    search(e.target.value)
+    callback({newSearchTerm: e.target.value})
   }
 
 const SingleValue = ({ children, ...props }) => (
