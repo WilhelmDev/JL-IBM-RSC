@@ -9,11 +9,12 @@ const TextInput = ({
   initialValue = "",
   updateValue,
   required = false,
+  className = "",
 }) => {
   const [value, setValue] = useState(initialValue);
 
   return (
-    <label>
+    <label className={` ${className}`}>
       {label}
       <input
         type="text"

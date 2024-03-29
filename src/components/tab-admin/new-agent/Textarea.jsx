@@ -8,11 +8,12 @@ const GenericInput = ({
   name,
   initialValue = "",
   updateValue,
+  className = "",
 }) => {
   const [value, setValue] = useState(initialValue);
 
   return (
-    <label>
+    <label className={` ${className}`}>
       {label}
       <textarea
         name={name}
