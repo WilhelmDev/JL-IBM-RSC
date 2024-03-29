@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import React from 'react'
-import InfoCards from './(home)/info-card'
-import InfoRows from './(home)/info-row'
+import InfoCards from '@/components/tab-admin/home/info-card'
+import InfoRows from '@/components/tab-admin/home/info-row'
 
 export const metadata = {
   title: 'Tablero de administrador || Homez - Real Estate NextJS Template'
