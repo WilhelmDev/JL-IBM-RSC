@@ -3,12 +3,13 @@ import React from 'react'
 
 export default function ActtionBtn({variant}) {
 
+  
+
   const shareContent = async () => {
     const url = typeof window !== 'undefined' ? window.location.href : '';
     if (navigator.clipboard) {
       try {
         await navigator.clipboard.writeText(url);
-        setShared(shared + 1);  //Add to save the shared number in the database
         // Add to a modal or toast in the future
       } catch (error) {
         console.log('Error al copiar al portapapeles', error);

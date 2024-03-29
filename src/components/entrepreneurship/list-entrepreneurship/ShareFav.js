@@ -37,10 +37,11 @@ export default function ShareFav({totalFav, totalShared}) {
           <div className="fav-shared-container">
             <div>
               <Image
-                src={isFavorite ? "/images/tab-agent/list-actions/heart-filled.svg" : "/images/tab-agent/list-actions/heart.svg"}
+                src={`/images/tab-agent/list-actions/${isFavorite ? 'heart-filled' : 'heart'}.svg`}
                 width={25}
                 height={23}
                 className="favorite-image"
+                alt='favorite'
                 onClick={handleSave}
               />
               <span>{favorites} Favoritos</span>
@@ -51,6 +52,7 @@ export default function ShareFav({totalFav, totalShared}) {
                 width={25}
                 height={25}
                 className="share-image"
+                alt='share'
                 onClick={shareContent}
               />
               <span>Compartido {shared}</span>
