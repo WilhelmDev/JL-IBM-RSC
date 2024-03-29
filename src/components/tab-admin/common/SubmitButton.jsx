@@ -1,4 +1,4 @@
-const SubmitButton = ({ text, className }) => (
+const SubmitButton = ({ text, className = "" }) => (
   <button className={` ${className}`} type="submit">
     {text}
   </button>
