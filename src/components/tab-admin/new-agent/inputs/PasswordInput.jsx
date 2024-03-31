@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 
-const GenericInput = ({
-  cols = 30,
-  rows = 10,
+const PasswordInput = ({
   label = "Default label",
   name,
+  placeholder = "",
+  autoComplete = "on",
   initialValue = "",
   updateValue,
+  required = false,
+  disabled = false,
   className = "",
 }) => {
   const [value, setValue] = useState(initialValue);
@@ -15,15 +17,18 @@ const GenericInput = ({
   return (
     <label className={` ${className}`}>
       {label}
-      <textarea
+      <input
+        type="text"
         name={name}
-        cols={cols}
-        rows={rows}
         value={value}
         onChange={(e) => updateValue(e, setValue)}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        required={required}
+        disabled={disabled}
       />
     </label>
   );
 };
 
-export default GenericInput;
+export default PasswordInput;
