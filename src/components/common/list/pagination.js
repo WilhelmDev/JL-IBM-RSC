@@ -45,7 +45,7 @@ export default function Pagination({pages, range, callback}) {
       callback(+actualPage + 1)
       return
     }
-   
+    callback(+label)
     return
   }
   

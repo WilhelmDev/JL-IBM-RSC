@@ -94,7 +94,7 @@ export default function List() {
           <Pagination
             pages={pages}
             range={range}
-            callback={(newPage) => handleChange(newPage, search)}
+            callback={(newPage) => handleChange(newPage, search, sort, order)}
           />
         </div>
         {/* End Pagination */}
