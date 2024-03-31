@@ -30,7 +30,7 @@ export default function ShareFav({ totalFav, totalShared }) {
     }
   };
   return (
-    <td className="fav-shared">
+    <div className="fav-shared">
       <div className="text-center">
         <div>
           <Image
@@ -57,6 +57,6 @@ export default function ShareFav({ totalFav, totalShared }) {
           <p>Compartido {shared}</p>
         </div>
       </div>
-    </td>
+    </div>
   );
 }

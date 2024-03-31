@@ -84,10 +84,10 @@ export default function List() {
           handleChange(page, newSearchTerm, newSort, newOrder)
         }
       />
-
       <div>
         <TableProperty properties={properties} />
       </div>
+      
       <div className="row p10">
         {/* Begin Pagination */}
         <div className="pagination-container">

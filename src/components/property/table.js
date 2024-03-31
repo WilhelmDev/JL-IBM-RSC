@@ -16,11 +16,11 @@ const TableProperty = ({ properties }) => {
         </tr>
       </thead>
       <tbody>
-          {properties && properties.length > 0
-            ? properties.map((element, index) => (
-                <Property key={index} property={element} />
-              ))
-            : "No hay propiedades para mostrar"}
+        {properties && properties.length > 0
+          ? properties.map((element, index) => (
+              <Property key={index} property={element} />
+            ))
+          : "No hay propiedades para mostrar"}
       </tbody>
     </table>
   );

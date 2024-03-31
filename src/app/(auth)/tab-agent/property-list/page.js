@@ -6,7 +6,7 @@ export const metadata = {
 const PropertyList = () => {
   return (
     <div className="m-5">
-      <section id="property-list">
+      <section className="p-4" id="property-list">
         <div className="info-page">
           <p className="title-page">Todas tus propiedades</p>
           <span>

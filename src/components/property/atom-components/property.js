@@ -4,7 +4,7 @@ import ShareFav from "./shareFav";
 
 export default function Property({ property }) {
   return (
-    <tr className="container">
+    <tr>
       <td className="p-4">
         <div className="d-flex">
           <Image
@@ -15,7 +15,7 @@ export default function Property({ property }) {
             className="img"
           />
           <div className="ms-3">
-            <p className="fw-bold mb-1">{property.title}</p>
+            <p className="property-title">{property.title}</p>
             <p className="text-muted mb-0">Tipo de barrio</p>
             <p className="text-muted mb-0">Localidad</p>
           </div>
@@ -40,12 +40,12 @@ export default function Property({ property }) {
           <p className="request-text">2 Visitas</p>
           <p className="request-text">1 Permuta</p>
           <p className="request-text">1 Tasación</p>
-          <h4>12/01/2024</h4>
-          <h6>(Última solicitud)</h6>
+          <h4 className="property-title">12/01/2024</h4>
+          <p className="fw-bold">(Última solicitud)</p>
         </div>
       </td>
       <td className="p-4">
-        <div className="p-4 last-request">
+        <div className="p-4">
           <p>nombre de usuario S solicito una visita</p>
         </div>
       </td>
