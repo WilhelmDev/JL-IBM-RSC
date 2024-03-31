@@ -38,7 +38,7 @@ const ProfileForm = () => {
     address: "",
     about: "",
   });
-  const [profilePhoto, setProfilePhoto] = useState();
+  const [profilePhoto, setProfilePhoto] = useState(null);
 
   const deleteProfilePhoto = () => {
     setProfilePhoto();
