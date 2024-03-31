@@ -1,0 +1,162 @@
+#tab-admin {
+  #content {
+    #new-agent {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 35px 60px;
+      > header {
+        margin-bottom: 20px;
+        p {
+          margin: 0;
+          color: $navyBlue3;
+          font-size: 16px;
+        }
+      }
+      form {
+        background-color: #FFFFFF;
+        padding: 25px;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        font-weight: 600;
+        font-size: 18px;
+        &:has(> input[type="file"]) {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 200px;
+          height: 55px;
+          border: 1px solid $navyBlue3;
+          color: $navyBlue3;
+          font-size: 20px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          position: relative;
+          overflow: hidden;
+          z-index: 0;
+          background-color: #FFFFFF;
+          transition: all 0.4s ease;
+          &:before {
+            background-color: #022669;
+            content: "";
+            height: 100%;
+            left: -100%;
+            position: absolute;
+            top: 0;
+            width: 0;
+            z-index: -1;
+            transform: skew(50deg);
+            transition: width 0.6s;
+            transform-origin: top left;
+          }
+          &:hover {
+            color: $white;
+            &:before {
+              width: 200%;
+            }
+          }
+        }
+        textarea {
+          max-height: 200px;
+        }
+        input, textarea {
+          font-size: 16px;
+          padding: 5px 10px;
+          border: 1px solid rgba($softGray, 0.5);
+          border-radius: 0;
+          &::placeholder {
+            font-weight: 400;
+            font-size: 16px;
+            color: $gray1;
+          }
+          &:focus {
+            outline: 2px solid #DDDDDD;
+          }
+        }
+        input[type="file"] {
+          display: inline;
+          padding: 0;
+          border: none;
+          width: 0;
+          height: 0;
+          opacity: 0;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      button[type="submit"] {
+        border: 0;
+        width: 170px;
+        height: 55px;
+        background-color: rgba($blueCustom2, 1);
+        padding: 0;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        &[disabled] {
+          background-color: rgba($blueCustom2, 0.5);
+          cursor: not-allowed;
+        }
+        &:hover:not([disabled]) {
+          background-color: #FFFFFF;
+          color: rgba($blueCustom2, 1);
+          border: 1px solid rgba($blueCustom2, 1);
+        }
+      }
+      .margin-r-12px {
+        margin-right: 12px;
+      }
+      .image-input-flex {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        gap: 20px;
+        p {
+          margin-top: 30px;
+          margin-bottom: 10px;
+        }
+      }
+      .image-preview {
+        width: 240px;
+        height: 240px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p {
+          margin: 0;
+        }
+      }
+      .delete-image-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 45px;
+        height: 45px;
+        padding: 0;
+        background-color: #FFFFFF;
+        text-align: center;
+        align-content: center;
+        border: none;
+        &:hover {
+          border: 1px solid $navyBlue3;
+        }
+        &:focus, :focus-within {
+          outline: 1px solid #000000;
+        }
+      }
+      .error-message {
+        color: #EE392C;
+        margin: 0;
+      }
+    }
+  }
+}
