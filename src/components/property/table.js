@@ -20,7 +20,7 @@ const TableProperty = ({ properties }) => {
           ? properties.map((element, index) => (
               <Property key={index} property={element} />
             ))
-          : "No hay propiedades para mostrar"}
+          : <tr><td><p>No hay propiedades para mostrar</p></td></tr>}
       </tbody>
     </table>
   );
