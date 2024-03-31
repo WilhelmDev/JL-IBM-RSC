@@ -8,7 +8,7 @@ import TelInput from "./inputs/TelInput";
 import ImageInput, { acceptedImageMimeTypes } from "./inputs/ImageInput";
 import ImagePreview from "./inputs/ImagePreview";
 import DeleteImageButton from "./inputs/DeleteImageButton";
-import { validImageType } from "./inputs/valid-image-type";
+import { validImageType } from "@/utilis/valid-image-type";
 import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
 
 const inputNames = [

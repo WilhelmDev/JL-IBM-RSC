@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { formatMimeTypes } from "./format-mime-types";
-import { validImageType } from "./valid-image-type";
+import { formatMimeTypes } from "@/utilis/format-mime-types";
+import { validImageType } from "@/utilis/valid-image-type";
 
 export const acceptedImageMimeTypes = ["image/jpeg", "image/png"];
 
