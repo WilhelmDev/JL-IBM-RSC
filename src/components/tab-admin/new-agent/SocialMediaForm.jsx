@@ -2,6 +2,7 @@
 import { useState } from "react";
 import TextInput from "./inputs/TextInput";
 import SubmitButton from "../common/SubmitButton";
+import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
 
 const inputNames = [
   "facebook",
@@ -36,14 +37,7 @@ const SocialMediaForm = () => {
   return (
     <form
       className="container"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        //TODO: send the object to the server
-        const object = {};
-        formData.forEach((value, key) => (object[key] = value));
-        alert(`Send to the server: ${JSON.stringify(object, null, 2)}`);
-      }}
+      onSubmit={(e) => alertAndLogFormSubmit(e)}
       noValidate
     >
       <div className="row row-cols-3 gx-4 gy-3">

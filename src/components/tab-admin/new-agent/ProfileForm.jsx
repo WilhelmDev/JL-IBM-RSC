@@ -9,6 +9,7 @@ import ImageInput, { acceptedImageMimeTypes } from "./inputs/ImageInput";
 import ImagePreview from "./inputs/ImagePreview";
 import DeleteImageButton from "./inputs/DeleteImageButton";
 import { validImageType } from "./inputs/valid-image-type";
+import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
 
 const inputNames = [
   "username",
@@ -84,15 +85,7 @@ const ProfileForm = () => {
   return (
     <form
       className="container"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        //TODO: send the object to the server
-        const object = {};
-        formData.forEach((value, key) => (object[key] = value));
-        console.log(object);
-        alert(`Send to the server: ${JSON.stringify(object, null, 2)}`);
-      }}
+      onSubmit={(e) => alertAndLogFormSubmit(e)}
       noValidate
     >
       <div className="row row-cols-3 gx-4 gy-3">
