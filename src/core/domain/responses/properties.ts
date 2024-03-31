@@ -1,4 +1,4 @@
-export interface Get {
+export interface PropertiesResponse {
     data:  Datum[];
     links: Links;
     meta:  Meta;
