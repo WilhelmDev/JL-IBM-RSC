@@ -1,0 +1,123 @@
+#tab-agent {
+    #content {
+      #entrepreneurship-list {
+        padding: 7% 5%;
+        display: flex;
+        flex-direction: column;
+        color: $IntenseDarkBlue2;
+        .buttons {
+            margin: 40px 0;
+            .search-row {
+                padding: 0 0.7rem 0 0.7rem;
+                }
+                button.btn-new {
+                    height: 55px;
+                    font-size: 15px;
+                    font-weight: 600;
+                    background-color: $IntenseDarkBlue3;
+                    color: white;
+                    transition: all 300ms ease-out;
+                    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+                    &:hover {
+                        background-color: white;
+                        color: $IntenseDarkBlue3;
+                    }
+                    &:active {
+                        transform: scale(0.90);
+                        box-shadow: 0 0 5px #333;
+                    }
+            }
+        }
+        
+        .info-page {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 15px;
+        .title-page {
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 30px;
+            }
+        }
+        .order-title {
+              color: #717171;
+            }
+        .select-container {
+            flex: 1;
+            border: 0px;
+            outline: 0px;
+            color: $black;
+            cursor: pointer;
+        }
+        .search {
+            box-sizing: content-box;
+            background-color: white;
+            border: 1px solid #dddddd;
+            display: flex;
+            align-items: center;
+            width: 20%;
+            gap: 10px;
+            padding: 0 10px;
+            .search-input {
+              flex-grow: 0;
+              width: 100%;
+              border: none;
+              &:focus {
+                outline: none;
+              }
+              &::placeholder {
+                color: #212529bf;
+              }
+            }
+        }
+        }
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .pagination-body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                .controls {
+                    display: flex;
+                    gap: 5px;
+                    .btn-pag {
+                        width: 40px;
+                        height: 40px;
+                        border: 0;
+                        background-color: $gray2;
+                        border-radius: 20px;
+                        font-size: 15px;
+                        transition: all 200ms ease;
+                        &.active {
+                            background-color: $IntenseDarkBlue3;
+                            color: white;
+                        }
+                        &.arrow {
+                            background-color: white;
+                            color: $IntenseDarkBlue3;
+                        }
+                        &:hover {
+                            background-color: $IntenseDarkBlue3;
+                            color: white;
+                            transform: scale(1.1);
+                            box-shadow: 0 0 5px #333;
+                        }
+                        &:active {
+                            transform: scale(0.90);
+                            box-shadow: 0 0 5px #333;
+                            }
+                    }
+                }
+                .info {
+                font-weight: 400;
+                font-size: 14px;
+                }
+            }
+        }
+    }
+}
+
+@import "../entrepreneurship/entrepreneurship-table.scss"
