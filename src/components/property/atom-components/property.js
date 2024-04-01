@@ -39,21 +39,20 @@ export default function Property({ property }) {
         <div className="text-center">
           <p className="request-text">2 Visitas</p>
           <p className="request-text">1 Permuta</p>
-          <p className="request-text">1 Tasación</p>
           <h4 className="property-title">12/01/2024</h4>
           <p className="fw-bold">(Última solicitud)</p>
         </div>
       </td>
       <td className="p-4">
-        <div className="p-4">
-          <p>nombre de usuario S solicito una visita</p>
-        </div>
+        <p>nombre de usuario S solicito una visita</p>
       </td>
+
       <td className="p-4">
         <ShareFav />
       </td>
+
       <td className="p-4">
-        <div className="d-flex flex-nowrap justify-content-center">
+        <div className="inline-elements">
           <div>
             <button className="action-button">
               <Image
@@ -77,7 +76,7 @@ export default function Property({ property }) {
             </button>
           </div>
         </div>
-        <div className="d-flex flex-nowrap justify-content-center">
+        <div className="inline-elements">
           <div>
             <button className="action-button">
               <Image

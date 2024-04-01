@@ -1,10 +1,9 @@
 import React from "react";
-import Image from "next/image";
 import Property from "./atom-components/property";
 
 const TableProperty = ({ properties }) => {
   return (
-    <table className="bg-white" id="table">
+    <table className="bg-white" id="property-table">
       <thead>
         <tr className="text-center">
           <th>Propiedad y detalles</th>
@@ -16,11 +15,17 @@ const TableProperty = ({ properties }) => {
         </tr>
       </thead>
       <tbody>
-        {properties && properties.length > 0
-          ? properties.map((element, index) => (
-              <Property key={index} property={element} />
-            ))
-          : <tr><td><p>No hay propiedades para mostrar</p></td></tr>}
+        {properties && properties.length > 0 ? (
+          properties.map((element, index) => (
+            <Property key={index} property={element} />
+          ))
+        ) : (
+          <tr>
+            <td>
+              <p>No hay propiedades para mostrar</p>
+            </td>{" "}
+          </tr>
+        )}
       </tbody>
     </table>
   );
