@@ -8,7 +8,6 @@ export const acceptedImageMimeTypes = ["image/jpeg", "image/png"];
 const ImageInput = ({
   label = "Default label",
   name,
-  initialValue = "",
   updateValue,
   deteleValue = false,
   required = false,
@@ -17,7 +16,7 @@ const ImageInput = ({
 }) => {
   //TODO: validate max resolution of image is 2048x2048
   const imageInputRef = useRef(null);
-  const [_value, setValue] = useState(initialValue);
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     if (deteleValue) {
@@ -33,24 +32,28 @@ const ImageInput = ({
         <label className={` ${className}`}>
           {label}
           <input
+            id="my-input-file"
             ref={imageInputRef}
             type="file"
             name={name}
             onChange={(e) => {
               updateValue(e, setValue);
-              if (e.currentTarget.files.length === 0) {
-                setValue("");
-                imageInputRef.current.value = "";
-                return;
-              }
               if (
+                e.currentTarget.files.length === 0 ||
                 !validImageType(
                   e.currentTarget.files[0],
                   acceptedImageMimeTypes
                 )
               ) {
-                setValue("");
-                imageInputRef.current.value = "";
+                if (!value) {
+                  e.currentTarget.value = "";
+                  return;
+                }
+
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(value);
+                e.currentTarget.files = dataTransfer.files;
+                return;
               }
             }}
             required={required}

@@ -39,7 +39,7 @@ const ProfileForm = () => {
     address: "",
     about: "",
   });
-  const [profilePhoto, setProfilePhoto] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   const deleteProfilePhoto = () => {
     setProfilePhoto();
@@ -58,9 +58,11 @@ const ProfileForm = () => {
   const updateProfilePhoto = (e, setImage) => {
     const currentFiles = e.currentTarget.files;
 
+    // This function is only here as reference of what happens, resetting to previous state in this case is equivalent to doing nothing at all
+    const resetToPreviousProfilePhoto = () => {};
+
     if (currentFiles.length === 0) {
-      setImage("");
-      setProfilePhoto();
+      resetToPreviousProfilePhoto();
       return;
     }
 
@@ -68,18 +70,19 @@ const ProfileForm = () => {
 
     //TODO: make this announce to the user that they introduced something that's not an image or an image that's not supported
     if (!validImageType(imageAsFile, acceptedImageMimeTypes)) {
-      setImage("");
-      setProfilePhoto();
+      resetToPreviousProfilePhoto();
       return;
     }
 
-    const image = {
-      src: URL.createObjectURL(imageAsFile),
-      alt: imageAsFile.name,
+    const fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      setImage(imageAsFile);
+      setProfilePhoto({
+        src: e.target.result,
+        alt: imageAsFile.name,
+      });
     };
-
-    setImage(imageAsFile);
-    setProfilePhoto(image);
+    fileReader.readAsDataURL(imageAsFile);
   };
 
   return (
