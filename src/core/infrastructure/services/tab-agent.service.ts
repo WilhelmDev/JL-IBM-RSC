@@ -5,6 +5,7 @@ import { Amenities } from "@/core/domain/responses"
 import { parseAditionals, parseAmenities, parseEntrepreneurship, parseLocalities, parseLocation, parseNeighborhood, parsePeriodsForm, parseProperty, parseServices } from "@/utilis/parsers"
 import { PeriodsResponse, PropertyPayload } from "@/core/domain/parsed"
 import { LocalitiesResponse } from "@/core/domain/responses/localities"
+import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
 
 export const sendFormLocation = async (data: any) => {
@@ -113,6 +114,11 @@ export const getNeighborhoods = async function () {
   const parsed = parseLocalities(data.data)
   return parsed
 }
+
+export const getPropertiesList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
+  const { data } = await ApiInstance(`/real-state?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
+  return data as PropertiesResponse
+}  
 
 export const getEntrepreneurshipsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
   const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
