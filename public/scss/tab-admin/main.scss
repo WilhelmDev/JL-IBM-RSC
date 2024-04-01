@@ -1,1 +1,9 @@
+#tab-admin {
+  #content {
+    background-color: $gray2;
+  }
+}
+
 @import "./home.scss";
+@import "./footer.scss";
+@import "./new-agent.scss";
