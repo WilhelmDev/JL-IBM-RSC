@@ -15,7 +15,8 @@ const ApiInstance = axios.create({
 })
 
 ApiInstance.interceptors.request.use((req) => {
-  req.headers.Authorization = 'Bearer ' + process.env.NEXT_PUBLIC_TOKEN
+  const token = localStorage.getItem('token')
+  req.headers.Authorization = 'Bearer ' + token
   req.headers.Accept = 'application/json'
   return req
 })

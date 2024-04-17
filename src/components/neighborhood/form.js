@@ -5,6 +5,8 @@ import TabLocalization from './tabs/localization'
 import TabDetails from './tabs/details'
 import TabMedia from './tabs/media'
 import { sendNeighborhoodForm } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/utilis/routes'
 
 export default function FormNeighborhood() {
 
@@ -13,6 +15,8 @@ export default function FormNeighborhood() {
   const [stepThree, setStepThree] = useState({})
   const [stepFour, setStepFour] = useState({})
   const [loading, setLoading] = useState(false)
+
+  const router = useRouter()
 
   const updateStepOne = (values) => {
     setStepOne(values)
@@ -40,6 +44,7 @@ export default function FormNeighborhood() {
       console.log(error)
     } finally {
       setLoading(false)
+      router.push(ROUTES.locationList)
     }
   }
   return (

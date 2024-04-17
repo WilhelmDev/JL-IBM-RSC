@@ -1,9 +1,10 @@
 import authRepository from '@/core/infrastructure/repositories/auth.repository'
 import { ApiResponse } from '@/core/domain/response';
-import { LoginResponse, User, UserLogin } from '@/core/domain/user';
+import { ResponseLogin, User, UserLogin } from '@/core/domain/user';
 import { toast } from 'react-toastify';
+import { ApiInstance } from '../api';
 
-const login = async (userLogin: UserLogin): Promise<ApiResponse<LoginResponse>> => {
+const login = async (userLogin: UserLogin): Promise<ApiResponse<ResponseLogin>> => {
     try {
         const response = await authRepository.login(userLogin)
         return response
@@ -32,8 +33,22 @@ const logout = async (): Promise<void> => {
     }
 }
 
+const loginV2 = async (data: UserLogin) => {
+    try {
+        toast.dismiss('invalid-form-login')
+        const response = await ApiInstance.post<Promise<ApiResponse<ResponseLogin>>>('/auth/login', data)
+        return response.data
+    } catch (error) {
+        toast.error('Credenciales inválidas', {
+            toastId: 'invalid-form-login',
+            closeOnClick: true
+        })
+        console.log(error)
+    }
+}
 export {
     login,
     myData,
-    logout
+    logout,
+    loginV2
 }

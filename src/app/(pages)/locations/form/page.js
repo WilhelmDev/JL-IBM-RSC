@@ -1,7 +1,8 @@
-import HeaderV2 from '@/components/common/HeaderV2'
-import Footer from '@/components/common/default-footer'
-import FormLocation from '@/components/location/form'
 import React from 'react'
+import dynamic from 'next/dynamic'
+const HeaderV2 = dynamic(() => import('@/components/common/HeaderV2'), { ssr: false })
+const Footer = dynamic(() => import('@/components/common/default-footer'), { ssr: false })
+const FormLocation = dynamic(() => import('@/components/location/form'), { ssr: false })
 
 export default function FormLocations() {
   return (

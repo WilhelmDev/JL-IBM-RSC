@@ -4,12 +4,16 @@ import PropertyDescriptionCustom from './propertyDescription'
 import ReferencePoint from './referencePoint'
 import UploadMediaCustom from './uploadMedia'
 import { sendFormLocation } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/utilis/routes'
 
 export default function FormLocation() {
   const [stepOne, setStepOne] = useState({})
   const [stepTwo, setStepTwo] = useState({})
   const [stepThree, setStepThree] = useState({})
   const [loading, setLoading] = useState(false)
+
+  const router = useRouter()
 
   const updateStepOne = (data) => {
     setStepOne(data)
@@ -35,6 +39,7 @@ export default function FormLocation() {
       console.log(error)
     } finally {
       setLoading(false)
+      router.push(ROUTES.locationList)
     }
   }
 

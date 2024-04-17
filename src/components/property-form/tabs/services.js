@@ -95,11 +95,11 @@ export default function ServicesTab({updateStepFour}) {
         <div className="col-12">
           <div className="row">
           {
-            additionals.map((add) => (
+            additionals && additionals.map((add) => (
               <div className="col-2" key={add.id}>
                 <label className='title-add mb-1' key={add.id}>{add.title}</label>
                 {
-                  add.services.map((service) => (
+                  add.services && add.services.map((service) => (
                     <div className='check-item mb-2' key={service.id}>
                       <input type="checkbox" name={`ckeck-service-${service.name}`} id={`ckeck-service-${service.value}`}
                       value={service.value} key={service.id}

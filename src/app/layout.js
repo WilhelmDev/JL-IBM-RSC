@@ -7,6 +7,9 @@ import { DM_Sans, Poppins } from "next/font/google";
 import { useEffect } from "react";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer } from "react-toastify";
+import dynamic from 'next/dynamic'
+const SessionProvider = dynamic(() => import('@/context/session'), { ssr: false })
+
 
 if (typeof window !== "undefined") {
   import("bootstrap");
@@ -40,7 +43,11 @@ export default function RootLayout({ children }) {
         className={`body  ${poppins.className} ${dmSans.className}`}
         cz-shortcut-listen="false"
       >
-        <div className="wrapper ovh">{children}</div>
+        <SessionProvider>
+          <div className="wrapper ovh">
+            {children}
+          </div>
+        </SessionProvider>
         <ToastContainer />
         <ScrollToTop />
       </body>

@@ -2,13 +2,12 @@ export type UserLogin = {
     email: string;
     password: string;
 }
-
-export type LoginResponse = {
+export interface ResponseLogin {
     access_token: string;
-    token_type: string;
-    expires_in: number;
+    token_type:   string;
+    expires_in:   number;
+    role:         string;
 }
-
 export type User = {
     id: number;
     name: string;

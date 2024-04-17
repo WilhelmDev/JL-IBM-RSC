@@ -7,6 +7,8 @@ import ServicesTab from './tabs/services'
 import OffertsTab from './tabs/ofert'
 import MediaTab from './tabs/media'
 import { sendEntrepreneurshipForm } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/utilis/routes'
 
 export default function EntrepreneurshipForm() {
   const [stepOne, setStepOne] = useState({})
@@ -18,6 +20,8 @@ export default function EntrepreneurshipForm() {
   const [loading, setLoading] = useState(false)
 
   const [paymentTypes, setPaymentTypes] = useState({})
+
+  const router = useRouter()
 
   const updatePayments = (value) => {
     setPaymentTypes(value)
@@ -57,6 +61,7 @@ export default function EntrepreneurshipForm() {
       console.log(error)
     } finally {
       setLoading(false)
+      router.push(ROUTES.entrepreneurshipList)
     }
   }
 

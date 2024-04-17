@@ -1,5 +1,7 @@
-import FormNeighborhood from '@/components/neighborhood/form'
 import React from 'react'
+import dynamic from 'next/dynamic'
+
+const FormNeighborhood = dynamic(() => import('@/components/neighborhood/form'), { ssr: false })
 
 export const metadata = {
   title: "Nuevo Barrio || Homez - Real Estate NextJS Template",

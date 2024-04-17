@@ -81,7 +81,7 @@ const features = [
             <div style={{minHeight: '50vh'}} className="col-6 construction-left-side-image">
             </div>
             <div className="col-6 construction-right-side" data-aos="fade-up" data-aos-delay="300">
-                <p className="paragraph"> Las propiedades que se encuentran publicadas con el sello de "Propiedad Verificada" cuentan con su informe a disposición. Generando más posibilidades de venta en potenciales compradores. </p>
+                <p className="paragraph"> Las propiedades que se encuentran publicadas con el sello de &quot;Propiedad Verificada&ldquo; cuentan con su informe a disposición. Generando más posibilidades de venta en potenciales compradores. </p>
                 <p className="paragraph"> Pedí tu turno para hacer un diagnóstico de mantenimiento de la propiedad que vas a vender o que vas a comprar. </p>
             </div>
           </div>

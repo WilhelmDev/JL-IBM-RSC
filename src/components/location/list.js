@@ -48,7 +48,7 @@ export default function List() {
           setRange(range)
           setPages(allPages)
           setLastPage(lastPage)
-          setLocalities(data)
+          setLocalities(data.length === 0 ? undefined: data)
         } catch (error) {
           setLocalities(undefined)
         }

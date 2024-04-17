@@ -1,5 +1,7 @@
-import FormLocation from '@/components/location/form'
 import React from 'react'
+import dynamic from 'next/dynamic'
+
+const FormLocation = dynamic(() => import('@/components/location/form'), { ssr: false })
 
 export const metadata = {
   title: "Nueva Localidad || Homez - Real Estate NextJS Template",

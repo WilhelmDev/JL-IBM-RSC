@@ -1,5 +1,7 @@
-import PropertyForm from '@/components/property-form/form'
 import React from 'react'
+import dynamic from 'next/dynamic'
+
+const PropertyForm = dynamic(() => import('@/components/property-form/form'), { ssr: false })
 
 export const metadata = {
   title: "Nueva Propiedad || Homez - Real Estate NextJS Template",

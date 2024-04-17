@@ -6,6 +6,8 @@ import SurfaceTab from './tabs/surface'
 import LocalizationTab from './tabs/localization'
 import DescriptionTab from './tabs/description'
 import { sendPropertyForm } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/utilis/routes'
 
 export default function PropertyForm() {
 
@@ -15,6 +17,8 @@ export default function PropertyForm() {
   const [stepFour, setStepFour] = useState({})
   const [stepFive, setStepFive] = useState({})
   const [loading, setLoading] = useState(false)
+
+  const router = useRouter()
 
   const updateStepOne = (values) => {
     setStepOne(values)
@@ -46,6 +50,7 @@ export default function PropertyForm() {
       console.log(error)
     } finally {
       setLoading(false)
+      router.push(ROUTES.propertyList)
     }
   }
 

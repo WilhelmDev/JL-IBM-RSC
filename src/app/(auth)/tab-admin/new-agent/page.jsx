@@ -1,6 +1,7 @@
-import NewAgent from "@/components/tab-admin/NewAgent";
+import dynamic from 'next/dynamic' 
+const NewAgent = dynamic(() => import('@/components/tab-admin/NewAgent'), { ssr: false })
 
-const Page = () => (
+const NewAgentPage = () => (
   <div id="tab-admin">
     <div id="content">
       <NewAgent />
@@ -8,4 +9,4 @@ const Page = () => (
   </div>
 );
 
-export default Page;
+export default NewAgentPage;
