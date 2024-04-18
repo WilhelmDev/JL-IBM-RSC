@@ -2,15 +2,15 @@ import React from 'react'
 
 export default function TableFavorites({localities}) {
   return (
-    <div className="row" id='listing-favorites'>
+    <div className="row" id='listing-comparisons'>
       {/* Begin headers table */}
       <div className="col-12 headers-container">
-        <div>Propiedades y detalles</div>
-        <div>Precio x operación</div>
-        <div>Solicitudes</div>
-        <div>Última acción</div>
-        <div>Favoritos y compartidos</div>
-        <div>Acción</div>
+        <div>Fecha de comparación</div>
+        <div>Tipo de comp</div>
+        <div>prop 1</div>
+        <div>prop 2</div>
+        <div>prop 3</div>
+        <div>Acción</div> 
       </div>
       {/* End headers table */}
 
