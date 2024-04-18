@@ -5,7 +5,7 @@ const TableComparisons = dynamic(() => import('./atoms/table'), { ssr: false })
 
 export default function FavoriteListClient() {
   return (
-    <main id='list-favorites-view'>
+    <main id='list-comparisons-view'>
       <div className="row p30">
         <TableComparisons/>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Favorite from './favorite'
 
-export default function TableFavorites({favorites}) {
+export default function TableFavorites({localities}) {
   return (
     <div className="row" id='listing-favorites'>
       {/* Begin headers table */}
