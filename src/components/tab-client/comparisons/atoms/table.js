@@ -5,7 +5,7 @@ import Pagination from "./location/Pagination"
 
 export default function TableComparisons({localities}) {
 
-  const [property, setProperty] = useState({
+  const [property1, setProperty1] = useState({
     date : "XX-XX-XXX",
     type_comp : "Venta",
     props : {
@@ -14,8 +14,26 @@ export default function TableComparisons({localities}) {
       amount : "140,000 USD"
     }
   });
+  const [property2, setProperty2] = useState({
+    date : "XX-XX-XXX",
+    type_comp : "Alquiler",
+    props : {
+      imageurl : "/images/home-v3/landscape.jpg",
+      nameproperty : "Nombre de la propiedad",
+      amount : "140,000 USD"
+    }
+  });
+  const [property3, setProperty3] = useState({
+    date : "XX-XX-XXX",
+    type_comp : "Alquiler Temporal",
+    props : {
+      imageurl : "/images/home-v3/landscape.jpg",
+      nameproperty : "Nombre de la propiedad",
+      amount : "140,000 USD"
+    }
+  });
 
-  const [locations, setLocations] = useState([property,property,property])
+  const [locations, setLocations] = useState([property1,property2,property3])
 
   return (
     <div className="row" id='listing-comparisons'>
