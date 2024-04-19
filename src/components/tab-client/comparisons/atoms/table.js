@@ -6,7 +6,7 @@ import Pagination from "./location/Pagination"
 export default function TableComparisons({localities}) {
 
   const [property1, setProperty1] = useState({
-    date : "XX-XX-XXX",
+    date : "01-01-2024",
     type_comp : "Venta",
     props : {
       imageurl : "/images/home-v3/landscape.jpg",
@@ -15,7 +15,7 @@ export default function TableComparisons({localities}) {
     }
   });
   const [property2, setProperty2] = useState({
-    date : "XX-XX-XXX",
+    date : "01-01-2024",
     type_comp : "Alquiler",
     props : {
       imageurl : "/images/home-v3/landscape.jpg",
@@ -24,7 +24,7 @@ export default function TableComparisons({localities}) {
     }
   });
   const [property3, setProperty3] = useState({
-    date : "XX-XX-XXX",
+    date : "01-01-2024",
     type_comp : "Alquiler Temporal",
     props : {
       imageurl : "/images/home-v3/landscape.jpg",
