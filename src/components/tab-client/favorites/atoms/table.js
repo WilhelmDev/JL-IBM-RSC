@@ -1,4 +1,5 @@
 import React from 'react'
+import Favorite from './favorite'
 
 export default function TableFavorites({localities}) {
   return (
@@ -16,14 +17,14 @@ export default function TableFavorites({localities}) {
 
       {/* Begin Content Table */}
       <div className="col-md-12">
-        {
+        {/* {
           localities && localities.length > 0 
           ? localities.map((element, i) => (
-            // <Locality key={i} item={element}/>
-            <>Hola</>
+            <Favorite key={i} item={element}/>
           ))
-          : 'No hay localidades para mostrar'
-        }
+          : 'No hay Favoritos para mostrar'
+        } */}
+        <Favorite />
       </div>
       {/* End Content Table */}
     </div>
