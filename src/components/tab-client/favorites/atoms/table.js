@@ -18,13 +18,12 @@ export default function TableFavorites({localities}) {
       {/* Begin Content Table */}
       <div className="col-md-12">
         {
-          favorites && favorites.length > 0 
-          ? favorites.map((element, i) => (
-            <>
-            <Favorite key={i} element={element}/>
-            </>
+          localities && localities.length > 0 
+          ? localities.map((element, i) => (
+            // <Locality key={i} item={element}/>
+            <>Hola</>
           ))
-          : 'No hay Favoritos para mostrar'
+          : 'No hay localidades para mostrar'
         }
       </div>
       {/* End Content Table */}
