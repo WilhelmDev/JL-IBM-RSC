@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TableComparisons({localities}) {
+export default function TableFavorites({localities}) {
   return (
     <div className="row" id='listing-favorites'>
       {/* Begin headers table */}
