@@ -1,10 +1,13 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Detail, { DetailOperation, FavoriteBtn, InfoBrick, LastAction, LastSolicitude } from './details'
 import ActtionBtn from './action-btn'
 
-export default function Favorite() {
+export default function Favorite({ element }) {
+
+  const [item, setItem] = useState(element.element)
+
   return (
     <div className='favorite-container'>
       <div className="section">
@@ -12,18 +15,18 @@ export default function Favorite() {
           <Image src="/images/tab-agent/location.svg" height={5} width={4} alt='image'/>
         </div>
         <div className="info-container">
-          <p>{'title'}</p>
-          <p className='sub-title'>{'Código'}</p>
+          <p>{item.title}</p>
+          <p className='sub-title'>{item.ref_code}</p>
           <p className='sub-title'>{'localidad, barrio'}</p>
         </div>
       </div>
       <div className="section">
-        <DetailOperation price={'$ 140,000 USD'} operation={'Venta'} />
-        <DetailOperation price={'$ 14,000 USD x mes'} operation={'Alquiler'} />
+        <DetailOperation price={'$ ' + parseFloat(item?.price?.retail?.usd || 0) + ' USD'} operation={'Venta'} />
+        <DetailOperation price={'$ ' + parseFloat(item?.price?.anual_rent?.usd || 0) + ' USD'} operation={'Alquiler'} />
         <DetailOperation price={'Ver / Editar lista'} operation={'Alquiler temporal'} />
       </div>
       <div className="section">
-        <InfoBrick type={'Visitas'} quantity={2}/>
+        <InfoBrick type={'Visitas'} quantity={item.requests_amount}/>
         <InfoBrick type={'Permuta'} quantity={1}/>
         < LastSolicitude date={'21/03/2002'}/>
       </div>
