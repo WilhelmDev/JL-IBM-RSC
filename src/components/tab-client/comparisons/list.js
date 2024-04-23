@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
-import { getLocalizationsList } from "@/core/infrastructure/services/tab-client.services";
+import { getLocalizationsList } from "@/core/infrastructure/services/tab-client.service";
 import Pagination from '@/components/common/list/pagination';
 import { parsePagination } from '@/utilis/parsers';
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
