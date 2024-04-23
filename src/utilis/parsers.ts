@@ -437,53 +437,14 @@ export const parsePeriodsForm = function (data: PeriodsResponse) {
 
 export const parsePagination = function (meta: Meta, target: string) {
   const { current_page, from, to, total, links, last_page } = meta
-  const TotalPages = links.length
-  const range = `${from} - ${to} de ${total} ${target}`
-  let pages
-  if (TotalPages < 4) {
-    pages = {
-      allPages: [
-        {
-          label: '<',
-          active: false,
-          arrow: true
-        },
-        {
-          label: Number(links[1].label) || 1,
-          active: true,
-          arrow: false
-        },
-        {
-          label: '>',
-          active: false,
-          arrow: true
-        },
-      ]
-    }
-  } else {
-    pages = {
-      allPages: links.map((page, i) => {
-        if (i === 0) {
-          return {
-            label: '<',
-            active: false,
-            arrow: true
-          }
-        }
-        if (i === TotalPages - 1) {
-          return {
-            label: '>',
-            active: false,
-            arrow: true
-          }
-        }
+  let pages = {
+    allPages: 
+      links.map((page) => {
         return {
           label: Number(page.label),
           active: page.active,
-          arrow: false
         }
       }),
     }
-  }
-  return { ...pages, range, lastPage: last_page }
+  return { ...pages, _rang :`${from} - ${to} de ${total} ${target}`, lastPage: last_page }
 }
