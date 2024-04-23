@@ -1,9 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 
-export default function Pagination({pages, range, callback}) {
+export default function Pagination({pages, range, page, callback}) {
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(page);
 
   // Disable paginations according to their location
   const isDisabled = function (i) {
@@ -18,20 +18,20 @@ export default function Pagination({pages, range, callback}) {
   // Begin of handle control
   const handlePrevius = () => {
     setCurrentPage((prevPage) => prevPage > 1 ? prevPage-1 : prevPage = 1)
-    // callback(currentPage)
+    callback(currentPage)
   }
 
   const handleNext = () => {
     const pagelimit = pages.length
     setCurrentPage((prevPage) => prevPage < pagelimit ? prevPage+1 : prevPage = pagelimit)
-    // callback(currentPage)
+    callback(currentPage)
   }
 
   const handleSearch = (label) => {
     setCurrentPage(label);
-    // callback(currentPage)
+    callback(currentPage)
   }
-    // End of handle control
+  // End of handle control
   
   const renderPagination = () => {
     let paginationItems = [];

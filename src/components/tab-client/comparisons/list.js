@@ -5,14 +5,41 @@ import { getLocalizationsList } from "@/core/infrastructure/services/tab-client.
 import Pagination from '@/components/common/list/pagination';
 import { parsePagination } from '@/utilis/parsers';
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import { getPropertiesList } from '@/core/infrastructure/services/tab-agent.service';
 import RootLayout from '@/app/layout';
 
 const TableComparisons = dynamic(() => import('./atoms/table'), { ssr: false })
 
 export default function ComparisonsListClient() {
 
-  // Begin of temporal test variables
+// Begin of temporal test variables
+const [property1, setProperty1] = useState({
+  date : "01-01-2024",
+  type_comp : "Venta",
+  props : {
+    imageurl : "/images/home-v3/landscape.jpg",
+    nameproperty : "Nombre de la propiedad",
+    amount : "140,000 USD"
+  }
+});
+const [property2, setProperty2] = useState({
+  date : "01-01-2024",
+  type_comp : "Alquiler",
+  props : {
+    imageurl : "/images/home-v3/landscape.jpg",
+    nameproperty : "Nombre de la propiedad",
+    amount : "140,000 USD"
+  }
+});
+const [property3, setProperty3] = useState({
+  date : "01-01-2024",
+  type_comp : "Alquiler Temporal",
+  props : {
+    imageurl : "/images/home-v3/landscape.jpg",
+    nameproperty : "Nombre de la propiedad",
+    amount : "140,000 USD"
+  }
+});
+
 const testlink = (_url, _label, _active) => {
   const link = {
     url : _url,
@@ -30,50 +57,55 @@ const [metatest, setMetatest] = useState({
   last_page: 2,
   links: [testlink("url","1",true),testlink("url","2",false),testlink("url","3",false),testlink("url","4",false),testlink("url","5",false),testlink("url","6",false),testlink("url","7",false),testlink("url","8",false)],
 });
+// End of temporal test variables
 
-const { allPages, _rang, lastPage } = parsePagination(metatest, "Propiedades")
-
+const [data, setData] = useState([property1,property2,property3])
 const [localities, setLocalities] = useState([])
-const [page, setPage] = useState(lastPage)
-const [pages, setPages] = useState(allPages)
-const [range, setRange] = useState(_rang)
+const [localitiesView, setLocalitiesView] = useState([]);
+const [page, setPage] = useState(1)
+const [pages, setPages] = useState([])
+const [range, setRange] = useState("")
 
 const searchParams = useSearchParams();
-// End of temporal test variables
 
 // Incorporation of elements extracted from the backend
 useEffect(() =>  {
-  if(localities !== undefined && localities.length === 0){
-    const fetchLocalities = async (page) => {
+  // (async () => {
+    if(localities !== undefined && localities.length === 0)
       try{
-        const { data, meta } = await getLocalizationsList(page);
+        // const { data, meta } = await getLocalizationsList(page);
         const { allPages, _rang, lastPage } = parsePagination(metatest, "Propiedades")
         setRange(_rang)
         setPages(allPages)
         setPage(lastPage)
         setLocalities(data.length === 0 ? undefined : data)
-      }catch (error) {
+        setLocalitiesView(data)
+      }catch(error){
         setLocalities(undefined)
       }
-    }
-  }
-})
+  // })
+},[localities, localitiesView, metatest, data, page])
 
 // This should handle the locations according to the paginations (3 locations per page is expected).
-const handleChange = (newPage) => {
-  const newSearchParams = new URLSearchParams(searchParams.toString());
-  const newPages = pages;
-}
+const handleChange = (currentPage) => {
+    // setLocalitiesView([]);
+    // const newSearchParams = new URLSearchParams(searchParams.toString());
+    // localities.map((location,i) => {
+    //   if(currentPage > i && currentPage < localities.length){
+    //     localitiesView.push(location);
+    //   }
+    // })
+  }
 
   return (
     <main id='list-comparisons-view'>
       <div className="row p30">
-        <TableComparisons/>
+        <TableComparisons localities={localitiesView}/>
       </div>
       <div className="row p10" id='content'>
         {/* Begin Pagination */}
         <div className="pagination-container">
-              <Pagination pages={pages} range={range} callback={() => handleChange()}/>
+              <Pagination pages={pages} range={range} page={page} callback={() => handleChange()}/>
         </div>
         {/* End Pagination */}
       </div>
