@@ -9,7 +9,7 @@ export const getFavoritesClient = async function (page: string | number) {
   return data
 }
 
-export const getLocalizationsList = async function (page: string | number) {
-  const { data } = await ApiInstance(`/localities?per_page=2&page=${page}`)
-  return data as LocalitiesResponse
+export const getComaprisonsClient = async function (page: string | number) {
+  const { data } = await ApiInstance<PropertiesResponse>(`/localities?per_page=2&page=${page}`)
+  return data 
 }
