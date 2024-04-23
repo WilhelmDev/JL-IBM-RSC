@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Locations from "./location/location"
-import Pagination from "./location/Pagination"
 
 export default function TableComparisons({localities}) {
 
+  // Begin of temporal test variables
   const [property1, setProperty1] = useState({
     date : "01-01-2024",
     type_comp : "Venta",
@@ -32,6 +32,7 @@ export default function TableComparisons({localities}) {
       amount : "140,000 USD"
     }
   });
+  // End of temporal test variables
 
   const [locations, setLocations] = useState([property1,property2,property3])
 
@@ -61,16 +62,6 @@ export default function TableComparisons({localities}) {
           }
       </div>
       {/* End Content Table */}
-
-      {/* Begin Pagination */}
-      <div className="pagination-container">
-        <Pagination
-          pages={0}
-          range={0}
-          callback={(newPage) => handleChange(newPage, search, sort, order)}
-        />
-      </div>
-      {/* End Pagination */}
     </div>
   )
 }
