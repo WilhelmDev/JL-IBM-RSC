@@ -1,12 +1,13 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Locations from "./location/location"
+import ReactProperty from "./location/property"
+
 
 export default function TableComparisons({localities}) {
 
   // Begin of temporal test variables
   const [property1, setProperty1] = useState({
-    date : "XX-XX-XXX",
+    date : "01-01-2024",
     type_comp : "Venta",
     props : {
       imageurl : "/images/home-v3/landscape.jpg",
@@ -15,7 +16,7 @@ export default function TableComparisons({localities}) {
     }
   });
   const [property2, setProperty2] = useState({
-    date : "XX-XX-XXX",
+    date : "01-01-2024",
     type_comp : "Alquiler",
     props : {
       imageurl : "/images/home-v3/landscape.jpg",
@@ -24,7 +25,7 @@ export default function TableComparisons({localities}) {
     }
   });
   const [property3, setProperty3] = useState({
-    date : "XX-XX-XXX",
+    date : "01-01-2024",
     type_comp : "Alquiler Temporal",
     props : {
       imageurl : "/images/home-v3/landscape.jpg",
@@ -52,10 +53,10 @@ export default function TableComparisons({localities}) {
       {/* Begin Content Table */}
       <div className="col-md-12 mb-5">
         {
-          locations && locations.length > 0 
-          ? locations.map((element) => (
+          localities && localities.length > 0 
+          ? localities.map((element) => (
               <>
-                <Locations _property={element}/>
+                <ReactProperty _property={element}/>
               </>
             ))
             : 'No hay localidades para mostrar'
