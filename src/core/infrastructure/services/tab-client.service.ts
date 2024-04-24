@@ -8,6 +8,6 @@ export const getFavoritesClient = async function (page: string | number) {
 }
 
 export const getComparisonsClient = async function (page: string | number) {
-    const { data } = await ApiInstance<PropertiesResponse>(`/localities?per_page=2&page=${page}`)
+    const { data } = await ApiInstance<PropertiesResponse>(`/auth/comparisons?per_page=15&page=${page}`)
 return data
 }

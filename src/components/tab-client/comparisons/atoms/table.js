@@ -1,9 +1,9 @@
 import React from 'react'
-import Property from './location/property'
+import Comparisons from './location/comparisons.js'
 
-export default function TableComparisons({localities}) {
+export default function TableComparisons({comparisons}) {
   return (
-    <div className="row" id='listing-favorites'>
+    <div className="row" id='listing-comparisons'>
       {/* Begin headers table */}
       <div className="col-12 headers-container">
         <div>Fecha de comparación</div>
@@ -17,12 +17,10 @@ export default function TableComparisons({localities}) {
 
       {/* Begin Content Table */}
       <div className="col-md-12">
-        <Property comparisons={localities}/>
         {
-          localities && localities.length > 0 
-          ? localities.map((element, i) => (
-            // <Locality key={i} item={element}/>
-            <>Hola</>
+          comparisons && comparisons.length > 0 
+          ? comparisons.map((element, i) => (
+            <Comparisons key={i} element={element}/>
           ))
           : 'No hay localidades para mostrar'
         }

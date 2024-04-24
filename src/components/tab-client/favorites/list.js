@@ -7,7 +7,6 @@ import { getFavoritesClient } from '@/core/infrastructure/services/tab-client.se
 import { useSearchParams, usePathname, useRouter} from 'next/navigation'
 
 const TableFavorites = dynamic(() => import('./atoms/table'), { ssr: false })
-// const data = import('../../../data/pagination.json')
 
 export default function FavoriteListClient() {
 
