@@ -1,22 +1,23 @@
 import React from 'react'
-import Favorite from './favorite'
+import Property from './location/property'
 
-export default function TableFavorites({favorites}) {
+export default function TableComparisons({localities}) {
   return (
     <div className="row" id='listing-favorites'>
       {/* Begin headers table */}
       <div className="col-12 headers-container">
-        <div>Propiedades y detalles</div>
-        <div>Precio x operación</div>
-        <div>Solicitudes</div>
-        <div>Última acción</div>
-        <div>Favoritos y compartidos</div>
+        <div>Fecha de comparación</div>
+        <div>Tipo de comp</div>
+        <div>Prop 1</div>
+        <div>Prop 2</div>
+        <div>Prop 3</div>
         <div>Acción</div>
       </div>
       {/* End headers table */}
 
       {/* Begin Content Table */}
       <div className="col-md-12">
+        <Property comparisons={localities}/>
         {
           localities && localities.length > 0 
           ? localities.map((element, i) => (

@@ -3,18 +3,18 @@ import Image from "next/image";
 import Props from "./props.js"
 
 
-export default function Property({_property}) {
+export default function Property({comparisons}) {
     return(
         <>  
           <div className='locality-container'>
-            <div className='section-one'>{_property.date}</div>
+            <div className='section-one'>{comparisons.description}</div>
             <div className='section-two'>
-              <span>{_property.type_comp}</span>
+              <span>{comparisons.type_comp}</span>
             </div>
             <div className='section-three'>
-              <Props _property={_property}/>
-              <Props _property={_property}/>
-              <Props _property={_property}/>
+              <Props _property={comparisons}/>
+              <Props _property={comparisons}/>
+              <Props _property={comparisons}/>
             </div>
             <div className='section-four'>
                 <button className='btn-action'>

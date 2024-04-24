@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { parsePagination } from '@/utilis/parsers'
 import Pagination from '@/components/common/list/pagination'
-import { getFavoritesClient } from '@/core/infrastructure/services/tab-client.service'
+import { getComparisonsClient } from '@/core/infrastructure/services/tab-client.service'
 import { useSearchParams, usePathname, useRouter} from 'next/navigation'
 
-const TableFavorites = dynamic(() => import('./atoms/table'), { ssr: false })
+const TableComparisons = dynamic(() => import('./atoms/table'), { ssr: false })
 // const data = import('../../../data/pagination.json')
 
-export default function FavoriteListClient() {
+export default function ComparisonsListClient() {
 
-  const [favorites, setFavorites] = useState([])
+  const [comparisons, setComparisons] = useState([])
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(Number(useSearchParams().get('page')) || 1)
   const [pages, setPages] = useState([])
@@ -30,35 +30,35 @@ export default function FavoriteListClient() {
   }, [params, page])
 
   useEffect(() => {
-    if (favorites !== undefined) {
-      const getFavorites = async (page) => {
+    if (comparisons !== undefined) {
+      const getComparisons = async (page) => {
         try {
-          const { meta, data } = await getFavoritesClient(page)
+          const { meta, data } = await getComparisonsClient(page)
           const { allPages, range, lastPage } = parsePagination(meta, 'propiedades')
-          setFavorites(data.length === 0 ? undefined : data)
+          setComparisons(data.length === 0 ? undefined : data)
           setRange(range)
           setLastPage(lastPage)
           setPages(allPages)
         } catch (error) {
-          setFavorites(undefined)
+          setComparisons(undefined)
         }
       }
-      getFavorites(page)
+      getComparisons(page)
     }
-  }, [page])
+  }, [page,comparisons])
 
   const changePage = (newPage) => {
     if (newPage !== page) {
       router.push(`${pathname}?page=${newPage}`)
-      setFavorites([])
+      setComparisons([])
     }
   }
   
 
   return (
-    <main id='list-favorites-view'>
+    <main id='list-comparisons-view'>
       <div className="row p30">
-        <TableFavorites favorites={favorites}/>
+        <TableComparisons comparisons={comparisons}/>
       </div>
       <div className="row p10">
         {/* Begin Pagination */}
