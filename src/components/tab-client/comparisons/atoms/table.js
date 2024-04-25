@@ -1,5 +1,5 @@
 import React from 'react'
-import Comparisons from './location/comparisons.js'
+import Comparisons from './comparisons/comparisons.js'
 
 export default function TableComparisons({comparisons}) {
   return (
@@ -22,7 +22,7 @@ export default function TableComparisons({comparisons}) {
           ? comparisons.map((element, i) => (
             <Comparisons key={i} element={element}/>
           ))
-          : 'No hay localidades para mostrar'
+          : 'No hay comparaciones para mostrar'
         }
       </div>
       {/* End Content Table */}

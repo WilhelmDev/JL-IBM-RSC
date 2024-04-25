@@ -34,7 +34,7 @@ export default function ComparisonsListClient() {
       const getComparisons = async (page) => {
         try {
           const { meta, data } = await getComparisonsClient(page)
-          const { allPages, range, lastPage } = parsePagination(meta, 'propiedades')
+          const { allPages, range, lastPage } = parsePagination(meta, 'Comparaciones')
           setComparisons(data.length === 0 ? undefined : data)
           setRange(range)
           setLastPage(lastPage)
