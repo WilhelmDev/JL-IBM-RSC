@@ -11,7 +11,7 @@ export default function Comparisons({element}) {
             <div className='section-two'>
               {element?.classification.map((item) => {
                   item.id === element.id ?
-                    <span> {item.title} </span>
+                    <span> {item?.title} </span>
                     : '';
                 })
               }
