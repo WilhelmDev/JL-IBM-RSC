@@ -17,9 +17,9 @@ export default function TableComparisons({comparisons}) {
 
       {/* Begin Content Table */}
       <div className="col-md-12">
-      <Comparisons  element={comparisons.real_state_1} comp={"Venta"}/>
-      <Comparisons  element={comparisons.real_state_2} comp={"Alquiler"}/>
-      <Comparisons  element={comparisons.real_state_3} comp={"Alquiler Temporal"}/>
+      <Comparisons  element={comparisons?.real_state_1} comp={"Venta"}/>
+      <Comparisons  element={comparisons?.real_state_2} comp={"Alquiler"}/>
+      <Comparisons  element={comparisons?.real_state_3} comp={"Alquiler Temporal"}/>
         {/* {
           comparisons && comparisons.length > 0 
           ? comparisons.map((element, i) => (
