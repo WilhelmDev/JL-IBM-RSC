@@ -1,7 +1,8 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Search from './search'
 
-export default function TableSearch(props) {
+export default function TableSearch({ search }) {
     return (
       <div className='cell-container'>
         <div className='cell-name'>
@@ -14,28 +15,19 @@ export default function TableSearch(props) {
           <p className='name cell-btn'>Precio Maximo</p>
           <p className='name cell-btn'>Accion</p>
         </div>
-        <div className='data-container'>
-          <p className='data title'>Titulo de la busqueda</p>
-          <p className='data date'>01/01/2024</p>
-          <p className='data location'>Localidad</p>
-          <div className='data cell-btn'>
-            <button>Venta</button>
-          </div>
-          <div className='data cell-btn'>
-            <button>100</button>
-          </div>
-          <div className='data cell-btn'>
-            <button>$140,000usd</button>
-          </div>
-          <div className='data cell-btn'>
-            <button>$140,000usd</button>
-          </div>
-          <div className='data cell-btn'>
-            <button>ver</button>
-            <button className='btn-icon'><i class="fa-solid fa-trash"></i></button>
-            <button className='btn-icon'><i class="fa-solid fa-share-nodes"></i></button>
-          </div>
-        </div>
+      {/* Begin Content Table */}
+      <>
+        {
+          search && search.length > 0 
+          ? search.map((element, i) => (
+            <>
+            <Search key={i} element={element}/>
+            </>
+          ))
+          : 'No hay Favoritos para mostrar'
+        }
+      </>
+      {/* End Content Table */}
       </div>
     )
   }
