@@ -19,7 +19,7 @@ export default function Props({PBTimes,gallery}) {
                 (PBTimes?.id === 3) !== undefined ?
                     <div key={PBTimes?.id} className='container-repeat'> 
                         <Image key={gallery?.id} className="img-comp" width={110} height={69} src={gallery?.url || ""} alt='ImgLocation'/>
-                        <span>{element?.title || "Nombre de la propiedad"}</span>
+                        <span>{PBTimes?.title || "Nombre de la propiedad"}</span>
                         <div>{'$' + PBTimes?.price_usd + ' USD' || "0"}</div> 
                     </div>
                 : ''
