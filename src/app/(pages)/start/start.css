@@ -1,18 +1,19 @@
-#tab-start{
-    display: block;
-}
-/* section banner */
-#container-content{
-    display: grid;
-    grid-template-rows: 900px;
-}
-
-#section-banner{
-    color: white;
+section{
     padding: 0;
 }
 
+#tab-start{
+    display: block;
+}
+#container-content{
+    display: grid;
+    grid-template-rows: 
+        900px
+        656px /*<- Temporal heigh, real heigh -> 500px */
+    ;
+}
 
+/* section banner */
 .container-banner{
     background-image: url("/images/image-start/banner-image.png");
     height: 100%;
@@ -36,13 +37,137 @@
 .inf-banner > span{
     font-size: larger;
     letter-spacing: 2px;
+    color: white;
 }
 
 .inf-banner > .arrow-icon{
     margin-top: 20px;
 }
-
 /* section banner */
+
+/* section frame */
+
+#section-frame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* frame search */
+#section-frame > .frame-search{
+    position: absolute;
+    width: 50%;
+    top: -40px;
+}
+
+.frame-search > .pagination-search{
+    display: flex;
+    height: 24px;
+    padding: 0;
+}
+
+.pagination-search > li{
+    box-shadow: rgba(0, 0, 0, 0.15) 0.5px 0.5px 1px;
+    background-color: #F4F4F4;
+    color: #717171;
+    font-size: 14.5px;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination-search > .active{ /* li */
+    background-color: #0451DD;
+    color: white;
+}
+
+.pagination-search > li:nth-child(3){
+    width: 140px;
+}
+/* frame search */
+
+/* fetchPLN */
+.fetchPLN{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #F4F4F4;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    gap: 5px;
+    
+}
+
+.fetchPLN > input{
+    width: 85%;
+    height: 35px;
+    text-indent: 5px;
+}
+
+.fetchPLN > .action-fetch{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 10px;
+}
+
+.action-fetch > button{
+    border: none;
+    background-color: #0451DD;
+    color: #F4F4F4;
+    width: 40px;
+    height: 40px;
+}
+
+/* fetchPLN */
+
+/* container action */
+#section-frame > .container-action{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-action > .component-action{
+    width: 350px;
+    height: 350px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.component-action > .image-action{
+    border: 10px solid #F4F4F4;
+}
+
+.component-action > span{
+    font-size: larger;
+    font-weight: 800;
+}
+
+.component-action > button{
+    background-color: transparent;
+    color: #0451DD;
+    font-size: large;
+    font-weight: 800;
+    letter-spacing: 2px;
+    width: 70%;
+    height: 13%;
+    border: 2.5px solid #0451DD;
+}
+
+.component-action > button:active{
+    transition: 0s;
+    background-color: rgba(4, 81, 221, 0.25);
+}
+/* container action */
+
+/* section frame */
+
 
 /* 9 secciones */
 /* 9 componentes nuevos */

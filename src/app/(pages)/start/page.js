@@ -30,17 +30,31 @@ const Start = () => {
                 <section id='section-frame'>
                     {/* Begin of Component "FrameSearch" */}
                     <div className='frame-search'>
-                        {/* Please model me! */}
+                        <ul className='pagination-search'>
+                            <li className='active'>Comprar</li>
+                            <li className=''>Alquilar</li>
+                            <li className=''>Alquiler temporal</li>
+                            <li className=''>Todas</li>
+                        </ul>
+                        <div className='fetchPLN'>
+                            <input className='input-PLN' placeholder=' 🏠 Ingrese Partido, Localidad o Barrio donde desea buscar.'></input>
+                            <div className='action-fetch'>
+                                <span><Image width={13} height={13} src={'/images/image-start/icon-fetch.png'} alt='icon fetch'/> Avanzado</span>
+                                <button><Image width={20} height={20} src={'/images/image-start/icon-button-search.svg'} alt={'svg-serch-icon'}/></button>
+                            </div>
+                        </div>
                     </div>
                     {/* End of Component "FrameSearch" */}
 
-                    {/* Begin of Component "ActionBTN" */}
                     <div className='container-action'>
+                        {/* Begin of Component "ActionBTN" */}
                         <div className='component-action'>
-                            <Image width={230} height={230} src={""} alt='image-frame'/>
+                            <Image className='image-action' width={230} height={230} src={"/images/image-start/info-team-icon.png"} alt='image-frame'/>
+                            <span>Descripcion componente</span>
+                            <button>SOBRE NOSOTROS</button>
                         </div>
+                        {/* End of Component "ActionBTN" */}
                     </div>
-                    {/* End of Component "ActionBTN" */}
                 </section>
                 <section id='section-property'>
                     {/* Generic Component */}
