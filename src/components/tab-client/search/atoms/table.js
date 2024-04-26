@@ -6,14 +6,14 @@ export default function TableSearch({ search }) {
     return (
       <div className='cell-container'>
         <div className='cell-name'>
-          <p className='name title'>Titulo</p>
+          <p className='name title'>Título</p>
           <p className='name date'>Fecha de busqueda</p>
           <p className='name location'>Localidad</p>
-          <p className='name cell-btn'>Operacion</p>
+          <p className='name cell-btn'>Operación</p>
           <p className='name cell-btn'>Cantidad de Resultados</p>
-          <p className='name cell-btn'>Precio Minimo</p>
-          <p className='name cell-btn'>Precio Maximo</p>
-          <p className='name cell-btn'>Accion</p>
+          <p className='name cell-btn'>Precio Mínimo</p>
+          <p className='name cell-btn'>Precio Máximo</p>
+          <p className='name cell-btn'>Acción</p>
         </div>
       {/* Begin Content Table */}
       <>

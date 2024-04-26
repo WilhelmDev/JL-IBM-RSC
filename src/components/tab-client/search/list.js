@@ -17,8 +17,6 @@ export default function SearchList() {
   const [range, setRange] = useState('')
   const [lastPage, setLastPage] = useState(1)
 
-
-  // console.log(search);
   useEffect(() =>{
     const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
     setRange(range)
@@ -26,24 +24,6 @@ export default function SearchList() {
     setPages(allPages)
     
   })
-  // useEffect(() => {
-  //   if (search !== undefined) {
-  //     const getSearch = async (page) => {
-  //       try {
-  //         const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
-  //         const { data, meta } = await getSearchClient(page)
-  //         setSearch(data.length === 0 ? undefined : data)
-  //         setRange(range)
-  //         setLastPage(lastPage)
-  //         setPages(allPages)
-  //       } catch (error) {
-  //         setSearch(undefined)
-  //       }
-  //     }
-  //     getSearch(page)
-  //   }
-  // }, [])
-
   const changePage = (newPage) => {
     if (newPage !== page) {
       router.push(`${pathname}?page=${newPage}`)
