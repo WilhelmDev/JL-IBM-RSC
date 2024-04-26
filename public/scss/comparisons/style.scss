@@ -1,0 +1,147 @@
+#comparisons{
+    margin: 0 auto;
+    padding: 0;
+    .title-comparisons{
+        background-color: #F4F4F4;
+        padding: 50px;
+        margin-bottom: 50px;
+    }
+    .first-column{
+        width: 22%;
+    }
+    .column{
+        width: 26%;
+    }
+    .comparisons-container{
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        margin: 0 auto;
+        .btn-comparisons{
+            .btn-container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 404px;
+                .btn{
+                    background-color: #F4F4F4;
+                    color: #0451DD;
+                    border: 1px solid #0451DD;
+                    border-radius: 1px;
+                    margin: 5px;
+                }
+                .btn:hover{
+                    background-color: #0451DD;
+                    color: #F4F4F4;
+                }
+            }
+            .table-column{
+                div{
+                    border: 1px solid #DEE2E6;
+                    color: #717171;
+                    font-size: 20px;
+                    font-weight: 400;
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+        }
+        .property{
+            .card-property{
+                border: 1px solid #DEE2E6;
+                .btn-container{
+                    display: flex;
+                    justify-content: space-between;
+                    .btn{
+                        background-color: #F4F4F4;
+                        color: #090B37;
+                        width: 100%;
+                        border-radius: 0;
+                    }
+                    .btn:hover{
+                        background-color: #090B37;
+                        color: #F4F4F4;
+                    }
+                }
+                .comparisons-img{
+                    width: 100%;
+                    height: 240px;
+                }
+                .characteristics{
+                    background-color: #F4F4F4;
+                    padding: 18.81px;
+                    font-size: 13px;
+                    font-weight: 400;
+                    .name{
+                        font-size: 19px;
+                        margin: 0;
+                    }
+                    .other{
+                        display: flex;
+                        p{
+                            margin: 0 5px;
+                        }
+                    }
+                    .links{
+                        text-decoration: underline;
+                    }
+                }
+            }
+            .table-column{
+                div{
+                    border: 1px solid #DEE2E6;
+                    color: #717171;
+                    font-size: 20px;
+                    font-weight: 400;
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+        }
+        .new-property{
+            .btn-new{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #DEE2E6;
+                height: 404px;
+                .btn{
+                    background-color: #F4F4F4;
+                    color: #0451DD;
+                    border: 1px solid #0451DD;
+                    border-radius: 1px;
+                    margin: 5px;
+                }
+                .btn:hover{
+                    background-color: #0451DD;
+                    color: #F4F4F4;
+                }
+            }
+            .table-column{
+                div{
+                    border: 1px solid #DEE2E6;
+                    color: #717171;
+                    font-size: 20px;
+                    font-weight: 400;
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+        }
+        .none{
+            display: none;
+        }
+    }
+    .digital-channels{
+        margin-top: 50px;
+        font-size: 23px;
+        font-weight: 600;
+        text-align: center;
+        .logo-container{
+            width: 90%;
+            margin: 50px auto;
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+}
