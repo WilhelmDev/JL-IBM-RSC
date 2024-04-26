@@ -12,6 +12,7 @@ section{
         600px
         850px
         1000px
+        280px
     ;
 }
 
@@ -374,3 +375,35 @@ section{
 
 /* section service */
 /* section service */
+
+
+/* section media */
+/* section media */
+#section-media{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#section-media > .container-media{
+    height: 150px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-media > span{
+    font-size: larger;
+    font-weight: 800;
+}
+
+.container-media > .media-channel{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* section media */
+/* section media */

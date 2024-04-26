@@ -119,15 +119,15 @@ const Start = () => {
                 <section id='section-media'>
                     {/* Begin of Component "DigitalMedia" */}
                     <div className='container-media'>
-                        <span className='generic-text'>Trabajamos tu propiedad compartiéndola en multiples canales dígitales</span>
+                        <span>Trabajamos tu propiedad compartiéndola en multiples canales dígitales</span>
                         <div className='media-channel'>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
-                            <Image width={300} height={300} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
+                            <Image width={130} height={60} src={""} alt={"digital channel image"}/>
                         </div>
                     </div>
                     {/* End of Component "DigitalMedia" */}
