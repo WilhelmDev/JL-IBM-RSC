@@ -62,7 +62,7 @@
                             display: flex;
                             justify-content: center;
                             align-items: center;
-                            button{
+                            .button{
                                 border: 0px;
                                 font-weight: 600;
                                 text-transform: uppercase;
@@ -77,6 +77,10 @@
                                 min-width: 40px;
                             }
                         }
+                    }
+                    .no-searches{
+                        font-size: 18px;
+                        margin: 20px;
                     }
                 }
             }

@@ -24,7 +24,7 @@ export default function TableSearch({ search }) {
             <Search key={i} element={element}/>
             </>
           ))
-          : 'No hay Favoritos para mostrar'
+          : <div className='no-searches'>No hay busquedas para mostrar</div>
         }
       </>
       {/* End Content Table */}

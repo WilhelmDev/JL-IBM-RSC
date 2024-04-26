@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { DataSearch } from '@/core/domain/search'
-import Detail, { Date } from './details'
+import Detail, { Date, Location, Operation, Resuls, MaxPrice, MinPrice } from './details'
 
 
 interface test{
@@ -15,24 +15,16 @@ export default function Search({ element }: test) {
   return (
     <div className='data-container'>
         <Detail title={element.query}/>
-        <Date date="6464"/>
-        <p className='data location'>Localidad</p>
+        <Date date="25/04/2014"/>
+        <Location location="localidad"/>
+        <Operation operation="Venta"/>
+        <Resuls results="100"/>
+        <MaxPrice maxPrice={element.price.max}/>
+        <MinPrice minPrice={element.price.min}/>
         <div className='data cell-btn'>
-        <button>Venta</button>
-        </div>
-        <div className='data cell-btn'>
-        <button>100</button>
-        </div>
-        <div className='data cell-btn'>
-        <button>$140,000usd</button>
-        </div>
-        <div className='data cell-btn'>
-        <button>$140,000usd</button>
-        </div>
-        <div className='data cell-btn'>
-        <button>ver</button>
-        <button className='btn-icon'><i className="fa-solid fa-trash"></i></button>
-        <button className='btn-icon'><i className="fa-solid fa-share-nodes"></i></button>
+        <button className='button'>ver</button>
+        <button className='btn-icon button'><i className="fa-solid fa-trash"></i></button>
+        <button className='btn-icon button'><i className="fa-solid fa-share-nodes"></i></button>
         </div>
     </div>
   )

@@ -5,6 +5,7 @@ import TableSearch from "./atoms/table";
 import { getSearchClient } from '@/core/infrastructure/services/tab-client.service';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { paginas } from '@/data/pagination';
+import { parsePagination } from '@/utilis/parsers';
 
 
 export default function SearchList() {
@@ -18,23 +19,30 @@ export default function SearchList() {
 
 
   // console.log(search);
-  useEffect(() => {
-    if (search !== undefined) {
-      const getSearch = async (page) => {
-        try {
-          const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
-          const { data, meta } = await getSearchClient(page)
-          setSearch(data.length === 0 ? undefined : data)
-          setRange(range)
-          setLastPage(lastPage)
-          setPages(allPages)
-        } catch (error) {
-          setSearch(undefined)
-        }
-      }
-      getSearch(page)
-    }
-  }, [])
+  useEffect(() =>{
+    const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
+    setRange(range)
+    setLastPage(lastPage)
+    setPages(allPages)
+    
+  })
+  // useEffect(() => {
+  //   if (search !== undefined) {
+  //     const getSearch = async (page) => {
+  //       try {
+  //         const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
+  //         const { data, meta } = await getSearchClient(page)
+  //         setSearch(data.length === 0 ? undefined : data)
+  //         setRange(range)
+  //         setLastPage(lastPage)
+  //         setPages(allPages)
+  //       } catch (error) {
+  //         setSearch(undefined)
+  //       }
+  //     }
+  //     getSearch(page)
+  //   }
+  // }, [])
 
   const changePage = (newPage) => {
     if (newPage !== page) {
