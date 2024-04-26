@@ -14,7 +14,7 @@ const Start = () => {
     <main id='tab-start'>
             <HeaderV2/>
             <section id='section-banner'>
-                {/* Beggin of Component "Banner" */}
+                {/* Begin of Component "Banner" */}
                 <div className='container-inf-banner'>
                     <h1>TENEMOS LAS MEJORES PROPIEDADES</h1>
                     <span>Busca tú próxima casa aquí</span>
@@ -23,13 +23,13 @@ const Start = () => {
                 {/* End of Component "Banner" */}
             </section>
             <section id='section-frame'>
-                {/* Beggin of Component "FrameSearch" */}
+                {/* Begin of Component "FrameSearch" */}
                 <div className='frame-search'>
                     {/* Please model me! */}
                 </div>
                 {/* End of Component "FrameSearch" */}
 
-                {/* Beggin of Component "ActionBTN" */}
+                {/* Begin of Component "ActionBTN" */}
                 <div className='container-action'>
                     <div className='component-action'>
                         <Image width={230} height={230} src={""} alt='image-frame'/>
@@ -45,10 +45,10 @@ const Start = () => {
                 {/* Generic Component */}
             </section>
             <section id='section-service'>
-                {/* Beggin of Component "InfService" */}
+                {/* Begin of Component "InfService" */}
                 <div className='inf-service'>
                     <span className='title-service'>Nuestros Servicios</span>
-                    {/* Beggin of Component "InfElement" */}
+                    {/* Begin of Component "InfElement" */}
                     <div className='container-info'>
                         <span className='title-info'>Texto generico</span>
                         <ul className='container info'>
@@ -64,7 +64,7 @@ const Start = () => {
                 {/* End of Component "InfService" */}
             </section>
             <section id='section-media'>
-                {/* Beggin of Component "DigitalMedia" */}
+                {/* Begin of Component "DigitalMedia" */}
                 <div className='container-media'>
                     <span className='generic-text'>Trabajamos tu propiedad compartiéndola en multiples canales dígitales</span>
                     <div className='media-channel'>
@@ -87,14 +87,14 @@ const Start = () => {
                 {/* Generic Component */}
             </section>
             <section id='section-reviews'>
-                {/* Beggin of Component "Reviews" */}
+                {/* Begin of Component "Reviews" */}
                 <div className='container-reviews'>
                     <div className='header-reviews'>
                         <div className='container-text'>
                             <span className='big-text'>Las personas hablan por nosotros</span>
                             <span className='little-text'>Estos son clientes más felices</span>
                         </div>
-                        {/* Beggin of Component "ControlReviews" */}
+                        {/* Begin of Component "ControlReviews" */}
                         <div className='control-reviews'>
                             <div className='control'>
                                 <button className='control-arrow'>▶</button>
@@ -108,7 +108,7 @@ const Start = () => {
                         </div>
                         {/* End of Component "ControlReviews" */}
                     </div>
-                    {/* Beggin of Component "ElementReview" */}
+                    {/* Begin of Component "ElementReview" */}
                     <div className='review'>
                         <span className='title-review'>Great Work</span>
                         <p className='text-review'>Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.</p>
@@ -139,7 +139,7 @@ const Start = () => {
                 {/* Generic Component */}
             </section>
             <section id='section-contact'>
-                {/* Beggin of Component "MapContact" */}
+                {/* Begin of Component "MapContact" */}
                 <div className='container-map'>
                     <span className='generic-text'>Podes encontrarnos en:</span>
                     <div className='container-inf-location'>
@@ -153,7 +153,7 @@ const Start = () => {
                 </div>
                 {/* End of Component "MapContact" */}
 
-                {/* Beggin of Component "Contact" */}
+                {/* Begin of Component "Contact" */}
                 <div className='container-contact'>
                     <div className='container-center'>
                         <div className='text-contact'>
