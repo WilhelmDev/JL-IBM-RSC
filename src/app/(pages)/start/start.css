@@ -1,0 +1,48 @@
+#tab-start{
+    display: block;
+}
+/* section banner */
+#container-content{
+    display: grid;
+    grid-template-rows: 900px;
+}
+
+#section-banner{
+    color: white;
+    padding: 0;
+}
+
+
+.container-banner{
+    background-image: url("/images/image-start/banner-image.png");
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-banner > .inf-banner{
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.inf-banner > h1{
+    letter-spacing: 5px;
+    color: white;
+}
+
+.inf-banner > span{
+    font-size: larger;
+    letter-spacing: 2px;
+}
+
+.inf-banner > .arrow-icon{
+    margin-top: 20px;
+}
+
+/* section banner */
+
+/* 9 secciones */
+/* 9 componentes nuevos */
