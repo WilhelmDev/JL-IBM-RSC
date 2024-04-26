@@ -10,6 +10,9 @@ import { parsePagination } from '@/utilis/parsers';
 
 export default function SearchList() {
 
+  const router = useRouter()
+  const pathname = usePathname()
+
   const [search, setSearch] = useState([])
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(Number(useSearchParams().get('page')) || 1)
@@ -17,32 +20,23 @@ export default function SearchList() {
   const [range, setRange] = useState('')
   const [lastPage, setLastPage] = useState(1)
 
-
-  // console.log(search);
-  useEffect(() =>{
-    const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
-    setRange(range)
-    setLastPage(lastPage)
-    setPages(allPages)
-    
-  })
-  // useEffect(() => {
-  //   if (search !== undefined) {
-  //     const getSearch = async (page) => {
-  //       try {
-  //         const { allPages, range, lastPage } = parsePagination(paginas, 'Busquedas')
-  //         const { data, meta } = await getSearchClient(page)
-  //         setSearch(data.length === 0 ? undefined : data)
-  //         setRange(range)
-  //         setLastPage(lastPage)
-  //         setPages(allPages)
-  //       } catch (error) {
-  //         setSearch(undefined)
-  //       }
-  //     }
-  //     getSearch(page)
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (search !== undefined) {
+      const getSearch = async (page) => {
+        try {
+          const { data, meta } = await getSearchClient(page)
+          const { allPages, range, lastPage } = parsePagination(meta, 'Busquedas')
+          setSearch(data.length === 0 ? undefined : data)
+          setRange(range)
+          setLastPage(lastPage)
+          setPages(allPages)
+        } catch (error) {
+          setSearch(undefined)
+        }
+      }
+      getSearch(page)
+    }
+  }, [page])
 
   const changePage = (newPage) => {
     if (newPage !== page) {
