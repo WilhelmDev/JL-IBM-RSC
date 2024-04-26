@@ -57,12 +57,41 @@ const Start = () => {
                     </div>
                 </section>
                 <section id='section-property'>
-                    {/* Generic Component */}
-                    <div className='content'>
-                        <Property/>
-                        <Property/>
+                    <div className='container-center'>
+                        {/* Begin of Component "ActionProperty" */}
+                        <div className="action-property">
+                            <div className="text-info">
+                                <h1>Ofertas que no pueden esperar</h1>
+                                <p> Puedes guardar y seleccionar las que te gusten y compararlas </p>
+                            </div>
+                            <div className="control">
+                                <button className='active'>Todas</button>
+                                <button className=''>Venta</button>
+                                <button className=''>Alquiler</button>
+                                <button className=''>Alquiler temporal</button>
+                            </div>
+                        </div>
+                        {/* End of Component "ActionProperty" */}
+
+                        {/* Generic Component */}
+                        <div className='content'>
+                            <Property/>
+                            <Property/>
+                        </div>
+                        {/* Generic Component */}
+
+                        {/* Begin of Component "PaginationProperty" */}
+                        <div className='pagination-property'>
+                            <button className='arrow-left'><Image width={20} height={20} src={"/images/image-start/arrow-left.svg"} alt='arrow-left'/></button>
+                            <div className='page-property'>
+                                <div className='active'><Image width={10} height={10} src={'/images/image-start/pagination-bullet-active.svg'} alt='bullet active'/></div>
+                                <div className=''><Image width={10} height={10} src={'/images/image-start/pagination-bullet.svg'} alt='bullet'/></div>
+                                {/* <div className=''></div> */}
+                            </div>
+                            <button className='arrow-right'><Image width={20} height={20} src={"/images/image-start/arrow-right.svg"} alt='arrow-right'/></button>
+                        </div>
+                        {/* End of Component "PaginationProperty" */}
                     </div>
-                    {/* Generic Component */}
                 </section>
                 <section id='section-service'>
                     {/* Begin of Component "InfService" */}

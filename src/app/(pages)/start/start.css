@@ -9,10 +9,12 @@ section{
     display: grid;
     grid-template-rows: 
         900px
-        656px /*<- Temporal heigh, real heigh -> 500px */
+        656px
+        900px
     ;
 }
 
+/* section banner */
 /* section banner */
 .container-banner{
     background-image: url("/images/image-start/banner-image.png");
@@ -44,9 +46,10 @@ section{
     margin-top: 20px;
 }
 /* section banner */
+/* section banner */
 
 /* section frame */
-
+/* section frame */
 #section-frame{
     display: flex;
     flex-direction: column;
@@ -77,6 +80,18 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.pagination-search > li:hover:not(.active){
+    filter: brightness(0.9);
+}
+
+.pagination-search > li:active:not(.active){
+    transition: 0s;
+    filter: brightness(0.8);
 }
 
 .pagination-search > .active{ /* li */
@@ -158,6 +173,7 @@ section{
     width: 70%;
     height: 13%;
     border: 2.5px solid #0451DD;
+    cursor: pointer;
 }
 
 .component-action > button:active{
@@ -167,7 +183,108 @@ section{
 /* container action */
 
 /* section frame */
+/* section frame */
 
 
-/* 9 secciones */
-/* 9 componentes nuevos */
+/* section property */
+/* section property */
+#section-property{
+    background-color: #F4F4F4;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* container center */
+#section-property > .container-center{
+    width: 1230px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+/* action property */
+.container-center > .action-property{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+}
+
+.action-property > .control{
+    width: 380px;
+    display: flex;
+    gap: 10px;
+}
+
+.control > button{
+    background-color: #F4F4F4;
+    border: 1px solid #CCCCCC;
+    width: 110px;
+    height: 40px;
+}
+
+.control > button:nth-child(4){
+    width: 220px;
+}
+
+.control > button:hover:not(.active){
+    filter: brightness(0.9);
+}
+
+.control > button:active:not(.active){
+    transition: 0s;
+    filter: brightness(0.8);
+}
+
+.control > .active{ /* li */
+    background-color: #06173D;
+    color: white;
+}
+/* action property */
+
+/* content */
+.container-center > .content{
+    width: 100%;
+    display: flex;
+}
+/* content */
+
+/* pagination property */
+.pagination-property{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    height: 20px;
+    margin-top: 30px;
+    gap: 30px;
+}
+
+.pagination-property > button{
+    background-color: transparent;
+    border: none;
+}
+
+.pagination-property > .page-property{
+    width: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.page-property > div:not(.active){
+    background-image: url();
+}
+
+.page-property > .active{
+    background-image: url('/images/image-start/pagination-bullet_margin-active.svg');
+}
+/* pagination property */
+
+/* container center */
+
+/* section property */
+/* section property */
+
+
+/* 9 sections */
+/* 9 new components  */
