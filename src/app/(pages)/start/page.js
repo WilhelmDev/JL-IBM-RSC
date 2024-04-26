@@ -61,7 +61,7 @@ const Start = () => {
                         {/* Begin of Component "ActionProperty" */}
                         <div className="action-property">
                             <div className="text-info">
-                                <h1>Ofertas que no pueden esperar</h1>
+                                <h2>Ofertas que no pueden esperar</h2>
                                 <p> Puedes guardar y seleccionar las que te gusten y compararlas </p>
                             </div>
                             <div className="control">
@@ -93,25 +93,29 @@ const Start = () => {
                         {/* End of Component "PaginationProperty" */}
                     </div>
                 </section>
+
                 <section id='section-service'>
                     {/* Begin of Component "InfService" */}
                     <div className='inf-service'>
-                        <span className='title-service'>Nuestros Servicios</span>
-                        {/* Begin of Component "InfElement" */}
-                        <div className='container-info'>
-                            <span className='title-info'>Texto generico</span>
-                            <ul className='container info'>
-                                <li className=''>Texto generico pero en lista</li>
-                                <li className=''>Texto generico pero en lista</li>
-                                <li className=''>Texto generico pero en lista</li>
-                            </ul>
-                            <button className='btn-action'>Click me</button>
+                        <div className='container-center'>
+                            <h4 className='title-service'>Nuestros Servicios</h4>
+                            {/* Begin of Component "InfElement" */}
+                            <div className='container-info'>
+                                <span className='title-info'>Texto generico</span>
+                                <ul className='container-list-info'>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                </ul>
+                                <button className='btn-action'>DIAGNOSTICO DE PROPIEDADES</button>
+                            </div>
+                            {/* End of Component "InfElement" */}
                         </div>
-                        {/* End of Component "InfElement" */}
-                        <Image className='img-service' width={100} height={100} src={""} alt='img-service'/>
                     </div>
+                    <Image className='img-service' width={100} height={100} src={"/images/image-start/inf-service-image.png"} alt='img-service'/>
                     {/* End of Component "InfService" */}
                 </section>
+
                 <section id='section-media'>
                     {/* Begin of Component "DigitalMedia" */}
                     <div className='container-media'>
