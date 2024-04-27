@@ -5,7 +5,6 @@ import Property from '@/components/location/property';
 import Neighborhood from './neighborhood';
 import Entrepreneurship from './entrepreneurship';
 import Footer from '@/components/common/generic-footer';
-import "./start.css"
 
 export const metadata = {
     title: "Start  || Homez - Real Estate NextJS Template",
