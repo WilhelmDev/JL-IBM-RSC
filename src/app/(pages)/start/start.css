@@ -1,3 +1,5 @@
+/* Note: There are some buttons are using the same styles, it is strongly recommended to make a single class together for those equal to encapsulate all styles by CSS -> SCSS. */
+
 section{
     padding: 0;
 }
@@ -514,6 +516,10 @@ section{
     height: 40px;
     border: 1px solid #06173D;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0 20px;
 }
 
 .container-center > button:active{

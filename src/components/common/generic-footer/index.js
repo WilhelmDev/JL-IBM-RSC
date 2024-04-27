@@ -9,10 +9,10 @@ const Footer = () => {
                 <div id="container-media">
                     <Logo/>
                     <div id="media">
-                        <Image className="image-media" width={30} height={30} src={""} alt="icon"/>
-                        <Image className="image-media" width={30} height={30} src={""} alt="icon"/>
-                        <Image className="image-media" width={30} height={30} src={""} alt="icon"/>
-                        <Image className="image-media" width={30} height={30} src={""} alt="icon"/>
+                        <Image className="image-media" width={18} height={18} src={"/images/generic-footer-icons/facebook-icon.svg"} alt="icon"/>
+                        <Image className="image-media" width={18} height={18} src={"/images/generic-footer-icons/instagram-icon.svg"} alt="icon"/>
+                        <Image className="image-media" width={18} height={18} src={"/images/generic-footer-icons/youtube-icon.svg"} alt="icon"/>
+                        <Image className="image-media" width={18} height={18} src={"/images/generic-footer-icons/spotify-icon.svg"} alt="icon"/>
                     </div>
                 </div>
                 <div id="container-copyright">
