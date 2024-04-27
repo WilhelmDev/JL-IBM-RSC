@@ -37,7 +37,9 @@ const Start = () => {
                             <li className=''>Todas</li>
                         </ul>
                         <div className='fetchPLN'>
-                            <input className='input-PLN' placeholder=' 🏠 Ingrese Partido, Localidad o Barrio donde desea buscar.'></input>
+                            <label className='input-container'>
+                                <input className='input-PLN' placeholder='Ingrese Partido, Localidad o Barrio donde desea buscar.'></input>
+                            </label>
                             <div className='action-fetch'>
                                 <span><Image width={13} height={13} src={'/images/image-start/icon-fetch.png'} alt='icon fetch'/> Avanzado</span>
                                 <button><Image width={20} height={20} src={'/images/image-start/icon-button-search.svg'} alt={'svg-serch-icon'}/></button>
