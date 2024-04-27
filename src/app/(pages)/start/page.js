@@ -46,6 +46,10 @@ const Start = () => {
                     </div>
                     {/* End of Component "FrameSearch" */}
 
+
+{/* ELEMENT REPEAT ELEMENT REPEAT */}
+
+
                     <div className='container-action'>
                         {/* Begin of Component "ActionBTN" */}
                         <div className='component-action'>
@@ -53,8 +57,23 @@ const Start = () => {
                             <span>Descripcion componente</span>
                             <button>SOBRE NOSOTROS</button>
                         </div>
+                        <div className='component-action'>
+                            <Image className='image-action' width={230} height={230} src={"/images/image-start/info-team-icon.png"} alt='image-frame'/>
+                            <span>Descripcion componente</span>
+                            <button>SOBRE NOSOTROS</button>
+                        </div>
+                        <div className='component-action'>
+                            <Image className='image-action' width={230} height={230} src={"/images/image-start/info-team-icon.png"} alt='image-frame'/>
+                            <span>Descripcion componente</span>
+                            <button>SOBRE NOSOTROS</button>
+                        </div>
                         {/* End of Component "ActionBTN" */}
                     </div>
+
+
+{/* ELEMENT REPEAT ELEMENT REPEAT */}
+
+ 
                 </section>
                 <section id='section-generic'>
                     <div className='container-center'>
@@ -100,6 +119,11 @@ const Start = () => {
                         <div className='container-center'>
                             <h4 className='title-service'>Nuestros Servicios</h4>
                             {/* Begin of Component "InfElement" */}
+
+
+{/* ELEMENT REPEAT ELEMENT REPEAT */}
+
+ 
                             <div className='container-info'>
                                 <span className='title-info'>Texto generico</span>
                                 <ul className='container-list-info'>
@@ -109,6 +133,39 @@ const Start = () => {
                                 </ul>
                                 <button>DIAGNOSTICO DE PROPIEDADES</button>
                             </div>
+                            <div className='container-info'>
+                                <span className='title-info'>Texto generico</span>
+                                <ul className='container-list-info'>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                </ul>
+                                <button>DIAGNOSTICO DE PROPIEDADES</button>
+                            </div>
+                            <div className='container-info'>
+                                <span className='title-info'>Texto generico</span>
+                                <ul className='container-list-info'>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                </ul>
+                                <button>DIAGNOSTICO DE PROPIEDADES</button>
+                            </div>
+                            <div className='container-info'>
+                                <span className='title-info'>Texto generico</span>
+                                <ul className='container-list-info'>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                    <li className=''>Texto generico pero en lista</li>
+                                </ul>
+                                <button>DIAGNOSTICO DE PROPIEDADES</button>
+                            </div>
+
+
+
+{/* ELEMENT REPEAT ELEMENT REPEAT */}
+
+ 
                             {/* End of Component "InfElement" */}
                         </div>
                     </div>
@@ -184,6 +241,11 @@ const Start = () => {
                         </div>
                         <div className='list-reviews'>
                         {/* Begin of Component "ElementReview" */}
+
+
+{/* ELEMENT REPEAT ELEMENT REPEAT */}
+
+ 
                             <div className='review'>
                                 <span className='title-review'>Great Work</span>
                                 <p className='text-review'>Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.</p>
@@ -202,6 +264,48 @@ const Start = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className='review'>
+                                <span className='title-review'>Great Work</span>
+                                <p className='text-review'>Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.</p>
+                                <ul className='stars-container'>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                </ul>
+                                <div className='user-review'>
+                                    <Image className='user-image' width={30} height={30} src={"/images/image-start/owner-review1.png"} alt={"user image"}/>
+                                    <div className='info-user'>
+                                        <span className='name-user'>Nombre de usuario<br/>Apellido de usuario</span>
+                                        <span className='user-job'>Trabajo de usuario</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='review'>
+                                <span className='title-review'>Great Work</span>
+                                <p className='text-review'>Amazing design, easy to customize and a design quality superlative account on its cloud platform for the optimized performance. And we didn’t on our original designs.</p>
+                                <ul className='stars-container'>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                    <li className='star'>⭐</li>
+                                </ul>
+                                <div className='user-review'>
+                                    <Image className='user-image' width={30} height={30} src={"/images/image-start/owner-review1.png"} alt={"user image"}/>
+                                    <div className='info-user'>
+                                        <span className='name-user'>Nombre de usuario<br/>Apellido de usuario</span>
+                                        <span className='user-job'>Trabajo de usuario</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+{/* ELEMENT REPEAT ELEMENT REPEAT */}
+
+ 
                         {/* End of Component "ElementReview" */}
                         </div>
                     </div>

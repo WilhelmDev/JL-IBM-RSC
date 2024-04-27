@@ -16,7 +16,7 @@ section{
         1000px /* section service */
         280px /* section media */
         1000px /* section generic (Neighborhood)  */
-        550px /* section reviews */
+        650px /* section reviews */
         950px/* section generic (entreprenureship) */
         1050px/* section contact */
         ;
@@ -69,7 +69,7 @@ section{
 /* frame search */
 #section-frame > .frame-search{
     position: absolute;
-    width: 50%;
+    width: 1000px;
     top: -40px;
 }
 
@@ -162,7 +162,7 @@ section{
 
 /* container action */
 #section-frame > .container-action{
-    width: 60%;
+    width: 72%;
     display: flex;
     justify-content: space-between;
 }
@@ -449,7 +449,7 @@ section{
 /* container reviews */
 #section-reviews > .container-reviews{
     height: 350px;
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -516,6 +516,12 @@ section{
 /* header reviews */
 
 /* listreview */
+
+.container-reviews > .list-reviews{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 /* reviews */
 .list-reviews > .review{
