@@ -8,11 +8,15 @@ section{
 #container-content{
     display: grid;
     grid-template-rows: 
-        900px
-        600px
-        850px
-        1000px
-        280px
+        900px /* section banner  */
+        600px /* section frame */
+        850px /* section generic (Property) */
+        1000px /* section service */
+        280px /* section media */
+        950px /* section generic (Neighborhood)  */
+        100px /* section reviews */
+        /* section generic (entreprenureship) */
+        /* section contact */
     ;
 }
 
@@ -200,18 +204,22 @@ section{
 /* section frame */
 
 
-/* section property */
-/* section property */
-#section-property{
-    background-color: #F4F4F4;
+/* section generic */
+/* section generic */
+
+/* Note: It should be noted that both Neighborhood and Property are using the same styles, it is strongly recommended to make a single class for both when encapsulating all styles via CSS -> SCSS. */
+#section-generic{
     display: flex;
-    height: 100%;
     align-items: center;
     justify-content: center;
 }
 
+.property{
+    background-color: #F4F4F4;
+}
+
 /* container center */
-#section-property > .container-center{
+#section-generic > .container-center{
     width: 1230px;
     display: flex;
     align-items: flex-start;
@@ -219,14 +227,14 @@ section{
 
 }
 /* action property */
-.container-center > .action-property{
+.container-center > .action-container{
     display: flex;
     flex-direction: column;
     padding-bottom: 5px;
 }
 
 /* text info */
-.action-property > .text-info{
+.action-container > .text-info{
     height: 80px;
 }
 
@@ -240,21 +248,18 @@ section{
 }
 /* text info */
 
-.action-property > .control{
-    width: 380px;
+.action-container > .control{
+    width: max-content;
     display: flex;
     gap: 10px;
 }
 
 .control > button{
-    background-color: #F4F4F4;
+    background-color: #FFF;
     border: 1px solid #CCCCCC;
-    width: 110px;
+    width: max-content;
     height: 40px;
-}
-
-.control > button:nth-child(4){
-    width: 220px;
+    padding: 0px 15px 0px 15px;
 }
 
 .control > button:hover:not(.active){
@@ -276,6 +281,7 @@ section{
 .container-center > .content{
     width: 100%;
     display: flex;
+    justify-content: space-between;
 }
 /* content */
 
@@ -311,8 +317,8 @@ section{
 
 /* container center */
 
-/* section property */
-/* section property */
+/* section generic */
+/* section generic */
 
 /* section service */
 /* section service */
@@ -404,6 +410,21 @@ section{
     display: flex;
     justify-content: space-between;
 }
+/* section media */
+/* section media */
 
-/* section media */
-/* section media */
+/* section generic (Neighborhood) */
+/* section generic (Neighborhood) */
+
+.container-center > .load-more{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+/* section generic (Neighborhood) */
+/* section generic (Neighborhood) */

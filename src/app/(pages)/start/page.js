@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import HeaderV2 from '@/components/common/HeaderV2'
 import Property from '@/components/location/property';
-import Neighborhood from '@/components/location/neighborhood';
+import Neighborhood from './neighborhood';
 import Entrepreneurship from '@/components/location/entrepreneurship';
 import Footer from '@/components/common/generic-footer';
 import "./start.css"
@@ -56,10 +56,10 @@ const Start = () => {
                         {/* End of Component "ActionBTN" */}
                     </div>
                 </section>
-                <section id='section-property'>
+                <section id='section-generic' className='property'>
                     <div className='container-center'>
                         {/* Begin of Component "ActionProperty" */}
-                        <div className="action-property">
+                        <div className="action-container">
                             <div className="text-info">
                                 <h2>Ofertas que no pueden esperar</h2>
                                 <p> Puedes guardar y seleccionar las que te gusten y compararlas </p>
@@ -132,13 +132,33 @@ const Start = () => {
                     </div>
                     {/* End of Component "DigitalMedia" */}
                 </section>
-                <section id='section-neighborhood'>
-                    {/* Generic Component */}
-                    <div className='content'>
-                        <Neighborhood/>
-                        <Neighborhood/>
+                <section id='section-generic' className='neighborhood'>
+                    <div className='container-center'>
+                        {/* Begin of Component "ActionNeighborhood" */}
+                        <div className="action-container">
+                            <div className="text-info">
+                                <h2>Ofertas que no pueden esperar</h2>
+                                <p> Puedes guardar y seleccionar las que te gusten y compararlas </p>
+                            </div>
+                            <div className="control">
+                                <button className='active'>Todas</button>
+                                <button className=''>Abiertos</button>
+                                <button className=''>Semi Cerrados</button>
+                                <button className=''>Privados</button>
+                                <button className=''>Country Club</button>
+                            </div>
+                        </div>
+                        {/* End of Component "ActionNeighborhood" */}
+                        {/* Generic Component */}
+                        <div className='content'>
+                            <Neighborhood/>
+                            <Neighborhood/>
+                        </div>
+                        {/* Generic Component */}
+                        <div className='load-more'>
+                            <span>CARGAR MÁS</span>
+                        </div>
                     </div>
-                    {/* Generic Component */}
                 </section>
                 <section id='section-reviews'>
                     {/* Begin of Component "Reviews" */}
@@ -186,6 +206,7 @@ const Start = () => {
                     {/* End of Component "Reviews" */}
                 </section>
                 <section id='section-entrepreneurship'>
+                
                     {/* Generic Component */}
                     <div className='content'>
                         <Entrepreneurship/>
