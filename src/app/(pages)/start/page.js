@@ -246,7 +246,7 @@ const Start = () => {
                                 <h3 className='big-text'>Necesitas contactar con nosotros</h3>
                                 <span className='little-text'>Escribinos y nos pondremos en contacto</span>
                             </div>
-                            <button className='btn-wsp'>ESCRIBENOS <Image width={20} height={20} src={"/images/image-start/wsp-icon.svg"} alt='wsp icon'/></button>
+                            <button className='btn-wsp'>ESCRIBÍNOS <Image width={20} height={20} src={"/images/image-start/wsp-icon.svg"} alt='wsp icon'/></button>
                         </div>
                     </div>
                     {/* End of Component "Contact" */}
