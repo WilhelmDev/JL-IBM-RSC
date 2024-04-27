@@ -16,7 +16,7 @@ section{
         1000px /* section service */
         280px /* section media */
         1000px /* section generic (Neighborhood)  */
-        500px /* section reviews */
+        550px /* section reviews */
         950px/* section generic (entreprenureship) */
         1050px/* section contact */
         ;
@@ -437,6 +437,153 @@ section{
 
 /* section reviews */
 /* section reviews */
+
+#section-reviews{
+    background-color: #06173D;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* container reviews */
+#section-reviews > .container-reviews{
+    height: 350px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* header reviews */
+.container-reviews > .header-reviews{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* container text */
+.header-reviews > .container-text > h3{
+    color: white;
+    margin: 0;
+}
+/* container text */
+
+/* control reviews */
+.header-reviews > .control-reviews{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.control-reviews > .text-control{
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.control-reviews > .control{
+    width: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.control-reviews > .control > .control-arrow {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.control-reviews > .control > .active {
+    opacity: 0.4;
+}
+
+.control-reviews > .control > .container-bullet{
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-bullet > .pagination-bullet > .active{
+    width: 6px;
+    height: 6px;
+    border-radius: 100px;
+    background-color: white;
+}
+/* control reviews */
+
+/* header reviews */
+
+/* listreview */
+
+/* reviews */
+.list-reviews > .review{
+    background-color: white;
+    color: #06173D;
+    width: 365px;
+    height: 250;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.review > span, p{
+    font-weight: 800;
+}
+
+.review > .title-review{
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+/* stars-container */
+.review > .stars-container{
+    padding: 0;
+    display: flex;
+}
+/* stars-container */
+
+
+
+/* user-review*/
+.review > .user-review{
+    border-top: 1px solid rgb(237, 236, 236);
+    padding-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.user-review > .user-image{
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+/* info user */
+.user-review > .info-user{
+    display: flex;
+    flex-direction: column;
+}
+
+.info-user > .name-user{
+    line-height: 17px;
+    font-size: 15px;
+}
+
+.info-user > .user-job{
+    font-size: small;
+}
+/* info user */
+
+/* user-review*/
+
+/* reviews */
+
+/* list-reviews */
+
+
+/* container reviews */
 
 /* section reviews */
 /* section reviews */
