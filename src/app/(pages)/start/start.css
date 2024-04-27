@@ -16,8 +16,8 @@ section{
         950px /* section generic (Neighborhood)  */
         500px /* section reviews */
         950px/* section generic (entreprenureship) */
-        1250px/* section contact */
-    ;
+        1050px/* section contact */
+        ;
 }
     
     /* section banner */
@@ -209,13 +209,10 @@ section{
 
 /* Note: It should be noted that both Neighborhood and Property are using the same styles, it is strongly recommended to make a single class for both when encapsulating all styles via CSS -> SCSS. */
 #section-generic{
+    background-color: #F4F4F4;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.property{
-    background-color: #F4F4F4;
 }
 
 /* container center */
@@ -255,7 +252,7 @@ section{
 }
 
 .control > button{
-    background-color: #FFF;
+    background-color: #F4F4F4F4;
     border: 1px solid #CCCCCC;
     width: max-content;
     height: 40px;
@@ -274,6 +271,7 @@ section{
 .control > .active{ /* li */
     background-color: #06173D;
     color: white;
+    cursor: default;
 }
 /* action property */
 
@@ -429,12 +427,101 @@ section{
     user-select: none;
     cursor: pointer;
 }
+
 /* section generic (Neighborhood) */
 /* section generic (Neighborhood) */
 
+/* section reviews */
+/* section reviews */
+
+/* section reviews */
+/* section reviews */
+
+/* section entrepreneurship */
+/* section entrepreneurship */
+.entrepreneurship{
+    background-color: #FFF !important; 
+}
+/* section entrepreneurship */
+/* section entrepreneurship */
 
 /* section contact */
 /* section contact */
+#section-contact{
+    background-color: #F4F4F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#section-contact > .container-map, .container-contact{
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    background-color: white;
+    width: 80%;
+    border-radius: 3px;
+}
+
+/* container map */
+#section-contact > .container-map{
+    height: max-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-weight:800;
+}
+
+.container-map > .image-map{
+    width: 100%;
+    height: max-content;
+    background-size: cover;
+}
+
+.container-map > .container-inf-location {
+    display: flex;
+    gap: 15px;
+}
+
+.container-inf-location > a{
+    text-decoration: underline;
+}
+/* container map */
+
+/* container contact */
+#section-contact > .container-contact{
+    height: 321px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-contact > .container-center{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.container-center > button{
+    background-color: transparent;
+    color: #06173D;
+    font-size: large;
+    font-weight: 800;
+    width: 200px;
+    height: 40px;
+    border: 1px solid #06173D;
+    cursor: pointer;
+}
+
+.container-center > button:active{
+    transition: 0s;
+    background-color: rgba(4, 81, 221, 0.25);
+}
+
+/* container contact */
 
 /* section contact */
 /* section contact */

@@ -56,7 +56,7 @@ const Start = () => {
                         {/* End of Component "ActionBTN" */}
                     </div>
                 </section>
-                <section id='section-generic' className='property'>
+                <section id='section-generic'>
                     <div className='container-center'>
                         {/* Begin of Component "ActionProperty" */}
                         <div className="action-container">
@@ -205,7 +205,7 @@ const Start = () => {
                     </div>
                     {/* End of Component "Reviews" */}
                 </section>
-                <section id='section-generic'>
+                <section id='section-generic' className='entrepreneurship'>
                     <div className='container-center'>
                         <div className="action-container">
                             <div className="text-info">
@@ -233,7 +233,7 @@ const Start = () => {
                             <a className='link-contact'>Contacto</a>
                             <a className='link-google'>Ver en Google</a>
                         </div>
-                        <Image className='image-map' width={100} height={100} src={"/images/image-start/image-map.png"} alt='image map'/>
+                        <Image className='image-map' width={1000} height={1000} src={"/images/image-start/image-map.png"} alt='image map'/>
                     </div>
                     {/* End of Component "MapContact" */}
 
@@ -241,10 +241,10 @@ const Start = () => {
                     <div className='container-contact'>
                         <div className='container-center'>
                             <div className='text-contact'>
-                                <span className='big-text'>Necesitas contactar con nosotros</span>
+                                <h3 className='big-text'>Necesitas contactar con nosotros</h3>
                                 <span className='little-text'>Escribinos y nos pondremos en contacto</span>
                             </div>
-                            <button className='btn-wsp'>Escribenos 💁‍♀️</button>
+                            <button className='btn-wsp'>ESCRIBENOS <Image width={20} height={20} src={"/images/image-start/wsp-icon.svg"} alt='wsp icon'/></button>
                         </div>
                     </div>
                     {/* End of Component "Contact" */}
