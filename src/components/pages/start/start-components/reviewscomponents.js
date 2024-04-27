@@ -31,7 +31,7 @@ const ElementReview = ({ title_review, review, stars, name, lastname, job, user_
                 <li className='star'>⭐</li>
             </ul>
             <div className='user-review'>
-                <Image className='user-image' width={30} height={30} src={user_image} alt={"user image"} />
+                <Image className='user-image' width={100} height={100} src={user_image} alt={"user image"} />
                 <div className='info-user'>
                     <span className='name-user'>{name}<br />{lastname}</span>
                     <span className='user-job'>{job}</span>
