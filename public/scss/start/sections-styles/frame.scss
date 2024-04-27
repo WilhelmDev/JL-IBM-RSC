@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     .container-action{
-        width: 72%;
+        width: min-content;
         display: flex;
         justify-content: space-between;
         .component-action{
@@ -28,10 +28,11 @@
                 font-size: large;
                 font-weight: 800;
                 letter-spacing: 2px;
-                width: 70%;
+                width: max-content;
                 height: 13%;
                 border: 2.5px solid #0451DD;
                 cursor: pointer;
+                padding: 0 20px 0 20px;
             }
             button:active{
                 transition: 0s;

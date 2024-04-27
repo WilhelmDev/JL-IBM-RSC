@@ -1,12 +1,18 @@
 import React from 'react'
 import Image from 'next/image'
 
+// Generic amounts
 import HeaderV2 from '@/components/common/HeaderV2'
 import Property from '@/components/location/property';
-import Neighborhood from '../../../components/pages/start/generic-components/neighborhood2';
-import Entrepreneurship from '../../../components/pages/start/generic-components/entrepreneurship2';
 import Footer from '@/components/common/generic-footer';
+// Generic amounts
 
+// Stylized generic amounts
+import Neighborhood2 from '../../../components/pages/start/generic-components/neighborhood2';
+import Entrepreneurship2 from '../../../components/pages/start/generic-components/entrepreneurship2';
+// Stylized generic amounts
+
+// Own amounts
 import Banner from '../../../components/pages/start/start-components/banner';
 import { FrameSearch, ActionBTN } from '../../../components/pages/start/start-components/framecomponents';
 import { PaginationProperty, ActionProperty, ActionNeighborhood } from '../../../components/pages/start/start-components/genericcomponents';
@@ -14,6 +20,7 @@ import InfElement from '../../../components/pages/start/start-components/infelem
 import DigitalMedia from '../../../components/pages/start/start-components/digitalmedia';
 import Reviews from '../../../components/pages/start/start-components/reviews';
 import { Contact, MapContact } from '../../../components/pages/start/start-components/contactcomponents';
+// Own amounts
 
 export const metadata = {
     title: "Start  || Homez - Real Estate NextJS Template",
@@ -35,9 +42,21 @@ const Start = () => {
                     {/* End of Component "FrameSearch" */}
                     <div className='container-action'>
                         {/* Begin of Component "ActionBTN" */}
-                        <ActionBTN />
-                        <ActionBTN />
-                        <ActionBTN />
+                        <ActionBTN
+                            url={"/images/image-start/frame-image1.png"}
+                            desc={"Información del equipo"}
+                            desc_btn={"SOBRE NOSOTROS"}
+                        />
+                        <ActionBTN
+                            url={"/images/image-start/frame-image2.png"}
+                            desc={"Mapa Interactivo"}
+                            desc_btn={"BÚSCA TU PROPIEDAD"}
+                        />
+                        <ActionBTN
+                            url={"/images/image-start/frame-image3.png"}
+                            desc={"Comercios en el mapa"}
+                            desc_btn={"COMERCIOS VECINOS"}
+                        />
                         {/* End of Component "ActionBTN" */}
                     </div>
                 </section>
@@ -65,10 +84,34 @@ const Start = () => {
                         <div className='container-center'>
                             <h4 className='title-service'>Nuestros Servicios</h4>
                             {/* Begin of Component "InfElement" */}
-                            <InfElement />
-                            <InfElement />
-                            <InfElement />
-                            <InfElement />
+                            <InfElement
+                                list_title={"Tres tasaciones por propiedad"}
+                                item1={"Valoración Profesional"}
+                                item2={"Análisis de Mercado"}
+                                item3={"Asesoramiento en Tasaciones"}
+                                desc_btn={"TASACIONES"}
+                            />
+                            <InfElement
+                                list_title={"¿Que obtienes con el diagnostico?"}
+                                item1={"Sello de verificación"}
+                                item2={"Comprención del estado de tu propiedad"}
+                                item3={"Mayor visualización y ofertas"}
+                                desc_btn={"DIAGNOSTICO DE PROPIEDADES"}
+                            />
+                            <InfElement
+                                list_title={"¿Que obtienes con el mantenimiento?"}
+                                item1={"Preservar el valor y prolongar su vida útil. "}
+                                item2={"Minimizar los costos a largo plazo."}
+                                item3={"Tipos: Preventivo, Correctivo y Estético."}
+                                desc_btn={"MANTENIMIENTO"}
+                            />
+                            <InfElement
+                                list_title={"¿Queres construir tu casa?"}
+                                item1={"Asesoramiento. "}
+                                item2={"Vinculación con Profesionales de la Zona. "}
+                                item3={"Presupuestos personalizados."}
+                                desc_btn={"CONSTRUCCIONES"}
+                            />
                             {/* End of Component "InfElement" */}
                         </div>
                     </div>
@@ -87,8 +130,8 @@ const Start = () => {
                         {/* End of Component "ActionNeighborhood" */}
                         {/* Generic Component */}
                         <div className='content'>
-                            <Neighborhood />
-                            <Neighborhood />
+                            <Neighborhood2 />
+                            <Neighborhood2 />
                         </div>
                         {/* Generic Component */}
                         <div className='load-more'>
@@ -98,7 +141,9 @@ const Start = () => {
                 </section>
                 <section id='section-reviews'>
                     {/* Begin of Component "Reviews" */}
-                    <Reviews />
+                    <Reviews
+                        review={[]}
+                    />
                     {/* End of Component "Reviews" */}
                 </section>
                 <section id='section-generic' className='entrepreneurship'>
@@ -111,8 +156,8 @@ const Start = () => {
                         </div>
                         {/* Generic Component */}
                         <div className='content'>
-                            <Entrepreneurship />
-                            <Entrepreneurship />
+                            <Entrepreneurship2 />
+                            <Entrepreneurship2 />
                         </div>
                         {/* Generic Component */}
                         <div className='load-more'>

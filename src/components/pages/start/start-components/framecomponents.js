@@ -23,12 +23,12 @@ const FrameSearch = () => {
     );
 }
 
-const ActionBTN = () => {
+const ActionBTN = ({ url, desc, desc_btn, callback }) => {
     return (
         <div className='component-action'>
-            <Image className='image-action' width={230} height={230} src={"/images/image-start/info-team-icon.png"} alt='image-frame' />
-            <span>Descripcion componente</span>
-            <button>SOBRE NOSOTROS</button>
+            <Image className='image-action' width={230} height={230} src={url} alt='image-frame' />
+            <span>{desc}</span>
+            <button>{desc_btn}</button>
         </div>
     );
 }
