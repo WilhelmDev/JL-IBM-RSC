@@ -16,7 +16,7 @@ section{
         1000px /* section service */
         280px /* section media */
         1000px /* section generic (Neighborhood)  */
-        650px /* section reviews */
+        600px /* section reviews */
         950px/* section generic (entreprenureship) */
         1050px/* section contact */
         ;
@@ -473,6 +473,7 @@ section{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 60px;
 }
 
 /* header reviews */
