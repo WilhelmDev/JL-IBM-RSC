@@ -158,8 +158,8 @@ export const FrontOptions = [
     value: 'Video'
   },
   {
-    label: 'Fotos',
-    value: 'Fotos'
+    label: 'Galería',
+    value: 'Galeria'
   },
 ]
 
