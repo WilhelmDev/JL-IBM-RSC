@@ -107,7 +107,7 @@ const Start = () => {
                                     <li className=''>Texto generico pero en lista</li>
                                     <li className=''>Texto generico pero en lista</li>
                                 </ul>
-                                <button className='btn-action'>DIAGNOSTICO DE PROPIEDADES</button>
+                                <button>DIAGNOSTICO DE PROPIEDADES</button>
                             </div>
                             {/* End of Component "InfElement" */}
                         </div>
