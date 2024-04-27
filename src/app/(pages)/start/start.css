@@ -10,21 +10,21 @@ section{
     grid-template-rows: 
         900px /* section banner  */
         600px /* section frame */
-        850px /* section generic (Property) */
+        950px /* section generic (Property) */
         1000px /* section service */
         280px /* section media */
         950px /* section generic (Neighborhood)  */
-        100px /* section reviews */
-        /* section generic (entreprenureship) */
-        /* section contact */
+        500px /* section reviews */
+        950px/* section generic (entreprenureship) */
+        1250px/* section contact */
     ;
 }
-
-/* section banner */
-/* section banner */
-.container-banner{
-    background-image: url("/images/image-start/banner-image.png");
-    height: 100%;
+    
+    /* section banner */
+    /* section banner */
+    .container-banner{
+        background-image: url("/images/image-start/banner-image.png");
+        height: 100%;
     display: flex;
     justify-content: center;
     background-size: cover;
@@ -425,6 +425,16 @@ section{
     letter-spacing: 1px;
     font-weight: bolder;
     margin-top: 20px;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
 }
 /* section generic (Neighborhood) */
 /* section generic (Neighborhood) */
+
+
+/* section contact */
+/* section contact */
+
+/* section contact */
+/* section contact */

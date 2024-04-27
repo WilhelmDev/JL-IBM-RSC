@@ -3,7 +3,7 @@ import Image from 'next/image'
 import HeaderV2 from '@/components/common/HeaderV2'
 import Property from '@/components/location/property';
 import Neighborhood from './neighborhood';
-import Entrepreneurship from '@/components/location/entrepreneurship';
+import Entrepreneurship from './entrepreneurship';
 import Footer from '@/components/common/generic-footer';
 import "./start.css"
 
@@ -112,7 +112,7 @@ const Start = () => {
                             {/* End of Component "InfElement" */}
                         </div>
                     </div>
-                    <Image className='img-service' width={100} height={100} src={"/images/image-start/inf-service-image.png"} alt='img-service'/>
+                    <Image className='img-service' width={960} height={1015} src={"/images/image-start/inf-service-image.png"} alt='img-service'/>
                     {/* End of Component "InfService" */}
                 </section>
 
@@ -205,14 +205,24 @@ const Start = () => {
                     </div>
                     {/* End of Component "Reviews" */}
                 </section>
-                <section id='section-entrepreneurship'>
-                
-                    {/* Generic Component */}
-                    <div className='content'>
-                        <Entrepreneurship/>
-                        <Entrepreneurship/>
+                <section id='section-generic'>
+                    <div className='container-center'>
+                        <div className="action-container">
+                            <div className="text-info">
+                                <h2>Últimos Emprendimientos</h2>
+                                <p>Si quieres invertir en tu casa del futuro aquí encontrarás los emprendimientos que te ofrecemos</p>
+                            </div>
+                        </div>
+                        {/* Generic Component */}
+                        <div className='content'>
+                            <Entrepreneurship/>
+                            <Entrepreneurship/>
+                        </div>
+                        {/* Generic Component */}
+                        <div className='load-more'>
+                            <span>VER TODOS</span>
+                        </div>
                     </div>
-                    {/* Generic Component */}
                 </section>
                 <section id='section-contact'>
                     {/* Begin of Component "MapContact" */}
@@ -223,9 +233,7 @@ const Start = () => {
                             <a className='link-contact'>Contacto</a>
                             <a className='link-google'>Ver en Google</a>
                         </div>
-                        <div className='map-location'>
-                            {/* Hi, I'm a Map Component! (Generic Component) */}
-                        </div>
+                        <Image className='image-map' width={100} height={100} src={"/images/image-start/image-map.png"} alt='image map'/>
                     </div>
                     {/* End of Component "MapContact" */}
 
