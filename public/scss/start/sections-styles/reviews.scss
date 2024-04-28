@@ -1,0 +1,110 @@
+#section-reviews{
+    background-color: #06173D;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container-reviews{
+        height: 350px;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        .header-reviews{
+            display: flex;
+            justify-content: space-between;
+            .container-text > h3{
+                color: white;
+                margin: 0;
+            }
+            .control-reviews{
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                .text-control{
+                    font-size: 16px;
+                    font-weight: 800;
+                    letter-spacing: 1px;
+                }
+                .control{
+                    width: 90px;
+                    display: flex;
+                    justify-content: space-between;
+                    .active {
+                        opacity: 0.4;
+                    }
+                    .control-arrow {
+                        background-color: transparent;
+                        border: none;
+                        padding: 0;
+                    }
+                    .container-bullet{
+                        width: 20px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .pagination-bullet{
+                            .active{
+                                width: 6px;
+                                height: 6px;
+                                border-radius: 100px;
+                                background-color: white;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .list-reviews{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .review{
+                background-color: white;
+                color: #06173D;
+                width: 365px;
+                height: 250;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                span, p{
+                    font-weight: 800;
+                }
+                .title-review{
+                    font-size: 16px;
+                    margin-bottom: 14px;
+                }
+                .stars-container{
+                    padding: 0;
+                    display: flex;
+                }
+                .user-review{
+                    border-top: 1px solid rgb(237, 236, 236);
+                    padding-top: 10px;
+                    display: flex;
+                    gap: 10px;
+                    .user-image{
+                        border-radius: 100%;
+                        width: 50px;
+                        height: 50px;
+                    }
+                    .info-user{
+                        display: flex;
+                        flex-direction: column;
+                        .name-user{
+                            line-height: 17px;
+                            font-size: 15px;
+                        }
+                        .user-job{
+                            font-size: small;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
