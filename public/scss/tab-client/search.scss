@@ -1,0 +1,91 @@
+#tab-client {
+    #content {
+        #search{
+            padding: 7% 5%;
+            display: flex;
+            flex-direction: column;
+            color: $IntenseDarkBlue2;
+            background-color: #f4f4f4;
+            .info-page {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 15px;
+                .title-page {
+                    font-size: 30px;
+                    font-weight: 600;
+                    line-height: 30px;
+                }
+            }
+            .content-page{
+                margin-top: 5%;
+                .cell-container{
+                    display: flex;
+                    flex-direction: column;
+                    font-weight: 400;
+                    text-align: center; 
+                    background-color: #FFFFFF;
+                    p{
+                        margin: 0;
+                    }
+                    .title{
+                        width: 170px;
+                    }
+                    .date{
+                        width: 130px;
+                    }
+                    .location{
+                        width: 85px;
+                    }
+                    .cell-btn{
+                        width: 130px;
+                    }
+                    .cell-name{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        border-bottom: 1px solid #DEE2E6;
+                        font-size: 14px;
+                        .name{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 66px;
+                        }
+                    }
+                    .data-container{
+                        display: flex;
+                        justify-content: space-between;
+                        border-bottom: 1px solid #DEE2E6;
+                        font-size: 14px;
+                        height: 80px;
+                        .data{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            .button{
+                                border: 0px;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                padding: 5px;
+                                width: 95%;
+                                background-color: #f4f4f4;
+                            }
+                            .btn-icon{
+                                background-color: #FFFFFF;
+                                border: 1px solid #f4f4f4;
+                                margin: 0 1px;
+                                height: 40px;
+                                min-width: 40px;
+                            }
+                        }
+                    }
+                    .no-searches{
+                        font-size: 18px;
+                        margin: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+}
