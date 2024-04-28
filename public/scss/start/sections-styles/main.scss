@@ -1,0 +1,28 @@
+section{
+    padding: 0;
+}
+
+#tab-start{
+    display: block;
+    #container-content{
+        display: grid;
+        grid-template-rows: 
+            900px /* section banner  */
+            600px /* section frame */
+            950px /* section generic (Property) */
+            1000px /* section service */
+            280px /* section media */
+            1000px /* section generic (Neighborhood)  */
+            600px /* section reviews */
+            950px/* section generic (entreprenureship) */
+            1050px/* section contact */
+            ;
+        @import "./banner.scss";
+        @import "./frame.scss";
+        @import "./generic.scss";
+        @import "./service.scss";
+        @import "./media.scss";
+        @import "./reviews.scss";
+        @import "./contact.scss";
+    }
+}
