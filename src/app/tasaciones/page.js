@@ -144,7 +144,7 @@ const About = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up">
               <div className="main-title text-center">
-                <h6>Trabajamos tu propiedad compartiéndola en multiples canales digitales</h6>
+                <h5>Trabajamos tu propiedad compartiéndola en multiples canales digitales</h5>
               </div>
             </div>
             <div className="col-lg-12 text-center">
