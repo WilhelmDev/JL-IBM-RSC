@@ -27,6 +27,23 @@
         button{
           height: 100%;
           width: 40%;
+          background-color: #0451DD;
+          color: #F7F7F7;
+          font-weight: 800;
+          border: none;
+        }
+        button:hover{
+          background-color: black;
+          transform: scale(1.06);
+          -ms-transform: scale(1.06); /* IE9 */
+          -moz-transform : scale(1.06); /* Firefox */
+          -webkit-transform : scale(1.06); /* Chrome - Safari */
+          -o-transform : scale(1.06); /* Opera */
+          -ms-transform : scale(1.06); /* IE9 */
+        }
+        button:active{
+          transition: 0s;
+          background-color: red; 
         }
       }
     }

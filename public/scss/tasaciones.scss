@@ -1,27 +1,5 @@
 #tasaciones {
 
-  button:not(.btn-custom), input[type="submit"]{
-    background-color: #0451DD;
-    color: #F7F7F7;
-    font-weight: 800;
-    border: none;
-    height: max-content;
-    width: max-content;
-  }
-  button:hover:not(.btn-custom), input[type="submit"]:hover{
-    background-color: black;
-    transform: scale(1.06);
-    -ms-transform: scale(1.06); /* IE9 */
-    -moz-transform : scale(1.06); /* Firefox */
-    -webkit-transform : scale(1.06); /* Chrome - Safari */
-    -o-transform : scale(1.06); /* Opera */
-    -ms-transform : scale(1.06); /* IE9 */
-  }
-  button:active:not(.btn-custom), input[type="submit"]:active{
-    transition: 0s;
-    background-color: red; 
-  }
-
   .types-apparaisals{
     background-color: #06173D;
     padding: 30px 0px 70px 0px;
@@ -56,40 +34,6 @@
     }
   }
 
-  .email-send{
-    background-color: #F7F7F7;
-    .container-email{
-      width: 70%;
-      align-items: center;
-      justify-content: space-between;
-      .info-send{
-        width: 600px;
-        p{
-          font-size: 20px;
-        }
-      }
-      .input-email{
-        width: 400px;
-        height: 40px;
-        label{
-          width: 60%;
-          height: 100%;
-          input{
-            width: 100%;
-            height: 100%;
-            padding: 20px;
-            background-color: transparent;
-            border: 1px solid #DDDDDD;
-          }
-        }
-        button{
-          height: 100%;
-          width: 40%;
-        }
-      }
-    }
-  }
-
   .request{
     display: flex;
     flex-direction: column;
@@ -114,6 +58,25 @@
           input[type="submit"]{
             padding: 10px 60px 10px 60px;
             letter-spacing: 1.5px;
+            background-color: #0451DD;
+            color: #F7F7F7;
+            font-weight: 800;
+            border: none;
+            height: max-content;
+            width: max-content;
+          }
+          input[type="submit"]:hover{
+            background-color: black;
+            transform: scale(1.06);
+            -ms-transform: scale(1.06); /* IE9 */
+            -moz-transform : scale(1.06); /* Firefox */
+            -webkit-transform : scale(1.06); /* Chrome - Safari */
+            -o-transform : scale(1.06); /* Opera */
+            -ms-transform : scale(1.06); /* IE9 */
+          }
+          input[type="submit"]:active{
+            transition: 0s;
+            background-color: red; 
           }
         }
       }
