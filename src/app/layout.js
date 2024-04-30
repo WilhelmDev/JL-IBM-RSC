@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`body  ${poppins.className} ${dmSans.className}`}
+        className={`body  ${poppins.className}`}
         cz-shortcut-listen="false"
       >
         <SessionProvider>
