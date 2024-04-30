@@ -1,7 +1,127 @@
 #tasaciones {
 
+  button:not(.btn-custom), input[type="submit"]{
+    background-color: #0451DD;
+    color: #F7F7F7;
+    font-weight: 800;
+    border: none;
+    height: max-content;
+    width: max-content;
+  }
+  button:hover:not(.btn-custom), input[type="submit"]:hover{
+    background-color: black;
+    transform: scale(1.01);
+    -ms-transform: scale(1.06); /* IE9 */
+    -moz-transform : scale(1.06); /* Firefox */
+    -webkit-transform : scale(1.06); /* Chrome - Safari */
+    -o-transform : scale(1.06); /* Opera */
+    -ms-transform : scale(1.06); /* IE9 */
+  }
+  button:active:not(.btn-custom), input[type="submit"]:active{
+    transition: 0s;
+    background-color: red; 
+  }
+
+  .types-apparaisals{
+    background-color: #06173D;
+    padding: 30px 0px 70px 0px;
+    h1{
+      color: white;
+      margin: 40px 0px 50px 0px;
+    }
+    .container-type{
+      width: 1300px;
+      transition: 2s;
+      .element-type{
+        align-self: center;
+        background-color: white;
+        width: 410px;
+        height: 396px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        span{
+          font-size: x-large;
+          font-weight: bolder;
+          margin-bottom: 35px;
+        }
+        p{
+          font-size: x-large;
+        }
+      }
+      .element-type:nth-child(2){
+        height: 435px;
+      }
+    }
+  }
+
+  .email-send{
+    background-color: #F7F7F7;
+    .container-email{
+      width: 70%;
+      align-items: center;
+      justify-content: space-between;
+      .info-send{
+        width: 600px;
+        p{
+          font-size: 20px;
+        }
+      }
+      .input-email{
+        width: 400px;
+        height: 40px;
+        label{
+          width: 60%;
+          height: 100%;
+          input{
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background-color: transparent;
+            border: 1px solid #DDDDDD;
+          }
+        }
+        button{
+          height: 100%;
+          width: 40%;
+        }
+      }
+    }
+  }
+
+  .request{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    .container-request{
+      width: 80%;
+      display: flex;
+      .container-form{
+        border: 1px solid #DDDDDD;
+        width: 50%;
+        .form-contact{
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          gap: 13px;
+          input[type="text"]{
+            border: 1px solid #DDDDDD;
+            height: 40px;
+            padding: 12px;
+          }
+          input[type="submit"]{
+            padding: 10px 60px 10px 60px;
+            letter-spacing: 1.5px;
+          }
+        }
+      }
+    }
+  }
+
   .breadcumb-section2 {
-    background-image: url(../images/tasaciones/banner-background.png);
+    background-image: url(/images/tasaciones/banner-background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,7 +129,7 @@
   }
 
   .form-right-side {
-    background-image: url(../images/tasaciones/form-right-side.png);
+    background-image: url(/images/tasaciones/form-right-side.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
