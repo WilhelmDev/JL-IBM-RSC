@@ -45,9 +45,10 @@ const About = () => {
         <div className="container">
           <div className="row" data-aos="fade-up" data-aos-delay="300">
             <div className="col-lg-6 d-flex">
-              <h2 className="pt-3">
-                Tasaciones
-              </h2>
+              <div>
+                <h2 className="pt-3">Tasaciones</h2>
+                <span>Obten el mejor precio</span>
+              </div>
             </div>
             <div className="col-lg-6">
               <p className="text mb25">
