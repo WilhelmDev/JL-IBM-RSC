@@ -11,6 +11,8 @@ import Image from "next/image";
 import Link from "next/link";
 import EmailSend from "@/components/tasaciones/emailsend";
 
+import "./tasaciones.scss"
+
 export const metadata = {
   title: "About  || Homez - Real Estate NextJS Template",
 };
@@ -122,9 +124,6 @@ const About = () => {
       </section>
       {/* Exclusive Agents */}
 
-      {/* Begin of email send */}
-      <EmailSend/>
-      {/* End of email send */}
 
 
       {/* Our Partners */}
@@ -149,6 +148,10 @@ const About = () => {
         </div>
       </section>
       {/* End Our Partners */}
+
+      {/* Begin of email send */}
+      <EmailSend/>
+      {/* End of email send */}
 
       {/* Our CTA */}
       <CallToActions />
