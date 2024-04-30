@@ -10,36 +10,39 @@
       margin: 40px 0px 50px 0px;
     }
     .container-type{
-      width: 1300px;
+      width: 1050px;
       transition: 2s;
       .element-type{
         align-self: center;
         background-color: white;
-        width: 410px;
-        height: 396px;
+        width: 320px;
+        height: 336px;
         padding: 40px;
         display: flex;
         align-items: center;
         flex-direction: column;
         span{
-          font-size: x-large;
+          font-size: large;
           font-weight: bolder;
-          margin-bottom: 35px;
+          margin-bottom: 25px;
         }
         p{
-          font-size: x-large;
+          font-size: large;
         }
       }
       .element-type:nth-child(2){
-        height: 435px;
+        height: 370px;
       }
     }
   }
 
   .request{
+    background-color: #F4F4F4;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0px 0px 80px 0px;
+    padding: 80px;
     gap: 15px;
     .container-request{
       width: 80%;
@@ -52,10 +55,27 @@
           flex-direction: column;
           padding: 20px;
           gap: 13px;
+          .inputwrapper{
+            position: relative;
+            span{
+              position: absolute;
+              right: 317px;
+              top: 8px;
+              color: #717171;
+            }
+            .span2{
+              right: 327px;
+            }
+          }
+          input[type="text"], textarea{
+            background-color: transparent;
+          }
           input[type="text"]{
             border: 1px solid #DDDDDD;
             height: 40px;
             padding: 12px;
+            width: 100%;
+            background-color: #F4F4F4;
           }
           input[type="submit"]{
             padding: 10px 60px 10px 60px;
@@ -80,6 +100,9 @@
             transition: 0s;
             background-color: red; 
           }
+          input[type="text"]::placeholder, textarea::placeholder{
+            color: #06173D;
+          }
         }
       }
     }
@@ -101,30 +124,15 @@
     height: 78vh;
   }
 
-
-  .contact-form {
-
-    width: 60%;
-
-    input {
-      width: 100%;
-      margin: 10px 0px;
+  #section-contact{
+    display: flex;
+    height: 400px;
+    justify-content: start;
+    .container-contact{
+      background-color: #F7F7F7;
+      box-shadow: none;
     }
-
-    input[type="submit"] {
-      color: #fff;
-      font-weight: bold;
-      max-width: 324px;
-      padding: 0.3rem;
-      background-color: #0053E6;
-    }
-
-    input[type="text"] {
-      ::placeholder {
-        color: pink;
-      }
-    }
-
   }
+
 }
 

@@ -1,13 +1,21 @@
 .email-send{
-    background-color: #F7F7F7;
-    .container-email{
-      width: 70%;
+  padding: 80px;
+  .container-email{
+      background-color: #F7F7F7;
+      width: 90%;
+      padding: 80px 100px 60px 130px;
+      border-radius: 10px;
       align-items: center;
       justify-content: space-between;
       .info-send{
-        width: 600px;
+        width: 500px;
         p{
+          font-size: 15px;
+          font-weight: 500;
+        }
+        h1{
           font-size: 20px;
+          margin: 0;
         }
       }
       .input-email{
@@ -22,6 +30,9 @@
             padding: 20px;
             background-color: transparent;
             border: 1px solid #DDDDDD;
+          }
+          input::placeholder{
+            color: #06173D;
           }
         }
         button{

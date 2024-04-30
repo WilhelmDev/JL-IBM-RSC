@@ -1,4 +1,6 @@
+'use client'
 import CallToActions from "@/components/common/CallToActions";
+import { useState } from "react";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Partner from "@/components/common/Partner";
 import HeaderV2 from '@/components/common/HeaderV2'
@@ -10,14 +12,19 @@ import FunFact from "@/components/pages/about/FunFact";
 import Image from "next/image";
 import Link from "next/link";
 import EmailSend from "@/components/tasaciones/emailsend";
-
-import "./tasaciones.scss"
-
-export const metadata = {
-  title: "About  || Homez - Real Estate NextJS Template",
-};
+import { Contact, MapContact } from "@/components/pages/start/start-components/contactcomponents";
 
 const About = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleInputChange2 = (e) => {
+    setInputValue2(e.target.value);
+  };
+
   return (
 
     <>
@@ -101,17 +108,21 @@ const About = () => {
       </section>
       {/* End of types of appraisals */}
 
-
-
       <section className="request">
         <h1 data-aos="zoom-out">Titulo a resolver</h1>
         <div className="container-request" data-aos="zoom-out">
             <div className="container-form">
              <form className="form-contact">
-                <input type="text" name="name" placeholder="Tipo de propiedad (Selección)" />
-                <input type="text" name="email" placeholder="Email (Selección)" />
-                <input type="text" name="phone" placeholder="Telefono (No obligatorio)" />
-                <input type="text" name="buld-land" placeholder="Partido (No obligatorio)" />
+                <input type="text" name="property" placeholder="Tipo de propiedad (Selección)" />
+                <input type="text" name="operation" placeholder="Tipo de operación (Selección)" />
+                <div className="inputwrapper">
+                  <input type="text" name="phone" placeholder="Telefono" value={inputValue} onChange={handleInputChange}/>
+                  {inputValue === '' && <span>(No obligatorio)</span>}
+                </div>
+                <div className="inputwrapper">
+                  <input type="text" name="buld-land" placeholder="Partido" value={inputValue2} onChange={handleInputChange2}/>
+                  {inputValue2 === '' && <span className="span2">(No obligatorio)</span>}
+                </div>
                 <input type="text" name="land-size" placeholder="Email" />
                 <input type="text" name="start-date" placeholder="Nombre completo" />
                 <input type="text" name="type" placeholder="Teléfono / Whatsapp" />
@@ -153,9 +164,9 @@ const About = () => {
       <EmailSend/>
       {/* End of email send */}
 
-      {/* Our CTA */}
-      <CallToActions />
-      {/* Our CTA */}
+      <section id="section-contact">
+        <Contact/>
+      </section>
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">
