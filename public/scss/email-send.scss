@@ -1,0 +1,33 @@
+.email-send{
+    background-color: #F7F7F7;
+    .container-email{
+      width: 70%;
+      align-items: center;
+      justify-content: space-between;
+      .info-send{
+        width: 600px;
+        p{
+          font-size: 20px;
+        }
+      }
+      .input-email{
+        width: 400px;
+        height: 40px;
+        label{
+          width: 60%;
+          height: 100%;
+          input{
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background-color: transparent;
+            border: 1px solid #DDDDDD;
+          }
+        }
+        button{
+          height: 100%;
+          width: 40%;
+        }
+      }
+    }
+  }

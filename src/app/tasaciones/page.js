@@ -9,6 +9,7 @@ import Features from "@/components/pages/about/Features";
 import FunFact from "@/components/pages/about/FunFact";
 import Image from "next/image";
 import Link from "next/link";
+import EmailSend from "@/components/tasaciones/emailsend";
 
 export const metadata = {
   title: "About  || Homez - Real Estate NextJS Template",
@@ -122,20 +123,7 @@ const About = () => {
       {/* Exclusive Agents */}
 
       {/* Begin of email send */}
-      <section className="email-send d-flex justify-content-center">
-        <div className="container-email d-flex">
-          <div className="info-send" data-aos="fade-right">
-            <h1>Enterate de todo</h1>
-            <p>Recibí más información de la zona, las ultimas novedades del rubro y las nuevas propiedades disponibles</p>
-          </div>
-          <div className="input-email" data-aos="fade-left">
-            <label>
-              <input placeholder="Email"></input>
-            </label>
-            <button>ENVIAR</button>
-          </div>
-        </div>
-      </section>
+      <EmailSend/>
       {/* End of email send */}
 
 
