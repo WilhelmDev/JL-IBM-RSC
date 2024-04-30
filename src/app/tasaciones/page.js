@@ -117,7 +117,7 @@ const About = () => {
                 <input type="text" name="property" placeholder="Tipo de propiedad (Selección)" />
                 <input type="text" name="operation" placeholder="Tipo de operación (Selección)" />
                 <div className="inputwrapper">
-                  <input type="text" name="phone" placeholder="Telefono" value={inputValue} onChange={handleInputChange}/>
+                  <input type="text" name="neighborhood" placeholder="Barrio" value={inputValue} onChange={handleInputChange}/>
                   {inputValue === '' && <span>(No obligatorio)</span>}
                 </div>
                 <div className="inputwrapper">
