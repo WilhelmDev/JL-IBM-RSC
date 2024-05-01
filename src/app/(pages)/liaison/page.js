@@ -48,7 +48,7 @@ export default function Liaison(){
                         <p data-aos="fade-down">Puedes hacerlo durante la semana desde las 8AM a 12AM y desde las 15PM a 19PM</p>
                     </div>
                 </section>
-                <section className="section-contact" data-aos="fade-down">
+                <section id="section-contact" data-aos="fade-down">
                     <MapContact/>
                     <Contact/>
                 </section>
