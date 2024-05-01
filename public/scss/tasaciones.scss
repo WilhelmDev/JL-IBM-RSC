@@ -1,7 +1,128 @@
 #tasaciones {
 
+  @import "./email-send.scss";
+
+  .our-about{
+    h2{
+      margin: 0;
+      font-size: 23px;
+    }
+    span{
+      font-weight: 500;
+    }
+    span, p{
+      font-size: 16px;
+    }
+  }
+
+  .types-apparaisals{
+    background-color: #06173D;
+    padding: 30px 0px 70px 0px;
+    h1{
+      color: white;
+      margin: 40px 0px 50px 0px;
+    }
+    .container-type{
+      width: 1050px;
+      transition: 2s;
+      .element-type{
+        align-self: center;
+        background-color: white;
+        width: 320px;
+        height: 336px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        span{
+          font-size: large;
+          font-weight: bolder;
+          margin-bottom: 25px;
+        }
+        p{
+          font-size: large;
+        }
+      }
+      .element-type:nth-child(2){
+        height: 370px;
+      }
+    }
+  }
+
+  .request{
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0px 80px 0px;
+    padding: 80px;
+    gap: 15px;
+    .container-request{
+      width: 80%;
+      display: flex;
+      .container-form{
+        border: 1px solid #DDDDDD;
+        width: 50%;
+        .form-contact{
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          gap: 13px;
+          .inputwrapper{
+            position: relative;
+            span{
+              position: absolute;
+              right: 337px;
+              top: 8px;
+              color: #717171;
+            }
+            .span2{
+              right: 327px;
+            }
+          }
+          input[type="text"], textarea{
+            background-color: transparent;
+          }
+          input[type="text"]{
+            border: 1px solid #DDDDDD;
+            height: 40px;
+            padding: 12px;
+            width: 100%;
+            background-color: #F4F4F4;
+          }
+          input[type="submit"]{
+            padding: 10px 60px 10px 60px;
+            letter-spacing: 1.5px;
+            background-color: #0451DD;
+            color: #F7F7F7;
+            font-weight: 800;
+            border: none;
+            height: max-content;
+            width: max-content;
+          }
+          input[type="submit"]:hover{
+            background-color: black;
+            transform: scale(1.06);
+            -ms-transform: scale(1.06); /* IE9 */
+            -moz-transform : scale(1.06); /* Firefox */
+            -webkit-transform : scale(1.06); /* Chrome - Safari */
+            -o-transform : scale(1.06); /* Opera */
+            -ms-transform : scale(1.06); /* IE9 */
+          }
+          input[type="submit"]:active{
+            transition: 0s;
+            background-color: red; 
+          }
+          input[type="text"]::placeholder, textarea::placeholder{
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
   .breadcumb-section2 {
-    background-image: url(../images/tasaciones/banner-background.png);
+    background-image: url(/images/tasaciones/banner-background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -9,37 +130,25 @@
   }
 
   .form-right-side {
-    background-image: url(../images/tasaciones/form-right-side.png);
+    background-image: url(/images/tasaciones/form-right-side.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 75vh;
+    height: 78vh;
   }
 
-
-  .contact-form {
-
-    width: 60%;
-
-    input {
-      width: 100%;
-      margin: 10px 0px;
-    }
-
-    input[type="submit"] {
-      color: #fff;
-      font-weight: bold;
-      max-width: 324px;
-      padding: 0.3rem;
-      background-color: #0053E6;
-    }
-
-    input[type="text"] {
-      ::placeholder {
-        color: pink;
+  #section-contact{
+    display: flex;
+    height: 400px;
+    justify-content: start;
+    .container-contact{
+      background-color: #F7F7F7;
+      box-shadow: none;
+      input{
+        color: black;
       }
     }
-
   }
+
 }
 

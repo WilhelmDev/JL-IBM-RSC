@@ -1,4 +1,6 @@
+'use client'
 import CallToActions from "@/components/common/CallToActions";
+import { useState } from "react";
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Partner from "@/components/common/Partner";
 import HeaderV2 from '@/components/common/HeaderV2'
@@ -9,12 +11,20 @@ import Features from "@/components/pages/about/Features";
 import FunFact from "@/components/pages/about/FunFact";
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata = {
-  title: "About  || Homez - Real Estate NextJS Template",
-};
+import EmailSend from "@/components/tasaciones/emailsend";
+import { Contact, MapContact } from "@/components/pages/start/start-components/contactcomponents";
 
 const About = () => {
+  const [inputValue, setInputValue] = useState('');
+  const [inputValue2, setInputValue2] = useState('');
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleInputChange2 = (e) => {
+    setInputValue2(e.target.value);
+  };
+
   return (
 
     <>
@@ -27,7 +37,7 @@ const About = () => {
       <MobileMenu />
       {/* End Mobile Nav  */}
 
-      <section className="breadcumb-section2 p-0"> </section>
+      <section className="breadcumb-section2 p-0" data-aos="fade-up"> </section>
 
 
       {/* Our About Area */}
@@ -35,9 +45,10 @@ const About = () => {
         <div className="container">
           <div className="row" data-aos="fade-up" data-aos-delay="300">
             <div className="col-lg-6 d-flex">
-              <h2 className="pt-3">
-                Tasaciones
-              </h2>
+              <div>
+                <h2 className="pt-3">Tasaciones</h2>
+                <span>Obten el mejor precio</span>
+              </div>
             </div>
             <div className="col-lg-6">
               <p className="text mb25">
@@ -78,71 +89,53 @@ const About = () => {
       </section>
       {/* End Our About Area */}
 
-      {/* About Banner */}
-      {/*       <section className="our-about pt-0">
-        <div className="container">
-          <div className="row" data-aos="fade-up" data-aos-delay="300">
-            <div className="col-lg-12">
-              <div className="about-page-img">
-                <Image
-                  width={1206}
-                  height={515}
-                  priority
-                  className="w-100 h-100 cover"
-                  src="/images/about/about-page-banner.jpg"
-                  alt="about banner"
-                />
-              </div>
-            </div>
+      {/* Begin of types of appraisals */}
+      <section className="types-apparaisals d-flex flex-column align-items-center">
+          <h1 data-aos="fade-down">Tipos de <strong>tasaciones</strong></h1>
+        <div className="container-type d-flex justify-content-between" data-aos="fade-down">
+          <div className="element-type">
+            <span className="title-type">Tasación esperada</span>
+            <p className="apparaisals-text">Es el precio de venta se espera que paguen por la propiedad, en donde el tiempo no tiene que ser un parámetro para la venta.</p>
+          </div>
+          <div className="element-type">
+            <span className="title-type">Tasación Posible</span>
+            <p className="apparaisals-text">Es el valor que posiciona tu propiedad junto a otras posibilidades del mercado de similares características en la misma zona. Acompaña el tiempo de venta.</p>
+          </div>
+          <div className="element-type">
+            <span className="title-type"> Tasación Dinamica</span>
+            <p className="apparaisals-text">Es la tasación que genera visitas físicas porque los potenciales compradores perciben una oportunidad en el mercado. Reduce el tiempo de venta.</p>
           </div>
         </div>
-      </section> */}
-      {/* End About Banner */}
+      </section>
+      {/* End of types of appraisals */}
 
-      <section>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-6 d-flex align-items-center justify-content-end">
-             <form className="contact-form">
-                <input type="text" name="name" placeholder="Nombre" />
-                <input type="text" name="email" placeholder="Email" />
-                <input type="text" name="phone" placeholder="Telefono" />
-                <input type="text" name="buld-land" placeholder="¿Tienes terreno donde construir?" />
-                <input type="text" name="land-size" placeholder="Metros cuadrados del terreno" />
-                <input type="text" name="start-date" placeholder="¿Cuando te gustaria comenzar la obra?" />
-                <input type="text" name="type" placeholder="Tipo de propiedad a construir" />
-                <input type="text" name="location" placeholder="Localidad donde vas a construir" />
-                <textarea placeholder="Cuentamos mas..." name="about"></textarea>
+      <section className="request">
+        <h1 data-aos="zoom-out">Titulo a resolver</h1>
+        <div className="container-request" data-aos="zoom-out">
+            <div className="container-form">
+             <form className="form-contact">
+                <input type="text" name="property" placeholder="Tipo de propiedad (Selección)" />
+                <input type="text" name="operation" placeholder="Tipo de operación (Selección)" />
+                <div className="inputwrapper">
+                  <input type="text" name="neighborhood" placeholder="Barrio" value={inputValue} onChange={handleInputChange}/>
+                  {inputValue === '' && <span>(No obligatorio)</span>}
+                </div>
+                <div className="inputwrapper">
+                  <input type="text" name="buld-land" placeholder="Partido" value={inputValue2} onChange={handleInputChange2}/>
+                  {inputValue2 === '' && <span className="span2">(No obligatorio)</span>}
+                </div>
+                <input type="text" name="land-size" placeholder="Email" />
+                <input type="text" name="start-date" placeholder="Nombre completo" />
+                <input type="text" name="type" placeholder="Teléfono / Whatsapp" />
+                <textarea placeholder="Información extra que tengas de la propiedad" name="about"></textarea>
                 <input type="submit" value="ENVIAR SOLICITUD" />
               </form>
             </div>
             <div className="col-6 form-right-side"></div>
-          </div>
         </div>  
       </section>
-
-
-      {/* <section className="pt-0"> */}
-      {/*   <div className="row"> */}
-      {/*     <CustomPropertyGallery /> */}
-      {/*   </div> */}
-      {/* </section> */}
-
-      {/* Funfact */}
-      {/* <section className="pt-0"> */}
-      {/*   <div className="container"> */}
-      {/*     <div */}
-      {/*       className="row justify-content-center" */}
-      {/*       data-aos="fade-up" */}
-      {/*       data-aos-delay="300" */}
-      {/*     > */}
-      {/*       <FunFact /> */}
-      {/*     </div> */}
-      {/*   </div> */}
-      {/* </section> */}
-      {/* End Funfact */}
-
       {/* Exclusive Agents */}
+
 
 
       {/* Our Partners */}
@@ -151,7 +144,7 @@ const About = () => {
           <div className="row">
             <div className="col-lg-12" data-aos="fade-up">
               <div className="main-title text-center">
-                <h6>Trabajamos tu propiedad compartiéndola en multiples canales digitales</h6>
+                <h5>Trabajamos tu propiedad compartiéndola en multiples canales digitales</h5>
               </div>
             </div>
             <div className="col-lg-12 text-center">
@@ -168,9 +161,13 @@ const About = () => {
       </section>
       {/* End Our Partners */}
 
-      {/* Our CTA */}
-      <CallToActions />
-      {/* Our CTA */}
+      {/* Begin of email send */}
+      <EmailSend/>
+      {/* End of email send */}
+
+      <section id="section-contact">
+        <Contact/>
+      </section>
 
       {/* Start Our Footer */}
       <section className="footer-style1 pt60 pb-0">
