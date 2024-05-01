@@ -37,7 +37,7 @@
         align-items: center;
         justify-content: center;
         .container-center{
-            width: 70%;
+            width: 79%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,6 +59,14 @@
             button:active{
                 transition: 0s;
                 background-color: rgba(6, 23, 61, 0.25);
+            }
+            button:hover{
+                transform: scale(1.06);
+                -ms-transform: scale(1.06); /* IE9 */
+                -moz-transform : scale(1.06); /* Firefox */
+                -webkit-transform : scale(1.06); /* Chrome - Safari */
+                -o-transform : scale(1.06); /* Opera */
+                -ms-transform : scale(1.06); /* IE9 */
             }
         }
         
