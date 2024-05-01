@@ -18,19 +18,21 @@
         flex-direction: column;
         gap: 15px;
         font-weight:800;
-    }
-    .image-map{
-        width: 100%;
-        height: max-content;
-        background-size: cover;
-    }
-    .container-inf-location {
-        display: flex;
-        gap: 15px; 
-        a{
-            text-decoration: underline;
+        .image-map{
+            width: 100%;
+            height: max-content;
+            background-size: cover;
+        }
+        .container-inf-location {
+            display: flex;
+            gap: 15px; 
+            a{
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
+    
     .container-contact{
         height: 321px;
         display: flex;
