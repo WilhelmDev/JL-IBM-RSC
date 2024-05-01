@@ -1,4 +1,4 @@
-#section-contact{
+.section-contact{
     background-color: #F4F4F4;
     display: flex;
     justify-content: center;
@@ -18,19 +18,21 @@
         flex-direction: column;
         gap: 15px;
         font-weight:800;
-    }
-    .image-map{
-        width: 100%;
-        height: max-content;
-        background-size: cover;
-    }
-    .container-inf-location {
-        display: flex;
-        gap: 15px; 
-        a{
-            text-decoration: underline;
+        .image-map{
+            width: 100%;
+            height: max-content;
+            background-size: cover;
+        }
+        .container-inf-location {
+            display: flex;
+            gap: 15px; 
+            a{
+                text-decoration: underline;
+                cursor: pointer;
+            }
         }
     }
+    
     .container-contact{
         height: 321px;
         display: flex;
@@ -61,12 +63,12 @@
                 background-color: rgba(6, 23, 61, 0.25);
             }
             button:hover{
-                transform: scale(1.06);
                 -ms-transform: scale(1.06); /* IE9 */
                 -moz-transform : scale(1.06); /* Firefox */
                 -webkit-transform : scale(1.06); /* Chrome - Safari */
                 -o-transform : scale(1.06); /* Opera */
                 -ms-transform : scale(1.06); /* IE9 */
+                transform: scale(1.06);
             }
         }
         

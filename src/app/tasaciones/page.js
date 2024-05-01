@@ -165,7 +165,7 @@ const About = () => {
       <EmailSend/>
       {/* End of email send */}
 
-      <section id="section-contact">
+      <section className="section-contact">
         <Contact/>
       </section>
 
