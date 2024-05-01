@@ -20,7 +20,6 @@ export default function PropertyHorizontal() {
           <div className='icons'>
             <Image src={'/images/custom/expand.svg'} height={50} width={50} alt='icon' className='icon'/> 
             <Image src={'/images/custom/super.svg'} height={50} width={50} alt='icon' className='icon'/> 
-            <Image src={'/images/custom/favorite.svg'} height={50} width={50} alt='icon' className='icon'/> 
           </div>
         </div>
         <div className='characteristics'>
