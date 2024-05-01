@@ -1,0 +1,31 @@
+#tab-aboutus{
+    #container-content{
+        display: grid;
+        grid-template-rows:
+            600px
+            1000px
+        ;
+        #section-banner{
+            background-image: url(/images/aboutus/banner-image.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        #section-info{
+            display: flex;
+            & > * {
+                padding: 100px;
+                width: 50%;
+            }
+            h1{ 
+                margin-left: 150px;
+                text-wrap: nowrap;
+            }
+            p{ width: 430px; }
+            .link{
+                font-weight: 800;
+                text-decoration-line: underline;
+                cursor: pointer;
+            } 
+        }
+    }
+}
