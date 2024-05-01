@@ -14,30 +14,30 @@ import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
 const inputNames = [
   "username",
   "email",
-  "tel",
-  "givenName",
-  "surname",
-  "jobTitle",
+  "phone",
+  "first_name",
+  "last_name",
+  "job_title",
   "language",
-  "companyName",
-  "uniqueIdKey",
+  "company_name",
+  "cuit_name",
   "address",
-  "about",
+  "description",
 ];
 
-const ProfileForm = () => {
+const ProfileForm = ({ agent }) => {
   const [form, setForm] = useState({
-    username: "",
-    email: "",
-    tel: "",
-    givenName: "",
-    surname: "",
-    jobTitle: "",
-    language: "",
-    companyName: "",
-    uniqueIdKey: "",
-    address: "",
-    about: "",
+    username: agent.username ?? "",
+    email: agent.email ?? "",
+    phone: agent.phone ?? "",
+    first_name: agent.first_name ?? "",
+    last_name: agent.last_name ?? "",
+    job_title: agent.job_title ?? "",
+    language: agent.language ?? "",
+    company_name: agent.company_name ?? "",
+    cuit_name: agent.cuit_name ?? "",
+    address: agent.address ?? "",
+    description: agent.description ?? "",
   });
   const [profilePhoto, setProfilePhoto] = useState("");
 
@@ -110,6 +110,7 @@ const ProfileForm = () => {
         <TextInput
           label="Nombre de usuario"
           name="username"
+          initialValue={form.username}
           placeholder="Nombre de usuario"
           autoComplete="on"
           className="col"
@@ -118,6 +119,7 @@ const ProfileForm = () => {
         <EmailInput
           label="Email"
           name="email"
+          initialValue={form.email}
           placeholder="Correo electrónico"
           autoComplete="on"
           className="col"
@@ -125,7 +127,8 @@ const ProfileForm = () => {
         />
         <TelInput
           label="Teléfono"
-          name="tel"
+          name="phone"
+          initialValue={form.phone}
           placeholder="Teléfono"
           autoComplete="on"
           className="col"
@@ -133,7 +136,8 @@ const ProfileForm = () => {
         />
         <TextInput
           label="Nombre"
-          name="givenName"
+          name="first_name"
+          initialValue={form.first_name}
           placeholder="Nombre completo"
           autoComplete="on"
           className="col"
@@ -141,7 +145,8 @@ const ProfileForm = () => {
         />
         <TextInput
           label="Apellido"
-          name="surname"
+          name="last_name"
+          initialValue={form.last_name}
           placeholder="Apellido completo"
           autoComplete="on"
           className="col"
@@ -149,7 +154,8 @@ const ProfileForm = () => {
         />
         <TextInput
           label="Trabajo"
-          name="jobTitle"
+          name="job_title"
+          initialValue={form.job_title}
           placeholder="Tu puesto"
           autoComplete="on"
           className="col"
@@ -158,6 +164,7 @@ const ProfileForm = () => {
         <TextInput
           label="Lenguaje"
           name="language"
+          initialValue={form.language}
           placeholder="Tu lengua principal"
           autoComplete="on"
           className="col"
@@ -165,7 +172,8 @@ const ProfileForm = () => {
         />
         <TextInput
           label="Nombre de la companía"
-          name="companyName"
+          name="company_name"
+          initialValue={form.company_name}
           placeholder="Para quien trabajas"
           autoComplete="on"
           className="col"
@@ -173,7 +181,8 @@ const ProfileForm = () => {
         />
         <TextInput
           label="Número de CUIT / CUIL"
-          name="uniqueIdKey"
+          name="cuit_name"
+          initialValue={form.cuit_name}
           placeholder="Identificación fiscal"
           autoComplete="on"
           className="col"
@@ -182,6 +191,7 @@ const ProfileForm = () => {
         <TextInput
           label="Dirección"
           name="address"
+          initialValue={form.address}
           placeholder="Tu dirección de vivienda o facturación"
           autoComplete="on"
           className="col-12"
@@ -189,7 +199,8 @@ const ProfileForm = () => {
         />
         <Textarea
           label="Descripción"
-          name="about"
+          name="description"
+          initialValue={form.description}
           className="col-12"
           rows="5"
           placeholder="Puedes contar un poco a qué te dedicas"
