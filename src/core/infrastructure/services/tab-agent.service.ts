@@ -124,3 +124,35 @@ export const getEntrepreneurshipsList = async function (page: string | number, s
   const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as EntreprenureshipsResponse
 }
+
+export const deleteEntrepreneurshipsList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/entreprenureships/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+export const deletelocalitiesList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/localities/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+export const deleteNeighborhoodList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/neighborhood/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}
+
+export const deleteRealStateList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/real-state/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}

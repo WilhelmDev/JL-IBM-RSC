@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import ShareFav from "./shareFav";
+import Action from "../../entrepreneurship/list-entrepreneurship/Action";
 
 export default function Property({ property }) {
   return (
@@ -51,57 +52,8 @@ export default function Property({ property }) {
         <ShareFav />
       </td>
 
-      <td className="p-4">
-        <div className="inline-elements">
-          <div>
-            <button className="action-button">
-              <Image
-                src={`/images/tab-agent/list-actions/delete.svg`}
-                width={25}
-                height={23}
-                className="action-icons"
-                alt="share"
-              />
-            </button>
-          </div>
-          <div>
-            <button className="action-button">
-              <Image
-                src={`/images/tab-agent/list-actions/edit.svg`}
-                width={25}
-                height={23}
-                className="action-icons"
-                alt="share"
-              />
-            </button>
-          </div>
-        </div>
-        <div className="inline-elements">
-          <div>
-            <button className="action-button">
-              <Image
-                src={`/images/tab-agent/list-actions/add.svg`}
-                width={25}
-                height={23}
-                className="action-icons"
-                alt="share"
-              />
-            </button>
-          </div>
-          <div>
-            <button className="action-button">
-              {" "}
-              <Image
-                src={`/images/tab-agent/list-actions/share.svg`}
-                width={25}
-                height={23}
-                className="action-icons"
-                alt="share"
-              />
-            </button>
-          </div>
-        </div>
-      </td>
+        <Action itemId = {property.id} action ={"propertys"}/>
+      
     </tr>
   );
 }

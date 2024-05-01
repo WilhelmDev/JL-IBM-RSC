@@ -19,7 +19,7 @@ export default function EntrepreneurshipTtem({ItemsData}) {
 
         <ShareFav />
 
-        <Action />
+        <Action itemId = {ItemsData.id} action ={"entrepreneurship"}/>
     </tr>
   )
 }

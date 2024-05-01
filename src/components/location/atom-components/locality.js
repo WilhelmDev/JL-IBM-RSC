@@ -27,7 +27,7 @@ export default function Locality({item}) {
         <MoreDetails />
       </div>
       <div className="section-four">
-        <ActtionBtn variant={'delete'}/>
+        <ActtionBtn variant={'delete'} itemId = {id} action ={"localities"}/>
         <ActtionBtn variant={'edit'}/>
         <ActtionBtn variant={'share'}/>
       </div>
