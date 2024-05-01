@@ -16,8 +16,8 @@ export default function Liaison(){
             <div id="container-content">
                 <section id="section-questions">
                     <div id="container-questions">
-                        <h1>Contacto</h1>
-                        <div className="container-form">
+                        <h1 data-aos="fade-down">Contacto</h1>
+                        <div className="container-form" data-aos="fade-down">
                             <div className="container-form-left">
                                 <span>Tienes preguntas ? Ponte en contacto !</span>
                                 <form>
@@ -44,11 +44,11 @@ export default function Liaison(){
                 </section>
                 <section id="section-schedule">
                     <div className="container-schedule">
-                        <span>Visita nuestra oficina</span>
-                        <p>Puedes hacerlo durante la semana desde las 8AM a 12AM y desde las 15PM a 19PM</p>
+                        <span data-aos="fade-down">Visita nuestra oficina</span>
+                        <p data-aos="fade-down">Puedes hacerlo durante la semana desde las 8AM a 12AM y desde las 15PM a 19PM</p>
                     </div>
                 </section>
-                <section id="section-contact">
+                <section id="section-contact" data-aos="fade-down">
                     <MapContact/>
                     <Contact/>
                 </section>
