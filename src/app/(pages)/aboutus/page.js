@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import HeaderV2 from "@/components/common/HeaderV2";
 import Footer from "@/components/common/generic-footer";
@@ -17,8 +18,8 @@ export default function AboutUs() {
         <main id="tab-aboutus">
             <HeaderV2 />
             <div id="container-content">
-                <section id="section-banner"></section>
-                <section id="section-info">
+                <section className="section-banner"></section>
+                <section className="section-info">
                     <div className="side-title-left">
                         <h1>¿Quiénes somos?</h1>
                     </div>
@@ -27,8 +28,27 @@ export default function AboutUs() {
                         <Link className="link" href={"#"}>Leer más</Link>
                     </div>
                 </section>
-                <section id="section-video">
+                <section className="section-video">
                     <AboutVideo src={""}/>
+                </section>
+                <section className="section-details d-flex align-items-center justify-content-center">
+                    <div className="container">
+                        <div className="element-detail">
+                            <div>
+                                <span className="content">5.0</span>
+                                <Image width={50} height={20} src={"images/aboutus/google-review.svg"} alt="google-review"/>
+                            </div>
+                            <span className="title">Referencias</span>
+                        </div>
+                        <div className="element-detail">
+                            <span className="content">{'{Count}'}</span>
+                            <span className="title">Propiedades disponibles</span>
+                        </div>
+                        <div className="element-detail">
+                            <span className="content">400</span>
+                            <span className="title">Clientes felices</span>
+                        </div>
+                    </div>
                 </section>
             </div>
             <Footer />

@@ -1,11 +1,9 @@
-'use client'
-import React, { useState } from "react";
+import React from "react";
 
 const AboutVideo = (props) => {
-    const [link,setLink] = useState(props.src)
     return (
         <>
-            {link === '' ?
+            {props.src !== '' ?
                 <video className="video">
                     <source src={props.src} type="video/mp4" />
                 </video>

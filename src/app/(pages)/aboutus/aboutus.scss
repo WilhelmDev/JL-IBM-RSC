@@ -4,13 +4,15 @@
         grid-template-rows:
             600px
             1000px
+            700px
+            200px
         ;
-        #section-banner{
+        .section-banner{
             background-image: url(/images/aboutus/banner-image.png);
             background-size: cover;
             background-repeat: no-repeat;
         }
-        #section-info{
+        .section-info{
             display: flex;
             & > * {
                 padding: 100px;
@@ -26,6 +28,33 @@
                 text-decoration-line: underline;
                 cursor: pointer;
             } 
+        }
+        .section-video{
+            & > * {
+                width: 100%;
+                height: 100%;
+            }
+            .fake-video{
+                background-image: url(/images/aboutus/provisional-image-video.png);
+                background-size: cover;
+            }
+        }
+        .section-details{
+            .container{
+                width: 800px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                & > *{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    .content{
+                        font-weight: 800;
+                        font-size: 30px;
+                    }
+                }
+            }
         }
     }
 }
