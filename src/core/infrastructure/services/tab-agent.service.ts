@@ -7,6 +7,7 @@ import { PeriodsResponse, PropertyPayload } from "@/core/domain/parsed"
 import { LocalitiesResponse } from "@/core/domain/responses/localities"
 import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
+import { Agent } from "@/core/domain/responses/agent"
 
 export const sendFormLocation = async (data: any) => {
   const parsed = parseLocation(data)
@@ -123,4 +124,13 @@ export const getPropertiesList = async function (page: string | number, search: 
 export const getEntrepreneurshipsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
   const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as EntreprenureshipsResponse
+}
+
+export const getMe = async function () {
+  try {
+    const { data } = await ApiInstance("/admin/agents/3")
+    return data.data as Agent
+  } catch (error) {
+    console.log(error)
+  }
 }
