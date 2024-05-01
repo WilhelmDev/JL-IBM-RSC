@@ -79,7 +79,7 @@ const Start = () => {
                     </div>
                 </section>
 
-                <section id='section-service'>
+                <section className='section-service'>
                     <div className='inf-service'>
                         <div className='container-center'>
                             <h4 className='title-service'>Nuestros Servicios</h4>
