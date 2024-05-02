@@ -49,12 +49,13 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </section>
-                <section className='section-service'>
+                <section className="main-section-service">
+                <div className='section-service'>
                     <div className='inf-service d-flex flex-column'>
                         <div className='container-center'>
-                            <h4 className='title-service'>Nuestros Servicios</h4>
                             {/* Begin of Component "InfElement" */}
                             <InfElement
+                                title={"¿Cómo Garantiamos Una Buena Atención?"}
                                 items={[
                                     {
                                         "title_info": 'Sistema propio de trabajo:',
@@ -64,6 +65,7 @@ export default function AboutUs() {
                                             'Con ese compromiso, nos comunicamos mensualmente compartiéndo el informes de estadísticas que nos aporta muestro departamento de marketing para que juntos podamos tomar acciones que nos acerquen al objetivo de venta.',
                                             'Contamos además con un apoyo constante de Coaching y formación continua, para asegurar la excelencia en la atención de todos y cada uno de nuestros clientes.'
                                         ],
+                                        "image": '/images/aboutus/icon-service1.svg',
                                         "button": ''
                                     },
                                     {
@@ -73,6 +75,7 @@ export default function AboutUs() {
                                             'Tenemos un equipo de diseño gráfico y community manager dedicado a generar contenidos diferentes e innovadores.',
                                             'Publicamos tu propiedad en los portales inmobiliarios más referentes del mercado contratando los estándares más altos de publicación para multiplicar la exposición.'
                                         ],
+                                        "image": '/images/aboutus/icon-service2.svg',
                                         "button": ''
                                     },
                                     {
@@ -82,6 +85,7 @@ export default function AboutUs() {
                                             'Información sobre regulaciones y requisitos legales para la compra y alquiler.',
                                             'Asesoramiento en términos legales y tributarios relacionados con la adquisición'
                                         ],
+                                        "image": '/images/aboutus/icon-service3.svg',
                                         "button": 'NUESTROS SERVICIOS'
                                     }
                                 ]}
@@ -89,10 +93,11 @@ export default function AboutUs() {
                             {/* End of Component "InfElement" */}
                         </div>
                     </div>
-                    <Image className='img-service' width={960} height={1015} src={"/images/aboutus/side-image.png"} alt='img-service' />
+                    <Image className='img-service' width={1013} height={1653} src={"/images/aboutus/side-image.png"} alt='img-service' />
+                </div>
                 </section>
-            </div>
             <Footer />
+            </div>
         </main>
     )
 }

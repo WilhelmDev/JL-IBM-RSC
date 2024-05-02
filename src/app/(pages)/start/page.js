@@ -82,9 +82,9 @@ const Start = () => {
                 <section className='section-service'>
                     <div className='inf-service'>
                         <div className='container-center'>
-                            <h4 className='title-service'>Nuestros Servicios</h4>
                             {/* Begin of Component "InfElement" */}
                             <InfElement
+                                title={"Nuestros Servicios"}
                                 items={[
                                     {
                                         "title_info": 'Tres tasaciones por propiedad',
@@ -93,6 +93,7 @@ const Start = () => {
                                             'Análisis de Mercado',
                                             'Asesoramiento en Tasaciones'
                                         ],
+                                        "image" : '',
                                         "button": 'TASACIONES'
                                     },
                                     {
@@ -102,6 +103,7 @@ const Start = () => {
                                             'Comprención del estado de tu propiedad',
                                             'Mayor visualización y ofertas'
                                         ],
+                                        "image" : '',
                                         "button": 'DIAGNOSTICO DE PROPIEDADES'
                                     },
                                     {
@@ -111,6 +113,7 @@ const Start = () => {
                                             'Minimizar los costos a largo plazo',
                                             'Tipos: Preventivo, Correctivo y Estético.'
                                         ],
+                                        "image" : '',
                                         "button": 'DIAGNOSTICO DE PROPIEDADES'
                                     },
                                     {
@@ -120,6 +123,7 @@ const Start = () => {
                                             'Vinculación con Profesionales de la Zona.',
                                             'TPresupuestos personalizados.'
                                         ],
+                                        "image" : '',
                                         "button": 'CONSTRUCCIONES'
                                     },
                                 ]}
