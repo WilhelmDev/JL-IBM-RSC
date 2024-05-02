@@ -1,7 +1,9 @@
 'use client'
+import { AllProperties } from '@/data/selects';
 import React, { useState } from 'react';
 import InputRange from 'react-input-range'
 import "react-input-range/lib/css/index.css";
+import Select from 'react-select'
 
 
 export default function ModalFilter({ openModal, setOpenModal }) {
@@ -9,6 +11,11 @@ export default function ModalFilter({ openModal, setOpenModal }) {
   const [price, setPrice] = useState({ value: { min: 20, max: 70987 } });
   const [surface, setSurface] = useState({ value: { min: 20, max: 70987 } });
   const [build, setBuild] = useState({ value: { min: 20, max: 70987 } });
+
+  const [operations, setOperations] = useState([])
+  const [operation, setOperation] = useState([])
+  
+
 
   // price range handler
   const priceOnChange = (value) => {
@@ -21,6 +28,22 @@ export default function ModalFilter({ openModal, setOpenModal }) {
     setBuild({ value });
   };
 
+  const customStyles = {
+    option: (styles, { isFocused, isSelected, isHovered }) => {
+      return {
+        ...styles,
+        backgroundColor: isSelected
+          ? "#eb6753"
+          : isHovered
+          ? "#eb675312"
+          : isFocused
+          ? "#eb675312"
+          : undefined,
+      };
+    },
+  };
+
+
 
   return (
     <div className={openModal ? 'modal-filter' : 'modal-filter none'}>
@@ -29,7 +52,7 @@ export default function ModalFilter({ openModal, setOpenModal }) {
           <div className='row-modal'>
             <div className='column-modal'>
               <label for="search">Encuentra lo que buscas</label>
-              <input type="text" id="search" placeholder="Que estas buscando?"/>
+              <input type="text" id="search" className='search' placeholder="Que estas buscando?"/>
             </div>
             <div className='column-modal'>
               <label>Operación</label>
@@ -46,13 +69,21 @@ export default function ModalFilter({ openModal, setOpenModal }) {
               </div>
             </div>
             <div className='column-modal'>
-              <label for="type-property">Tipos de propiedad</label>
-              <select name="type-property">
-                <option value="propiedad-1">Propiedad-1</option>
-                <option value="propiedad-2">Propiedad-2</option>
-                <option value="propiedad-3">Propiedad-3</option>
-                <option value="propiedad-4">Propiedad-4</option>
-              </select>
+              <label>Tipos de propiedad</label>
+              <Select
+                  defaultValue={''}
+                  name="colors"
+                  options={AllProperties}
+                  styles={customStyles}
+                  className="custom-react_select"
+                  classNamePrefix="select"
+                  required
+                  value={operation}
+                  isDisabled={false}
+                  isClearable={false}
+                  isMulti
+                  onChange={(e) => setOperation(e)}
+                />
             </div>
           </div>
           <div className='row-modal'>
@@ -102,33 +133,65 @@ export default function ModalFilter({ openModal, setOpenModal }) {
             </div>
             <div className='column-modal'>
               <label for="type-property">Partido</label>
-              <select name="type-property">
-                <option value="partidos-1">Todos los partidos</option>
-                <option value="partidos-2">Todos los partidos</option>
-                <option value="partidos-3">Todos los partidos</option>
-                <option value="partidos-4">Todos los partidos</option>
-              </select>
+              <Select
+                defaultValue={''}
+                name="colors"
+                options={AllProperties}
+                styles={customStyles}
+                className="custom-react_select"
+                classNamePrefix="select"
+                required
+                value={operation}
+                isDisabled={false}
+                isClearable={false}
+                isMulti
+                onChange={(e) => setOperation(e)}
+              />
               <label for="type-property">Localidad</label>
-              <select name="type-property">
-                <option value="localidades-1">Todos las Localidades</option>
-                <option value="localidades-2">Todos las Localidades</option>
-                <option value="localidades-3">Todos las Localidades</option>
-                <option value="localidades-4">Todos las Localidades</option>
-              </select>
+              <Select
+                defaultValue={''}
+                name="colors"
+                options={AllProperties}
+                styles={customStyles}
+                className="custom-react_select"
+                classNamePrefix="select"
+                required
+                value={operation}
+                isDisabled={false}
+                isClearable={false}
+                isMulti
+                onChange={(e) => setOperation(e)}
+              />
               <label for="type-property">Barrio</label>
-              <select name="type-property">
-                <option value="barrio-1">Todos los Barrio</option>
-                <option value="barrio-2">Todos los Barrio</option>
-                <option value="barrio-3">Todos los Barrio</option>
-                <option value="barrio-4">Todos los Barrio</option>
-              </select>
+              <Select
+                defaultValue={''}
+                name="colors"
+                options={AllProperties}
+                styles={customStyles}
+                className="custom-react_select"
+                classNamePrefix="select"
+                required
+                value={operation}
+                isDisabled={false}
+                isClearable={false}
+                isMulti
+                onChange={(e) => setOperation(e)}
+              />
               <label for="type-property">Emprendimiento</label>
-              <select name="type-property">
-                <option value="emprendimiento-1">Todos los Emprendimiento</option>
-                <option value="emprendimiento-2">Todos los Emprendimiento</option>
-                <option value="emprendimiento-3">Todos los Emprendimiento</option>
-                <option value="emprendimiento-4">Todos los Emprendimiento</option>
-              </select>
+              <Select
+                defaultValue={''}
+                name="colors"
+                options={AllProperties}
+                styles={customStyles}
+                className="custom-react_select"
+                classNamePrefix="select"
+                required
+                value={operation}
+                isDisabled={false}
+                isClearable={false}
+                isMulti
+                onChange={(e) => setOperation(e)}
+              />
             </div>
             <div className='column-modal'>
               <div className='antiquity-code'>

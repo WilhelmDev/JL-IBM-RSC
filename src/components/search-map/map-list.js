@@ -38,7 +38,7 @@ const addresses = [
 ];
 
 export default function MapList( props ) {
-  const [mapList, setMapList] = useState(true)
+  const [mapList, setMapList] = useState(false)
   return (
     <div className={mapList ? "map-list-container flex-row" : "map-list-container flex-column"}>
       <div className="list">
@@ -59,7 +59,7 @@ export default function MapList( props ) {
       <div className={mapList ? "map-horizontal" : "map-horizontal none"}>
         <MapFilter />
         <Image
-          src={`/images/search-map/map.png`}
+          src={`/images/home-v3/map.png`}
           width={720}
           height={500}
           className="cover"s
