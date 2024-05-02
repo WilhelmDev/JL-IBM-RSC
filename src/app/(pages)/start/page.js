@@ -85,32 +85,44 @@ const Start = () => {
                             <h4 className='title-service'>Nuestros Servicios</h4>
                             {/* Begin of Component "InfElement" */}
                             <InfElement
-                                list_title={"Tres tasaciones por propiedad"}
-                                item1={"Valoración Profesional"}
-                                item2={"Análisis de Mercado"}
-                                item3={"Asesoramiento en Tasaciones"}
-                                desc_btn={"TASACIONES"}
-                            />
-                            <InfElement
-                                list_title={"¿Que obtienes con el diagnostico?"}
-                                item1={"Sello de verificación"}
-                                item2={"Comprención del estado de tu propiedad"}
-                                item3={"Mayor visualización y ofertas"}
-                                desc_btn={"DIAGNOSTICO DE PROPIEDADES"}
-                            />
-                            <InfElement
-                                list_title={"¿Que obtienes con el mantenimiento?"}
-                                item1={"Preservar el valor y prolongar su vida útil. "}
-                                item2={"Minimizar los costos a largo plazo."}
-                                item3={"Tipos: Preventivo, Correctivo y Estético."}
-                                desc_btn={"MANTENIMIENTO"}
-                            />
-                            <InfElement
-                                list_title={"¿Queres construir tu casa?"}
-                                item1={"Asesoramiento. "}
-                                item2={"Vinculación con Profesionales de la Zona. "}
-                                item3={"Presupuestos personalizados."}
-                                desc_btn={"CONSTRUCCIONES"}
+                                items={[
+                                    {
+                                        "title_info": 'Tres tasaciones por propiedad',
+                                        "content": [
+                                            'Valoración Profesional',
+                                            'Análisis de Mercado',
+                                            'Asesoramiento en Tasaciones'
+                                        ],
+                                        "button": 'TASACIONES'
+                                    },
+                                    {
+                                        "title_info": '¿Que obtienes con el diagnostico?',
+                                        "content": [
+                                            'Sello de verificación',
+                                            'Comprención del estado de tu propiedad',
+                                            'Mayor visualización y ofertas'
+                                        ],
+                                        "button": 'DIAGNOSTICO DE PROPIEDADES'
+                                    },
+                                    {
+                                        "title_info": '¿Que obtienes con el mantenimiento?',
+                                        "content": [
+                                            'Preservar el valor y prolongar su vida útil.',
+                                            'Minimizar los costos a largo plazo',
+                                            'Tipos: Preventivo, Correctivo y Estético.'
+                                        ],
+                                        "button": 'DIAGNOSTICO DE PROPIEDADES'
+                                    },
+                                    {
+                                        "title_info": '¿Queres construir tu casa?',
+                                        "content": [
+                                            'Asesoramiento.',
+                                            'Vinculación con Profesionales de la Zona.',
+                                            'TPresupuestos personalizados.'
+                                        ],
+                                        "button": 'CONSTRUCCIONES'
+                                    },
+                                ]}
                             />
                             {/* End of Component "InfElement" */}
                         </div>

@@ -5,7 +5,7 @@ import HeaderV2 from "@/components/common/HeaderV2";
 import Footer from "@/components/common/generic-footer";
 import { Contact, MapContact } from "@/components/pages/start/start-components/contactcomponents";
 import EmailSend from "@/components/tasaciones/emailsend";
-import InfElement from "./infelement";
+import InfElement from "@/components/pages/start/start-components/infelement";
 import AboutVideo from "./video";
 
 import "./main.scss"
@@ -50,42 +50,46 @@ export default function AboutUs() {
                     </div>
                 </section>
                 <section className='section-service'>
-                    <div className='inf-service'>
+                    <div className='inf-service d-flex flex-column'>
                         <div className='container-center'>
                             <h4 className='title-service'>Nuestros Servicios</h4>
                             {/* Begin of Component "InfElement" */}
                             <InfElement
-                                list_title={"Tres tasaciones por propiedad"}
-                                item1={"Valoración Profesional"}
-                                item2={"Análisis de Mercado"}
-                                item3={"Asesoramiento en Tasaciones"}
-                                desc_btn={"TASACIONES"}
-                            />
-                            <InfElement
-                                list_title={"¿Que obtienes con el diagnostico?"}
-                                item1={"Sello de verificación"}
-                                item2={"Comprención del estado de tu propiedad"}
-                                item3={"Mayor visualización y ofertas"}
-                                desc_btn={"DIAGNOSTICO DE PROPIEDADES"}
-                            />
-                            <InfElement
-                                list_title={"¿Que obtienes con el mantenimiento?"}
-                                item1={"Preservar el valor y prolongar su vida útil. "}
-                                item2={"Minimizar los costos a largo plazo."}
-                                item3={"Tipos: Preventivo, Correctivo y Estético."}
-                                desc_btn={"MANTENIMIENTO"}
-                            />
-                            <InfElement
-                                list_title={"¿Queres construir tu casa?"}
-                                item1={"Asesoramiento. "}
-                                item2={"Vinculación con Profesionales de la Zona. "}
-                                item3={"Presupuestos personalizados."}
-                                desc_btn={"CONSTRUCCIONES"}
+                                items={[
+                                    {
+                                        "title_info": 'Sistema propio de trabajo:',
+                                        "content": [
+                                            'Nuestro propio sistema de trabajo cuenta con un orden para la venta y para la compra de cada propiedad con resultados exitosos.',
+                                            'Trabajamos con nuestros clientes como socios estratégicos de su propiedad, los clientes nos confían la mercadería y nosotros la comercializamos.',
+                                            'Con ese compromiso, nos comunicamos mensualmente compartiéndo el informes de estadísticas que nos aporta muestro departamento de marketing para que juntos podamos tomar acciones que nos acerquen al objetivo de venta.',
+                                            'Contamos además con un apoyo constante de Coaching y formación continua, para asegurar la excelencia en la atención de todos y cada uno de nuestros clientes.'
+                                        ],
+                                        "button": ''
+                                    },
+                                    {
+                                        "title_info" : 'Invertimos en tu propiedad:',
+                                        "content" : [
+                                            'Servicio de fotografía profesional con la que producimos material audiovisual con cámaras de última tecnología y drones.',
+                                            'Tenemos un equipo de diseño gráfico y community manager dedicado a generar contenidos diferentes e innovadores.',
+                                            'Publicamos tu propiedad en los portales inmobiliarios más referentes del mercado contratando los estándares más altos de publicación para multiplicar la exposición.'
+                                        ],
+                                        "button": ''
+                                    },
+                                    {
+                                        "title_info" : 'Apoyo legal:',
+                                        "content" : [
+                                            'Revisión y confección de documentos y/o contratos.',
+                                            'Información sobre regulaciones y requisitos legales para la compra y alquiler.',
+                                            'Asesoramiento en términos legales y tributarios relacionados con la adquisición'
+                                        ],
+                                        "button": 'NUESTROS SERVICIOS'
+                                    }
+                                ]}
                             />
                             {/* End of Component "InfElement" */}
                         </div>
                     </div>
-                    <Image className='img-service' width={960} height={1015} src={"/images/image-start/inf-service-image.png"} alt='img-service' />
+                    <Image className='img-service' width={960} height={1015} src={"/images/aboutus/side-image.png"} alt='img-service' />
                 </section>
             </div>
             <Footer />

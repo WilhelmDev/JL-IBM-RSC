@@ -65,5 +65,21 @@
                 }
             }
         }
+        .section-service{
+            button{
+                background-color: transparent;
+                color: #06173D;
+                font-size: 16px;
+                font-weight: 600;
+                height: 35px;
+                border: 1px solid #0451DD;
+                cursor: pointer;
+                padding: 0px 40px 0px 40px;
+            }
+            button:active{
+                transition: 0s;
+                background-color: rgba(4, 81, 221, 0.25);
+            }
+        }
     }
 }
