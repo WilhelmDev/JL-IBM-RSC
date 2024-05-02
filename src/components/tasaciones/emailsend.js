@@ -15,6 +15,7 @@ const EmailSend = () =>{
                     <button>ENVIAR</button>
                 </div>
             </div>
+            <div className="rotate-element"></div>
         </section>
     );
 }
