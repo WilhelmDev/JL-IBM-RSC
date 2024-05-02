@@ -4,7 +4,7 @@ import { func } from "prop-types";
 import React from "react";
 import Tabs from "@/components/location/tabs";
 import Entrepreneurship from "@/components/location/entrepreneurship";
-import Neighborhood from "@/components/location/neighborhood";
+import Neighborhood from "@/components/pages/start/generic-components/neighborhood2";
 
 export default function Results({ mapList, setMapList }) {
   const tabs = [
@@ -72,7 +72,7 @@ export default function Results({ mapList, setMapList }) {
             <div className="container card-shadow">
               <div className="col-md-12 map">
                 <iframe
-                  className="position-relative bdrs12 mt30 h250"
+                  className="position-relative bdrs12 mt30 map-height"
                   loading="lazy"
                   src={`https://maps.google.com/maps?q=${addresses[0].address}&t=m&z=14&output=embed&iwloc=near`}
                   title={addresses[0].address}
@@ -82,6 +82,7 @@ export default function Results({ mapList, setMapList }) {
               <section className='p0'>
                 <div className="container tabs-wrapper">
                   <Tabs items={items} tabs={tabs}/>
+                  <a className="see-properties" href="#">Ver Propiedades de la localidad</a>
                 </div>
               </section>
             </div>

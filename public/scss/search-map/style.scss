@@ -17,7 +17,7 @@
             font-weight: 600;
         }
         .btn-drop{
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: $darkBlue;
             background-color: $white;
@@ -115,7 +115,7 @@
                     margin: 0 5px;
                     padding: 0 8px;
                     .name-tag{
-                        font-size: 18px;
+                        font-size: 14px;
                         font-weight: 600;
                         margin-right: 5px;
                     }
@@ -192,9 +192,8 @@
                                 .category{
                                     display: flex;
                                     color: $white;
-                                    cursor: pointer;
                                     div{
-                                        padding: 8px;
+                                        padding: 6px;
                                     }
                                     .plus{
                                         display: flex;
@@ -206,7 +205,7 @@
                                         display: flex;
                                         align-items: center;
                                         background-color: $jlBlue;
-                                        font-size: 16px;
+                                        font-size: 14px;
                                         transition: .1s all ease-in-out ;
                                     }
                                 }
@@ -299,7 +298,7 @@
         justify-content: center;
         align-items: center;
         .modal-container{
-            width: 60%;
+            width: 80%;
             background-color: $white;
             .form{
                 margin: 20px;
@@ -317,6 +316,25 @@
                         display: flex;
                         flex-direction: column;
                         width: 30%;
+                        .input-range{
+                            margin-bottom: 10px;
+                            span{
+                                margin: 0;
+                                .input-range__slider{
+                                    background-color: $white;
+                                    border:1px solid $darkBlue;
+                                }
+                                .input-range__slider::before{
+                                    font-weight: 400;
+                                    color: $darkBlue;
+                                    content: "|||";
+                                    position: absolute;
+                                    top: -6px;
+                                    font-size: 11px;
+                                    left: 2.5px;
+                                }
+                            }
+                        }
                         label{
                             font-size: 15px;
                             font-weight: 600;
@@ -437,6 +455,35 @@
             .results-container{
                 max-width: 1140px;
                 margin: 0 auto;
+                .tabs-wrapper{
+                    padding-bottom: 20px;
+                    .see-properties{
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                    .see-properties:hover{
+                        color: #717171;
+                    }
+                    .see-properties:active{
+                        color: $lightGrey;
+                    }
+                }
+                .map-height{
+                    height: 70vh;
+                }
+                .neighborhood2{
+                    width: 100%;
+                    box-shadow: 0px 1px 4px 0px #181A2012;
+                    .price{
+                        background-color: $white;
+                    }
+                    .content-container{
+                        background-color: $white;
+                        border: 0;
+                    }
+                } 
                 .results-card{
                     .button{
                         background-color: $white;
@@ -445,13 +492,55 @@
                         margin: 0 5px;
                     }
                     .button:hover{
-                        background-color: $darkBlue;
+                        background-color: #06173DCC;
                         color: $white;
+                    }
+                    .category{
+                        cursor: pointer;
+                        transition: .1s all;
+                    }
+                    .category:hover{
+                        background-color: #023aa2;
+                    }
+                    .category:active{
+                        background-color: #06173DCC;
+                    }
+                    .content-container{
+                        .specs{
+                            .spec{
+                                .map-link{
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                }
+                                .map-link:hover{
+                                    text-decoration: underline;
+                                }
+                                .map-link:active{
+                                    color: #717171;
+                                }
+                            }
+                        }
                     }
                     .property-container{
                         display: flex;
                         justify-content: space-around;
                         flex-wrap: wrap;
+                        .property{
+                            .img-container{
+                                .controls{
+                                    top: 4%;
+                                    .icon{
+                                        cursor: pointer;
+                                    }
+                                    .icon:hover{
+                                        filter: brightness(0) saturate(100%) invert(46%) sepia(0%) saturate(1%) hue-rotate(219deg) brightness(95%) contrast(87%);
+                                    }
+                                    .icon:active{
+                                        filter: brightness(0) saturate(100%) invert(84%) sepia(45%) saturate(0%) hue-rotate(151deg) brightness(93%) contrast(103%);
+                                    }
+                                }
+                            }
+                        }
                     }
                     .property{
                         width: 48%;

@@ -1,6 +1,27 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react';
+import InputRange from 'react-input-range'
+import "react-input-range/lib/css/index.css";
+
 
 export default function ModalFilter({ openModal, setOpenModal }) {
+
+  const [price, setPrice] = useState({ value: { min: 20, max: 70987 } });
+  const [surface, setSurface] = useState({ value: { min: 20, max: 70987 } });
+  const [build, setBuild] = useState({ value: { min: 20, max: 70987 } });
+
+  // price range handler
+  const priceOnChange = (value) => {
+    setPrice({ value });
+  };
+  const surfaceOnChange = (value) => {
+    setSurface({ value });
+  }; 
+  const builtOnChange = (value) => {
+    setBuild({ value });
+  };
+
+
   return (
     <div className={openModal ? 'modal-filter' : 'modal-filter none'}>
       <div className='modal-container'>
@@ -37,22 +58,46 @@ export default function ModalFilter({ openModal, setOpenModal }) {
           <div className='row-modal'>
             <div className='column-modal'>
               <label for="price">Precio</label>
+              <InputRange
+                formatLabel={() => ``}
+                maxValue={100000}
+                minValue={0}
+                value={price.value}
+                onChange={(value) => priceOnChange(value)}
+                id="slider"
+              />
               <div className='range'>
-                <input className='ranges' type="text" id="price" placeholder="USD 1000"/>
+                <input className='ranges' type="text" id="price" placeholder={"$" + price.value.min}/>
                 <small>-</small>
-                <input className='ranges' type="text" id="price" placeholder="USD 100000"/>
+                <input className='ranges' type="text" id="price" placeholder={"$" + price.value.max}/>
               </div>
               <label for="price">Superficie del terreno</label>
+              <InputRange
+                formatLabel={() => ``}
+                maxValue={100000}
+                minValue={0}
+                value={surface.value}
+                onChange={(value) => surfaceOnChange(value)}
+                id="slider"
+              />
               <div className='range'>
-                <input className='ranges' type="text" id="price" placeholder="MIN"/>
+                <input className='ranges' type="text" id="price" placeholder={surface.value.min + "m"}/>
                 <small>-</small>
-                <input className='ranges' type="text" id="price" placeholder="MAX"/>
+                <input className='ranges' type="text" id="price" placeholder={surface.value.max + "m"}/>
               </div>
               <label for="buildedSurface">Superficie Construida</label>
+              <InputRange
+                maxValue={100000}
+                formatLabel={() => ``}
+                minValue={0}
+                value={build.value}
+                onChange={(value) => builtOnChange(value)}
+                id="slider"
+              />
               <div className='range'>
-                <input className='ranges' type="text" id="buildedSurface" placeholder="MIN"/>
+                <input className='ranges' type="text" id="buildedSurface" placeholder={build.value.min + "m"}/>
                 <small>-</small>
-                <input className='ranges' type="text" id="buildedSurface" placeholder="MAX"/>
+                <input className='ranges' type="text" id="buildedSurface" placeholder={build.value.max + "m"}/>
               </div>
             </div>
             <div className='column-modal'>
