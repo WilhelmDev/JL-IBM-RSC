@@ -16,3 +16,28 @@ export interface Agent {
     address: string | null;
     description: string | null;
 }
+
+export interface SocialMediaData {
+    id: number;
+    facebookurl?: string;
+    pinterest_url?: string;
+    instagram_url?: string;
+    twitter_url?: string;
+    linkedin_url?: string;
+    website_url?: string;
+}
+
+export interface SocialMedia {
+    facebookurl?: string;
+    pinterest_url?: string;
+    instagram_url?: string;
+    twitter_url?: string;
+    linkedin_url?: string;
+    website_url?: string;
+}
+
+export interface ChangePasswordForm {
+    current_password: string;
+    password: string;
+    password_confirmation: string;
+}
