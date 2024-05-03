@@ -7,6 +7,8 @@
             700px
             200px
             1500px
+            450px
+            400px
         ;
         .section-banner{
             background-image: url(/images/aboutus/banner-image.png);
@@ -95,5 +97,14 @@
                 }
             }
         }
+        .our-partners{
+            display: flex;
+            align-items: end;
+            padding-bottom: 80px;
+        }
+        .death-section{
+            background-color: #06173D;
+        }
+        
     }
 }

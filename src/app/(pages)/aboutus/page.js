@@ -7,6 +7,8 @@ import { Contact, MapContact } from "@/components/pages/start/start-components/c
 import EmailSend from "@/components/tasaciones/emailsend";
 import InfElement from "@/components/pages/start/start-components/infelement";
 import AboutVideo from "./video";
+import Partner from "@/components/common/Partner";
+
 
 import "./main.scss"
 
@@ -32,21 +34,23 @@ function AboutUsInf(props) {
 
 
 function AboutUsDetails(props) {
-    return (<div className="container">
-        <div className="element-detail">
-            <span className="content">{props.google_points}</span>
-            <Image width={100} height={50} src={"/images/aboutus/google-review.png"} alt="google-review" />
-            <span className="title">Referencias</span>
+    return (
+        <div className="container">
+            <div className="element-detail">
+                <span className="content">{props.google_points}</span>
+                <Image width={100} height={50} src={"/images/aboutus/google-review.png"} alt="google-review" />
+                <span className="title">Referencias</span>
+            </div>
+            <div className="element-detail">
+                <span className="content">{props.propertys}</span>
+                <span className="title">Propiedades disponibles</span>
+            </div>
+            <div className="element-detail">
+                <span className="content">{props.happy_clients}</span>
+                <span className="title">Clientes felices</span>
+            </div>
         </div>
-        <div className="element-detail">
-            <span className="content">{props.propertys}</span>
-            <span className="title">Propiedades disponibles</span>
-        </div>
-        <div className="element-detail">
-            <span className="content">{props.happy_clients}</span>
-            <span className="title">Clientes felices</span>
-        </div>
-    </div>);
+    );
 }
 
 
@@ -119,8 +123,34 @@ export default function AboutUs() {
                         <Image className='img-service' width={1013} height={1653} src={"/images/aboutus/side-image.png"} alt='img-service' />
                     </div>
                 </section>
-                <Footer />
+                <section className="our-partners">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12" data-aos="fade-up">
+                                <div className="main-title text-center">
+                                    <h5>Trabajamos tu propiedad compartiéndola en multiples canales digitales</h5>
+                                </div>
+                            </div>
+                            <div className="col-lg-12 text-center">
+                                <div
+                                    className="dots_none nav_none"
+                                    data-aos="fade-up"
+                                    data-aos-delay="300"
+                                >
+                                    <Partner />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="death-section">
+
+                </section>
+                <section className="section-email">
+                    <EmailSend/>
+                </section>
             </div>
+            <Footer />
         </main>
     )
 }
