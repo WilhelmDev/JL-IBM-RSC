@@ -239,3 +239,18 @@ export const PropertyTypes = [
     value: 'Land'
   },
 ]
+
+export const AllProperties = [
+  {
+    label: 'elemento 1', 
+    value: 'elemento 1'
+  },
+  {
+    label: 'elemento 2', 
+    value: 'elemento 2'
+  },
+  {
+    label: 'elemento 3', 
+    value: 'elemento 3'
+  },
+]
