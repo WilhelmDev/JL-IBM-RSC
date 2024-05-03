@@ -14,8 +14,8 @@ export default function Liaison(){
         <main id="tab-liaison">
             <HeaderV2/>
             <div id="container-content">
-                <section id="section-questions">
-                    <div id="container-questions">
+                <section className="section-questions">
+                    <div className="container-questions">
                         <h1 data-aos="fade-down">Contacto</h1>
                         <div className="container-form" data-aos="fade-down">
                             <div className="container-form-left">
@@ -29,26 +29,26 @@ export default function Liaison(){
                                 </form>
                                 <span>También puedes encontrarnos en nuestras redes</span>
                                 <div className="image-media">
-                                    <Image width={20} height={20} src={"/images/liaison/icon-form/facebook.svg"} alt="facebook icon"/>
-                                    <Image width={20} height={20} src={"/images/liaison/icon-form/instagram.svg"} alt="instagram icon"/>
-                                    <Image width={20} height={20} src={"/images/liaison/icon-form/youtube.svg"} alt="youtube icon"/>
-                                    <Image width={20} height={20} src={"/images/liaison/icon-form/soptify.svg"} alt="spotify icon"/>
+                                    <button><Image width={20} height={20} src={"/images/liaison/icon-form/facebook.svg"} alt="facebook icon"/></button>
+                                    <button><Image width={20} height={20} src={"/images/liaison/icon-form/instagram.svg"} alt="instagram icon"/></button>
+                                    <button><Image width={20} height={20} src={"/images/liaison/icon-form/youtube.svg"} alt="youtube icon"/></button>
+                                    <button><Image width={20} height={20} src={"/images/liaison/icon-form/soptify.svg"} alt="spotify icon"/></button>
                                 </div>
                             </div>
                             <Image className="image-side-right" width={1200} height={1200} src={"/images/liaison/image-side-form.png"} alt={"image side right"}/>
                         </div>
                     </div>
                 </section>
-                <section id="section-email">
+                <section className="section-email">
                     <EmailSend/>
                 </section>
-                <section id="section-schedule">
+                <section className="section-schedule">
                     <div className="container-schedule">
                         <span data-aos="fade-down">Visita nuestra oficina</span>
                         <p data-aos="fade-down">Puedes hacerlo durante la semana desde las 8AM a 12AM y desde las 15PM a 19PM</p>
                     </div>
                 </section>
-                <section id="section-contact" data-aos="fade-down">
+                <section className="section-contact" data-aos="fade-down">
                     <MapContact/>
                     <Contact/>
                 </section>

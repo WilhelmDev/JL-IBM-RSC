@@ -1,0 +1,609 @@
+#search-map{
+    // Variables
+    $jlBlue: #0451DD;
+    $darkBlue: #06173D;
+    $white: #F4F4F4;
+    $lightGrey: #DDDDDD;
+    // End Variables
+    .filter-page{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $darkBlue;
+        padding: 20px;
+        .title{
+            color: $white;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .btn-drop{
+            font-size: 11px;
+            font-weight: 600;
+            color: $darkBlue;
+            background-color: $white;
+            border: 1px solid $lightGrey;
+            padding: 2px;
+        }
+        .btn-filter{
+            position: relative;
+            .dropdown{
+                width: 100%;
+                background-color: $white;
+                position: absolute;
+                z-index: 100;
+                padding: 0;
+                display: none;
+                border: 1px solid $lightGrey;
+                button{
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: $darkBlue;
+                    background-color: $white;
+                    border: 0;
+                    padding: 8px;
+                }
+            }   
+        }
+        .btn-filter:hover ul{
+            display: block;
+        }
+    }
+    .map-list-container{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .map-horizontal{
+            width: 50vw;
+            img{
+                width: 100%;
+                height: 100vh;
+            }
+            .map-filter{
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                margin: 20px;
+                padding: 10px 20px;
+                font-size: 15px;
+                background-color: #fff;
+                color: $darkBlue;
+                box-shadow: 0px 1px 4px 0px #181A2012;
+                span{
+                    font-weight: 700;
+                    color: #000;
+                }
+                small{
+                    color: #717171;
+                }
+                label{
+                    display: flex;
+                    align-items: center;
+                    font-weight: 600;
+                    input{
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        .results-desc{
+            padding: 20px;
+            background-color: $white;
+            height: 100vh;
+            overflow-y: scroll;
+            .title{
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .tags-container{
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+                p{
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $darkBlue;
+                    margin: 0;
+                    margin-right: 5px;
+                }
+                .tag{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    background-color: $darkBlue;
+                    color: $white;
+                    height: 25px;
+                    margin: 0 5px;
+                    padding: 0 8px;
+                    .name-tag{
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-right: 5px;
+                    }
+                    .close{
+                        cursor: pointer;
+                    }
+                    .close:hover{
+                        color: #bababa;
+                    }
+                }
+            }
+            .btn{
+                font-size: 18px;
+                color: $jlBlue;
+                border: 1px solid $jlBlue;
+                border-radius: 1px;
+                padding: 10px 29px;
+            }
+            .btn:hover{
+                background-color: $jlBlue;
+                color: $white;
+            }
+            .results-container{
+                width: 100%;
+                p{
+                    margin: 0;
+                }
+                .num-results{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 14px;
+                    .info-results{
+                        display: flex;
+                        align-items: center;    
+                        p{
+                            color: #717171;
+                        }
+                        .btn-results{
+                            background-color: transparent;
+                            border: 0;
+                        }
+                        .btn-results:hover{
+                            color: $jlBlue;
+                        }
+                        .list{
+                            border-right:1px solid $lightGrey;
+                            border-left:1px solid $lightGrey;
+                        }
+                        .active{
+                            color: $jlBlue;
+                        }
+                    }
+                }
+                .results-card{
+                    .card-property{
+                        width: 100%;
+                        margin: 10px auto;
+                        display: flex;
+                        box-shadow: 0px 1px 4px 0px #181A2012;
+                        .img-container{
+                            width: 100%;
+                            .img-property{
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                        .card-content{
+                            margin: 10px;
+                            width: 97%;
+                            .status{
+                                display: flex;
+                                justify-content: space-between;
+                                .category{
+                                    display: flex;
+                                    color: $white;
+                                    cursor: pointer;
+                                    div{
+                                        padding: 6px;
+                                    }
+                                    .plus{
+                                        display: flex;
+                                        align-items: center;
+                                        background-color: $darkBlue;
+                                        font-size: 20px;
+                                    }
+                                    .category-mane{
+                                        display: flex;
+                                        align-items: center;
+                                        background-color: $jlBlue;
+                                        font-size: 14px;
+                                        transition: .1s all ease-in-out ;
+                                    }
+                                }
+                                .category:hover{
+                                    .category-mane{
+                                        background-color: #023aa2;
+                                    }
+                                }
+                                .category:active{
+                                    .category-mane{
+                                        background-color: $darkBlue;
+                                    }
+                                }
+                                .price{
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    font-size: 13px;
+                                }
+                                .icons{
+                                    display: flex;
+                                    justify-content: space-around;
+                                    .icon{
+                                        width: 15px;
+                                        margin: 0 5px;
+                                        cursor: pointer;
+                                        transition: .1s all;
+                                    }
+                                    .icon:hover{
+                                        filter: brightness(0) saturate(100%) invert(46%) sepia(0%) saturate(1%) hue-rotate(219deg) brightness(95%) contrast(87%);
+                                    }
+                                    .icon:active{
+                                        filter: brightness(0) saturate(100%) invert(84%) sepia(45%) saturate(0%) hue-rotate(151deg) brightness(93%) contrast(103%);
+                                    }
+                                }
+                            }
+                            .characteristics{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 6px;
+                                span{
+                                    font-size: 19px;
+                                }
+                                small{
+                                    color: #717171;
+                                    font-size: 14px;
+                                }
+                                .data{
+                                    display: flex;
+                                    height: 30px;
+                                    border-bottom: 1px solid $lightGrey;
+                                    small{
+                                        font-size: 12px;
+                                    }
+                                    .datum{
+                                        height: auto;
+                                        display: flex;
+                                        align-items: center;
+                                        line-height: 15px;
+                                        margin-right: 10px;
+                                        .icon-datum{
+                                            width: 12px;
+                                            height: 12px;
+                                            margin-right: 2px;
+                                        }
+                                    }
+                                    .link{
+                                        margin-top: 5px;
+                                        small{
+                                            font-size: 12px;
+                                            line-height: 15px;
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .modal-filter{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100vw;
+        height: 100vh;
+        background-color: #00000050;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .modal-container{
+            position: relative;
+            width: 100%;
+            max-width: 1140px;
+            height: 90%;
+            overflow-y: scroll;
+            background-color: $white;
+            .form{
+                margin: 20px;
+                span{
+                    font-size: 16px;
+                    font-weight: 600;
+                    margin: 10px;
+                }
+                .row-modal{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    margin: 20px 0;
+                    label{
+                        margin: 3px 0;
+                    }
+                    .column-modal{
+                        display: flex;
+                        flex-direction: column;
+                        width: 30%;
+                        .select__control{
+                            background-color: $white;
+                        }
+                        .search{
+                            width: 100%;
+                            padding: 13.5px 8px;
+                        }
+                        .input-range{
+                            margin-bottom: 10px;
+                            span{
+                                margin: 0;
+                                .input-range__slider{
+                                    background-color: $white;
+                                    border:1px solid $darkBlue;
+                                }
+                                .input-range__slider::before{
+                                    font-weight: 400;
+                                    color: $darkBlue;
+                                    content: "|||";
+                                    position: absolute;
+                                    top: -6px;
+                                    font-size: 11px;
+                                    left: 2.5px;
+                                }
+                            }
+                        }
+                        label{
+                            font-size: 14px;
+                            font-weight: 600;
+                        }
+                        .operation{
+                            display: flex;
+                            flex-direction: column;
+                            label{
+                                font-size: 14px;
+                                font-weight: 400;
+                                margin: 0;
+                                input{
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                        input{
+                            padding: 5px;
+                            background-color: $white;
+                            border: 1px solid $lightGrey;
+                        }
+                        select{
+                            padding: 5px;
+                            background-color: $white;
+                            border: 1px solid $lightGrey;
+                        }
+                        .range{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin: 2px 0;
+                            .ranges{
+                                width: 100px;
+                                padding: 13.5px 8px;
+                            }
+                        }
+                        .antiquity-code{
+                            display: flex;
+                            justify-content: space-between;
+                            div{
+                                width: 100px;
+                                input{
+                                    width: 100px;
+                                    padding: 13.5px 8px;
+                                }
+                            }
+                        }
+                        .checkbox{
+                            display: flex;
+                            align-items: center;
+                            font-size: 14px;
+                            font-weight: 400;
+                            input{
+                                margin-right: 5px;
+                            }
+                        }
+                        .amount{
+                            display: flex;
+                            justify-content: space-between;
+                            button{
+                                background-color: #fff;
+                                border: 1px solid $lightGrey;
+                                font-weight: 600;
+                                padding: 10px;
+                                width: 100%;
+                            }
+                            button:hover{
+                                border: 3px solid $darkBlue;
+                                padding: 7px 9px;
+                            }
+                        }
+                    }
+                }
+                .btn-container{
+                    margin: 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    .search-btn{
+                        background-color: $jlBlue;
+                        color: $white;
+                        font-size: 20px;
+                        font-weight: 600;
+                        padding: 5px 30px;
+                        border: 0;
+                    }
+                    .search-btn:hover{
+                        background-color: $darkBlue;
+                    }
+                    .btn{
+                        background-color: $white;
+                        font-size: 14px;
+                        border: 0;
+                    }
+                    .btn:hover{
+                        text-decoration: underline;
+                    }
+                    .reset-btn{
+                        margin: 0 10px;
+                    }
+                    .close{
+                        position: absolute;
+                        top: 10px;
+                        right: 10px;
+                        padding: 0;
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+
+    }
+    // General
+    .none{
+        display: none;
+        background:transparent;
+    }
+    .flex-row{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        margin: 0;
+        width: 100%;
+    }
+    .card-shadow{
+        box-shadow: 0px 1px 4px 0px #181A2012;
+    }
+    .flex-column{
+        display: flex;
+        flex-direction: column;
+        .results-desc{
+            height: auto;
+            overflow: hidden;
+            .results-container{
+                max-width: 1140px;
+                margin: 0 auto;
+                .tabs-wrapper{
+                    padding-bottom: 20px;
+                    .see-properties{
+                        font-size: 16px;
+                        font-weight: 600;
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                    .see-properties:hover{
+                        color: #717171;
+                    }
+                    .see-properties:active{
+                        color: $lightGrey;
+                    }
+                }
+                .map-height{
+                    height: 70vh;
+                }
+                .neighborhood2{
+                    width: 100%;
+                    box-shadow: 0px 1px 4px 0px #181A2012;
+                    .price{
+                        background-color: $white;
+                    }
+                    .content-container{
+                        background-color: $white;
+                        border: 0;
+                    }
+                } 
+                .results-card{
+                    .button{
+                        background-color: $white;
+                        border: 1px solid $lightGrey;
+                        padding: 5px 8px;
+                        margin: 0 5px;
+                    }
+                    .button:hover{
+                        background-color: #06173DCC;
+                        color: $white;
+                    }
+                    .category{
+                        cursor: pointer;
+                        transition: .1s all;
+                    }
+                    .category:hover{
+                        background-color: #023aa2;
+                    }
+                    .category:active{
+                        background-color: #06173DCC;
+                    }
+                    .content-container{
+                        .specs{
+                            .spec{
+                                .map-link{
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                }
+                                .map-link:hover{
+                                    text-decoration: underline;
+                                }
+                                .map-link:active{
+                                    color: #717171;
+                                }
+                            }
+                        }
+                    }
+                    .property-container{
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                        .property{
+                            .img-container{
+                                .controls{
+                                    top: 4%;
+                                    .icon{
+                                        cursor: pointer;
+                                    }
+                                    .icon:hover{
+                                        filter: brightness(0) saturate(100%) invert(46%) sepia(0%) saturate(1%) hue-rotate(219deg) brightness(95%) contrast(87%);
+                                    }
+                                    .icon:active{
+                                        filter: brightness(0) saturate(100%) invert(84%) sepia(45%) saturate(0%) hue-rotate(151deg) brightness(93%) contrast(103%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .property{
+                        width: 48%;
+                        margin: 20px 0;
+                        box-shadow: 0px 1px 4px 0px #181A2012;
+                    }
+                    .property .content-container {
+                        background-color: $white;
+                    }
+                    .entrepreneurship {
+                        box-shadow: 0px 1px 4px 0px #181A2012;
+                    }
+                    .entrepreneurship .info-cont {
+                        background-color: $white;
+                    }
+                    .entrepreneurship .content-container {
+                        background-color: $white;
+                    }
+                    .neighborhood {
+                        box-shadow: 0px 1px 4px 0px #181A2012;
+                    }
+                    .neighborhood .info-cont {
+                        background-color: $white;
+                    }
+                    .neighborhood .content-container {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+    }
+    // End General
+}

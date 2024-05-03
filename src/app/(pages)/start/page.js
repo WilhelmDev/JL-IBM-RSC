@@ -181,7 +181,7 @@ const Start = () => {
                         </div>
                     </div>
                 </section>
-                <section id='section-contact'>
+                <section className='section-contact'>
                     {/* Begin of Component "MapContact" */}
                     <MapContact />
                     {/* End of Component "MapContact" */}
