@@ -1,2 +1,21 @@
-@import "/public/scss/start/sections-styles/service.scss";
-@import "./aboutus.scss";
+#tab-aboutus{
+    #container-content{
+        display: grid;
+        grid-template-rows:
+            600px /* Section Banner */
+            1000px /* Section Info */
+            700px /* Section Video */
+            200px /* Section Details */
+            1500px /* Section Service */
+            450px /* Section Our Partners */
+            600px /* Section Reviews */
+            400px /* Section EmailSend */
+            1050px /* Section Contact */
+        ;
+        @import "/public/scss/tasaciones/email-send.scss";
+        @import "/public/scss/start/sections-styles/service.scss";
+        @import "/public/scss/start/sections-styles/contact.scss";
+        @import "/public/scss/start/sections-styles/reviews.scss";
+        @import "./aboutus.scss";
+    }
+}

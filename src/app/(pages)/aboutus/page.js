@@ -8,6 +8,7 @@ import EmailSend from "@/components/tasaciones/emailsend";
 import InfElement from "@/components/pages/start/start-components/infelement";
 import AboutVideo from "./video";
 import Partner from "@/components/common/Partner";
+import Reviews from "@/components/pages/start/start-components/reviews";
 
 
 import "./main.scss"
@@ -143,10 +144,18 @@ export default function AboutUs() {
                         </div>
                     </div>
                 </section>
-                <section className="death-section">
-
+                <section className='section-reviews'>
+                    {/* Begin of Component "Reviews" */}
+                    <Reviews
+                        review={[]}
+                    />
+                    {/* End of Component "Reviews" */}
                 </section>
                 <EmailSend/>
+                <section className="section-contact">
+                    <MapContact/>
+                    <Contact/>
+                </section>
             </div>
             <Footer />
         </main>

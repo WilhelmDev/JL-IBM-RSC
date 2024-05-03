@@ -155,7 +155,7 @@ const Start = () => {
                         </div>
                     </div>
                 </section>
-                <section id='section-reviews'>
+                <section className='section-reviews'>
                     {/* Begin of Component "Reviews" */}
                     <Reviews
                         review={[]}

@@ -1,4 +1,4 @@
-#section-reviews{
+.section-reviews{
     background-color: #06173D;
     color: white;
     display: flex;
@@ -6,7 +6,7 @@
     justify-content: center;
     .container-reviews{
         height: 350px;
-        width: 80%;
+        width: 1150px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -16,13 +16,13 @@
             justify-content: space-between;
             .container-text > h3{
                 color: white;
-                margin: 0;
             }
             .control-reviews{
                 width: 200px;
                 display: flex;
                 flex-direction: column;
                 align-items: end;
+                padding-bottom: 30px;
                 .text-control{
                     font-size: 16px;
                     font-weight: 800;
@@ -67,15 +67,18 @@
                 color: #06173D;
                 width: 365px;
                 height: 250;
-                padding: 20px;
+                padding: 30px;
                 display: flex;
                 flex-direction: column;
                 span, p{
                     font-weight: 800;
                 }
                 .title-review{
-                    font-size: 16px;
-                    margin-bottom: 14px;
+                    font-size: 14px;
+                    margin-bottom: 20px;
+                }
+                .text-review{
+                    font-size: 13px;
                 }
                 .stars-container{
                     padding: 0;
