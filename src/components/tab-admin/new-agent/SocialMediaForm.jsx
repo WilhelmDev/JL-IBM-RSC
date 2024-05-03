@@ -11,7 +11,7 @@ const inputNames = [
   "instagram_url",
   "twitter_url",
   "linkedin_url",
-  "websiteUrl_url",
+  "website_url",
 ];
 
 const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
