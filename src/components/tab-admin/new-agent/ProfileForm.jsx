@@ -10,6 +10,7 @@ import ImagePreview from "./inputs/ImagePreview";
 import DeleteImageButton from "./inputs/DeleteImageButton";
 import { validImageType } from "@/utilis/valid-image-type";
 import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
+import { updateAgent } from "@/core/infrastructure/services/tab-agent.service";
 
 const inputNames = [
   "username",
@@ -25,7 +26,7 @@ const inputNames = [
   "description",
 ];
 
-const ProfileForm = ({ agent }) => {
+const ProfileForm = ({ agent, setAgent }) => {
   const [form, setForm] = useState({
     username: agent.username ?? "",
     email: agent.email ?? "",
@@ -40,6 +41,7 @@ const ProfileForm = ({ agent }) => {
     description: agent.description ?? "",
   });
   const [profilePhoto, setProfilePhoto] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const deleteProfilePhoto = () => {
     setProfilePhoto();
@@ -54,6 +56,19 @@ const ProfileForm = ({ agent }) => {
       });
     }
   };
+
+  const updateAgentData = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true)
+      const updatedAgent = await updateAgent(agent.id, form)
+      setAgent(updatedAgent);
+    } catch (error) {
+      console.error(error);
+    }finally{
+      setIsLoading(false)
+    }
+  }
 
   const updateProfilePhoto = (e, setImage) => {
     const currentFiles = e.currentTarget.files;
@@ -88,7 +103,7 @@ const ProfileForm = ({ agent }) => {
   return (
     <form
       className="container"
-      onSubmit={(e) => alertAndLogFormSubmit(e)}
+      onSubmit={updateAgentData}
       noValidate
     >
       <div className="row row-cols-3 gx-4 gy-3">
@@ -209,6 +224,7 @@ const ProfileForm = ({ agent }) => {
         <SubmitButton
           text="Guardar"
           className="col-auto ms-auto margin-r-12px"
+          disabled={isLoading}
         />
       </div>
     </form>
