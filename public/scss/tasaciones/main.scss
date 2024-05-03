@@ -1,2 +1,4 @@
-@import "./email-send.scss";
-@import "./tasaciones.scss"
+#tasaciones{
+    @import "./email-send.scss";
+    @import "./tasaciones.scss";
+}

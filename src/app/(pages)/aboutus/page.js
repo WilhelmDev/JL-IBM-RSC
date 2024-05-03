@@ -146,9 +146,7 @@ export default function AboutUs() {
                 <section className="death-section">
 
                 </section>
-                <section className="section-email">
-                    <EmailSend/>
-                </section>
+                <EmailSend/>
             </div>
             <Footer />
         </main>
