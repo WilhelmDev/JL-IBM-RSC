@@ -3,24 +3,27 @@ import { useState, useEffect } from "react";
 import PasswordInput from "./inputs/PasswordInput";
 import SubmitButton from "../common/SubmitButton";
 import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
+import { changeAgentPassword } from "@/core/infrastructure/services/tab-agent.service";
 
 const inputNames = [
-  "currentPassword",
-  "newPassword",
-  "newPasswordConfirmation",
+  "current_password",
+  "password",
+  "password_confirmation",
 ];
 
-const ChangePasswordForm = () => {
+const ChangePasswordForm = ({ agentId }) => {
   const [form, setForm] = useState({
-    currentPassword: "password1234",
-    newPassword: "",
-    newPasswordConfirmation: "",
+    current_password: "",
+    password: "",
+    password_confirmation: "",
   });
   const [errors, setErrors] = useState([]);
-  const isEmpty = !(form.newPassword || form.newPasswordConfirmation);
+  const [isLoading, setIsLoading] = useState(false);
+  const [resetKey, setResetKey] = useState(0);
+  const isEmpty = !(form.password || form.password_confirmation);
 
   useEffect(() => {
-    if (form.newPassword === form.currentPassword) {
+    if ((form.password === form.current_password) && form.password !== "" && form.current_password !== "") {
       updateError(
         1,
         "La nueva contraseña debe ser distinta de la actual",
@@ -30,7 +33,7 @@ const ChangePasswordForm = () => {
       setErrors((errors) => errors.filter((error) => error.id !== 1));
     }
 
-    if (form.newPassword !== form.newPasswordConfirmation) {
+    if (form.password !== form.password_confirmation) {
       updateError(
         2,
         "La nueva contraseña y la confirmación de la nueva contraseña deben coincidir",
@@ -66,10 +69,28 @@ const ChangePasswordForm = () => {
     });
   };
 
+  const changePassword = async (e) => {
+    e.preventDefault();
+    try {
+      setIsLoading(true);
+      await changeAgentPassword(agentId, form)
+      setResetKey(prevKey => prevKey + 3);
+      setForm({
+        current_password: "",
+        password: "",
+        password_confirmation: "",
+      })
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <form
       className="container"
-      onSubmit={(e) => alertAndLogFormSubmit(e)}
+      onSubmit={changePassword}
       noValidate
     >
       <div className="row row-cols-3 gx-4 gy-3">
@@ -80,27 +101,28 @@ const ChangePasswordForm = () => {
           </p>
         ))}
         <PasswordInput
+          key={resetKey}
           label="En uso"
-          name="currentPassword"
+          name="current_password"
           autoComplete="current-password"
           placeholder="La contraseña que usas"
           className="col"
-          initialValue="password1234"
           updateValue={updateValue}
-          disabled={true}
         />
         <div className="w-100 m-0 p-0"></div>
         <PasswordInput
+          key={resetKey + 1}
           label="Nueva"
-          name="newPassword"
+          name="password"
           autoComplete="new-password"
           placeholder="Nueva contraseña"
           className="col"
           updateValue={updateValue}
         />
         <PasswordInput
+          key={resetKey + 2}
           label="Confirmar"
-          name="newPasswordConfirmation"
+          name="password_confirmation"
           autoComplete="new-password"
           placeholder="Repite la nueva contraseña"
           className="col"
@@ -110,7 +132,7 @@ const ChangePasswordForm = () => {
         <SubmitButton
           text="Guardar"
           className="col-auto ms-auto margin-r-12px"
-          disabled={errors.length > 0 || isEmpty}
+          disabled={errors.length > 0 || isEmpty || isLoading}
         />
       </div>
     </form>
