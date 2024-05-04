@@ -29,7 +29,12 @@ const AboutUsInf = (props) => {
                 <h1>{props.title}</h1>
             </div>
             <div className="side-content-right">
-                <p>{props.content}</p>
+            <p>{props.content.split('\n').map((line, index) => (
+                <React.Fragment key={index}>
+                    {line}
+                    {index < props.content.split('\n').length - 1 && <br />}
+                </React.Fragment>
+            ))}</p>
                 <Link className="link" href={""}>Leer más</Link>
             </div>
         </>
