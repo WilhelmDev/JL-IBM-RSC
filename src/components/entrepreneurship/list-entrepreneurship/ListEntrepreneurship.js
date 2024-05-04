@@ -19,11 +19,13 @@ export default function PageEntrepreneurship() {
     const [range, setRange] = useState('')
     const [search , setSearch] = useState(searchParams.get('search') || '')
     const [sort, setSort] = useState(searchParams.get('sort_by') || 'title')
-    const [order, setOrder] = useState(searchParams.get('sort_order') || 'asc')  
+    const [order, setOrder] = useState(searchParams.get('sort_order') || 'asc') 
+    const [actionDelete , setActionDelete] = useState(false)
 
     const fetchEntrepreneurship = async (page, search, sort, order) => {
         try {
             const {data, meta} = await getEntrepreneurshipsList(page, search, sort, order)
+            console.log(data)
             const { allPages, range, lastPage } = parsePagination(meta, 'Emprendimientos')
             setRange(range)
             setPages(allPages)
@@ -32,6 +34,11 @@ export default function PageEntrepreneurship() {
         } catch (error) {
             setEntrepreneurship(undefined)
         }
+    }
+
+    const handleDelete = (flag) => {
+        setEntrepreneurship([])
+        setActionDelete(flag)
     }
 
     const handleChange = (newPage, newSearchTerm, newSort, newOrder) => {
@@ -67,6 +74,14 @@ export default function PageEntrepreneurship() {
         fetchEntrepreneurship(page, search, sort, order)
     }, [page, search, sort, order])
 
+    useEffect(() => {
+        if (actionDelete) {
+            fetchEntrepreneurship(page, search, sort, order)
+            setActionDelete(false)
+        }
+    }, [actionDelete, order, page, search, sort])
+
+
   return (
     <>
         <div className="info-page">
@@ -79,7 +94,7 @@ export default function PageEntrepreneurship() {
         <FilterButons callback={({newSearchTerm, newSort, newOrder}) => handleChangeDebounced(page, newSearchTerm, newSort, newOrder)} />
 
         <div>
-            <TableEntrepreneurship entrepreneurship = {entrepreneurship}/>
+            <TableEntrepreneurship entrepreneurship = {entrepreneurship}  handleChangeDelete = {handleDelete} />
         </div>
 
         <div className="pagination-container">

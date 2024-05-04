@@ -3,7 +3,7 @@ import React from "react";
 import ShareFav from "./shareFav";
 import Action from "../../entrepreneurship/list-entrepreneurship/Action";
 
-export default function Property({ property }) {
+export default function Property({ property, handleDelete }) {
   return (
     <tr>
       <td className="p-4">
@@ -52,7 +52,7 @@ export default function Property({ property }) {
         <ShareFav />
       </td>
 
-        <Action itemId = {property.id} action ={"propertys"}/>
+        <Action itemId = {property.id} action ={"propertys"} handleChangeDelete = {handleDelete}/>
       
     </tr>
   );

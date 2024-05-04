@@ -15,7 +15,7 @@ const customStyles = {
   },
 };
 
-export default function ActtionBtn({variant, itemId, action}) {
+export default function ActtionBtn({variant, itemId, action, callback}) {
   const router = useRouter()
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -36,7 +36,7 @@ export default function ActtionBtn({variant, itemId, action}) {
       } else if (action === "localities") {
         await deletelocalitiesList(itemId)
       }
-      window.location.reload()
+      callback(true)
     }
     catch(error) {
       console.log(error);

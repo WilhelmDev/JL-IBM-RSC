@@ -3,7 +3,7 @@ import React from 'react'
 import Detail, { MoreDetails } from './detail'
 import ActtionBtn from './action-btn'
 
-export default function Locality({item}) {
+export default function Locality({item, handleDelete}) {
   const {title, information, reference_points_metadata, id} = item
   return (
     <div className='locality-container'>
@@ -27,7 +27,7 @@ export default function Locality({item}) {
         <MoreDetails />
       </div>
       <div className="section-four">
-        <ActtionBtn variant={'delete'} itemId = {id} action ={"localities"}/>
+        <ActtionBtn variant={'delete'} itemId = {id} action ={"localities"} callback={(newActionDelete) => handleDelete(newActionDelete)}/>
         <ActtionBtn variant={'edit'}/>
         <ActtionBtn variant={'share'}/>
       </div>
