@@ -3,27 +3,25 @@ import { useState } from "react";
 import TextInput from "./inputs/TextInput";
 import SubmitButton from "../common/SubmitButton";
 import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
-import { addSocialMedia } from "@/core/infrastructure/services/tab-agent.service";
 
 const inputNames = [
-  "facebook_url",
-  "pinterest_url",
-  "instagram_url",
-  "twitter_url",
-  "linkedin_url",
-  "website_url",
+  "facebook",
+  "pinterest",
+  "instagram",
+  "twitter",
+  "linkedin",
+  "websiteUrl",
 ];
 
-const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
+const SocialMediaForm = () => {
   const [form, setForm] = useState({
-    facebook_url: socialMedia.facebookurl ?? "",
-    pinterest_url: socialMedia.pinterest_url ?? "",
-    instagram_url: socialMedia.instagram_url ?? "",
-    twitter_url: socialMedia.twitter_url ?? "",
-    linkedin_url: socialMedia.linkedin_url ?? "",
-    website_url: socialMedia.website_url ?? "",
+    facebook: "",
+    pinterest: "",
+    instagram: "",
+    twitter: "",
+    linkedin: "",
+    websiteUrl: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
   const placeholder = "Copia y pega la URL de tu usuario";
 
   const updateValue = (e, setValue) => {
@@ -36,31 +34,17 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
     }
   };
 
-  const updateSocialMedia = async (e) => {
-    e.preventDefault();
-    try {
-      setIsLoading(true);
-      const updatedSocialMedia = await addSocialMedia(agentId, form);
-      setSocialMedia(updatedSocialMedia);
-    } catch (error) {
-      console.error(error);
-    }finally{
-      setIsLoading(false);
-    }
-  }
-
   return (
     <form
       className="container"
-      onSubmit={updateSocialMedia}
+      onSubmit={(e) => alertAndLogFormSubmit(e)}
       noValidate
     >
       <div className="row row-cols-3 gx-4 gy-3">
         <h4 className="col-12">Redes Sociales</h4>
         <TextInput
           label="Facebook"
-          name="facebook_url"
-          initialValue={form.facebook_url}
+          name="facebook"
           placeholder={placeholder}
           autoComplete="on"
           className="col"
@@ -68,8 +52,7 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
         />
         <TextInput
           label="Pinterest"
-          name="pinterest_url"
-          initialValue={form.pinterest_url}
+          name="pinterest"
           placeholder={placeholder}
           autoComplete="on"
           className="col"
@@ -77,8 +60,7 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
         />
         <TextInput
           label="Instagram"
-          name="instagram_url"
-          initialValue={form.instagram_url}
+          name="instagram"
           placeholder={placeholder}
           autoComplete="on"
           className="col"
@@ -86,8 +68,7 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
         />
         <TextInput
           label="Twitter"
-          name="twitter_url"
-          initialValue={form.twitter_url}
+          name="twitter"
           placeholder={placeholder}
           autoComplete="on"
           className="col"
@@ -95,8 +76,7 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
         />
         <TextInput
           label="Linkedin"
-          name="linkedin_url"
-          initialValue={form.linkedin_url}
+          name="linkedin"
           placeholder={placeholder}
           autoComplete="on"
           className="col"
@@ -104,8 +84,7 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
         />
         <TextInput
           label="Website Url"
-          name="website_url"
-          initialValue={form.website_url}
+          name="websiteUrl"
           placeholder={placeholder}
           autoComplete="on"
           className="col"
@@ -114,7 +93,6 @@ const SocialMediaForm = ({ agentId, socialMedia, setSocialMedia }) => {
         <SubmitButton
           text="Guardar"
           className="col-auto ms-auto margin-r-12px"
-          disabled={isLoading}
         />
       </div>
     </form>
