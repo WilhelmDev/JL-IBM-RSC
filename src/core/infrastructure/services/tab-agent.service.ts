@@ -126,11 +126,26 @@ export const getEntrepreneurshipsList = async function (page: string | number, s
   return data as EntreprenureshipsResponse
 }
 
+export const deleteEntrepreneurshipsList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/entreprenureships/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}
 export const getMe = async function (): Promise<Agent> {
   try {
     const { data } = await ApiInstance("/auth/me")
     return data.data
   } catch (error) {
+    console.log(error)
+  }
+}
+
+export const deletelocalitiesList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/localities/${id}`)
+  } catch(error) {
     console.log(error)
   }
 }
@@ -144,6 +159,13 @@ export const updateAgent = async function (id: number, agent: Agent): Promise<Ag
   }
 }
 
+export const deleteNeighborhoodList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/neighborhood/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}
 export const getSocialMedia = async function (id: number): Promise<SocialMediaData | null> {
   try {
     const { data } = await ApiInstance(`/admin/agents/${id}/social-media`)
@@ -163,6 +185,13 @@ export const addSocialMedia = async function (id: number, socialMedia: SocialMed
   }
 }
 
+export const deleteRealStateList = async function (id : string) {
+  try {
+    await ApiInstance.delete(`/real-state/${id}`)
+  } catch(error) {
+    console.log(error)
+  }
+}
 export const changeAgentPassword = async function (id: number, changePasswordForm: ChangePasswordForm): Promise<void> {
   try {
     await ApiInstance.post(`/admin/agents/${id}/change-password`, changePasswordForm)

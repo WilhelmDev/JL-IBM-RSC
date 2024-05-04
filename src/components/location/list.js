@@ -29,8 +29,15 @@ export default function List() {
   const [page, setPage] = useState(Number(useSearchParams().get('page')) || 1)
   const [lastPage, setLastPage] = useState(1)
   const [range, setRange] = useState('')
+  const [actionDelete , setActionDelete] = useState(false)
+
 
   const params = useSearchParams()
+
+  const handleDelete = (flag) => {
+    setLocalities([])
+    setActionDelete(flag)
+}
 
   useEffect(() => {
     const actualPage = params.get('page')
@@ -56,6 +63,25 @@ export default function List() {
       fectchLocalities(page)
     }
   }, [page, localities])
+
+  useEffect(() => {
+    if (actionDelete) {
+      const fectchLocalities = async (page) => {
+        try {
+          const {data, meta} = await getLocalizationsList(page)
+          const { allPages, range, lastPage } = parsePagination(meta, 'Propiedades')
+          setRange(range)
+          setPages(allPages)
+          setLastPage(lastPage)
+          setLocalities(data.length === 0 ? undefined: data)
+        } catch (error) {
+          setLocalities(undefined)
+        }
+      }
+      fectchLocalities(page)
+      setActionDelete(false)
+    }
+  }, [actionDelete, page])
 
   return (
     <main id='list-locations-view'>
@@ -83,7 +109,7 @@ export default function List() {
         </div>
       </div>
       <div className="row p30">
-        <TableLocality localities={localities}/>
+        <TableLocality localities={localities} handleDelete = {handleDelete}/>
       </div>
       <div className="row p10">
         {/* Begin Pagination */}

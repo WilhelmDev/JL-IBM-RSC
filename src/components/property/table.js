@@ -1,7 +1,7 @@
 import React from "react";
 import Property from "./atom-components/property";
 
-const TableProperty = ({ properties }) => {
+const TableProperty = ({ properties, handleDelete }) => {
   return (
     <table className="bg-white" id="property-table">
       <thead>
@@ -17,7 +17,7 @@ const TableProperty = ({ properties }) => {
       <tbody>
         {properties && properties.length > 0 ? (
           properties.map((element, index) => (
-            <Property key={index} property={element} />
+            <Property key={index} property={element} handleDelete = {handleDelete} />
           ))
         ) : (
           <tr>

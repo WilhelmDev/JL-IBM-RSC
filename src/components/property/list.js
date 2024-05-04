@@ -19,6 +19,7 @@ export default function List() {
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [sort, setSort] = useState(searchParams.get("sort_by") || "title");
   const [order, setOrder] = useState(searchParams.get("sort_order") || "asc");
+  const [actionDelete, setActionDelete] = useState(false);
 
   const fetchProperties = async (page, search, sort, order) => {
     try {
@@ -35,6 +36,11 @@ export default function List() {
       setProperties(undefined);
     }
   };
+
+  const handleDelete = (flag) => {
+    setProperties([]);
+    setActionDelete(flag);
+  }
 
   const handleChange = (newPage, newSearchTerm, newSort, newOrder) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
@@ -77,6 +83,13 @@ export default function List() {
     fetchProperties(page, search, sort, order);
   }, [page, search, sort, order]);
 
+  useEffect(() => {
+    if (actionDelete) {
+      fetchProperties(page, search, sort, order);
+      setActionDelete(false);
+    }
+  }, [actionDelete, order, page, search, sort]);
+
   return (
     <main id="list-property-view">
       <FilterButtons
@@ -85,7 +98,7 @@ export default function List() {
         }
       />
       <div>
-        <TableProperty properties={properties} />
+        <TableProperty properties={properties} handleDelete = {handleDelete}/>
       </div>
       
       <div className="row p10">

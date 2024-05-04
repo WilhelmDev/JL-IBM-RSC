@@ -1,7 +1,7 @@
 import React from 'react'
 import Locality from './atom-components/locality'
 
-export default function TableLocality({localities}) {
+export default function TableLocality({localities, handleDelete}) {
   return (
     <div className="row" id='listing-location'>
       {/* Begin headers table */}
@@ -18,7 +18,7 @@ export default function TableLocality({localities}) {
         {
           localities && localities.length > 0 
           ? localities.map((element, i) => (
-            <Locality key={i} item={element}/>
+            <Locality key={i} item={element} handleDelete = {handleDelete}/>
           ))
           : 'No hay localidades para mostrar'
         }
