@@ -1,0 +1,72 @@
+#tab-admin{
+    #content{
+        .list-agents{
+            padding: 40px;
+            .container-agent{
+                .header-agent{
+                    margin: 20px;
+                    .p{ font-size: 17px; }
+                }
+                #listing-agents{
+                    display: grid;
+                    grid-template-rows: 70px;
+                    text-align: center;
+                    li, div{ 
+                        width: 100%;
+                     }
+                    .container-generic{
+                        background-color: white;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                    .content-container{ 
+                        margin: 0;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 1.5fr 1fr;
+                    }
+                    .container-localities{ 
+                        text-align: start;
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 20px;
+                    }
+
+                    .element-list{
+                        height: 90px;
+                        margin-top: 2px;
+                        .action-container{
+                            width: 180px;
+                            text-align: start;
+                        }
+                        .container-localities{
+                            div{
+                                background-color: #F4F4F4;
+                                font-weight: bold;
+                                padding: 3px 15px;
+                            }
+                            div:not(:last-child){
+                                text-align: center;
+                            }
+                        }
+                        .btn-action{
+                            display: grid;
+                            padding: 20px;
+                            grid-template-rows: 32px;
+                            grid-template-columns: 3fr 1fr 1fr;
+                            gap: 7px;
+                            button{
+                                border: 1px solid #CCCCCC;
+                                background-color: transparent;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

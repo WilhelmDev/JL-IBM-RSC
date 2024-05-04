@@ -1,10 +1,10 @@
 import DashboardHeader from "@/components/common/DashboardHeader";
 import MobileMenu from "@/components/common/mobile-menu";
-import Pagination from "@/components/property/Pagination";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
-import Footer from "@/components/property/dashboard/Footer";
-import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
-import SearchDataTable from "@/components/property/dashboard/dashboard-saved-search/SearchDataTable";
+import Pagination from "@/components/tab-admin/list-agent/property/Pagination";
+import DboardMobileNavigation from "@/components/tab-admin/list-agent/property/dashboard/DboardMobileNavigation";
+import Footer from "@/components/tab-admin/list-agent/property/dashboard/Footer";
+import SidebarDashboard from "@/components/tab-admin/list-agent/property/dashboard/SidebarDashboard";
+import SearchDataTable from "@/components/tab-admin/list-agent/property/dashboard/dashboard-saved-search/SearchDataTable";
 
 export const metadata = {
   title: "Dashboard Saved Search || Homez - Real Estate NextJS Template",

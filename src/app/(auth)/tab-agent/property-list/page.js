@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic' 
-const List = dynamic(() => import('@/components/property/list'), { ssr: false })
+const List = dynamic(() => import('@/components/tab-admin/list-agent/property/list'), { ssr: false })
 
 export const metadata = {
   title: "Listado de propiedades || Homez - Real Estate NextJS Template",

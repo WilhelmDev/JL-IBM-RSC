@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UploadPhotoGallery from "../property/dashboard/dashboard-add-property/upload-media/UploadPhotoGallery";
+import UploadPhotoGallery from "../tab-admin/list-agent/property/dashboard/dashboard-add-property/upload-media/UploadPhotoGallery";
 import VideoOptionFiledCustom from "./videoOption";
 
 const UploadMediaCustom = ({updateStepThree, triggerForm, loading}) => {

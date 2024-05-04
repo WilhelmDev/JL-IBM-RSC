@@ -1,12 +1,12 @@
 import DashboardHeader from "@/components/common/DashboardHeader";
 import MobileMenu from "@/components/common/mobile-menu";
-import DboardMobileNavigation from "@/components/property/dashboard/DboardMobileNavigation";
-import Footer from "@/components/property/dashboard/Footer";
-import SidebarDashboard from "@/components/property/dashboard/SidebarDashboard";
-import ChatBoxForm from "@/components/property/dashboard/dashboard-message/ChatBoxForm";
-import SearchBox from "@/components/property/dashboard/dashboard-message/SearchBox";
-import UserChatBoxContent from "@/components/property/dashboard/dashboard-message/UserChatBoxContent";
-import UserInboxList from "@/components/property/dashboard/dashboard-message/UserInboxList";
+import DboardMobileNavigation from "@/components/tab-admin/list-agent/property/dashboard/DboardMobileNavigation";
+import Footer from "@/components/tab-admin/list-agent/property/dashboard/Footer";
+import SidebarDashboard from "@/components/tab-admin/list-agent/property/dashboard/SidebarDashboard";
+import ChatBoxForm from "@/components/tab-admin/list-agent/property/dashboard/dashboard-message/ChatBoxForm";
+import SearchBox from "@/components/tab-admin/list-agent/property/dashboard/dashboard-message/SearchBox";
+import UserChatBoxContent from "@/components/tab-admin/list-agent/property/dashboard/dashboard-message/UserChatBoxContent";
+import UserInboxList from "@/components/tab-admin/list-agent/property/dashboard/dashboard-message/UserInboxList";
 import Image from "next/image";
 
 export const metadata = {

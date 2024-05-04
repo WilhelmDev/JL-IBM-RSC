@@ -1,14 +1,14 @@
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import FormContact from "@/components/property/FormContact";
+import FormContact from "@/components/tab-admin/list-agent/property/FormContact";
 
-import ProfessionalInfo from "@/components/property/ProfessionalInfo";
-import ReviewBoxForm from "@/components/property/ReviewBoxForm";
-import ListingItemsContainer from "@/components/property/agency-single/ListingItems";
+import ProfessionalInfo from "@/components/tab-admin/list-agent/property/ProfessionalInfo";
+import ReviewBoxForm from "@/components/tab-admin/list-agent/property/ReviewBoxForm";
+import ListingItemsContainer from "@/components/tab-admin/list-agent/property/agency-single/ListingItems";
 
-import SingleAgentCta from "@/components/property/agent-single/SingleAgentCta";
-import AllReviews from "@/components/property/reviews";
+import SingleAgentCta from "@/components/tab-admin/list-agent/property/agent-single/SingleAgentCta";
+import AllReviews from "@/components/tab-admin/list-agent/property/reviews";
 import Image from "next/image";
 
 import React from "react";
