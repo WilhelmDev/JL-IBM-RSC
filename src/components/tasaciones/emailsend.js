@@ -10,7 +10,7 @@ const EmailSend = () =>{
                 </div>
                 <div className="input-email" data-aos="fade-left">
                     <label>
-                    <input placeholder="Email"></input>
+                        <input placeholder="Email"></input>
                     </label>
                     <button>ENVIAR</button>
                 </div>
