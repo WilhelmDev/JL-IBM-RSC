@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import { deleteEntrepreneurshipsList, deleteRealStateList, deletelocalitiesList } from '@/core/infrastructure/services/tab-agent.service'
-import Modal from 'react-modal';
+import { Modal } from 'react-bootstrap';
 
 const customStyles = {
   content: {
@@ -12,7 +12,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-  },
+  },  
 };
 
 export default function ActtionBtn({variant, itemId, action, callback}) {
@@ -26,6 +26,8 @@ export default function ActtionBtn({variant, itemId, action, callback}) {
   function closeModal() {
     setIsOpen(false);
   }
+
+  
 
   const deleteEntrepreneurship = async(itemId, action) => {
     try {
@@ -72,15 +74,21 @@ export default function ActtionBtn({variant, itemId, action, callback}) {
         <Image src={`/images/tab-agent/list-actions/${variant}.svg`} height={15} width={15} alt='image'/>
       </button>
        <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Eliminar Modal"
-        ariaHideApp={false}
-      >
-        <h2>¿Estás seguro de que quieres eliminar esto?</h2>
-        <button onClick={closeModal}>Cerrar</button>
-        <button onClick={actionDelete}>Eliminar</button>
+        show={modalIsOpen}
+        onHide={closeModal}
+        backdrop="static"
+        centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>¿Estás seguro de que quieres eliminar esto?</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>Descripción del elemento a eliminar...</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <button type="button" className="btn btn-secondary" onClick={closeModal}>Cerrar</button>
+            <button type="button" className="btn btn-primary" onClick={actionDelete}>Eliminar</button>
+          </Modal.Footer>
       </Modal>
     </>
   );
