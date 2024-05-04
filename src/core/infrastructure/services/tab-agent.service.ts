@@ -167,6 +167,6 @@ export const changeAgentPassword = async function (id: number, changePasswordFor
   try {
     await ApiInstance.post(`/admin/agents/${id}/change-password`, changePasswordForm)
   } catch (error) {
-    console.log(error)
+    throw error
   }
 }

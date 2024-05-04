@@ -4,6 +4,7 @@ import PasswordInput from "./inputs/PasswordInput";
 import SubmitButton from "../common/SubmitButton";
 import { alertAndLogFormSubmit } from "@/utilis/alert-and-log-form-submit";
 import { changeAgentPassword } from "@/core/infrastructure/services/tab-agent.service";
+import { toast } from "react-toastify";
 
 const inputNames = [
   "current_password",
@@ -41,6 +42,16 @@ const ChangePasswordForm = ({ agentId }) => {
       );
     } else {
       setErrors((errors) => errors.filter((error) => error.id !== 2));
+    }
+
+    if ((form.password.length < 8 || form.current_password.length < 8) && (form.password.length !== 0 || form.current_password.length !== 0)) {
+      updateError(
+        3,
+        "Las contraseñas deben tener al menos 8 caracteres",
+        setErrors
+      );
+    } else {
+      setErrors((errors) => errors.filter((error) => error.id !== 3));
     }
   }, [form]);
 
@@ -81,7 +92,10 @@ const ChangePasswordForm = ({ agentId }) => {
         password_confirmation: "",
       })
     } catch (error) {
-      console.error(error);
+      if(error.response.data.status === 400)
+        toast.error("Contraseña en uso incorrecta")
+      else
+        toast.error("Ha ocurrido un error")
     } finally {
       setIsLoading(false);
     }
