@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Pagination from "@/components/common/list/pagination";
 import { useSearchParams, usePathname, useRouter} from 'next/navigation'
-import { parsePagination } from '@/utilis/parsers'
+// import { parsePagination } from '@/utilis/parsers'
 // import { getAgentElements } from '@/core/infrastructure/services/tab-client.service'
 
 
@@ -13,23 +13,9 @@ const ListAgent = () => {
     // const [agent, setAgent] = useState([])
     // const [loading, setLoading] = useState(false)
     const [page, setPage] = useState(Number(useSearchParams().get('page')) || 1)
-    const [pages, setPages] = useState([
-        {
-        label: '<',
-        active: false,
-        arrow: true
-      },
-      {
-        label: 1,
-        active: true,
-        arrow: false
-      },
-      {
-        label: '>',
-        active: false,
-        arrow: true
-      },])
-    const [range, setRange] = useState('1 - 1 Comparaciones')
+    const [pages, setPages] = useState([])
+    const [range, setRange] = useState('')
+    const [lastPage, setLastPage] = useState(1)
   
     const params = useSearchParams()
     // const router = useRouter()
@@ -76,13 +62,12 @@ const ListAgent = () => {
                 </div>
                 <TableListAgent />
             </div> 
-            <div className="container-bottom row p10">
+            <div className="row p10">
                 {/* Begin Pagination */}
                 <div className="pagination-container">
-                    <Pagination pages={pages} range={range} callback={(e) => changePage(e)}/>
+                    <Pagination pages={pages} lastPage={lastPage} range={range} actualPage={page} callback={(e) => changePage(e)}/>
                 </div>
                 {/* End Pagination */}
-                <button className="create-agent">CREAR AGENTE</button>
             </div>
         </main>
     )

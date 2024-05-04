@@ -3,10 +3,8 @@
         .list-agents{
             padding: 40px;
             .container-agent{
-                margin-bottom: 50px;
                 .header-agent{
-                    padding-bottom: 30px;
-                    margin: 10px;
+                    margin: 20px;
                     .p{ font-size: 17px; }
                 }
                 #listing-agents{
@@ -69,33 +67,6 @@
                     }
                 }
             }
-            .container-bottom{
-                position: relative;
-                height: 170px;
-                .pagination-body{
-                    display: flex;
-                    height: 100%;
-                    justify-content: space-between;
-                }
-                .create-agent{
-                    background-color: #0451DD;
-                    width: max-content;
-                    position: absolute;
-                    top: 35%;
-                    border: none;
-                    color: white;
-                    padding: 10px 30px;
-                    letter-spacing: 1px;
-                    
-                }   
-            }
-            button:hover{
-                transform: scale(1.1);
-            }
-            button:active{
-                transition: 0s;
-                transform: scale(0.9);
-            }
-        }   
+        }
     }
 }
