@@ -1,5 +1,20 @@
 .email-send{
   padding: 80px;
+  .rotate-element{
+    background-image: url(/images/tasaciones/element.svg);
+    animation: rotate 14s linear infinite;
+    width: 143px;
+    height: 143px;
+    border-radius: 100px;
+    background-size: cover;
+    position: absolute;
+    bottom: 30px;
+    left: 90px;
+  }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
   .container-email{
       background-color: #F7F7F7;
       width: 90%;
@@ -40,17 +55,17 @@
           width: 40%;
           background-color: #0451DD;
           color: #F7F7F7;
-          font-weight: 800;
-          border: none;
+          border: none; 
+          letter-spacing: 1px;
         }
         button:hover{
           background-color: black;
-          transform: scale(1.06);
           -ms-transform: scale(1.06); /* IE9 */
           -moz-transform : scale(1.06); /* Firefox */
           -webkit-transform : scale(1.06); /* Chrome - Safari */
           -o-transform : scale(1.06); /* Opera */
           -ms-transform : scale(1.06); /* IE9 */
+          transform: scale(1.06);
         }
         button:active{
           transition: 0s;

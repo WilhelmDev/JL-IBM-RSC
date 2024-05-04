@@ -1,4 +1,4 @@
-#section-service{
+.section-service{
     display: flex;
     align-items: center;
     background-color: #EAF2FF;
@@ -17,15 +17,28 @@
             width: 50%;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            .container-info{
-                font-weight: 500;
+            gap: 30px;
+            .repeat{
+                .container-info{
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    .image-icon{
+                        background-color: #4293D83D;
+                        padding: 20px;
+                        border-radius: 100px;
+                    }
+                    .content{
+                        text-align: start;
+                    }
+                }
                 button{
                     background-color: transparent;
                     color: #06173D;
                     font-size: 16px;
                     font-weight: 600;
                     height: 35px;
+                    width: max-content;
                     border: 1px solid #0451DD;
                     cursor: pointer;
                     padding: 0px 40px 0px 40px;

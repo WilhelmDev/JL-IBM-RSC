@@ -1,0 +1,14 @@
+#tab-liaison{
+    #container-content{
+        display: grid;
+        grid-template-rows: 
+            900px
+            400px
+            200px
+            1000px
+        ;
+        @import "../start/sections-styles/contact.scss";
+        @import "../tasaciones/email-send.scss";
+        @import "./liaison.scss";
+    }
+}

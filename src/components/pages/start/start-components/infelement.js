@@ -1,15 +1,40 @@
-import React from "react";
+'use client'
+import React, { useState } from "react";
+import Image from "next/image";
 
-export default function InfElement({ list_title, item1, item2, item3, desc_btn }) {
+export default function InfElement(props) {
+    const [data, setData] = useState(props.items)
+    if (data.length === 0) {
+        return <div>No hay datos para mostrar</div>;
+    }
     return (
-        <div className='container-info'>
-            <span className='title-info'>{list_title}</span>
-            <ul className='container-list-info'>
-                <li className=''>{item1}</li>
-                <li className=''>{item2}</li>
-                <li className=''>{item3}</li>
-            </ul>
-            <button>{desc_btn}</button>
-        </div>
+        <>
+            <h4 className='title-service'>{props.title}</h4>
+            {data.map((item, index) => (
+                <div key={index} className="repeat">
+                    <div className='container-info'>
+                        {item.image !== '' ? 
+                            <div key={index} className="image-icon">
+                                <Image width={30} height={30} src={item.image} alt="si"/>
+                            </div>
+                        : ''
+                        }
+                        <div className="content">
+                            <span className='title-info'>{item.title_info}</span>
+                            <ul className='container-list-info'>
+                                {item.content.map((contentItem, i) => (
+                                    <li key={i} className=''>{contentItem}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                    {item.button !== '' ?
+                        <button>{item.button}</button>
+                    :
+                        ''
+                    }
+                </div>
+            ))}
+        </>
     );
 }

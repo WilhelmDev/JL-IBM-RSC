@@ -7,6 +7,7 @@ import { PeriodsResponse, PropertyPayload } from "@/core/domain/parsed"
 import { LocalitiesResponse } from "@/core/domain/responses/localities"
 import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
+import { Agent, ChangePasswordForm, SocialMedia, SocialMediaData } from "@/core/domain/responses/agent"
 
 export const sendFormLocation = async (data: any) => {
   const parsed = parseLocation(data)
@@ -132,11 +133,28 @@ export const deleteEntrepreneurshipsList = async function (id : string) {
     console.log(error)
   }
 }
+export const getMe = async function (): Promise<Agent> {
+  try {
+    const { data } = await ApiInstance("/auth/me")
+    return data.data
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const deletelocalitiesList = async function (id : string) {
   try {
     await ApiInstance.delete(`/localities/${id}`)
   } catch(error) {
+    console.log(error)
+  }
+}
+
+export const updateAgent = async function (id: number, agent: Agent): Promise<Agent> {
+  try {
+    const { data } = await ApiInstance.put(`/admin/agents/${id}`, agent)
+    return data.data
+  } catch (error) {
     console.log(error)
   }
 }
@@ -148,11 +166,36 @@ export const deleteNeighborhoodList = async function (id : string) {
     console.log(error)
   }
 }
+export const getSocialMedia = async function (id: number): Promise<SocialMediaData | null> {
+  try {
+    const { data } = await ApiInstance(`/admin/agents/${id}/social-media`)
+    return data.data
+  } catch (error) {
+    return null
+  }
+}
+
+export const addSocialMedia = async function (id: number, socialMedia: SocialMedia): Promise<SocialMediaData> {
+  try {
+    const { data } = await ApiInstance.post(`/admin/agents/${id}/social-media`, socialMedia)
+    console.log(data)
+    return data.data
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const deleteRealStateList = async function (id : string) {
   try {
     await ApiInstance.delete(`/real-state/${id}`)
   } catch(error) {
     console.log(error)
+  }
+}
+export const changeAgentPassword = async function (id: number, changePasswordForm: ChangePasswordForm): Promise<void> {
+  try {
+    await ApiInstance.post(`/admin/agents/${id}/change-password`, changePasswordForm)
+  } catch (error) {
+    throw error
   }
 }
