@@ -1,7 +1,7 @@
 import DefaultHeader from "@/components/common/DefaultHeader";
 import Footer from "@/components/common/default-footer";
 import MobileMenu from "@/components/common/mobile-menu";
-import FilteringAgent from "@/components/tab-admin/list-agent/property/FilteringAgent";
+import FilteringAgent from "@/components/property/FilteringAgent";
 
 import React from "react";
 
