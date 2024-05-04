@@ -91,6 +91,7 @@ const ChangePasswordForm = ({ agentId }) => {
         password: "",
         password_confirmation: "",
       })
+      toast.success("Contraseña cambiada correctamente")
     } catch (error) {
       if(error.response.data.status === 400)
         toast.error("Contraseña en uso incorrecta")
