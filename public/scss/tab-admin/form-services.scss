@@ -1,0 +1,43 @@
+#services {
+  padding: 7% 5%;
+  display: flex;
+  flex-direction: column;
+  color: $IntenseDarkBlue2;
+  .info-page {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 15px;
+    .title-page {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 30px;
+    }
+  }
+  .services-form{
+    background-color: #ffffff;
+    .nav-link{
+      border-radius: 0;
+      color: #000;
+    }
+    .active{
+      background-color: #0D2565;
+      color: #ffffff;
+      transition: .2s all;
+    }
+  }
+  .content-page {
+    margin-top: 5%;
+    .select__control{
+      border-radius: 1px;
+    }
+    .upload-img{
+        border: 2px dashed #000;
+    }
+    .h-custom-desc-small{
+      min-height: 50px;
+    }
+    .h-custom{
+      min-height: 150px !important;
+    }
+  }
+}
