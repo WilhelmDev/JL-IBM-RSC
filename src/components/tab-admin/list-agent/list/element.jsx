@@ -13,9 +13,9 @@ const Element = (props) =>(
             </div>
         </li>
         <li className="btn-action">
-            <button><Image width={13} height={13} src={"/images/tab-admin/pencil.svg"} alt={""}/></button>
-            <button><Image width={13} height={13} src={"/images/tab-admin/trash-white.svg"} alt={""}/></button>
-            <button><Image width={13} height={13} src={"/images/tab-admin/social.svg"} alt={""}/></button>
+            <button><Image width={15} height={15} src={"/images/tab-admin/pencil.svg"} alt={""}/></button>
+            <button><Image width={15} height={15} src={"/images/tab-admin/trash-white.svg"} alt={""}/></button>
+            <button><Image width={15} height={15} src={"/images/tab-admin/social.svg"} alt={""}/></button>
         </li>
     </ul>
 )
