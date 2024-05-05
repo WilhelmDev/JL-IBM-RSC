@@ -30,6 +30,7 @@ const logout = async (): Promise<void> => {
         await authRepository.logout()
     } catch (error) {
         toast.error('un error ha ocurrido')
+        throw error
     }
 }
 
