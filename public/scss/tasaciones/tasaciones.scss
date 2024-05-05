@@ -1,4 +1,3 @@
-#tasaciones {
   .our-about{
     h2{
       margin: 0;
@@ -99,12 +98,12 @@
           }
           input[type="submit"]:hover{
             background-color: black;
-            transform: scale(1.06);
             -ms-transform: scale(1.06); /* IE9 */
             -moz-transform : scale(1.06); /* Firefox */
             -webkit-transform : scale(1.06); /* Chrome - Safari */
             -o-transform : scale(1.06); /* Opera */
             -ms-transform : scale(1.06); /* IE9 */
+            transform: scale(1.06);
           }
           input[type="submit"]:active{
             transition: 0s;
@@ -146,6 +145,3 @@
       }
     }
   }
-
-}
-

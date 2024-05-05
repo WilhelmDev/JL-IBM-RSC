@@ -1,0 +1,122 @@
+.section-banner{
+    background-image: url(/images/aboutus/banner-image.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.section-info{
+    display: flex;
+    & > * {
+        padding: 100px;
+        width: 50%;
+    }
+    h1{ 
+        margin-left: 150px;
+        text-wrap: nowrap;
+    }
+    p{ width: 430px; }
+    .link{
+        font-weight: 800;
+        text-decoration-line: underline;
+        cursor: pointer;
+    } 
+}
+.section-video{
+    & > * {
+        width: 100%;
+        height: 100%;
+    }
+    .video{
+        aspect-ratio: 16 / 9;
+    }
+    .fake-video{
+        background-image: url(/images/aboutus/provisional-image-video.png);
+        background-size: cover;
+    }
+}
+.section-details{
+    .container{
+        width: 800px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & > *{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .content{
+                font-weight: 800;
+                font-size: 30px;
+            }
+        }
+        .element-detail:nth-child(1){
+            width: 160px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 26px;
+        }
+    }
+}
+.main-section-service{
+    display: flex;
+    justify-content: center;
+    .section-service{
+        width: 90%;
+        .inf-service{
+            width: 40%;
+            .container-center{
+                gap: 5px;
+                width: 65%;
+                .repeat{
+                    .container-info{
+                        .title-info{ 
+                            font-size: 16px;
+                            font-weight: 800;
+                        }
+                    }
+                }
+                button{
+                    padding: 0px 80px 0px 80px;
+                }
+            }
+        }
+        .img-service{
+            height: 100%;
+            width: 60%;
+        }
+    }
+}
+.our-partners{
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+}
+.death-section{
+    background-color: #06173D;
+}
+.email-send{
+    padding: 0;
+    .container-email{
+        height: 300px;
+        width: 1300px;
+        .info-send{
+            padding-top: 20px;
+            h1{
+                padding-bottom: 5px;
+            }
+        }
+    }
+    .rotate-element{
+        bottom: 40px;
+        left: 130px;
+    }
+}
+.section-contact{
+    padding: 20px;
+    justify-content: flex-start;
+    .container-contact, .container-map{
+        background-color: #F7F7F7;
+    }
+}
