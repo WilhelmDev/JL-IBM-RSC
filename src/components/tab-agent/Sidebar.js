@@ -1,9 +1,25 @@
+"use client";
 import { ROUTES } from '@/utilis/routes'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useRouter } from 'next/navigation'
+import { logout } from '@/core/infrastructure/services/auth.service'
 
 export default function SidebarTabAgent() {
+  const router = useRouter()
+
+  const userLogout = async () => {
+    try {
+      await logout();
+      localStorage.removeItem('token')
+      router.push(ROUTES.Login)
+    } catch (error) {
+      console.log(error)
+    }
+      
+  }
+
   return (
     <aside className='container sidebar-container'>
       <h5 className='title'>Agente de JL Bienes Raices</h5>
@@ -83,15 +99,15 @@ export default function SidebarTabAgent() {
         <main className='container links-account'>
           <div className='link'>
             <Image  src="/images/tab-agent/user.svg" alt="user-img" height={20} width={20} className='img' />
-            <Link href={ROUTES.newAgent}>
+            <Link href={ROUTES.agentProfile}>
               <span>Mi Cuenta</span>
             </Link>
           </div>
           <div className='link'>
             <Image  src="/images/tab-agent/exit.svg" alt="user-img" height={20} width={20} className='img' />
-            <Link href={ROUTES.adminHome}>
+            <button onClick={() => userLogout()}>
               <span>Cerrar sesión</span>
-            </Link>
+            </button>
           </div>
         </main>
       </div>
