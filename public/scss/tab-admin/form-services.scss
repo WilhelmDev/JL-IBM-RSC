@@ -39,5 +39,17 @@
     .h-custom{
       min-height: 150px !important;
     }
+    .buttton-container-custom{
+      button{
+        padding: 1% 3%;
+        font-size: 1.2rem;
+      }
+      button:hover{
+        background-color: #003eb1;
+      }
+      button:active{
+        background-color: #0D2565;
+      }
+    }
   }
 }

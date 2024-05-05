@@ -92,7 +92,7 @@ export default function Buildings({updateStepFour, loading, sendForm}) {
 
         <div className="row">
           <div className="col-lg-8">
-            <UploadMediaServices updatePhotos={updatePhotos} label="Imagen Latera" />
+            <UploadMediaServices updatePhotos={updatePhotos} label="Imagen Lateral" />
           </div>
         </div>
         {/* End Row */}

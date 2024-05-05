@@ -2,7 +2,6 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import ServiceForm from '@/components/tab-admin/form-services/form';
 
-// const PropertyForm = dynamic(() => import('@/components/tab-admin/form-services'), { ssr: false })
 
 export const metadata = {
   title: "Nueva Propiedad || Homez - Real Estate NextJS Template",
