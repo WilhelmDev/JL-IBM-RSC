@@ -47,11 +47,11 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
 
 
   return (
-    <div className="ps-widget bgc-white bdrs12 p30 ">
+    <div className="ps-widget bgc-white bdrs12">
       <form className="form-style1">
         <div className='row'>
           <div className="col-6 mb20">
-            <label className="heading-color ff-heading fw600 mb10">Título</label>
+            <label className="heading-color ff-heading fw600 mb20">Título</label>
             <input
               type="text"
               className="form-control"
@@ -64,9 +64,9 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
 
         <div className='row'>
           <div className="col-12">
-            <label className="heading-color ff-heading fw600 mb10">Descripción Corta</label>
+            <label className="heading-color ff-heading fw600 mb20">Descripción Corta</label>
             <textarea 
-              className="form-control mb-3 h-custom-desc-small"
+              className="form-control mb20 h-custom-desc-small"
               placeholder='Verifica la tuya' 
               rows="" 
               value={description}
@@ -79,9 +79,9 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
 
         <div className='row'>
           <div className="col-12">
-            <label className="heading-color ff-heading fw600 mb10">Descripción</label>
+            <label className="heading-color ff-heading fw600 mb20">Descripción</label>
             <textarea 
-            className="form-control mb-3 h-custom"
+            className="form-control mb20 h-custom"
             placeholder='' 
             rows="" 
             value={description}
@@ -100,7 +100,7 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
 
         <div className="row">
           <div className="col-12">
-            <div className="mb30 buttton-container-custom">
+            <div className="buttton-container-custom">
               <button type="button" disabled={loading} onClick={() => handleSubmit()}
               >Guardar</button>
             </div>

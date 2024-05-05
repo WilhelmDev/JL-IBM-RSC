@@ -48,8 +48,8 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
   return (
     <>
       <div className="col-sm-6 col-xl-4">
-        <div className="mb30">
-          <label className="heading-color ff-heading fw600 mb10">
+        <div className="mb10">
+          <label className="heading-color ff-heading fw600 mb20">
             Plataforma de video
           </label>
           <div className="location-area">
@@ -67,8 +67,8 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
         </div>
       </div>
       <div className="col-sm-6 col-xl-4">
-        <div className="mb30">
-          <label className="heading-color ff-heading fw600 mb10">
+        <div className="mb10">
+          <label className="heading-color ff-heading fw600 mb20">
             Link del video
           </label>
           <input type="text" className="form-control" placeholder="Copia y pega el link aqui" value={link} onChange={(e) => setLink(e.target.value)} />

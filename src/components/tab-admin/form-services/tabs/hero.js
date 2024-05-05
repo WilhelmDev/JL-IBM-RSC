@@ -70,7 +70,7 @@ export default function Hero({updateStepOne, loading, sendForm}) {
 
 
   return (
-    <div className="ps-widget bgc-white bdrs12 p30 ">
+    <div className="ps-widget bgc-white bdrs12">
       <form className="form-style1">
         <div className='row'>
             <div className='col-lg-6 mb-3'>
@@ -120,7 +120,7 @@ export default function Hero({updateStepOne, loading, sendForm}) {
 
         <div className="row">
           <div className="col-12">
-            <div className="mb30 buttton-container-custom">
+            <div className="buttton-container-custom">
               <button type="button" disabled={loading} onClick={() => handleSubmit()}
               >Guardar</button>
             </div>

@@ -50,7 +50,7 @@ const UploadMediaServices = ({updatePhotos, label}) => {
 
   return (
     <>
-      <label className="heading-color ff-heading fw600 mb10">{label}</label>
+      <label className="heading-color ff-heading fw600 mb20">{label}</label>
       <div
         className="upload-img position-relative overflow-hidden text-center mb30 px-2 "
         onDrop={handleDrop}
@@ -79,7 +79,7 @@ const UploadMediaServices = ({updatePhotos, label}) => {
       </div>
 
       {/* Display uploaded images */}
-      <div className="row profile-box position-relative d-md-flex align-items-end mb50">
+      <div className="row profile-box position-relative d-md-flex align-items-end mb20">
         {uploadedImages.map((imageData, index) => (
           <div className="col-4 col-md-3" key={index}>
             <div className="profile-img mb20 position-relative">
