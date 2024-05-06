@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 const ListUsers = dynamic(() => import('@/components/tab-admin/list-agent/list-agent'), { ssr: false });
 
-const ListAgentPage = () => (
+const ListUsersPage = () => (
     <div id="tab-admin">
         <div id="content">
             <ListUsers 
@@ -14,4 +14,4 @@ const ListAgentPage = () => (
     </div>
 )
 
-export default ListAgentPage;
+export default ListUsersPage;
