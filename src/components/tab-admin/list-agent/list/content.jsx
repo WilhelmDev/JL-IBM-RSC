@@ -2,7 +2,7 @@ import dynamic from "next/dynamic"
 
 const Element = dynamic(() => import('./element'))
 
-export default function TableListAgent(){
+export default function TableListAgent_User({integration}){
     return(
         <div className="row" id='listing-agents'>
             {/* Begin headers table */}
@@ -23,7 +23,7 @@ export default function TableListAgent(){
     
             {/* Begin Content Table */}
             <Element
-                nombre={"Nombre del agente"}
+                nombre={`Nombre del ${integration}`}
                 email={"email@email.com"}
                 action={"Editar información de {nombre de propiedad}"}
                 acc={{
@@ -33,7 +33,7 @@ export default function TableListAgent(){
                 }}
             />
             <Element
-                nombre={"Nombre del agente"}
+                nombre={`Nombre del ${integration}`}
                 email={"email@email.com"}
                 action={"Creó la propiedad {nombre}"}
                 acc={{
@@ -43,7 +43,7 @@ export default function TableListAgent(){
                 }}
             />
             <Element
-                nombre={"Nombre del agente"}
+                nombre={`Nombre del ${integration}`}
                 email={"email@email.com"}
                 action={"Editó el barrio {nombre}"}
                 acc={{
@@ -53,7 +53,7 @@ export default function TableListAgent(){
                 }}
             />
             <Element
-                nombre={"Nombre del agente"}
+                nombre={`Nombre del ${integration}`}
                 email={"email@email.com"}
                 action={"Editó la propiedad {nombre}"}
                 acc={{
@@ -63,7 +63,7 @@ export default function TableListAgent(){
                 }}
             />
             <Element
-                nombre={"Nombre del agente"}
+                nombre={`Nombre del ${integration}`}
                 email={"email@email.com"}
                 action={"Creó el emprendimiento {nombre}"}
                 acc={{
@@ -73,7 +73,7 @@ export default function TableListAgent(){
                 }}
             />
             <Element
-                nombre={"Nombre del agente"}
+                nombre={`Nombre del ${integration}`}
                 email={"email@email.com"}
                 action={"Editar información de {nombre de propiedad}"}
                 acc={{
