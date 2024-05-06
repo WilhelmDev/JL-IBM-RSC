@@ -2,6 +2,28 @@ import dynamic from "next/dynamic"
 
 const Element = dynamic(() => import('./element'))
 
+const HeaderQuantity = (integration) =>{
+    
+    switch(integration){
+        case 'agente':
+            return(
+                <div className="container-localities">
+                    <div>Cantidad de propiedades</div>
+                    <div>Cantidad de emprendimientos</div>
+                    <div>Cantidad de barrios</div>
+                </div>
+            )
+        case 'usuario':
+            return(
+                <div className="container-localities">
+                    <div>Cantidad de Favoritos</div>
+                    <div>Cantidad de Búsquedas</div>
+                    <div>Cantidad de Interacciones</div>
+                </div>
+            )
+    }
+}
+
 export default function TableListAgent_User({integration}){
     return(
         <div className="row" id='listing-agents'>
@@ -11,11 +33,7 @@ export default function TableListAgent_User({integration}){
                 <li>Email</li>
                 <li>Ultima acción</li>
                 <li className="container-generic">
-                    <div className="container-localities">
-                        <div>Cantidad de propiedades</div>
-                        <div>Cantidad de emprendimientos</div>
-                        <div>Cantidad de barrios</div>
-                    </div>
+                    {HeaderQuantity(integration)}
                 </li>
                 <li>Acción</li>
             </ul>
