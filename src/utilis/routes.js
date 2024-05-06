@@ -26,10 +26,15 @@ export const ROUTES = {
   clientSearchs: "/tab-client/search",
   clientComparisons: "/tab-client/comparisons",
   clientRequests: "/tab-client",
+  clientProfile: "/tab-client",
   // Admin Routes 
   adminHome: '/tab-admin',
   formWhoWeAre: '/tab-admin/form-whoweare',
   formHome: '/tab-admin/form-home',
+  formServices: '/tab-admin',
+  formAppraisals: '/tab-admin',
   newAgent: '/tab-admin/new-agent',
-  tabClient: '/tab-client'
+  newClient: '/tab-admin',
+  tabClient: '/tab-admin',
+  adminProfile: "/tab-admin",
 }
