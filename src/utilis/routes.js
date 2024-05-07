@@ -19,8 +19,22 @@ export const ROUTES = {
   entrepreneurshipList: '/tab-agent/entrepreneurship-list',
   newProperty: '/tab-agent/new-property',
   propertyList: '/tab-agent/property-list',
+  agentProfile: '/tab-agent/profile',
+  //Client Routes
+  clientHome: "/tab-client",
+  clientFavorites: "/tab-client/favorites",
+  clientSearchs: "/tab-client/search",
+  clientComparisons: "/tab-client/comparisons",
+  clientRequests: "/tab-client",
+  clientProfile: "/tab-client",
   // Admin Routes 
   adminHome: '/tab-admin',
+  formWhoWeAre: '/tab-admin/form-whoweare',
+  formHome: '/tab-admin/form-home',
+  formServices: '/tab-admin',
+  formAppraisals: '/tab-admin',
   newAgent: '/tab-admin/new-agent',
-  tabClient: '/tab-client'
+  newClient: '/tab-admin',
+  tabClient: '/tab-admin',
+  adminProfile: "/tab-admin",
 }

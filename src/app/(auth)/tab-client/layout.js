@@ -1,7 +1,7 @@
 import HeaderV2 from '@/components/common/HeaderV2'
 import MobileMenu from '@/components/common/mobile-menu'
 import FooterTabAgent from '@/components/tab-agent/Footer'
-import SidebarTabAgent from '@/components/tab-agent/Sidebar'
+import SidebarTabClient from '@/components/tab-client/Sidebar'
 import React from 'react'
 
 export default function LayoutTabClient({children}) {
@@ -14,7 +14,7 @@ export default function LayoutTabClient({children}) {
       <main className='row' id='tab-client'>
         {/* Begin SideBar */}
         <div className='col-2 p-0' id='sidebar-tab-client'>
-          <SidebarTabAgent />
+          <SidebarTabClient />
         </div>
         {/* End SideBar */}
 
