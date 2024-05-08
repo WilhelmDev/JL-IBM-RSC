@@ -6,7 +6,7 @@ export interface ResponseLogin {
     access_token: string;
     token_type:   string;
     expires_in:   number;
-    role:         string;
+    role:         'Admin' | 'Agente' | 'Cliente'
 }
 export type User = {
     id: number;

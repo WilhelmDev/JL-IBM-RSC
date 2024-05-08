@@ -1,0 +1,19 @@
+#tab-agent {
+  #content {
+    #agent-tab-neighborhoods {
+      padding: 7% 5%;
+      .all-neighborhoods-info {
+        color: $IntenseDarkBlue2;
+        .all-neighborhoods-title {
+          font-size: 30px;
+          font-weight: 600;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+}
+@import "./filters.scss";
+@import "neighborhood-list.scss";
+@import "pagination.scss";
+

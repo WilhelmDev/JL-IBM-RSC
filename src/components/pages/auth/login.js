@@ -21,7 +21,17 @@ const Login = () => {
       setLoading(true)
       const { data:userData } = await loginV2(data)
       saveToken(userData.access_token, userData.role)
-      router.push(ROUTES.tabClient)
+      switch (userData.role) {
+        case 'Admin':
+          router.push(ROUTES.adminHome)
+          break;
+        case "Agente":
+          router.push(ROUTES.homeAgent)
+          break
+        default:
+          router.push(ROUTES.clientHome)
+          break;
+      }
     } catch (error) {
       console.log(error)
     } finally {

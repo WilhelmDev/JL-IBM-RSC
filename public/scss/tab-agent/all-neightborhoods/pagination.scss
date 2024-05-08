@@ -1,0 +1,44 @@
+#tab-agent {
+  #content {
+    #agent-tab-neighborhoods {
+      .pagination-container {
+        margin: 40px 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+
+        .pages {
+          background-color: transparent;
+          color: $darkBlueText;
+          font-weight: 400;
+          font-size: 16px;
+        }
+
+        .current-page {
+          background-color: $darkBlueText;
+          color: white;
+          font-weight: 400;
+          font-size: 16px;
+        }
+
+        .arrow {
+          background-color: white;
+          font-size: 18px;
+          box-shadow: 0px 1px 4px 0px #181a2012;
+        }
+
+        button {
+          border-radius: 9999px;
+          width: 40px;
+          height: 40px;
+          border: none;
+          &:hover {
+            background-color: $darkBlueText;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

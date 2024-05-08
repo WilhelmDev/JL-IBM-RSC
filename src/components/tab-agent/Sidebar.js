@@ -58,9 +58,9 @@ export default function SidebarTabAgent() {
             </div>
             <div className={`link-container ${ROUTES.neighborhoodList === pathname ? "selected" : ""}`}>
               <Image  src="/images/tab-agent/property.svg" alt="img-link" height={20} width={20} className={`img ${ROUTES.neighborhoodList === pathname ? "inverted-img" : ""}`} />
-              {/* <Link href={ROUTES.neighborhoodList}> */}
+              <Link href={ROUTES.neighborhoodList}>
                 <span>Todos los barrios</span>
-              {/* </Link> */}
+              </Link>
             </div>
           </div>
           <div className="section-link">

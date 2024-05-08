@@ -1,0 +1,71 @@
+#tab-agent {
+  #content {
+    #agent-tab-neighborhoods {
+      .neighborhoods-filter {
+        display: flex;
+        gap: 20px;
+        height: 55px;
+        margin: 40px 0;
+        font-size: 14px;
+        .search-neighborhoods {
+          box-sizing: content-box;
+          background-color: white;
+          border: 1px solid #dddddd;
+          width: 180px;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          padding: 0 10px;
+          .search-input {
+            flex-grow: 0;
+            border: none;
+            &:focus {
+              outline: none;
+            }
+            &::placeholder {
+              text-align: center;
+              color: #212529bf;
+            }
+          }
+        }
+        .order-neighborhoods-by {
+          box-sizing: content-box;
+          display: flex;
+          align-items: center;
+          background-color: white;
+          border: 1px solid #dddddd;
+          width: 290px;
+          padding: 0 10px;
+          height: 100%;
+          gap: 10px;
+          .order-title {
+            color: #717171;
+          }
+          .select-container {
+            flex: 1;
+            border: 0px;
+            outline: 0px;
+            color: $black;
+            cursor: pointer;
+          }
+        }
+        .add-btn {
+          display: flex;
+          align-items: center;
+          background-color: $IntenseDarkBlue2;
+          color: white;
+          border: none;
+          height: 57px;
+          padding: 17px 31px 17px 31px;
+          font-weight: 600;
+          font-size: 15px;
+          &:hover {
+            background-color: #030d21;
+          }
+        }
+      }
+    }
+  }
+}

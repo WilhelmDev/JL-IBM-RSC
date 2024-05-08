@@ -118,10 +118,10 @@ export default function OffertsTab({updatePayments, updateStepFive}) {
                 <input type="text" placeholder='10000' value={item2.price2} onChange={(e) => setItem2({...item2, price2: e.target.value})} />
               </td>
               <td>
-                <input type="text" placeholder='Monto' value={item3.price2} onChange={(e) => setItem3({...item1, price2: e.target.value})} />
+                <input type="text" placeholder='Monto' value={item3.price2} onChange={(e) => setItem3({...item3, price2: e.target.value})} />
               </td>
               <td>
-                <input type="text" placeholder='Monto' value={item4.price2} onChange={(e) => setItem1({...item4, price2: e.target.value})} />
+                <input type="text" placeholder='Monto' value={item4.price2} onChange={(e) => setItem4({...item4, price2: e.target.value})} />
               </td>
             </tr>
             {/* End Row */}
@@ -166,16 +166,16 @@ export default function OffertsTab({updatePayments, updateStepFive}) {
                 <input type="text" placeholder='Tipo 5 Editable' value={type5}  onChange={(e) => setType5(e.target.value)}/>
               </td>
               <td>
-                <input type="text" placeholder='Monto Editable' value={item1.price4} onChange={(e) => setItem1({...item1, price4: e.target.value})} />
+                <input type="text" placeholder='Monto Editable' value={item1.price5} onChange={(e) => setItem1({...item1, price5: e.target.value})} />
               </td>
               <td>
-                <input type="text" placeholder='10000' value={item2.price4} onChange={(e) => setItem2({...item2, price4: e.target.value})} />
+                <input type="text" placeholder='10000' value={item2.price5} onChange={(e) => setItem2({...item2, price5: e.target.value})} />
               </td>
               <td>
-                <input type="text" placeholder='Monto' value={item3.price4} onChange={(e) => setItem3({...item3, price4: e.target.value})} />
+                <input type="text" placeholder='Monto' value={item3.price5} onChange={(e) => setItem3({...item3, price5: e.target.value})} />
               </td>
               <td>
-                <input type="text" placeholder='Monto' value={item4.price4} onChange={(e) => setItem4({...item4, price4: e.target.value})} />
+                <input type="text" placeholder='Monto' value={item4.price5} onChange={(e) => setItem4({...item4, price5: e.target.value})} />
               </td>
             </tr>
             {/* End Row */}
