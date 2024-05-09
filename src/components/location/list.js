@@ -8,6 +8,7 @@ import { getLocalizationsList } from '@/core/infrastructure/services/tab-agent.s
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { parsePagination } from '@/utilis/parsers';
 import Image from 'next/image';
+import { ROUTES } from '@/utilis/routes';
 
 const customStyles = {
   control: (provided) => ({
@@ -176,7 +177,7 @@ export default function List() {
           />
         </div>
         <div className="col-xl-3">
-          <button type="button" className='btn-new'>
+          <button type="button" className='btn-new' onClick={() => router.push(ROUTES.newLocality)}>
             Agregar Nuevo
           </button>
         </div>

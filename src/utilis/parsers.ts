@@ -188,7 +188,7 @@ export const parseEntrepreneurship = function (data: any) {
   }
   stepSix = {
     media: {
-      front_page: stepSix.videoData.front || 'Galeria',
+      front_page: stepSix.videoData.front.value || 'Galeria',
       video_url: stepSix.videoData.link,
       gallery: stepSix.photos.length === 0 ? [] : stepSix.photos.map((photo, index) => {
         const portada = stepSix.videoData.portada === undefined ? 0 : stepSix.videoData.portada.value

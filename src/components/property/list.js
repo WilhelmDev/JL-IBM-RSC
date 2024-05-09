@@ -6,6 +6,7 @@ import { parsePagination } from "@/utilis/parsers";
 import FilterButtons from "./atom-components/filterButtons";
 import { getPropertiesList } from "@/core/infrastructure/services/tab-agent.service";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import Loader from "../common/Loader";
 
 export default function List() {
   const router = useRouter();
@@ -19,9 +20,11 @@ export default function List() {
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [sort, setSort] = useState(searchParams.get("sort_by") || "title");
   const [order, setOrder] = useState(searchParams.get("sort_order") || "asc");
+  const [loading, setLoading] = useState(false)
 
   const fetchProperties = async (page, search, sort, order) => {
     try {
+      setLoading(true)
       const { data, meta } = await getPropertiesList(page, search, sort, order);
       const { allPages, range, lastPage } = parsePagination(
         meta,
@@ -30,9 +33,11 @@ export default function List() {
       setRange(range);
       setPages(allPages);
       setLastPage(lastPage);
-      setProperties(data);
+      setProperties(data.length > 0 ? data : undefined);
     } catch (error) {
       setProperties(undefined);
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -85,7 +90,14 @@ export default function List() {
         }
       />
       <div>
-        <TableProperty properties={properties} />
+        <TableProperty properties={properties} loading={loading} />
+        {
+          loading 
+          &&
+          <div className="d-flex align-items-center justify-content-center">
+              <Loader size={100}/>
+          </div>
+        }
       </div>
       
       <div className="row p10">

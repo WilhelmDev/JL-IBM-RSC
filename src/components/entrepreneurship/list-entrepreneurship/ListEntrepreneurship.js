@@ -19,18 +19,22 @@ export default function PageEntrepreneurship() {
     const [range, setRange] = useState('')
     const [search , setSearch] = useState(searchParams.get('search') || '')
     const [sort, setSort] = useState(searchParams.get('sort_by') || 'title')
-    const [order, setOrder] = useState(searchParams.get('sort_order') || 'asc')  
+    const [order, setOrder] = useState(searchParams.get('sort_order') || 'asc')
+    const [loading, setLoading] = useState(false)
 
     const fetchEntrepreneurship = async (page, search, sort, order) => {
         try {
+            setLoading(true)
             const {data, meta} = await getEntrepreneurshipsList(page, search, sort, order)
             const { allPages, range, lastPage } = parsePagination(meta, 'Emprendimientos')
             setRange(range)
             setPages(allPages)
             setLastPage(lastPage)
-            setEntrepreneurship(data)
+            setEntrepreneurship(data.length > 0 ? data : undefined)
         } catch (error) {
             setEntrepreneurship(undefined)
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -61,7 +65,7 @@ export default function PageEntrepreneurship() {
         router.push(`${pathname}?${newSearchParams.toString()}`)
     }
 
-    const handleChangeDebounced = debounce(handleChange, 1000)
+    const handleChangeDebounced = debounce(handleChange, 600)
 
     useEffect(() => {
         fetchEntrepreneurship(page, search, sort, order)
@@ -79,7 +83,7 @@ export default function PageEntrepreneurship() {
         <FilterButons callback={({newSearchTerm, newSort, newOrder}) => handleChangeDebounced(page, newSearchTerm, newSort, newOrder)} />
 
         <div>
-            <TableEntrepreneurship entrepreneurship = {entrepreneurship}/>
+            <TableEntrepreneurship entrepreneurship = {entrepreneurship} loading={loading}/>
         </div>
 
         <div className="pagination-container">

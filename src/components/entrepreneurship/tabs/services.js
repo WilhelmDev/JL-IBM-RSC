@@ -79,7 +79,7 @@ export default function ServicesTab({updateStepFour}) {
                     onChange={(e) => updateServices(e.target.value)}
                     checked={servicesChecked.some((id) => id === el.value)}
                     />
-                    <span>{el.label}</span>
+                    <label htmlFor={`ckeck-service-${el.value}`}>{el.label}</label>
                   </div>
                 </div>
               ))
@@ -106,7 +106,7 @@ export default function ServicesTab({updateStepFour}) {
                       onChange={(e) => updateAdditionals(e.target.value)}
                       checked={additionalsChecked.some((id) => id === service.value)}
                       />
-                      <span>{service.label}</span>
+                      <label htmlFor={`ckeck-service-${service.value}`}>{service.label}</label>
                   </div>
                   ))
                 }

@@ -66,7 +66,7 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
               name="colors"
               options={FrontOptions}
               styles={customStyles}
-              className="select-custom pl-0"
+              className="custom-react_select"
               classNamePrefix="select"
               onChange={(e) => setFront(e)}
               value={front}
@@ -85,7 +85,7 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
               name="colors"
               options={portadas}
               styles={customStyles}
-              className="select-custom pl-0"
+              className="custom-react_select"
               classNamePrefix="select"
               value={portada}
               isMulti={false}

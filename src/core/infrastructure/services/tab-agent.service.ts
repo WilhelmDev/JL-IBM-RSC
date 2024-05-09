@@ -42,7 +42,7 @@ export const sendEntrepreneurshipForm = async (data: any) => {
 export const sendPropertyForm = async (data: PropertyForm) => {
   let parsed = parseProperty(data)
   try {
-    if (parsed.periods) {
+    if (parsed.periods.data.length > 0) {
       const { data } = await ApiInstance.post('/price-by-time', parsed.periods)
       const parsedPeriods = parsePeriodsForm(data as PeriodsResponse)
       parsed = {
@@ -53,6 +53,7 @@ export const sendPropertyForm = async (data: PropertyForm) => {
     await ApiInstance.post('/real-state', parsed as PropertyPayload)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
