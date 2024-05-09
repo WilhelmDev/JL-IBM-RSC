@@ -19,7 +19,7 @@ export const parseLocation = function (data: any) {
         name: reference.name,
         type: reference.type,
         description: reference.description,
-        map_address: `${reference.ubication[0]}, ${reference.ubication[1]}`,
+        map_address: `${reference.ubication.position[0]}, ${reference.ubication.position[1]}`,
         link: reference.link,
         logo: reference.logo
           ?

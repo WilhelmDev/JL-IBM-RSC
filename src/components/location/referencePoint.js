@@ -97,8 +97,21 @@ export default function ReferencePoint({updateStepTwo}) {
     updateStepTwo({
       references
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [references])
   
+  const handleUpload = (files) => {
+    let newImages = '';
+
+    for (const file of files) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        newImages = e.target.result
+        setLogo(newImages);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="row">
@@ -135,10 +148,13 @@ export default function ReferencePoint({updateStepTwo}) {
                       type="text" value={name} onChange={(e) => setName(e.target.value)} 
                       placeholder='Nombre del punto'/>
                     </td>
-                    <td style={{minWidth: '160px'}}>
-                      <Select options={Types} formatGroupLabel={customLabels} placeholder={'Seleccion'}
+                    <td style={{minWidth: '15rem'}}>
+                      <Select options={Types}
+                      formatGroupLabel={customLabels} placeholder={'Seleccion'}
                       defaultValue={type} value={type.value === '' ? '' : type}
                       onChange={(e) => setType(e)}
+                      className="custom-react_select over"
+                      classNamePrefix="select"
                       />
                     </td>
                     <td>
@@ -146,7 +162,10 @@ export default function ReferencePoint({updateStepTwo}) {
                       placeholder='descripcion del punto'/>
                     </td>
                     <td>
-                      <input type="text" value={logo} onChange={(e) => setLogo(e.target.value)}
+                      <label htmlFor="logo-upload" className='custom-file-upload'> { logo ? 'Cambiar Logo' : 'Cargar Logo'}</label>
+                      <input type="file" id='logo-upload'
+                      multiple={false}
+                      onChange={(e) => handleUpload(e.target.files)}
                       placeholder='Logo?'/>
                     </td>
                     <td onClick={() => handleShow()}>
@@ -171,7 +190,7 @@ export default function ReferencePoint({updateStepTwo}) {
                     <td >{ref.name}</td>
                     <td>{ref.type}</td>
                     <td>{ref.description}</td>
-                    <td>{ref.logo}</td>
+                    <td>{ref.logo && <Image src={ref.logo} height={40} width={40} alt='logo' />}</td>
                     <td>{ref.ubication.position}</td>
                     <td>{ref.link}</td>
                     <td>

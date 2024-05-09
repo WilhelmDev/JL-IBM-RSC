@@ -15,6 +15,7 @@ export const sendFormLocation = async (data: any) => {
     await ApiInstance.post('/localities', parsed)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
