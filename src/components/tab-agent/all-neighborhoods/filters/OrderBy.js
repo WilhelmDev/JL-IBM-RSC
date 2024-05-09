@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Select, { components } from "react-select";
 import Image from "next/image";
 
-const OrderBy = () => {
+const OrderBy = ({handleSortFilter}) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const customStyles = {
@@ -40,6 +40,7 @@ const OrderBy = () => {
           }
           width={10}
           height={10}
+          alt="arrow"
         />
       </components.DropdownIndicator>
     );
@@ -47,21 +48,21 @@ const OrderBy = () => {
 
   const options = [
     {
-      value: "name-desc",
+      value: "title asc",
       label: "Nombre A - Z",
     },
     {
-      value: "name-asc",
+      value: "title desc",
       label: "Nombre Z - A",
     },
-    {
-      value: "price-asc",
-      label: "Precio Menor - Mayor",
-    },
-    {
-      value: "price-desc",
-      label: "Precio Mayor - Menor",
-    },
+    // {
+    //   value: "price-asc",
+    //   label: "Precio Menor - Mayor",
+    // },
+    // {
+    //   value: "price-desc",
+    //   label: "Precio Mayor - Menor",
+    // },
   ];
   return (
     <label className="order-neighborhoods-by">
@@ -73,6 +74,7 @@ const OrderBy = () => {
           styles={customStyles}
           defaultValue={options[0]}
           menuIsOpen={menuIsOpen}
+          onChange={(e) => handleSortFilter(e.value)}
           onMenuOpen={() => setMenuIsOpen(true)}
           onMenuClose={() => setMenuIsOpen(false)}
         />

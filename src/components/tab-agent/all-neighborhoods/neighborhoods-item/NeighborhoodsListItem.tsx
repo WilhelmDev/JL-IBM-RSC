@@ -5,42 +5,47 @@ import Requests from "./Requests";
 import LastAction from "./LastAction";
 import FavShared from "./FavShared";
 import Actions from "./Actions";
+import { Neighborhood } from "@/core/domain/responses/neighborhood";
 
-const NeighborhoodsListItem = ({ neighborhood }) => {
+interface propsItem {
+  neighborhood: Neighborhood
+}
+
+const NeighborhoodsListItem = ({ neighborhood }: propsItem) => {
   return (
     <tr className="list-item">
       {/*Begin property and details section*/}
       <Details
-        name={neighborhood.name}
+        name={neighborhood.title}
         type={neighborhood.type}
-        locality={neighborhood.locality}
+        locality={neighborhood.locality_title}
       />
       {/*End property and details section*/}
 
       {/*Begin price x operation section*/}
       <PriceXOperation
-        properties={neighborhood.properties}
-        enterprises={neighborhood.enterprises}
+        properties={neighborhood.meta.dependencies.real_states_amount}
+        enterprises={neighborhood.meta.dependencies.entreprenureships_amount}
       />
       {/*End price x operation section*/}
 
       {/*Begin requests section*/}
       <Requests
-        visits={neighborhood.visits}
-        swap={neighborhood.swap}
-        valuation={neighborhood.valuation}
-        lastRequest={neighborhood.lastRequest}
+        visits={neighborhood.meta.requests.views}
+        swap={neighborhood.meta.requests.rating}
+        valuation={neighborhood.meta.requests.exchange}
+        lastRequest={'12/01/2024'}
       />
       {/*End requests section*/}
 
       {/*Begin last action section*/}
-      <LastAction lastAction={neighborhood.lastAction} />
+      <LastAction lastAction={neighborhood.meta.latest_actions.pop()} />
       {/*End last action section*/}
 
       {/*Begin favorite and shared section*/}
       <FavShared
-        favorites={neighborhood.favorites}
-        shared={neighborhood.shared}
+        favorites={neighborhood.meta.shared_favorites.favorites}
+        shared={neighborhood.meta.shared_favorites.shared}
       />
       {/*End favorite and shared section*/}
 

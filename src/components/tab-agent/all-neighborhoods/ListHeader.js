@@ -2,7 +2,7 @@ import React from "react";
 
 const ListHeader = () => {
   return (
-    <tr>
+    <tr style={{height: '4rem'}}>
       <th>Propiedad y detalles</th>
       <th>Precio x Operación</th>
       <th>Solicitudes</th>

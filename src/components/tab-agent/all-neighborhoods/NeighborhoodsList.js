@@ -1,8 +1,9 @@
 import React from "react";
 import NeighborhoodsListItem from "./neighborhoods-item/NeighborhoodsListItem";
 import ListHeader from "./ListHeader";
+import Loader from "@/components/common/Loader";
 
-const NeighborhoodsList = ({ neighborhoods }) => {
+const NeighborhoodsList = ({ neighborhoods, loading }) => {
   return (
     <section className="list-container">
       <table className="list-table">
@@ -13,15 +14,26 @@ const NeighborhoodsList = ({ neighborhoods }) => {
         {/*End list header*/}
         {/*Begin list body*/}
         <tbody>
-          {neighborhoods.map((neighborhood) => (
+          { neighborhoods 
+          ?
+          neighborhoods.map((neighborhood) => (
             <NeighborhoodsListItem
-              key={neighborhood}
+              key={neighborhood.id}
               neighborhood={neighborhood}
             />
-          ))}
+          ))
+          : 'No se encontraron datos coincidentes'
+          }
+          
         </tbody>
         {/*End list body*/}
       </table>
+      {
+        loading &&
+          <div className="d-flex align-items-center justify-content-center">
+            <Loader size={100}/>
+          </div>
+      }
     </section>
   );
 };

@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-const SearchFilter = () => {
+const SearchFilter = ({handleSearch}) => {
+
+const [search, setSearch] = useState('')
+
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    handleSearch(search)
+  }, 600);
+
+  return () => {
+    clearTimeout(timeout)
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [search])
+
+
   return (
         <div className="search">
           <Image
@@ -16,7 +31,8 @@ const SearchFilter = () => {
             type="text"
             className="search-input"
             placeholder="Buscar"
-            // onChange={handleSearchChange}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
   );
