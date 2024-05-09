@@ -58,12 +58,16 @@ export default function EntrepreneurshipForm() {
       const data = await sendEntrepreneurshipForm({
         stepOne, stepTwo, stepThree, stepFour, stepFive: { ...stepFive, types: paymentTypes }, stepSix
       })
+      toast.success('Emprendimiento creado correctamente', {
+        toastId: 'entrepreneurship-success',
+        autoClose: 600
+      })
       router.push(ROUTES.entrepreneurshipList)
     } catch (error) {
       console.log(error)
       toast.error('Ha ocurrido un error al cargar el emprendimiento', {
         toastId: 'entrepreneurship-error',
-        autoClose: 1500
+        autoClose: 600
       })
     } finally {
       setLoading(false)

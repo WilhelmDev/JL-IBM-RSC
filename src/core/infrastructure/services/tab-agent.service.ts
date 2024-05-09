@@ -25,6 +25,7 @@ export const sendNeighborhoodForm = async (data: any) => {
     await ApiInstance.post('/neighborhood', parsed)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
@@ -34,6 +35,7 @@ export const sendEntrepreneurshipForm = async (data: any) => {
     await ApiInstance.post('/entreprenureships', parsed)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
