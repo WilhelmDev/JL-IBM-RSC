@@ -14,7 +14,7 @@ import PropertieComponent from "@/components/home/home-v3/propertie";
 import HeaderV2 from "@/components/common/HeaderV2";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getEntrepreneurship } from "@/core/infrastructure/services/tab-client.service";
+import { getEntrepreneurship, getNeighborhood } from "@/core/infrastructure/services/tab-client.service";
 import { toast } from "react-toastify";
 
 /*export const metadata = {
@@ -25,6 +25,7 @@ const Home_V3 = () => {
   const { id } = useParams();
   const [image, setImage] = useState("")
   const [entrepreneurship, setEntrepreneurship] = useState(null)
+  const [neighborhood, setNeighborhood] = useState(null)
 
   const tabs = [
     { id: "buy", label: "Establecimiento (3)" },
@@ -51,6 +52,20 @@ const Home_V3 = () => {
     }
     fetchEntrepreneurship();
   }, [])
+
+  useEffect(() => {
+    const fetchNeighborhood = async () => {
+      try {
+        const neighborhood = await getNeighborhood(entrepreneurship.neighborhood_id);
+        setNeighborhood(neighborhood);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    }
+    if (entrepreneurship)
+      fetchNeighborhood();
+  }, [entrepreneurship])
+
 
   if(!entrepreneurship)
     return <></>
@@ -96,15 +111,17 @@ const Home_V3 = () => {
       {/* this is the component of the entrepreneurship table */}
       <ImageCondominium entrepreneurship={entrepreneurship} />
 
-      <div className="container">
-        <PropertieComponent />
+      {neighborhood &&
+        <div className="container">
+        <PropertieComponent neighborhood={neighborhood} />
       </div>
+      }
 
       <div className="container mb-5">
         <div className="row">
           <div className="col-lg-12 wow fadeInUp" data-wow-delay="100">
             <div className="text-start">
-              <h4>¿Que podes encontrar en [Nombre de la localidad]?</h4>
+              <h4>¿Que podés encontrar en [{neighborhood.locality_title}]?</h4>
             </div>
             <div className="home10-map">
               <Map />
