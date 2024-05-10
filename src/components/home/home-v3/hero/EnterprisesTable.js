@@ -63,11 +63,11 @@ const TableEnterprises = ({ entrepreneurship }) => {
             { entrepreneurship.offers &&
               <div className="col-lg-5 justify-content-end d-flex mb-5 wow fadeInUp" data-wow-delay="100">
               <div className="d-grid">
-              { entrepreneurship.offers.map((item) => {
+              { entrepreneurship.offers.map((item, index) => {
                   if(item.type === offer.type)
-                    return <button style={{ border: '1px solid #DDDDDD', background: '#06173D', color: 'white', borderRadius: '0px' }} className="btn mb-1">{item.type}</button>
+                    return <button key={index} style={{ border: '1px solid #DDDDDD', background: '#06173D', color: 'white', borderRadius: '0px' }} className="btn mb-1">{item.type}</button>
                   else
-                    return <button style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-1 bg-white" onClick={() => {
+                    return <button key={index} style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-1 bg-white" onClick={() => {
                       setOffer({
                         type: item.type ?? "",
                         payment: item["Tipo de pago 1"] ?? 0,
@@ -135,9 +135,9 @@ const TableEnterprises = ({ entrepreneurship }) => {
               <div className="container">
                 <p className="fw-bold mb-2">Amenites</p>
                 <div className="row ms-3">
-                  {entrepreneurship.details.amenidades.map((amenidad) => {
+                  {entrepreneurship.details.amenidades.map((amenidad, index) => {
                     return (
-                      <div className="col-lg-3 mb-4">
+                      <div key={index} className="col-lg-3 mb-4">
                         <p className="mb-0">{amenidad.name}</p>
                       </div>
                     )

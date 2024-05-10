@@ -28,9 +28,9 @@ const ImageCondominium = ({ entrepreneurship }) => {
                                 <label class="btn btn-outline-primary" for="btnradio3">Adicionales</label>
                             </div>
                             <div className="row ms-3">
-                                {items.map((item) => {
+                                {items.map((item, index) => {
                                     return (
-                                        <div className="col-lg-3">
+                                        <div key={index} className="col-lg-3">
                                             <p className="mb-0">{item}</p>
                                         </div>
                                     )
@@ -68,9 +68,9 @@ const ImageCondominium = ({ entrepreneurship }) => {
                                 Oferta
                             </h4>
                             <div className="row d-flex justify-content-center ms-3">
-                                {entrepreneurship.offers.map((offer) => {
+                                {entrepreneurship.offers.map((offer, index) => {
                                     return (
-                                        <div className="col-lg-3">
+                                        <div key={index} className="col-lg-3">
                                             <img src="/images/home-v3/room.png" width={170} height={100} />
                                             <p className="fw-bold mb-0">{offer.type}</p>
                                             <p className="mb-0">{offer["Tipo de pago 1"]} USD</p>
