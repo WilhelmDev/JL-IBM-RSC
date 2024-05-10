@@ -31,3 +31,8 @@ export const addFavorite = async function (type: string, id: number) {
   })
   return data.data
 }
+
+export const getNeighborhood = async function (id: number) {
+  const { data } = await ApiInstance(`/neighborhood/${id}`)
+  return data.data
+}
