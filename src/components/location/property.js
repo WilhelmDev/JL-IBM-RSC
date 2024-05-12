@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function Property() {
+export default function Property({ property }) {
   return (
     <main className='property'>
       <section className='img-container'>
         <div className='controls'>
           <div className='category pd-x'>En venta</div>
           <div className='price pd-x-s'>
-            <span><strong>$140,000 USD</strong></span>
-            <small>$1.400.000 ARS</small>
+            <span><strong>${property.price.retail.usd} USD</strong></span>
+            <small>${property.price.retail.arg} ARS</small>
           </div>
           <div className='icons pd-x'>
             <Image src={'/images/custom/expand.svg'} height={50} width={50} alt='icon' className='icon'/> 
@@ -21,20 +21,20 @@ export default function Property() {
         <Image src={'/images/custom/property.png'} height={100} width={100} alt='property' className='img-property'/>
       </section>
       <section className='content-container'>
-        <span>Nombre de la propiedad</span>
+        <span>{property.title}</span>
         <small >Casa</small>
         <div className='specs'>
           <div className='spec'>
             <Image src={'/images/custom/bed.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>1 cama</small>
+            <small>{property.surface_area.bedroom} cama</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/shower.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>2 baños</small>
+            <small>{property.surface_area.bathrooms} baños</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/area.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>1200 mts (cubiertos)</small>
+            <small>{property.surface_area.covered_surface} mts (cubiertos)</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/pin-map.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
