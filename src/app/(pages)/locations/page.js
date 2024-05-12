@@ -4,12 +4,35 @@ import Footer from '@/components/common/default-footer'
 import Entrepreneurship from '@/components/location/entrepreneurship'
 import Neighborhood from '@/components/location/neighborhood'
 import Property from '@/components/location/property'
+import { getLocationId } from "@/core/infrastructure/services/tab-agent.service";
 import Tabs from '@/components/location/tabs'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 export default function Locations() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [currentType, setCurrentType] = useState('1')
+  const [currentLocation, setCurrentLocation] = useState(Number(searchParams.get("id")) || 1)
+  const [location, setLocation] = useState({})
+  const [loading, setLoading] = useState(false)
+  const newSearchParams = new URLSearchParams(searchParams.toString());
+  newSearchParams.set("id", currentLocation);
+  router.push(`${pathname}?id=${currentLocation}`)
+
+
+  const fetchLocation = async (currentLocation) => {
+    try {
+      setLoading(true)
+      const {data} = await getLocationId(currentLocation);
+      setLocation(data);
+    } catch (error) {
+      console.log(error)
+      setLocation(undefined);
+    }
+  };
 
 
   const tabs = [
@@ -23,6 +46,10 @@ export default function Locations() {
     { id: "2", title: "Hospital" },
     { id: "3", title: "Banco" },
   ];
+
+  useEffect(() => {
+    fetchLocation(currentLocation);
+  }, [currentLocation]);
 
   return (
     <>
@@ -43,7 +70,7 @@ export default function Locations() {
         {/* Begin description */}
         <section className='description'>
           <div className='name'>
-            <h1>Nombre de la localidad</h1>
+            <h1>{location.title}</h1>
           </div>
           <Tabs items={items} tabs={tabs}/>
         </section>
