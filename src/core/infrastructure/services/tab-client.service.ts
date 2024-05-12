@@ -36,3 +36,28 @@ export const getNeighborhood = async function (id: number) {
   const { data } = await ApiInstance(`/neighborhood/${id}`)
   return data.data
 }
+
+export const getLocality = async function (id: number) {
+  const { data } = await ApiInstance(`/localities/${id}`)
+  return data.data
+}
+
+export const getNeighborhoods = async function (perPage: number, page: number, sortBy: string, sortOrder: string) {
+  const { data } = await ApiInstance(`/neighborhood?per_page=${perPage}&page=${page}&sort_by=${sortBy}&sort_order=${sortOrder}`)
+  return data.data
+}
+
+export const getEntrepreneurships = async function (perPage: number, page: number, sortBy: string, sortOrder: string) {
+  const { data } = await ApiInstance(`/entreprenureships?per_page=${perPage}&page=${page}&sort_by=${sortBy}&sort_order=${sortOrder}`)
+  return data.data
+}
+
+export const getRealStates = async function (perPage: number, page: number) {
+  const { data } = await ApiInstance(`/real-state?per_page=${perPage}&page=${page}`)
+  return data.data
+}
+
+export const getLocalitiesElementsLocations = async function (id: number) {
+  const { data } = await ApiInstance(`/localities/${id}/locations`)
+  return data
+}
