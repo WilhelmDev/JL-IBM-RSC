@@ -9,13 +9,13 @@ import Property from "@/components/location/property";
 import Tabs from "@/components/location/tabs";
 import Neighborhood from '@/components/location/neighborhood';
 import Entrepreneurship from '@/components/location/entrepreneurship';
-import Map from "@/components/home/home-v10/Map";
 import PropertieComponent from "@/components/home/home-v3/propertie";
 import HeaderV2 from "@/components/common/HeaderV2";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { getEntrepreneurship, getNeighborhood } from "@/core/infrastructure/services/tab-client.service";
+import { getEntrepreneurship, getEntrepreneurships, getLocalitiesElementsLocations, getLocality, getNeighborhood, getNeighborhoods, getRealStates } from "@/core/infrastructure/services/tab-client.service";
 import { toast } from "react-toastify";
+import LocalityElementsMap from "@/components/entrepreneurship-details/Map";
 
 /*export const metadata = {
   title: "Emprendimientos",
@@ -26,18 +26,11 @@ const Home_V3 = () => {
   const [image, setImage] = useState("")
   const [entrepreneurship, setEntrepreneurship] = useState(null)
   const [neighborhood, setNeighborhood] = useState(null)
-
-  const tabs = [
-    { id: "buy", label: "Establecimiento (3)" },
-    { id: "rent", label: "Transporte y accesos" },
-    { id: "sold", label: "Alquiler temporal" },
-  ];
-
-  const items = [
-    { id: "1", title: "Escuela Primaria Nombre" },
-    { id: "2", title: "Hospital" },
-    { id: "3", title: "Banco" },
-  ];
+  const [locality, setLocality] = useState(null)
+  const [neighborhoods, setNeighborhoods] = useState([])
+  const [entrepreneurships, setEntrepreneurships] = useState([])
+  const [realStates, setRealStates] = useState([])
+  const [localityElementsLocation, setLocalityElementsLocation] = useState(null)
 
   useEffect(() => {
     const fetchEntrepreneurship = async () => {
@@ -51,6 +44,33 @@ const Home_V3 = () => {
       }
     }
     fetchEntrepreneurship();
+    const fetchNeighborhoods = async () => {
+      try {
+        const neighborhoods = await getNeighborhoods(2, 1, 'id', 'desc');
+        setNeighborhoods(neighborhoods);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    }
+    fetchNeighborhoods();
+    const fetchEntrepreneurships = async () => {
+      try {
+        const entrepreneurships = await getEntrepreneurships(2, 1, 'id', 'desc');
+        setEntrepreneurships(entrepreneurships);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    }
+    fetchEntrepreneurships();
+    const fetchRealStates = async () => {
+      try {
+        const realStates = await getRealStates(2, 1);
+        setRealStates(realStates);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    }
+    fetchRealStates();
   }, [])
 
   useEffect(() => {
@@ -65,6 +85,29 @@ const Home_V3 = () => {
     if (entrepreneurship)
       fetchNeighborhood();
   }, [entrepreneurship])
+
+  useEffect(() => {
+    const fetchLocality = async () => {
+      try {
+        const locality = await getLocality(/*entrepreneurship.locality_id*/2);
+        setLocality(locality);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    }
+    if (neighborhood)
+      fetchLocality();
+
+    const fecthLocalityElementsLocations = async () => {
+      try {
+        const elements = await getLocalitiesElementsLocations(6);
+        setLocalityElementsLocation(elements);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    }
+    fecthLocalityElementsLocations();
+  }, [neighborhood])
 
 
   if(!entrepreneurship)
@@ -82,6 +125,7 @@ const Home_V3 = () => {
 
 
       {/* Home Banner Style V3 */}
+      {/*aspect-ratio: 4/3 o 16/9*/} 
       <section className="home-banner-style3 p0">
         <div className="home-style3">
           <div className="container">
@@ -121,12 +165,16 @@ const Home_V3 = () => {
         <div className="row">
           <div className="col-lg-12 wow fadeInUp" data-wow-delay="100">
             <div className="text-start">
-              <h4>¿Que podés encontrar en [{neighborhood.locality_title}]?</h4>
+              <h4>¿Que podés encontrar en [{neighborhood?.locality_title}]?</h4>
             </div>
             <div className="home10-map">
-              <Map />
+              {localityElementsLocation &&
+                <LocalityElementsMap positions={localityElementsLocation} />
+              }
             </div>
-            <Tabs items={items} tabs={tabs} />
+            {locality &&
+              <Tabs items={locality.reference_points} />
+            }
           </div>
         </div>
       </div>
@@ -186,20 +234,19 @@ const Home_V3 = () => {
             <h4>Emprendimientos Similares</h4>
             <p>Si quieres invertir en tu casa del futuro aquí encontraras los emprendimientos que te ofrecemos</p>
           </div>
-          <div className="col-lg-6">
-            <div className='content'>
-              <div className='gallery'>
-                <Entrepreneurship />
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div className='content'>
-              <div className='gallery'>
-                <Entrepreneurship />
-              </div>
-            </div>
-          </div>
+            {
+              entrepreneurships.map((entrepreneurship, index) => {
+                return (
+                  <div key={index} className="col-lg-6">
+                    <div className='content'>
+                      <div className='gallery'>
+                        <Entrepreneurship entrepreneurship={entrepreneurship} />
+                      </div>
+                    </div>
+                  </div>
+                )
+              })
+            }
           <p className='expand-button mt-3 mb-4 fw-bold text-center'><strong>Cargar Más</strong></p>
         </div>
       </div>
@@ -217,20 +264,19 @@ const Home_V3 = () => {
             <button style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-3 bg-white me-2">Privados</button>
             <button style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-3 bg-white me-2">Country Club</button>
           </div>
-          <div className="col-lg-6">
-            <div className='content'>
-              <div className='gallery'>
-                <Neighborhood />
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-6">
-            <div className='content'>
-              <div className='gallery'>
-                <Neighborhood />
-              </div>
-            </div>
-          </div>
+          {
+            neighborhoods.map((neighborhood, index) => {
+              return (
+                <div className="col-lg-6">
+                  <div className='content'>
+                    <div className='gallery'>
+                      <Neighborhood key={neighborhood?.id} neighborhood={neighborhood} />
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
           <p className='expand-button mt-3 mb-4 text-center'><strong>Cargar Más</strong></p>
         </div>
       </div>
@@ -241,12 +287,15 @@ const Home_V3 = () => {
             <h4>Otras propiedades que te pueden interesar</h4>
             <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
           </div>
-          <div className="col-lg-6">
-            <Property />
-          </div>
-          <div className="col-lg-6">
-            <Property />
-          </div>
+          {
+            realStates.map((realState, index) => {
+              return (
+                <div className="col-lg-6">
+                  <Property property={realState} />
+                </div>
+              )
+            })
+          }  
         </div>
       </div>
 
