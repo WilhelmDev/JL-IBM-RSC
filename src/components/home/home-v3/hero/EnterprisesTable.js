@@ -150,9 +150,9 @@ const TableEnterprises = ({ entrepreneurship }) => {
               <div className="container">
                 <p className="fw-bold mb-2">Detalles</p>
                 <div className="row ms-1">
-                  {entrepreneurship.services.map((service) => {
+                  {entrepreneurship.services.map((service, index) => {
                       return (
-                        <div className="col-lg-4 mb-4">
+                        <div key={index} className="col-lg-4 mb-4">
                           <p className="mb-0 fw-bold">{service.name}</p>
                         </div>
                       )
