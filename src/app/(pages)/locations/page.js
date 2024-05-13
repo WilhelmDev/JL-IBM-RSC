@@ -4,11 +4,13 @@ import Footer from '@/components/common/default-footer'
 import Entrepreneurship from '@/components/location/entrepreneurship'
 import Neighborhood from '@/components/location/neighborhood'
 import Property from '@/components/location/property'
-import { getLocationId } from "@/core/infrastructure/services/tab-agent.service";
+import { getLocationId, getEntrepreneurshipsList, getNeighborhoodsList, getPropertiesList } from "@/core/infrastructure/services/tab-agent.service";
 import Tabs from '@/components/location/tabs'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import Map from "@/components/home/home-v10/Map";
+
 
 export default function Locations() {
   const router = useRouter();
@@ -17,6 +19,9 @@ export default function Locations() {
   const [currentType, setCurrentType] = useState('1')
   const [currentLocation, setCurrentLocation] = useState(Number(searchParams.get("id")) || 1)
   const [location, setLocation] = useState({})
+  const [entrepreneurship, setEntrepreneurship] = useState([])
+  const [properties, setProperties] = useState([]);
+  const [neighborhood, setNeighborhood] = useState([]);
   const [loading, setLoading] = useState(false)
   const newSearchParams = new URLSearchParams(searchParams.toString());
   newSearchParams.set("id", currentLocation);
@@ -34,6 +39,42 @@ export default function Locations() {
     }
   };
 
+  const fetchEntrepreneurship = async () => {
+    try {
+      setLoading(true)
+      const {data} = await getEntrepreneurshipsList(1, "", "title", "asc")
+      setEntrepreneurship(data.length > 0 ? data : undefined)
+    } catch (error) {
+      setEntrepreneurship(undefined)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchProperties = async () => {
+    try {
+      setLoading(true)
+      const { data } = await getPropertiesList(1, "", "title", "asc");
+      setProperties(data.length > 0 ? data : undefined);
+    } catch (error) {
+      setProperties(undefined);
+    } finally {
+      setLoading(false)
+    }
+  };
+
+  const fetchNeighborhood = async () => {
+    try {
+      setLoading(true)
+      const { data } = await getNeighborhoodsList(1, "", "title", "asc");
+      setNeighborhood(data.length > 0 ? data : undefined);
+    } catch (error) {
+      setNeighborhood(undefined);
+    } finally {
+      setLoading(false)
+    }
+  }
+
 
   const tabs = [
     { id: "buy", label: "Establecimiento (3)" },
@@ -49,6 +90,9 @@ export default function Locations() {
 
   useEffect(() => {
     fetchLocation(currentLocation);
+    fetchEntrepreneurship();
+    fetchProperties();
+    fetchNeighborhood();
   }, [currentLocation]);
 
   return (
@@ -67,20 +111,48 @@ export default function Locations() {
         </section>
         {/* //End carrousel */}
 
-        {/* Begin description */}
         <section className='description'>
           <div className='name'>
-            <h1>{location.title}</h1>
+            {location && location.information ? (
+              <>
+                <h1>{location.title}</h1>
+              </>
+            ) : (
+              <>
+                <h1>No esta disponible la informacion de esta localidad</h1>
+              </>
+            )}
           </div>
+          <div className="container mb-5">
+        <div className="row">
+          <div className="col-lg-12 wow fadeInUp" data-wow-delay="100">
+            <div className="text-start">
+              <h4>¿Que podes encontrar en {location.title}?</h4>
+            </div>
+            <div className="home10-map">
+              <Map />
+            </div>
+          </div>
+        </div>
+      </div>
           <Tabs items={items} tabs={tabs}/>
         </section>
-        {/* End description */}
 
         {/* Begin Propertys */}
           <section className='propertys'> 
             <div className='title'>
-              <h1>2 Propiedades Disponibles en esta localidad</h1>
-              <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+              {location && location.information ? (
+                <>
+                  <h1>{location.information.real_states_amount} Propiedades Disponibles en esta localidad</h1>
+                  <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+                </>
+              ) : (
+                <>
+                  <h1>0 Propiedades Disponibles en esta localidad</h1>
+                  <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+                </>
+              )
+              }
             </div>
             <div className='content'>
               <div className='button-container'>
@@ -95,8 +167,11 @@ export default function Locations() {
                 </button>
               </div>
               <div className='gallery'>
-                <Property />
-                <Property />
+                {properties && properties.length > 0 && (
+                  properties.map((property, index) => (
+                    <Property key={index} property={property} />
+                  ))
+                )}
               </div>
               <p className='expand-button'><strong>Cargar Más</strong></p>
             </div>
@@ -106,8 +181,18 @@ export default function Locations() {
         {/* Begin Neighborhoods */}
           <section className='neighborhoods'>
             <div className='title'>
-              <h1>3 Barrios en esta localidad</h1>
-              <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+            {location && location.information ? (
+                <>
+                  <h1>{location.information.neighborhoods_amount} Barrios Disponibles en esta localidad</h1>
+                  <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+                </>
+              ) : (
+                <>
+                  <h1>0 Barrios Disponibles en esta localidad</h1>
+                  <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+                </>
+              )
+              }
             </div>
             <div className='content'>
               <div className='button-container'>
@@ -128,8 +213,11 @@ export default function Locations() {
                   </button>
                 </div>
               <div className='gallery'>
-                <Neighborhood />
-                <Neighborhood />
+                {neighborhood && neighborhood.length > 0 && (
+                  neighborhood.map((neighborhood, index) => (
+                    <Neighborhood key={index} neighborhood={neighborhood} />
+                  ))
+                )}
               </div>
             </div>
             <p className='expand-button'><strong>Cargar Más</strong></p>
@@ -139,13 +227,26 @@ export default function Locations() {
         {/* Begin Entrepreneurship */}
         <section className='entrepreneurships'>
             <div className='title'>
-              <h1>4 Emprendimientos en esta localidad</h1>
-              <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+            {location && location.information ? (
+                <>
+                  <h1>{location.information.entrepreneurships_amount} Emprendimientos Disponibles en esta localidad</h1>
+                  <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+                </>
+              ) : (
+                <>
+                  <h1>0 Emprendimientos Disponibles en esta localidad</h1>
+                  <p>Puedes guardar y seleccionar las que te gusten y compararlas</p>
+                </>
+              )
+              }
             </div>
             <div className='content'>
               <div className='gallery'>
-                <Entrepreneurship />
-                <Entrepreneurship />
+                {entrepreneurship && entrepreneurship.length > 0 && (
+                  entrepreneurship.map((entrepreneurship, index) => (
+                    <Entrepreneurship key={index} entrepreneurship={entrepreneurship} />
+                  ))
+                )}
               </div>
             </div>
             <p className='expand-button'><strong>Cargar Más</strong></p>

@@ -1,13 +1,15 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function Neighborhood() {
+export default function Neighborhood({ neighborhood }) {
+  const { details, media, type, title, locality_title } = neighborhood || {};
+
   return (
     <main className='neighborhood'>
       <section className='info-cont'>
-        <div className='available'>10</div>
+        <div className='available'>{details?.available_lots || 'No disponible'}</div>
         <div className='category'>
-          <span>Propiedades</span>
+          <span>{type || 'Tipo no disponible'}</span>
           <span>Disponibles</span>
         </div>
         <div className='price'>
@@ -20,19 +22,19 @@ export default function Neighborhood() {
         <Image src={'/images/custom/neighborhood.png'} height={100} width={100} alt='neighborhood' className='img-neighborhood'/>
       </section>
       <section className='content-container'>
-        <span>Nombre de la propiedad</span>
-        <small>Ubicación del barrio</small>
+        <span>{title || 'Título no disponible'}</span>
+        <small>{locality_title || 'Localidad no disponible'}</small>
         <div className='specs'>
           <div className='spec'>
             <Image src={'/images/custom/house.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>20 unidades en total</small>
+            <small>{details?.lots_amount || 'No disponible'} unidades en total</small>
           </div>
           <div className='spec'>
-            <small>5 Disponibles</small>
+            <small>{details?.available_lots || 'No disponible'} Disponibles</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/area.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>1200 mts (totales)</small>
+            <small>{details?.neighborhood_surface || 'No disponible'} mts (totales)</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/pin-map.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
