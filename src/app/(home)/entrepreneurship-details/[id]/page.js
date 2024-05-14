@@ -89,7 +89,7 @@ const Home_V3 = () => {
   useEffect(() => {
     const fetchLocality = async () => {
       try {
-        const locality = await getLocality(/*entrepreneurship.locality_id*/2);
+        const locality = await getLocality(neighborhood.locality_id);
         setLocality(locality);
       } catch (error) {
         toast.error('Ha ocurrido un error');
@@ -100,13 +100,14 @@ const Home_V3 = () => {
 
     const fecthLocalityElementsLocations = async () => {
       try {
-        const elements = await getLocalitiesElementsLocations(6);
+        const elements = await getLocalitiesElementsLocations(neighborhood.locality_id);
         setLocalityElementsLocation(elements);
       } catch (error) {
         toast.error('Ha ocurrido un error');
       }
     }
-    fecthLocalityElementsLocations();
+    if (neighborhood)
+      fecthLocalityElementsLocations();
   }, [neighborhood])
 
 
