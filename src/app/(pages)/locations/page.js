@@ -134,25 +134,25 @@ export default function Locations() {
               </>
             )}
           </div>
+
           <div className="container mb-5">
         <div className="row">
           <div className="col-lg-12 wow fadeInUp" data-wow-delay="100">
             <div className="text-start">
-            <h4>
-              ¿Que podes encontrar en {location && location.title ? location.title : 'lugar desconocido'}?
-            </h4>
+              <h4>¿Que podés encontrar en {location.title}?</h4>
             </div>
             <div className="home10-map">
-            {localityElementsLocation &&  
+              {localityElementsLocation &&
                 <LocalityElementsMap positions={localityElementsLocation} />
               }
             </div>
+            {location &&
+              <Tabs items={location.reference_points} />
+            }
             </div>
           </div>
-          {location && (
-            <Tabs items={location.reference_points} />
-          )}
         </div>
+
         </section>
 
         {/* Begin Propertys */}

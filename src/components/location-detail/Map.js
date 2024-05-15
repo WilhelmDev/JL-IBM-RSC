@@ -1,13 +1,14 @@
 "use client";
 import { MapContainer, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet.css"
 import { Localizacion } from "@/utilis/positions";
 import { Entrepreneurship, Neighborhood, Property } from "@/utilis/markers";
-import CustomMarker from "./Marker";
+import CustomMarker from "./Marker"
 import { useRef } from "react";
 
 export default function LocalityElementsMap({ positions }) {
   const markerRef = useRef(null);
+  console.log(positions)
   return (
     <MapContainer
       id="elements-map"
