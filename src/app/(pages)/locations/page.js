@@ -9,7 +9,6 @@ import Tabs from '@/components/location/tabs'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-import Map from "@/components/home/home-v10/Map";
 
 
 export default function Locations() {
@@ -130,7 +129,7 @@ export default function Locations() {
               <h4>¿Que podes encontrar en {location.title}?</h4>
             </div>
             <div className="home10-map">
-              <Map />
+              
             </div>
           </div>
         </div>
