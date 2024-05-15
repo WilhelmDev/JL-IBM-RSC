@@ -49,7 +49,7 @@ const ImageCondominium = ({ entrepreneurship }) => {
                                     <p className="me-3"><b>Tamaño:</b> {entrepreneurship.offers[0].covered_sourface} mts2</p>
                                     <p className="me-3"><b>Habitaciones</b> {entrepreneurship.offers[0].rooms_amount}</p>
                                     <p className="me-3"><b>Baños</b> {entrepreneurship.offers[0].bathrooms_amount}</p>
-                                    <p className="me-3"><b>Precio</b> ${entrepreneurship.offers[0]["Tipo de pago 1"]}</p>
+                                    <p className="me-3"><b>Precio</b> ${entrepreneurship.offers[0].min_max_price.max.amount}</p>
                                 </div>
                             </button>
                         </h2>
