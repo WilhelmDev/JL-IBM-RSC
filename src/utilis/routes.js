@@ -2,7 +2,7 @@ export const ROUTES = {
   Home: '/',
   Browser: '/',
   Neighborhoods: '/',
-  Entrepreneurship: '/entreprenure',
+  Entrepreneurship: '/entreprenureship',
   WhoWeAre: '/',
   Services: '/',
   Login: '/login',
