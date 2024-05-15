@@ -1,20 +1,18 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export default function Neighborhood({ neighborhood }) {
-  const { details, media, type, title, locality_title } = neighborhood || {};
-
   return (
     <main className='neighborhood'>
       <section className='info-cont'>
-        <div className='available'>{details?.available_lots || 'No disponible'}</div>
+        <div className='available'>{neighborhood?.details.available_lots}</div>
         <div className='category'>
           <span>{type || 'Tipo no disponible'}</span>
           <span>Disponibles</span>
         </div>
         <div className='price'>
-          <span><strong>Desde $25,000 USD</strong></span>
-          <small>A $150.000 USD</small>
+          {/*<span><strong>Desde ${neighborhood.details.lots_amount} USD</strong></span>*/}
         </div>
       </section>
       <section className='img-container'>
@@ -22,28 +20,30 @@ export default function Neighborhood({ neighborhood }) {
         <Image src={'/images/custom/neighborhood.png'} height={100} width={100} alt='neighborhood' className='img-neighborhood'/>
       </section>
       <section className='content-container'>
-        <span>{title || 'Título no disponible'}</span>
-        <small>{locality_title || 'Localidad no disponible'}</small>
+        <span>{neighborhood?.title}</span>
+        <small>{neighborhood?.zonificacion}</small>
         <div className='specs'>
           <div className='spec'>
             <Image src={'/images/custom/house.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>{details?.lots_amount || 'No disponible'} unidades en total</small>
+            <small>{neighborhood?.details.lots_amount} unidades en total</small>
           </div>
           <div className='spec'>
-            <small>{details?.available_lots || 'No disponible'} Disponibles</small>
+            <small>{neighborhood?.details.available_lots} Disponibles</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/area.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>{details?.neighborhood_surface || 'No disponible'} mts (totales)</small>
+            <small>{neighborhood?.details.neighborhood_surface} mts (totales)</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/pin-map.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small className='map-link'>Ver en el mapa</small>
+            <Link href="/search-map">
+              <small className='map-link'>Ver en el mapa</small>
+            </Link>
           </div>
         </div>
-        <div className='link'>
+        <Link href="/search-map" className='link'>
           <small>Barrio, emprendimiento (Link Página) - Partido (Link al partido en el mapa)</small>
-        </div>
+        </Link>
       </section>
     </main>
   )

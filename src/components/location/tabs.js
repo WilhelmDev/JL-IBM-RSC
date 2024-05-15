@@ -3,7 +3,6 @@ import { Types } from '@/data/selects';
 import React, { useEffect, useState } from 'react'
 
 export default function Tabs({ items }) {
-
   const tabs = [
     { id: "locals", label: "Establecimiento" },
     { id: "transports", label: "Transporte y accesos" },
@@ -24,21 +23,19 @@ export default function Tabs({ items }) {
       return type.options.map(option => option.label)
     }).filter(Boolean)
 
-    useEffect(() => {
-      if (items) {
-        setActiveItem(items.filter(item => {
-          if (activeTab === 'locals') {
-            return locals.includes(item.type);
-          }
-          if (activeTab === 'transports') {
-            return transports.includes(item.type);
-          }
-          if (activeTab === 'stores') {
-            return stores.includes(item.type);
-          }
-        }));
+  useEffect(() => {
+    setActiveItem(items.filter(item => {
+      if (activeTab === 'locals') {
+        return locals.includes(item.type);
       }
-    }, [activeTab, items]);
+      if (activeTab === 'transports') {
+        return transports.includes(item.type);
+      }
+      if (activeTab === 'stores') {
+        return stores.includes(item.type);
+      }
+    }));
+  }, [activeTab, items]);
   
   const handleTabClick = (tab) => {
     setActiveTab(tab);
