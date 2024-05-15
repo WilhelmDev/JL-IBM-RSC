@@ -1,8 +1,18 @@
+import { addFavorite } from '@/core/infrastructure/services/tab-client.service'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { toast } from 'react-toastify'
 
 export default function Property({ property }) {
+  const addPropertyFavorite = async () => {
+    try {
+      await addFavorite("real-state", property.id)
+      toast.success("La propiedad ha sido agregado a favoritos")
+    } catch (error) {
+      toast.error("Ha ocurrido un error")
+    }
+  }
   return (
     <main className='property'>
       <section className='img-container'>
@@ -13,9 +23,15 @@ export default function Property({ property }) {
             <small>${property?.price.retail.arg} ARS</small>
           </div>
           <div className='icons pd-x'>
-            <Image src={'/images/custom/expand.svg'} height={50} width={50} alt='icon' className='icon'/> 
-            <Image src={'/images/custom/super.svg'} height={50} width={50} alt='icon' className='icon'/> 
-            <Image src={'/images/custom/favorite.svg'} height={50} width={50} alt='icon' className='icon'/> 
+            <Link target='_blank' href={`/property-detail/${property?.id}`} style={{padding: 0, border: "none"}}>
+              <Image src={'/images/custom/expand.svg'} height={50} width={50} alt='icon' className='icon' /> 
+            </Link>
+            <Link target='_blank' href={`/comparisons`} style={{padding: 0, border: "none"}}>
+              <Image src={'/images/custom/super.svg'} height={50} width={50} alt='icon' className='icon'/> 
+            </Link>
+            <button style={{padding: 0, border: "none"}} onClick={() => addPropertyFavorite()}>
+              <Image src={'/images/custom/favorite.svg'} height={50} width={50} alt='icon' className='icon'/> 
+            </button>
           </div>
         </div>
         <Image src={'/images/custom/owner.png'} height={100} width={100} alt='property' className='owner-img'/>
