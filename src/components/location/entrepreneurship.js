@@ -5,12 +5,13 @@ import React from 'react'
 export default function Entrepreneurship({ entrepreneurship }) {
   const minPrice = entrepreneurship?.offers.reduce((min, offer) => Math.min(min, offer.min_max_price.min.amount), Infinity);
   const maxPrice = entrepreneurship?.offers.reduce((max, offer) => Math.max(max, offer.min_max_price.max.amount), -Infinity);
+  const unitsAmount = entrepreneurship?.details.units_amount ? Math.floor(entrepreneurship.details.units_amount) : 0;
+  const coveredSourface = entrepreneurship?.details.covered_sourface ? Math.floor(entrepreneurship.details.covered_sourface) : 0;
+  const totalBathrooms = entrepreneurship?.offers.reduce((total, offer) => total + offer.bathrooms_amount, 0);
   return (
     <main className='entrepreneurship'>
       <section className='info-cont'>
-        <div className='available'>{entrepreneurship?.offers.reduce(
-          (acc, offer) => acc + offer.units_amount, 0
-        )}</div>
+        <div className='available'>{unitsAmount}</div>
         <div className='category'>
           <span>Propiedades</span>
           <span>Disponibles</span>
@@ -29,15 +30,15 @@ export default function Entrepreneurship({ entrepreneurship }) {
         <div className='specs'>
           <div className='spec'>
             <Image src={'/images/custom/item.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>{entrepreneurship?.offers[0].units_amount} unidades en total</small>
+            <small>{unitsAmount} unidades en total</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/shower.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>{entrepreneurship?.offers[0].bathrooms_amount} Disponibles</small>
+            <small>{totalBathrooms} Disponibles</small>
           </div>
           <div className='spec'>
             <Image src={'/images/custom/area.svg'} height={100} width={100} alt='icon' className='icon-spec'/>
-            <small>{entrepreneurship?.offers[0].covered_sourface} mts (cubiertos)</small>
+            <small>{coveredSourface} mts (cubiertos)</small>
           </div>
         </div>
         <div className='specs b-bt'>
