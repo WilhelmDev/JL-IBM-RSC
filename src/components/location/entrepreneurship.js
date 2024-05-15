@@ -3,8 +3,6 @@ import React from 'react'
 
 export default function Entrepreneurship({ entrepreneurship }) {
 
-  console.log(entrepreneurship)
-
   return (
     <main className='entrepreneurship'>
       <section className='info-cont'>

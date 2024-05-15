@@ -4,11 +4,13 @@ import Footer from '@/components/common/default-footer'
 import Entrepreneurship from '@/components/location/entrepreneurship'
 import Neighborhood from '@/components/location/neighborhood'
 import Property from '@/components/location/property'
-import { getLocationId, getEntrepreneurshipsList, getNeighborhoodsList, getPropertiesList } from "@/core/infrastructure/services/tab-agent.service";
+import { getLocationId, getEntrepreneurshipsList, getNeighborhoodsList, getPropertiesList, getLocalitiesElementsLocations} from "@/core/infrastructure/services/tab-agent.service";
 import Tabs from '@/components/location/tabs'
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react'
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import LocalityElementsMap from "@/components/location-detail/Map";
+
 
 
 export default function Locations() {
@@ -22,6 +24,7 @@ export default function Locations() {
   const [properties, setProperties] = useState([]);
   const [neighborhood, setNeighborhood] = useState([]);
   const [loading, setLoading] = useState(false)
+  const [localityElementsLocation, setLocalityElementsLocation] = useState(null)
   const newSearchParams = new URLSearchParams(searchParams.toString());
   newSearchParams.set("id", currentLocation);
   router.push(`${pathname}?id=${currentLocation}`)
@@ -37,61 +40,70 @@ export default function Locations() {
       setLocation(undefined);
     }
   };
-
-  const fetchEntrepreneurship = async () => {
-    try {
-      setLoading(true)
-      const {data} = await getEntrepreneurshipsList(1, "", "title", "asc")
-      setEntrepreneurship(data.length > 0 ? data : undefined)
-    } catch (error) {
-      setEntrepreneurship(undefined)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const fetchProperties = async () => {
-    try {
-      setLoading(true)
-      const { data } = await getPropertiesList(1, "", "title", "asc");
-      setProperties(data.length > 0 ? data : undefined);
-    } catch (error) {
-      setProperties(undefined);
-    } finally {
-      setLoading(false)
-    }
-  };
-
-  const fetchNeighborhood = async () => {
-    try {
-      setLoading(true)
-      const { data } = await getNeighborhoodsList(1, "", "title", "asc");
-      setNeighborhood(data.length > 0 ? data : undefined);
-    } catch (error) {
-      setNeighborhood(undefined);
-    } finally {
-      setLoading(false)
-    }
-  }
-
-
-  const tabs = [
-    { id: "buy", label: "Establecimiento (3)" },
-    { id: "rent", label: "Transporte y accesos" },
-    { id: "sold", label: "Alquiler temporal" },
-  ];
-
-  const items = [
-    { id: "1", title: "Escuela Primaria Nombre" },
-    { id: "2", title: "Hospital" },
-    { id: "3", title: "Banco" },
-  ];
-
+  
   useEffect(() => {
     fetchLocation(currentLocation);
+  }, [currentLocation]);
+
+  useEffect(() => {
+    const fetchEntrepreneurship = async () => {
+      try {
+        setLoading(true)
+        const {data} = await getEntrepreneurshipsList(1, "", "title", "asc")
+        setEntrepreneurship(data.length > 0 ? data : undefined)
+      } catch (error) {
+        setEntrepreneurship(undefined)
+      } finally {
+        setLoading(false)
+      }
+    };
+
     fetchEntrepreneurship();
+  }, []);
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        setLoading(true)
+        const { data } = await getPropertiesList(1, "", "title", "asc");
+        setProperties(data.length > 0 ? data : undefined);
+      } catch (error) {
+        setProperties(undefined);
+      } finally {
+        setLoading(false)
+      }
+    };
+
     fetchProperties();
+  }, []);
+
+  useEffect(() => {
+    const fetchNeighborhood = async () => {
+      try {
+        setLoading(true)
+        const { data } = await getNeighborhoodsList(1, "", "title", "asc");
+        setNeighborhood(data.length > 0 ? data : undefined);
+      } catch (error) {
+        setNeighborhood(undefined);
+      } finally {
+        setLoading(false)
+      }
+    };
+
     fetchNeighborhood();
+  }, []);
+
+  useEffect(() => {
+    const fecthLocalityElementsLocations = async () => {
+      try {
+        const elements = await getLocalitiesElementsLocations(currentLocation);
+        setLocalityElementsLocation(elements);
+      } catch (error) {
+        toast.error('Ha ocurrido un error');
+      }
+    };
+
+    fecthLocalityElementsLocations();
   }, [currentLocation]);
 
   return (
@@ -126,15 +138,21 @@ export default function Locations() {
         <div className="row">
           <div className="col-lg-12 wow fadeInUp" data-wow-delay="100">
             <div className="text-start">
-              <h4>¿Que podes encontrar en {location.title}?</h4>
+            <h4>
+              ¿Que podes encontrar en {location && location.title ? location.title : 'lugar desconocido'}?
+            </h4>
             </div>
             <div className="home10-map">
-              
+            {localityElementsLocation &&  
+                <LocalityElementsMap positions={localityElementsLocation} />
+              }
+            </div>
             </div>
           </div>
+          {location && (
+            <Tabs items={location.reference_points} />
+          )}
         </div>
-      </div>
-          <Tabs items={items} tabs={tabs}/>
         </section>
 
         {/* Begin Propertys */}

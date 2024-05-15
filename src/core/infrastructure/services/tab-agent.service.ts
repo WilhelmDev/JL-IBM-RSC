@@ -137,5 +137,10 @@ export const getNeighborhoodsList = async function (page: string | number, searc
 
 export const getLocationId = async function (id: number) {
   const { data } = await ApiInstance(`/localities/${id}`)
-  return data as PropertiesResponse
+  return data
+}
+
+export const getLocalitiesElementsLocations = async function (id: number) {
+  const { data } = await ApiInstance(`/localities/${id}/locations`)
+  return data
 }
