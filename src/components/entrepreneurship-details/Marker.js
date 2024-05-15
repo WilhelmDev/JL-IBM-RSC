@@ -1,3 +1,4 @@
+"use client"
 import React, { useRef } from 'react'
 import { Marker, Popup } from 'react-leaflet'
 
