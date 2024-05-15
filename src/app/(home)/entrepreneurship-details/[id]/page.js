@@ -248,7 +248,7 @@ const Home_V3 = () => {
                 )
               })
             }
-          <p className='expand-button mt-3 mb-4 fw-bold text-center'><strong>Cargar Más</strong></p>
+          <div className='expand-button mt-3 mb-4 fw-bold text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
         </div>
       </div>
 
@@ -278,7 +278,7 @@ const Home_V3 = () => {
               )
             })
           }
-          <p className='expand-button mt-3 mb-4 text-center'><strong>Cargar Más</strong></p>
+          <div className='expand-button mt-3 mb-4 text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
         </div>
       </div>
 
