@@ -64,16 +64,18 @@ const TableEnterprises = ({ entrepreneurship }) => {
               <div className="col-lg-5 justify-content-end d-flex mb-5 wow fadeInUp" data-wow-delay="100">
               <div className="d-grid">
               { entrepreneurship.offers.map((item, index) => {
-                  if(item.type === offer.type)
-                    return <button key={index} style={{ border: '1px solid #DDDDDD', background: '#06173D', color: 'white', borderRadius: '0px' }} className="btn mb-1">{item.type}</button>
+                const {type, description, units_amount, rooms_amount, bathrooms_amount, total_sourface, covered_sourface, semicovered_sourface, images, min_max_price, ...payments} = item
+                const firstPayment = Object.keys(payments)[0]
+                  if(type === offer.type)
+                    return <button key={index} style={{ border: '1px solid #DDDDDD', background: '#06173D', color: 'white', borderRadius: '0px' }} className="btn mb-1">{type}</button>
                   else
                     return <button key={index} style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-1 bg-white" onClick={() => {
                       setOffer({
-                        type: item.type ?? "",
-                        payment: item["Tipo de pago 1"] ?? 0,
-                        meters: item.covered_sourface ?? 0,
+                        type: type ?? "",
+                        payment: payments[firstPayment] ?? 0,
+                        meters: covered_sourface ?? 0,
                       })
-                    }}>{item.type}</button>
+                    }}>{type}</button>
                 })
               }
               </div>
