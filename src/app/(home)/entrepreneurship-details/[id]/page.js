@@ -268,13 +268,7 @@ const Home_V3 = () => {
           {
             neighborhoods.map((neighborhood, index) => {
               return (
-                <div className="col-lg-6">
-                  <div className='content'>
-                    <div className='gallery'>
-                      <Neighborhood key={neighborhood?.id} neighborhood={neighborhood} />
-                    </div>
-                  </div>
-                </div>
+                <NeighborhoodItem neighborhood={neighborhood} key={neighborhood?.id + 'neigh'}/> 
               )
             })
           }
@@ -291,9 +285,7 @@ const Home_V3 = () => {
           {
             realStates.map((realState, index) => {
               return (
-                <div className="col-lg-6">
-                  <Property property={realState} />
-                </div>
+                <PropItem realState={realState} key={realState.id + '-prop'}/>
               )
             })
           }  
@@ -308,3 +300,24 @@ const Home_V3 = () => {
 };
 
 export default Home_V3;
+
+function PropItem({ realState }) {
+  return (
+    <div className="col-lg-6">
+      <Property property={realState} />
+    </div>
+  )
+}
+
+function NeighborhoodItem({ neighborhood }) {
+  return (
+    <div className="col-lg-6">
+      <div className='content'>
+        <div className='gallery'>
+          <Neighborhood neighborhood={neighborhood} />
+        </div>
+      </div>
+    </div>
+  )
+}
+
