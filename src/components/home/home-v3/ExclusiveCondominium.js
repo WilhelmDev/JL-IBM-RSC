@@ -69,17 +69,18 @@ const ImageCondominium = ({ entrepreneurship }) => {
                             </h4>
                             <div className="row d-flex justify-content-center ms-3">
                                 {entrepreneurship.offers.map((offer, index) => {
+                                    const {type, description, units_amount, rooms_amount, bathrooms_amount, total_sourface, covered_sourface, semicovered_sourface, images, min_max_price, ...payments} = offer
                                     return (
                                         <div key={index} className="col-lg-3">
                                             <img src="/images/home-v3/room.png" width={170} height={100} />
-                                            <p className="fw-bold mb-0">{offer.type}</p>
-                                            <p className="mb-0">{offer["Tipo de pago 1"]} USD</p>
-                                            <p>{offer.description}</p>
-                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">$ {offer["Tipo de pago 1"]}</p>
-                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">$ {offer["Tipo de pago 2"]}</p>
-                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">$ {offer["Tipo de pago 3"]}</p>
-                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">$ {offer["Tipo de pago 4"]}</p>
-                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">$ {offer["Tipo de pago 5"]}</p>
+                                            <p className="fw-bold mb-0">{type}</p>
+                                            <p className="mb-0">{min_max_price.max.amount} USD</p>
+                                            <p>{description}</p>
+                                            {Object.keys(payments).map((payment, paymentIndex) => (
+                                              <p key={paymentIndex} style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">{payment}</p>
+                                            ))}
+                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">Superficie Total: {total_sourface}</p>
+                                            <p style={{ borderBottom: '1px solid #000', width: '140px' }} className="mb-0">Superficie Cubierta: {covered_sourface}</p>
                                         </div>
                                     )
                                 })
