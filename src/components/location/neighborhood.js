@@ -8,7 +8,7 @@ export default function Neighborhood({ neighborhood }) {
       <section className='info-cont'>
         <div className='available'>{neighborhood?.details.available_lots}</div>
         <div className='category'>
-          <span>{type || 'Tipo no disponible'}</span>
+          <span>{neighborhood.type || 'Tipo no disponible'}</span>
           <span>Disponibles</span>
         </div>
         <div className='price'>
