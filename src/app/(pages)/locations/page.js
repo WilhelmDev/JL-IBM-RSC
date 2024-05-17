@@ -12,7 +12,6 @@ import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import LocalityElementsMap from "@/components/location-detail/Map";
 
 
-
 export default function Locations() {
   const router = useRouter();
   const pathname = usePathname();
@@ -190,7 +189,7 @@ export default function Locations() {
                   ))
                 )}
               </div>
-              <p className='expand-button'><strong>Cargar Más</strong></p>
+              <div className='expand-button mt-3 mb-4 fw-bold text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
             </div>
           </section>
         {/* End Propertys */}
@@ -237,7 +236,7 @@ export default function Locations() {
                 )}
               </div>
             </div>
-            <p className='expand-button'><strong>Cargar Más</strong></p>
+            <div className='expand-button mt-3 mb-4 fw-bold text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
           </section>
         {/* End Neighborhoods */}
 
@@ -266,7 +265,7 @@ export default function Locations() {
                 )}
               </div>
             </div>
-            <p className='expand-button'><strong>Cargar Más</strong></p>
+            <div className='expand-button mt-3 mb-4 fw-bold text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
           </section>
         {/* End Entrepreneurship */}
       </main>
