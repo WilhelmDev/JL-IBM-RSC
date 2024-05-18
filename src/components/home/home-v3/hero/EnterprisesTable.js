@@ -49,11 +49,11 @@ const TableEnterprises = ({ entrepreneurship }) => {
               <div className="d-flex text-start">
                 <div className="card me-3 p-2 btn" onClick={async () => {
                   try {
-                    await addFavorite("entreprenureship", entrepreneurship.id)
-                    toast.success("El emprendimiento ha sido agregado a favoritos")
-                  } catch (error) {
-                    toast.error("Ha ocurrido un error")
-                  }
+                      const response = await addFavorite("entreprenureship", entrepreneurship.id);
+                      toast.success(response.message);
+                    } catch (error) {
+                      toast.error("Ha ocurrido un error");
+                    }
                 }}><i class="fa-regular fa-heart fs-3"></i></div>
                 <div className="card me-3 p-2 btn" onClick={copyCurrentUrlToClipboard}><i class="fa-regular fa-share-nodes fs-3"></i></div>
                 <div className="card me-3 p-2 btn"><i class="fa-solid fa-print fs-3"></i></div>

@@ -29,7 +29,7 @@ export const addFavorite = async function (type: string, id: number) {
     type,
     id
   })
-  return data.data
+  return data
 }
 
 export const getNeighborhood = async function (id: number) {

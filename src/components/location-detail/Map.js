@@ -8,7 +8,6 @@ import { useRef } from "react";
 
 export default function LocalityElementsMap({ positions }) {
   const markerRef = useRef(null);
-  console.log(positions)
   return (
     <MapContainer
       id="elements-map"
