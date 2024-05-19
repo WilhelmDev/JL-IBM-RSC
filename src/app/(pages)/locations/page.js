@@ -117,7 +117,15 @@ export default function Locations() {
         {/* // Begin carrousel */}
         <section className='carrousel'>
           <Image src={'/images/locations/carrousel.png'} alt='carrousel' height={200} width={600} className='carrousel-img'/>
-          <Image src={'/images/locations/controls.svg'} alt='controls' height={200} width={600} className='controls-img'/>
+          <div className='controls'>
+            <Image src={'/images/locations/arrow_left.png'} alt='controls' height={54} width={54} style={{cursor: 'pointer'}} className=''/>
+            <div className='button'>
+              <Image src={'/images/locations/button_1.png'} alt='controls' height={54} width={54} className='buttonSep'/>
+              <Image src={'/images/locations/button_2.png'} alt='controls' height={54} width={54} className='buttonSep'/>
+              <Image src={'/images/locations/button_3.png'} alt='controls' height={54} width={54} className='buttonSep'/>
+            </div>
+            <Image src={'/images/locations/arrow_right.png'} alt='controls' height={54} width={54} style={{cursor: 'pointer'}} className='' />
+          </div>
         </section>
         {/* //End carrousel */}
 

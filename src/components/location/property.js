@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 export default function Property({ property }) {
   const addPropertyFavorite = async () => {
     try {
-      console.log(property.id)
       const response = await addFavorite("real-state", property.id)
       console.log(response)
       toast.success(response.message)
