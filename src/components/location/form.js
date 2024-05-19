@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 import PropertyDescriptionCustom from './propertyDescription'
 import ReferencePoint from './referencePoint'
 import UploadMediaCustom from './uploadMedia'
-import { sendFormLocation } from '@/core/infrastructure/services/tab-agent.service'
-import { useRouter } from 'next/navigation'
+import { getLocality, sendFormLocation } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
 import { toast } from 'react-toastify'
 
@@ -15,6 +15,34 @@ export default function FormLocation() {
   const [loading, setLoading] = useState(false)
 
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+
+  useEffect(() => {
+    const fetchLocality = async () => {
+      try {
+        const locality = await getLocality(id)
+        setStepOne({
+          title: locality.title,
+          position: [locality.lat, locality.long],
+          partido: {
+            label: locality.partido.name,
+            value: locality.partido.id
+          }
+        })
+        setStepTwo(locality.reference_points)
+        //setStepThree(response.stepThree)
+      } catch (error) {
+        toast.error('Ocurrió un error al cargar la localidad', {
+          toastId: 'locality-error',
+          autoClose: 600
+        })
+      }
+    }
+    if (id) {
+      fetchLocality()
+    }
+  }, [id])
 
   const updateStepOne = (data) => {
     setStepOne(data)
@@ -108,7 +136,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <PropertyDescriptionCustom updateStepOne={updateStepOne} />
+            <PropertyDescriptionCustom stepOne={stepOne} updateStepOne={updateStepOne} />
             {/* <ReferencePoint /> */}
           </div>
         </div>
@@ -121,7 +149,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item2-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <ReferencePoint updateStepTwo={updateStepTwo} />
+            <ReferencePoint stepTwo={stepTwo} updateStepTwo={updateStepTwo} />
             {/* <PropertyDescriptionCustom /> */}
           </div>
         </div>

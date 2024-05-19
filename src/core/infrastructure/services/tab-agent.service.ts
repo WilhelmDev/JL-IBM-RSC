@@ -4,7 +4,7 @@ import { ApiInstance } from "../api"
 import { Amenities } from "@/core/domain/responses"
 import { parseAditionals, parseAmenities, parseEntrepreneurship, parseLocalities, parseLocation, parseNeighborhood, parsePeriodsForm, parseProperty, parseServices } from "@/utilis/parsers"
 import { PeriodsResponse, PropertyPayload } from "@/core/domain/parsed"
-import { LocalitiesResponse } from "@/core/domain/responses/localities"
+import { Datum as Locality, LocalitiesResponse } from "@/core/domain/responses/localities"
 import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
 import { NeighborhoodResponse } from "@/core/domain/responses/neighborhood"
@@ -143,4 +143,9 @@ export const getLocationId = async function (id: number) {
 export const getLocalitiesElementsLocations = async function (id: number) {
   const { data } = await ApiInstance(`/localities/${id}/locations`)
   return data
+}  
+
+export const getLocality = async function (id: string) {
+  const { data } = await ApiInstance(`/localities/${id}`)
+  return data.data as Locality
 }
