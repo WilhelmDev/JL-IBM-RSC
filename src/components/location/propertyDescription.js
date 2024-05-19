@@ -6,7 +6,7 @@ import { Localizacion } from "@/utilis/positions";
 import { useEffect, useState } from "react";
 import { getPartidos } from "@/core/infrastructure/services/tab-agent.service";
 
-const PropertyDescriptionCustom = ({updateStepOne}) => {
+const PropertyDescriptionCustom = ({stepOne, updateStepOne}) => {
   const [position, setPosition] = useState(Localizacion.buenosAires)
   const [title, setTitle] = useState('')
   const [partido, setPartido] = useState('')
@@ -27,6 +27,14 @@ const PropertyDescriptionCustom = ({updateStepOne}) => {
       };
     },
   };
+
+  useEffect(() => {
+    if(!(Object.keys(stepOne).length === 0)){
+      setTitle(stepOne?.title)
+      setPosition(stepOne?.position)
+      setPartido(stepOne?.partido)
+    }
+  }, [stepOne])
 
   const updatePosition = (newPosition) => {
     const { lat, lng } = newPosition
@@ -122,7 +130,9 @@ const PropertyDescriptionCustom = ({updateStepOne}) => {
               isDisabled={false}
               isClearable={false}
               value={partido}
-              onChange={(e) => setPartido(e)}
+              onChange={(e) => {
+                console.log(e)
+                setPartido(e)}}
             />
           </div>
         </div>
