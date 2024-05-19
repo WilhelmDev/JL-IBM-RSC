@@ -7,7 +7,7 @@ import { idGenerator } from '@/utilis/markers'
 import { Localizacion } from '@/utilis/positions'
 import { Types, customLabels } from '@/data/selects';
 
-export default function ReferencePoint({updateStepTwo}) {
+export default function ReferencePoint({stepTwo, updateStepTwo}) {
   const [show, setShow] = useState(false)
   const [references, setReferences] = useState([])
   const [reference, setReference] = useState({})
@@ -99,6 +99,12 @@ export default function ReferencePoint({updateStepTwo}) {
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [references])
+
+  useEffect(() => {
+    if(stepTwo.length > 0){
+      setReferences(stepTwo)
+    }
+  }, [stepTwo])
   
   const handleUpload = (files) => {
     let newImages = '';
