@@ -28,7 +28,7 @@ export default function Locality({item}) {
       </div>
       <div className="section-four">
         <ActtionBtn variant={'delete'}/>
-        <ActtionBtn variant={'edit'}/>
+        <ActtionBtn variant={'edit'} editUrl={`/tab-agent/new-location?id=${id}`}/>
         <ActtionBtn variant={'share'}/>
       </div>
     </div>
