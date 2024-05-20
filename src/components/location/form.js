@@ -30,8 +30,27 @@ export default function FormLocation() {
             value: locality.partido.id
           }
         })
-        setStepTwo(locality.reference_points)
-        //setStepThree(response.stepThree)
+        setStepTwo(locality.reference_points.map((point, index) => ({
+          id: point.id,
+          name: point.name,
+          type: point.type,
+          description: point.description,
+          logo: point.logo,
+          link: point.link,
+          ubication: {
+            id: index,
+            position: "1547852, 54515452".split(', ').map(Number)
+          },
+        }))
+        )
+        setStepThree({
+          photos: locality.images,
+          videos: {
+            link: locality.video_url,
+            front: locality.front_page,
+            portada: locality.images.findIndex(image => image.front_page === 1)
+          }
+        })
       } catch (error) {
         toast.error('Ocurrió un error al cargar la localidad', {
           toastId: 'locality-error',
@@ -162,7 +181,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <UploadMediaCustom updateStepThree={updateStepThree} triggerForm={triggerForm} loading={loading} />
+            <UploadMediaCustom stepThree={stepThree} updateStepThree={updateStepThree} triggerForm={triggerForm} loading={loading} />
           </div>
         </div>
         {/* End tab for Listing Location */}
