@@ -29,7 +29,7 @@ const PropertyDescriptionCustom = ({stepOne, updateStepOne}) => {
   };
 
   useEffect(() => {
-    if(!(Object.keys(stepOne).length === 0)){
+    if(!(Object.keys(stepOne).length === 0) && (stepOne.title !== title || stepOne.position !== position || stepOne.partido !== partido)){
       setTitle(stepOne?.title)
       setPosition(stepOne?.position)
       setPartido(stepOne?.partido)
