@@ -2,17 +2,24 @@ import React, { useEffect, useState } from "react";
 import UploadPhotoGallery from "../property/dashboard/dashboard-add-property/upload-media/UploadPhotoGallery";
 import VideoOptionFiledCustom from "./videoOption";
 
-const UploadMediaCustom = ({updateStepThree, triggerForm, loading}) => {
+const UploadMediaCustom = ({stepThree, updateStepThree, triggerForm, loading}) => {
   const [photos, setPhotos] = useState({})
   const [videos, setVideos] = useState({})
+  useEffect(() => {
+    if(!(Object.keys(stepThree).length === 0) && stepThree.videos !== videos){
+      updateVideos(stepThree.videos)
+    }
+  },[stepThree])
 
   useEffect(() => {
+    if(!(Object.keys(photos).length === 0) && !(Object.keys(videos).length === 0))
     updateStepThree({
       photos,
       videos
     })
 
   }, [videos, photos])
+
 
   const updatePhotos = (data) => {
     setPhotos(data)
@@ -39,7 +46,7 @@ const UploadMediaCustom = ({updateStepThree, triggerForm, loading}) => {
         {/* End col-12 */}
 
         <div className="row">
-          <VideoOptionFiledCustom updateVideos={updateVideos} photos={photos}/>
+          <VideoOptionFiledCustom videos={videos} updateVideos={updateVideos} photos={photos}/>
         </div>
         {/* End .row */}
 
