@@ -133,4 +133,14 @@ export const getEntrepreneurshipsList = async function (page: string | number, s
 export const getNeighborhoodsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
   const { data } = await ApiInstance(`/neighborhood?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as NeighborhoodResponse
-}  
+} 
+
+export const getLocationId = async function (id: number) {
+  const { data } = await ApiInstance(`/localities/${id}`)
+  return data
+}
+
+export const getLocalitiesElementsLocations = async function (id: number) {
+  const { data } = await ApiInstance(`/localities/${id}/locations`)
+  return data
+}

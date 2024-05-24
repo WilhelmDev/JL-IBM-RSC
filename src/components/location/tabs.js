@@ -24,6 +24,7 @@ export default function Tabs({ items }) {
     }).filter(Boolean)
 
   useEffect(() => {
+    if (items) {
     setActiveItem(items.filter(item => {
       if (activeTab === 'locals') {
         return locals.includes(item.type);
@@ -35,6 +36,7 @@ export default function Tabs({ items }) {
         return stores.includes(item.type);
       }
     }));
+    }
   }, [activeTab, items]);
   
   const handleTabClick = (tab) => {

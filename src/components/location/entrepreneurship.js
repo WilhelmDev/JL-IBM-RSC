@@ -13,7 +13,7 @@ export default function Entrepreneurship({ entrepreneurship }) {
       <section className='info-cont'>
         <div className='available'>{unitsAmount}</div>
         <div className='category'>
-          <span>Propiedades</span>
+          <span>{entrepreneurship?.title || 'No disponible'}</span>
           <span>Disponibles</span>
         </div>
         <div className='price'>
