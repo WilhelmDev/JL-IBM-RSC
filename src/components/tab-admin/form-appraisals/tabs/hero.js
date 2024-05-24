@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UploadVideoCustom from '../uploadVideo'
 import { FrontOptions } from "@/data/selects";
 import Select from "react-select";
@@ -43,10 +43,6 @@ export default function Hero({updateStepOne, loading, sendForm}) {
     setVideoData(values)
   }
 
-  const handleSubmit = () => {
-    sendForm()
-  }
-
 
   return (
     <div className="ps-widget bgc-white bdrs12">
@@ -68,7 +64,7 @@ export default function Hero({updateStepOne, loading, sendForm}) {
             </div>
         </div>
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-8 mb20">
             <UploadMediaServices updatePhotos={updatePhotos} label="Galeria de Fotos"  />
           </div>
           <div className="col-4">
@@ -103,7 +99,7 @@ export default function Hero({updateStepOne, loading, sendForm}) {
         <div className="row">
           <div className="col-12">
             <div className="buttton-container-custom">
-              <button type="button" disabled={loading} onClick={() => handleSubmit()}
+              <button type="button"
               >Guardar</button>
             </div>
           </div>

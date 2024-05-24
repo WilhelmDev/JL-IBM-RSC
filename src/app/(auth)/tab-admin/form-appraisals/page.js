@@ -9,9 +9,9 @@ export const metadata = {
 
 export default function NewPropertyPage() {
   return (
-    <section id='services'>
+    <section id='form-appraisals'>
       <div className='info-page'>
-        <p className="title-page">Edición Página Servicios</p>
+        <p className="title-page">Edición Página Tasaciones</p>
         <span>Aqui puedes modificar las secciones de la página a continuación, Cada numero indica una sección y su correspondiente contenido</span>
       </div>
       <div className='content-page'>

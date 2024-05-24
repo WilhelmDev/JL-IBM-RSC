@@ -4,15 +4,7 @@ import React, { useState } from 'react'
 export default function Title({updateStepTwo, loading, sendForm}) {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [photos, setPhotos] = useState([])
 
-  const updatePhotos = (data) => {
-    setPhotos(data)
-  }
-
-  const handleSubmit = () => {
-    sendForm()
-  }
 
 
   return (
@@ -64,7 +56,7 @@ export default function Title({updateStepTwo, loading, sendForm}) {
         <div className="row">
           <div className="col-12">
             <div className="buttton-container-custom">
-              <button type="button" disabled={loading} onClick={() => handleSubmit()}
+              <button type="button"
               >Guardar</button>
             </div>
           </div>
