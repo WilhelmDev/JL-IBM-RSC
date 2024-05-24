@@ -7,6 +7,7 @@ import { PeriodsResponse, PropertyPayload } from "@/core/domain/parsed"
 import { LocalitiesResponse } from "@/core/domain/responses/localities"
 import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
+import { NeighborhoodResponse } from "@/core/domain/responses/neighborhood"
 
 export const sendFormLocation = async (data: any) => {
   const parsed = parseLocation(data)
@@ -14,6 +15,7 @@ export const sendFormLocation = async (data: any) => {
     await ApiInstance.post('/localities', parsed)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
@@ -23,6 +25,7 @@ export const sendNeighborhoodForm = async (data: any) => {
     await ApiInstance.post('/neighborhood', parsed)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
@@ -32,13 +35,14 @@ export const sendEntrepreneurshipForm = async (data: any) => {
     await ApiInstance.post('/entreprenureships', parsed)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
 export const sendPropertyForm = async (data: PropertyForm) => {
   let parsed = parseProperty(data)
   try {
-    if (parsed.periods) {
+    if (parsed.periods.data.length > 0) {
       const { data } = await ApiInstance.post('/price-by-time', parsed.periods)
       const parsedPeriods = parsePeriodsForm(data as PeriodsResponse)
       parsed = {
@@ -49,6 +53,7 @@ export const sendPropertyForm = async (data: PropertyForm) => {
     await ApiInstance.post('/real-state', parsed as PropertyPayload)
   } catch (error) {
     console.log(error)
+    throw error
   }
 }
 
@@ -104,8 +109,8 @@ export const getLocalizations = async function () {
   return parsed
 }
 
-export const getLocalizationsList = async function (page: string | number) {
-  const { data } = await ApiInstance(`/localities?per_page=2&page=${page}`)
+export const getLocalizationsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
+  const { data } = await ApiInstance(`/localities?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as LocalitiesResponse
 }
 
@@ -124,3 +129,8 @@ export const getEntrepreneurshipsList = async function (page: string | number, s
   const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as EntreprenureshipsResponse
 }
+
+export const getNeighborhoodsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
+  const { data } = await ApiInstance(`/neighborhood?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
+  return data as NeighborhoodResponse
+}  

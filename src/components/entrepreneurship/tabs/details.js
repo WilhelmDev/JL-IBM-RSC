@@ -282,7 +282,7 @@ export default function DetailsTab({updateStepThree}) {
                     onChange={(e) => updateAmenities(e.target.value)}
                     value={el.value}
                     checked={amenitiesChecked.some((id) => id === el.value)} />
-                    <span>{el.label}</span>
+                    <label htmlFor={`ckeck-${el.value}`}>{el.label}</label>
                   </div>
                 </div>
               ))

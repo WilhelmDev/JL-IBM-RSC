@@ -273,7 +273,7 @@ export default function MediaTab({ updateStepSix, sendForm, loading, stepFive}) 
               />
               </div>
               <div className="col-6 mb-3">
-                <label className="heading-color ff-heading fw600 mb10">{(stepFive?.elements && stepFive.elements[3].name !== '' ) ? stepFive.elements[0].name : '(Nombre 4)'}</label>
+                <label className="heading-color ff-heading fw600 mb10">{(stepFive?.elements && stepFive.elements[3].name !== '' ) ? stepFive.elements[3].name : '(Nombre 4)'}</label>
                 { uploadedImages4.length > 0 && (
                  // {/* Display uploaded images */}
                 <div className="row profile-box position-relative d-md-flex align-items-end mb50">

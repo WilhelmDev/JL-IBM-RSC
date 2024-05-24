@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Select, { components } from "react-select";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/utilis/routes";
 
 const option = [
   { value: { field: "title", order: "asc" }, label: "Nombre A - Z" },
@@ -27,6 +29,8 @@ const customStyles = {
 
 export default function FilterButtons({ callback }) {
   const [selectedOption, setSelectedOption] = useState(null);
+
+  const router = useRouter()
 
   const handleChange = (option) => {
     setSelectedOption(option);
@@ -80,7 +84,7 @@ export default function FilterButtons({ callback }) {
           </div>
         </div>
         <div className="col-xl-3">
-          <button type="button" id="search-button">
+          <button type="button" id="search-button" onClick={() => router.push(ROUTES.newProperty)}>
             Agregar Nuevo
           </button>
         </div>

@@ -9,6 +9,7 @@ import MediaTab from './tabs/media'
 import { sendEntrepreneurshipForm } from '@/core/infrastructure/services/tab-agent.service'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
+import { toast } from 'react-toastify'
 
 export default function EntrepreneurshipForm() {
   const [stepOne, setStepOne] = useState({})
@@ -57,11 +58,19 @@ export default function EntrepreneurshipForm() {
       const data = await sendEntrepreneurshipForm({
         stepOne, stepTwo, stepThree, stepFour, stepFive: { ...stepFive, types: paymentTypes }, stepSix
       })
+      toast.success('Emprendimiento creado correctamente', {
+        toastId: 'entrepreneurship-success',
+        autoClose: 600
+      })
+      router.push(ROUTES.entrepreneurshipList)
     } catch (error) {
       console.log(error)
+      toast.error('Ha ocurrido un error al cargar el emprendimiento', {
+        toastId: 'entrepreneurship-error',
+        autoClose: 600
+      })
     } finally {
       setLoading(false)
-      router.push(ROUTES.entrepreneurshipList)
     }
   }
 

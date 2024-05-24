@@ -1,6 +1,6 @@
 'use client'
 import { getNeighborhoods } from '@/core/infrastructure/services/tab-agent.service'
-import { Countries, NeighborhoodState, NeighborhoodTypes, Provincies } from '@/data/selects'
+import { Countries, NeighborhoodState, NeighborhoodTypes, Provincies, Statusv2 } from '@/data/selects'
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 
@@ -144,7 +144,7 @@ export default function DescriptionTab({updateStepOne}) {
           <Select
             defaultValue={[]}
             name="colors"
-            options={NeighborhoodState}
+            options={Statusv2}
             styles={customStyles}
             className="custom-react_select"
             classNamePrefix="select"

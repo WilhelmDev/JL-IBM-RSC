@@ -1,4 +1,5 @@
 "use client";
+import { FrontOptions } from "@/data/selects";
 import { useEffect, useRef, useState } from "react";
 import Select from "react-select";
 
@@ -25,6 +26,7 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
   const [map, setMap] = useState([])
   const catalogRef = useRef(null);
   const mapRef = useRef(null);
+  const [front, setFront] = useState(undefined)
 
   useEffect(() => {
     if (photos.length > 0) {
@@ -44,7 +46,8 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
       portada,
       catalog,
       map,
-      link
+      link,
+      front
     })
   }, [portada, catalog, map, link])
 
@@ -115,10 +118,29 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
               name="colors"
               options={portadas}
               styles={customStyles}
-              className="select-custom pl-0"
+              className="custom-react_select pl-0"
               classNamePrefix="select"
               value={portada}
               onChange={(e) => setPortada(e)}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="col-sm-6 col-xl-3">
+        <div className="mb30">
+          <label className="heading-color ff-heading fw600 mb10">
+            Seleccionar portada (Medios Cargados)
+          </label>
+          <div className="location-area">
+            <Select
+              defaultValue={front}
+              name="colors"
+              options={FrontOptions}
+              styles={customStyles}
+              className="custom-react_select pl-0"
+              classNamePrefix="select"
+              value={front}
+              onChange={(e) => setFront(e)}
             />
           </div>
         </div>

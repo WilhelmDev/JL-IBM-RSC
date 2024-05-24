@@ -1,5 +1,25 @@
+"use client"
+import { addFavorite } from "@/core/infrastructure/services/tab-client.service";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
-const TableEnterprises = () => {
+const TableEnterprises = ({ entrepreneurship }) => {
+  const pathname = usePathname();
+  const [offer, setOffer] = useState({
+    type: entrepreneurship.offers[0] ? entrepreneurship.offers[0].type : "",
+    payment: entrepreneurship.offers[0]["Tipo de pago 1"] ?? 0,
+    meters: entrepreneurship.offers[0]?.covered_sourface ?? 0,
+  });
+  function copyCurrentUrlToClipboard() {
+    const currentUrl = window.location.origin + pathname;
+    try {
+      navigator.clipboard.writeText(currentUrl)
+      toast.success("Copiado en el portapeles")
+    } catch (error) {
+
+    }
+  }
   return (
     <>
       <section className="py-5 bgc-white">
@@ -18,7 +38,7 @@ const TableEnterprises = () => {
 
             <div className="col-lg-7 wow fadeInUp" data-wow-delay="100">
               <div className="text-start">
-                <h4>Nombre del emprendimiento</h4>
+                <h4>{entrepreneurship.title}</h4>
               </div>
               <div className="d-flex text-start">
                 <p className="me-3">Partido</p>
@@ -27,24 +47,47 @@ const TableEnterprises = () => {
                 <p className="me-3">Ubicación</p>
               </div>
               <div className="d-flex text-start">
-                <div className="card me-3 p-2"><i class="fa-regular fa-heart fs-3"></i></div>
-                <div className="card me-3 p-2"><i class="fa-regular fa-share-nodes fs-3"></i></div>
-                <div className="card me-3 p-2"><i class="fa-solid fa-print fs-3"></i></div>
+                <div className="card me-3 p-2 btn" onClick={async () => {
+                  try {
+                    await addFavorite("entreprenureship", entrepreneurship.id)
+                    toast.success("El emprendimiento ha sido agregado a favoritos")
+                  } catch (error) {
+                    toast.error("Ha ocurrido un error")
+                  }
+                }}><i class="fa-regular fa-heart fs-3"></i></div>
+                <div className="card me-3 p-2 btn" onClick={copyCurrentUrlToClipboard}><i class="fa-regular fa-share-nodes fs-3"></i></div>
+                <div className="card me-3 p-2 btn"><i class="fa-solid fa-print fs-3"></i></div>
               </div>
             </div>
 
-            <div className="col-lg-5 justify-content-end d-flex mb-5 wow fadeInUp" data-wow-delay="100">
+            { entrepreneurship.offers &&
+              <div className="col-lg-5 justify-content-end d-flex mb-5 wow fadeInUp" data-wow-delay="100">
               <div className="d-grid">
-                <button style={{ border: '1px solid #DDDDDD', background: '#06173D', color: 'white', borderRadius: '0px' }} className="btn mb-1">Apartamento</button>
-                <button style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-1 bg-white">Duplex</button>
-                <button style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-1 bg-white">Ofícina</button>
+              { entrepreneurship.offers.map((item, index) => {
+                const {type, description, units_amount, rooms_amount, bathrooms_amount, total_sourface, covered_sourface, semicovered_sourface, images, min_max_price, ...payments} = item
+                const firstPayment = Object.keys(payments)[0]
+                  if(type === offer.type)
+                    return <button key={index} style={{ border: '1px solid #DDDDDD', background: '#06173D', color: 'white', borderRadius: '0px' }} className="btn mb-1">{type}</button>
+                  else
+                    return <button key={index} style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-1 bg-white" onClick={() => {
+                      setOffer({
+                        type: type ?? "",
+                        payment: payments[firstPayment] ?? 0,
+                        meters: covered_sourface ?? 0,
+                      })
+                    }}>{type}</button>
+                })
+              }
               </div>
-              <button style={{ border: '1px solid #DDDDDD', height: '122px', borderRadius: '0px' }} className="btn">120.000USD <br /> 1300 mts cubiertos</button>
+              <button style={{ border: '1px solid #DDDDDD', height: '122px', borderRadius: '0px' }} className="btn">{offer.payment}USD <br /> {offer.meters} mts cubiertos</button>
             </div>
+            }
 
             <div className="col-lg-12 d-flex mt-4 wow fadeInUp" data-wow-delay="100">
               <div className="card me-3" style={{ width: "11rem" }}>
-                <h1 className="text-center fs-1 fw-normal">5</h1>
+                <h1 className="text-center fs-1 fw-normal">
+                  {entrepreneurship.offers.reduce((unitsAvaliable, item) => unitsAvaliable + item.units_amount, 0)}
+                </h1>
 
                 <div style={{ marginTop: '1px' }} className="card text-center rounded-0">
                   <p className="fw-bold">Unidades disponibles</p>
@@ -53,7 +96,9 @@ const TableEnterprises = () => {
 
               <div className="card me-3" style={{ width: "11rem" }}>
                 <div className="d-flex my-0 mx-auto">
-                  <h1 className="text-center fs-1 fw-normal">70</h1>
+                  <h1 className="text-center fs-1 fw-normal">
+                    {entrepreneurship.details.capital_distance}
+                  </h1>
                   <p className="d-flex align-items-end fw-bold">KM</p>
                 </div>
                 <div style={{ marginTop: '1px' }} className="card text-center rounded-0">
@@ -62,7 +107,9 @@ const TableEnterprises = () => {
               </div>
 
               <div className="card me-3" style={{ width: "11rem" }}>
-                <h1 className="text-center fs-1 fw-normal">3</h1>
+                <h1 className="text-center fs-1 fw-normal">
+                  {entrepreneurship.offers.reduce((unitsAvaliable, item) => unitsAvaliable + 1, 0)}
+                </h1>
 
                 <div style={{ marginTop: '1px' }} className="card text-center rounded-0">
                   <p className="fw-bold">Tipos de propiedades</p>
@@ -81,8 +128,8 @@ const TableEnterprises = () => {
             <div className="col-lg-12 mt-5 wow fadeInUp" data-wow-delay="100">
               <div className="text-start">
                 <p className="fw-bold mb-0">Descripción del Emprendimiento</p>
-                <p className="mb-0">Descripción del emprendimiento.</p>
-                <a href="#">Leer mas</a>
+                <p className="mb-0">{entrepreneurship.description}</p>
+                {/*<a href="#">Leer mas</a>*/}
               </div>
             </div>
 
@@ -90,34 +137,13 @@ const TableEnterprises = () => {
               <div className="container">
                 <p className="fw-bold mb-2">Amenites</p>
                 <div className="row ms-3">
-                  <div className="col-lg-3">
-                    <p className="mb-0">Cancha de fútbol</p>
-                    <p className="mb-0">Cancha de Hockey sintética</p>
-                    <p className="mb-0">Cacha de Basket</p>
-                    <p className="mb-0">Cancha de Voley</p>
-                    <p className="mb-0">Golf</p>
-                  </div>
-                  <div className="col-lg-3">
-                    <p className="mb-0">Golfhouse</p>
-                    <p className="mb-0">Casa de té</p>
-                    <p className="mb-0">Cancha de pádel</p>
-                    <p className="mb-0">Plaza de juegos</p>
-                    <p className="mb-0">SUM</p>
-                  </div>
-                  <div className="col-lg-3">
-                    <p className="mb-0">Club House</p>
-                    <p className="mb-0">Microcine</p>
-                    <p className="mb-0">Kiosko</p>
-                    <p className="mb-0">Cancha de Polo</p>
-                    <p className="mb-0">Sector hípico</p>
-                  </div>
-                  <div className="col-lg-3">
-                    <p className="mb-0">Equitación</p>
-                    <p className="mb-0">salto</p>
-                    <p className="mb-0">Gimnasio</p>
-                    <p className="mb-0">Control de acceso</p>
-                    <p className="mb-0">Alambre eléctrico perimetral</p>
-                  </div>
+                  {entrepreneurship.details.amenidades.map((amenidad, index) => {
+                    return (
+                      <div key={index} className="col-lg-3 mb-4">
+                        <p className="mb-0">{amenidad.name}</p>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             </div>
@@ -126,21 +152,13 @@ const TableEnterprises = () => {
               <div className="container">
                 <p className="fw-bold mb-2">Detalles</p>
                 <div className="row ms-1">
-                  <div className="col-lg-4">
-                    <p className="mb-0 fw-bold">Código de referencia</p>
-                    <p className="mb-0 fw-bold">Expensas</p>
-                    <p className="mb-0 fw-bold">Fecha actualización expensas</p>
-                  </div>
-                  <div className="col-lg-4">
-                    <p className="mb-0 fw-bold">Superficie del terreno</p>
-                    <p className="mb-0 fw-bold">Superficie Cubierta</p>
-                    <p className="mb-0 fw-bold">Superficie Semi Cubierta</p>
-                  </div>
-                  <div className="col-lg-4">
-                    <p className="mb-0 fw-bold">Zonificación</p>
-                    <p className="mb-0 fw-bold">Financiación</p>
-                    <p className="mb-0 fw-bold">Eco-Construcción</p>
-                  </div>
+                  {entrepreneurship.services.map((service, index) => {
+                      return (
+                        <div key={index} className="col-lg-4 mb-4">
+                          <p className="mb-0 fw-bold">{service.name}</p>
+                        </div>
+                      )
+                  })}
                 </div>
               </div>
             </div>

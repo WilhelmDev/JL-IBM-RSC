@@ -6,6 +6,7 @@ import UploadMediaCustom from './uploadMedia'
 import { sendFormLocation } from '@/core/infrastructure/services/tab-agent.service'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
+import { toast } from 'react-toastify'
 
 export default function FormLocation() {
   const [stepOne, setStepOne] = useState({})
@@ -28,18 +29,26 @@ export default function FormLocation() {
   }
 
   const sendForm = async() => {
-    setLoading(true)
     try {
+      setLoading(true)
       await sendFormLocation({
         stepOne,
         stepTwo,
         stepThree
       })
+      toast('Localidad creada exitosamente', {
+        toastId: 'locality-success',
+        autoClose: 600
+      })
+      router.push(ROUTES.locationList)
     } catch (error) {
       console.log(error)
+      toast.error('Ocurrió un error al cargar la localidad', {
+        toastId: 'locality-error',
+        autoClose: 600
+      })
     } finally {
       setLoading(false)
-      router.push(ROUTES.locationList)
     }
   }
 

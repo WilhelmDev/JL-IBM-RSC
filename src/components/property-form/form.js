@@ -8,6 +8,7 @@ import DescriptionTab from './tabs/description'
 import { sendPropertyForm } from '@/core/infrastructure/services/tab-agent.service'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
+import { toast } from 'react-toastify'
 
 export default function PropertyForm() {
 
@@ -46,11 +47,19 @@ export default function PropertyForm() {
       await sendPropertyForm({
         stepOne, stepTwo, stepThree, stepFour, stepFive
       })
+      toast('Propiedad creada exitosamente', {
+        toastId: 'property-success',
+        autoClose: 600
+      })
+      router.push(ROUTES.propertyList)
     } catch (error) {
       console.log(error)
+      toast.error('Ocurrio un error al crear la propiedad', {
+        toastId: 'property-error',
+        autoClose: 600
+      })
     } finally {
       setLoading(false)
-      router.push(ROUTES.propertyList)
     }
   }
 

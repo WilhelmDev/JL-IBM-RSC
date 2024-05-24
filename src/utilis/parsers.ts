@@ -19,7 +19,7 @@ export const parseLocation = function (data: any) {
         name: reference.name,
         type: reference.type,
         description: reference.description,
-        map_address: `${reference.ubication[0]}, ${reference.ubication[1]}`,
+        map_address: `${reference.ubication.position[0]}, ${reference.ubication.position[1]}`,
         link: reference.link,
         logo: reference.logo
           ?
@@ -188,6 +188,7 @@ export const parseEntrepreneurship = function (data: any) {
   }
   stepSix = {
     media: {
+      front_page: stepSix.videoData.front.value || 'Galeria',
       video_url: stepSix.videoData.link,
       gallery: stepSix.photos.length === 0 ? [] : stepSix.photos.map((photo, index) => {
         const portada = stepSix.videoData.portada === undefined ? 0 : stepSix.videoData.portada.value

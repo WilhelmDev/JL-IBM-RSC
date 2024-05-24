@@ -240,17 +240,17 @@ export const PropertyTypes = [
   },
 ]
 
-export const AllProperties = [
+export const Statusv2 = [
   {
-    label: 'elemento 1', 
-    value: 'elemento 1'
+    label: 'Publicado',
+    value: 'Publico'
   },
   {
-    label: 'elemento 2', 
-    value: 'elemento 2'
+    label: 'Borrador',
+    value: 'Borrador'
   },
   {
-    label: 'elemento 3', 
-    value: 'elemento 3'
+    label: 'Vendido',
+    value: 'Vendido'
   },
 ]

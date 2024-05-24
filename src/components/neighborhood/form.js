@@ -7,6 +7,7 @@ import TabMedia from './tabs/media'
 import { sendNeighborhoodForm } from '@/core/infrastructure/services/tab-agent.service'
 import { useRouter } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
+import { toast } from 'react-toastify'
 
 export default function FormNeighborhood() {
 
@@ -40,11 +41,19 @@ export default function FormNeighborhood() {
       await sendNeighborhoodForm({
         stepOne, stepTwo, stepThree, stepFour
       })
+      toast.success('Barrio creado exitosamente', {
+        autoClose: 600,
+        toastId: 'neigborhood-success'
+      })
+      router.push(ROUTES.neighborhoodList)
     } catch (error) {
       console.log(error)
+      toast.error('Ha ocurrido un error al crear el barrio', {
+        autoClose: 600,
+        toastId: 'neigborhood-failed'
+      })
     } finally {
       setLoading(false)
-      router.push(ROUTES.locationList)
     }
   }
   return (
