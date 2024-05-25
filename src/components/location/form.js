@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import PropertyDescriptionCustom from './propertyDescription'
 import ReferencePoint from './referencePoint'
 import UploadMediaCustom from './uploadMedia'
-import { getLocality, sendFormLocation } from '@/core/infrastructure/services/tab-agent.service'
+import { getLocality, sendFormLocation, updateLocation } from '@/core/infrastructure/services/tab-agent.service'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
 import { toast } from 'react-toastify'
+import { idGenerator } from '@/utilis/markers'
 
 export default function FormLocation() {
   const [stepOne, setStepOne] = useState({})
@@ -30,21 +31,24 @@ export default function FormLocation() {
             value: locality.partido.id
           }
         })
-        setStepTwo(locality.reference_points.map((point, index) => ({
-          id: point.id,
-          name: point.name,
-          type: point.type,
-          description: point.description,
-          logo: point.logo,
-          link: point.link,
-          ubication: {
-            id: index,
-            position: "1547852, 54515452".split(', ').map(Number)
-          },
-        }))
-        )
+        setStepTwo(locality.reference_points.map((point, index) => {
+          const coordinates = point.map_address.split(', ').map(Number);
+          if (coordinates.length === 2 && coordinates.every(Number.isFinite)) {
+            return {
+              id: point.id,
+              name: point.name,
+              type: point.type,
+              description: point.description,
+              logo: point.logo,
+              link: point.link,
+              ubication: {
+                id: idGenerator(),
+                position: coordinates
+              },
+            }
+          }
+        }).filter(Boolean));
         setStepThree({
-          photos: locality.images,
           videos: {
             link: locality.video_url,
             front: locality.front_page,
@@ -75,6 +79,30 @@ export default function FormLocation() {
     setStepThree(data)
   }
 
+  const updateForm = async() => {
+    try {
+      setLoading(true)
+      await updateLocation({
+        stepOne,
+        stepTwo,
+        stepThree
+      }, id)
+      toast('Localidad actualizada exitosamente', {
+        toastId: 'locality-success',
+        autoClose: 600
+      })
+      router.push(ROUTES.locationList)
+    } catch (error) {
+      console.log(error)
+      toast.error('Ocurrió un error al cargar la localidad', {
+        toastId: 'locality-error',
+        autoClose: 600
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const sendForm = async() => {
     try {
       setLoading(true)
@@ -100,7 +128,7 @@ export default function FormLocation() {
   }
 
   const triggerForm = async () => {
-    await sendForm()
+    id ? await updateForm() : await sendForm()
   }
 
   return (
@@ -181,7 +209,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <UploadMediaCustom stepThree={stepThree} updateStepThree={updateStepThree} triggerForm={triggerForm} loading={loading} />
+            <UploadMediaCustom id={id} stepThree={stepThree} updateStepThree={updateStepThree} triggerForm={triggerForm} loading={loading} />
           </div>
         </div>
         {/* End tab for Listing Location */}

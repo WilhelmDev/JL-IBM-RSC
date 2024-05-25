@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import Select from "react-select";
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import MapReferences from '../tab-agent/MapReferences'
 import { idGenerator } from '@/utilis/markers'
 import { Localizacion } from '@/utilis/positions'
@@ -23,6 +23,7 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
   }])
   const [lastMark, setLastMark] = useState({})
   const [editableRows, setEditableRows] = useState(references.map(() => false));
+  const referencesRef = useRef(references)
 
   const initialRef = {
     id: idGenerator(),
@@ -30,7 +31,7 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
     type: 'Tipo de referencia',
     description: 'descripcion del punto',
     logo: 'Logo?',
-    ubication: 'Marcador'
+    ubication: 'Marcador',
   }
   const initialMark = {
     id: idGenerator(),
@@ -41,9 +42,20 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
     setShow(!show)
   }
 
-  const updatePos = (data) => {
-    setLastMark(data)
-  }
+  const updatePos = useCallback((id, data) => {
+    if (referencesRef.current.some(ref => ref.ubication.id === id)){
+      setReferences(
+        referencesRef.current.map((ref) => {
+          if (ref.ubication.id === id) {
+            return { ...ref, ubication: data };
+          }
+          return ref;
+        })
+      )
+    } else {
+      setLastMark(data)
+    }
+  }, [reference])
 
   const resetForm = () => {
     setName('')
@@ -84,14 +96,14 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
   }
 
   useEffect(() => {
-    if (!lastMark.id) {
-      const last = markers.slice(-1)[0]
-      setLastMark(last)
-    }
-    if (!(lastMark.id === markers.slice(-1)[0].id)) {
-      const last = markers.slice(-1)[0]
-      setLastMark(last)
-    }
+      if (!lastMark.id) {
+        const last = markers.slice(-1)[0]
+        setLastMark(last)
+      }
+      if (!(lastMark.id === markers.slice(-1)[0].id)) {
+        const last = markers.slice(-1)[0]
+        setLastMark(last)
+      }
   }, [markers, lastMark])
 
   useEffect(() => {
@@ -102,8 +114,18 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
   }, [references])
 
   useEffect(() => {
-    if(stepTwo.length > 0){
+    referencesRef.current = references;
+  }, [references]);
+
+  useEffect(() => {
+    if(stepTwo.length > 0 && references.length === 0){
       setReferences(stepTwo)
+      setMarkers([
+        ...stepTwo.map((point, index) => ({
+          id: point.ubication.id,
+          position: point.ubication.position
+        })), initialMark
+      ])
     }
   }, [stepTwo])
   
@@ -277,6 +299,9 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
               }
             </tbody>
           </table>
+        </div>
+        <div className='buttton-container-custom'>
+          <button onClick={() => handleShow()}>{show ? "Ocultar mapa" : "Mostrar mapa"}</button>
         </div>
       </div>
     </div>
