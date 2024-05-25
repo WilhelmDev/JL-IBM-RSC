@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import PropertyDescriptionCustom from './propertyDescription'
 import ReferencePoint from './referencePoint'
 import UploadMediaCustom from './uploadMedia'
-import { sendFormLocation } from '@/core/infrastructure/services/tab-agent.service'
-import { useRouter } from 'next/navigation'
+import { getLocality, sendFormLocation, updateLocation } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
 import { toast } from 'react-toastify'
+import { idGenerator } from '@/utilis/markers'
 
 export default function FormLocation() {
   const [stepOne, setStepOne] = useState({})
@@ -15,6 +16,56 @@ export default function FormLocation() {
   const [loading, setLoading] = useState(false)
 
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+
+  useEffect(() => {
+    const fetchLocality = async () => {
+      try {
+        const locality = await getLocality(id)
+        setStepOne({
+          title: locality.title,
+          position: [locality.lat, locality.long],
+          partido: {
+            label: locality.partido.name,
+            value: locality.partido.id
+          }
+        })
+        setStepTwo(locality.reference_points.map((point, index) => {
+          const coordinates = point.map_address.split(', ').map(Number);
+          if (coordinates.length === 2 && coordinates.every(Number.isFinite)) {
+            return {
+              id: point.id,
+              name: point.name,
+              type: point.type,
+              description: point.description,
+              logo: point.logo,
+              link: point.link,
+              ubication: {
+                id: idGenerator(),
+                position: coordinates
+              },
+            }
+          }
+        }).filter(Boolean));
+        setStepThree({
+          videos: {
+            link: locality.video_url,
+            front: locality.front_page,
+            portada: locality.images.findIndex(image => image.front_page === 1)
+          }
+        })
+      } catch (error) {
+        toast.error('Ocurrió un error al cargar la localidad', {
+          toastId: 'locality-error',
+          autoClose: 600
+        })
+      }
+    }
+    if (id) {
+      fetchLocality()
+    }
+  }, [id])
 
   const updateStepOne = (data) => {
     setStepOne(data)
@@ -26,6 +77,30 @@ export default function FormLocation() {
 
   const updateStepThree = (data) => {
     setStepThree(data)
+  }
+
+  const updateForm = async() => {
+    try {
+      setLoading(true)
+      await updateLocation({
+        stepOne,
+        stepTwo,
+        stepThree
+      }, id)
+      toast('Localidad actualizada exitosamente', {
+        toastId: 'locality-success',
+        autoClose: 600
+      })
+      router.push(ROUTES.locationList)
+    } catch (error) {
+      console.log(error)
+      toast.error('Ocurrió un error al cargar la localidad', {
+        toastId: 'locality-error',
+        autoClose: 600
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   const sendForm = async() => {
@@ -53,7 +128,7 @@ export default function FormLocation() {
   }
 
   const triggerForm = async () => {
-    await sendForm()
+    id ? await updateForm() : await sendForm()
   }
 
   return (
@@ -108,7 +183,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <PropertyDescriptionCustom updateStepOne={updateStepOne} />
+            <PropertyDescriptionCustom stepOne={stepOne} updateStepOne={updateStepOne} />
             {/* <ReferencePoint /> */}
           </div>
         </div>
@@ -121,7 +196,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item2-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <ReferencePoint updateStepTwo={updateStepTwo} />
+            <ReferencePoint stepTwo={stepTwo} updateStepTwo={updateStepTwo} />
             {/* <PropertyDescriptionCustom /> */}
           </div>
         </div>
@@ -134,7 +209,7 @@ export default function FormLocation() {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <UploadMediaCustom updateStepThree={updateStepThree} triggerForm={triggerForm} loading={loading} />
+            <UploadMediaCustom id={id} stepThree={stepThree} updateStepThree={updateStepThree} triggerForm={triggerForm} loading={loading} />
           </div>
         </div>
         {/* End tab for Listing Location */}

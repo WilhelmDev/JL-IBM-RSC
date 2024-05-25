@@ -1,13 +1,13 @@
 'use client'
 import Image from 'next/image'
 import Select from "react-select";
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import MapReferences from '../tab-agent/MapReferences'
 import { idGenerator } from '@/utilis/markers'
 import { Localizacion } from '@/utilis/positions'
 import { Types, customLabels } from '@/data/selects';
 
-export default function ReferencePoint({updateStepTwo}) {
+export default function ReferencePoint({stepTwo, updateStepTwo}) {
   const [show, setShow] = useState(false)
   const [references, setReferences] = useState([])
   const [reference, setReference] = useState({})
@@ -22,6 +22,8 @@ export default function ReferencePoint({updateStepTwo}) {
     position: Localizacion.buenosAires
   }])
   const [lastMark, setLastMark] = useState({})
+  const [editableRows, setEditableRows] = useState(references.map(() => false));
+  const referencesRef = useRef(references)
 
   const initialRef = {
     id: idGenerator(),
@@ -29,7 +31,7 @@ export default function ReferencePoint({updateStepTwo}) {
     type: 'Tipo de referencia',
     description: 'descripcion del punto',
     logo: 'Logo?',
-    ubication: 'Marcador'
+    ubication: 'Marcador',
   }
   const initialMark = {
     id: idGenerator(),
@@ -40,9 +42,20 @@ export default function ReferencePoint({updateStepTwo}) {
     setShow(!show)
   }
 
-  const updatePos = (data) => {
-    setLastMark(data)
-  }
+  const updatePos = useCallback((id, data) => {
+    if (referencesRef.current.some(ref => ref.ubication.id === id)){
+      setReferences(
+        referencesRef.current.map((ref) => {
+          if (ref.ubication.id === id) {
+            return { ...ref, ubication: data };
+          }
+          return ref;
+        })
+      )
+    } else {
+      setLastMark(data)
+    }
+  }, [reference])
 
   const resetForm = () => {
     setName('')
@@ -83,14 +96,14 @@ export default function ReferencePoint({updateStepTwo}) {
   }
 
   useEffect(() => {
-    if (!lastMark.id) {
-      const last = markers.slice(-1)[0]
-      setLastMark(last)
-    }
-    if (!(lastMark.id === markers.slice(-1)[0].id)) {
-      const last = markers.slice(-1)[0]
-      setLastMark(last)
-    }
+      if (!lastMark.id) {
+        const last = markers.slice(-1)[0]
+        setLastMark(last)
+      }
+      if (!(lastMark.id === markers.slice(-1)[0].id)) {
+        const last = markers.slice(-1)[0]
+        setLastMark(last)
+      }
   }, [markers, lastMark])
 
   useEffect(() => {
@@ -99,6 +112,22 @@ export default function ReferencePoint({updateStepTwo}) {
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [references])
+
+  useEffect(() => {
+    referencesRef.current = references;
+  }, [references]);
+
+  useEffect(() => {
+    if(stepTwo.length > 0 && references.length === 0){
+      setReferences(stepTwo)
+      setMarkers([
+        ...stepTwo.map((point, index) => ({
+          id: point.ubication.id,
+          position: point.ubication.position
+        })), initialMark
+      ])
+    }
+  }, [stepTwo])
   
   const handleUpload = (files) => {
     let newImages = '';
@@ -111,6 +140,36 @@ export default function ReferencePoint({updateStepTwo}) {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleChange = (index, field) => event => {
+    const newReferences = [...references];
+    const updatedUbication = {
+      ...newReferences[index].ubication,
+      position: [...newReferences[index].ubication.position]
+    };
+    if (field === 'type') {
+      newReferences[index][field] = event.label;
+    }else if (field === 'ubication.position[0]') {
+      updatedUbication.position[0] = Number(event.target.value);
+    } else if (field === 'ubication.position[1]') {
+      updatedUbication.position[1] = Number(event.target.value);
+    }else{
+      newReferences[index][field] = event.target.value;
+    }
+  
+    newReferences[index].ubication = updatedUbication;
+    setReferences(newReferences);
+  };
+  
+  const handleEditClick = index => {
+    const newEditableRows = [...editableRows];
+    if (newEditableRows[index]) {
+      newEditableRows[index] = false;
+    } else {
+      newEditableRows[index] = true;
+    }
+    setEditableRows(newEditableRows);
   };
 
   return (
@@ -185,26 +244,64 @@ export default function ReferencePoint({updateStepTwo}) {
                 )
               }
               {
-                references && references.map((ref) => (
+                references && references.map((ref, index) => (
                   <tr key={ref.id}>
-                    <td >{ref.name}</td>
-                    <td>{ref.type}</td>
-                    <td>{ref.description}</td>
-                    <td>{ref.logo && <Image src={ref.logo} height={40} width={40} alt='logo' />}</td>
-                    <td>{ref.ubication.position}</td>
-                    <td>{ref.link}</td>
                     <td>
-                    <span className='icons-container'>
-                      <Image src={'/images/custom/pencil.svg'} alt='pencil' height={30} width={30} className='icon'/>
-                      <Image src={'/images/custom/trash.svg'} alt='pencil' height={30} width={30} className='icon' 
-                      onClick={() => deleteRef(ref.id, ref.ubication.id)} />
-                    </span>
+                      {editableRows[index] ? <input type="text" value={ref.name} onChange={handleChange(index, 'name')} /> : ref.name}
+                    </td>
+                    <td>
+                    {
+                      editableRows[index] ? (
+                        <Select 
+                          options={Types}
+                          formatGroupLabel={customLabels} 
+                          placeholder={'Seleccion'}
+                          defaultValue={Types.flatMap(group => group.options).find(option => option.label === ref.type)} 
+                          value={Types.flatMap(group => group.options).find(option => option.label === ref.type)}
+                          onChange={handleChange(index, 'type')}
+                          className="custom-react_select over"
+                          classNamePrefix="select"
+                          styles={{ control: (base) => ({ ...base, width: 150 }) }}
+                        />
+                      ) : ref.type
+                    }
+                    </td>
+                    <td>
+                      {editableRows[index] ? <input type="text" value={ref.description} onChange={handleChange(index, 'description')} /> : ref.description}
+                    </td>
+                    <td>{ref.logo && <Image src={ref.logo} height={40} width={40} alt='logo' />}</td>
+                    <td>
+                    {
+                      editableRows[index] ? (
+                        <div>
+                          <input type="number" value={ref.ubication.position[0]} onChange={handleChange(index, 'ubication.position[0]')} />
+                          <input type="number" value={ref.ubication.position[1]} onChange={handleChange(index, 'ubication.position[1]')} />
+                        </div>
+                      ) : (
+                        <div>
+                          {ref.ubication.position[0]}<br />
+                          {ref.ubication.position[1]}
+                        </div>
+                      )
+                    }
+                    </td>
+                    <td>
+                      {editableRows[index] ? <input type="text" value={ref.link} onChange={handleChange(index, 'link')} /> : ref.link}
+                    </td>
+                    <td>
+                      <span className='icons-container'>
+                        <Image src={'/images/custom/pencil.svg'} alt='pencil' height={30} width={30} className='icon' onClick={() => handleEditClick(index)} />
+                        <Image src={'/images/custom/trash.svg'} alt='pencil' height={30} width={30} className='icon' onClick={() => deleteRef(ref.id, ref.ubication.id)} />
+                      </span>
                     </td>
                   </tr>
                 ))
               }
             </tbody>
           </table>
+        </div>
+        <div className='buttton-container-custom'>
+          <button onClick={() => handleShow()}>{show ? "Ocultar mapa" : "Mostrar mapa"}</button>
         </div>
       </div>
     </div>

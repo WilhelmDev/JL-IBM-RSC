@@ -18,7 +18,7 @@ const customStyles = {
   },
 };
 
-const VideoOptionFiledCustom = ({updateVideos, photos}) => {
+const VideoOptionFiledCustom = ({videos, updateVideos, photos}) => {
   const [link, setLink] = useState('')
   const [portada, setPortada] = useState('')
   const [portadas, setPortadas] = useState([])
@@ -36,15 +36,24 @@ const VideoOptionFiledCustom = ({updateVideos, photos}) => {
       setPortadas(images)
     }
   }, [photos])
+
+  useEffect(() => {
+    if(!(Object.keys(videos).length === 0) && (videos.portada !== portada || videos.link !== link || videos.front !== front)){
+      setPortada(videos.portada);
+      setLink(videos.link);
+      setFront(videos.front);
+    }
+  }, [videos]);
   
   useEffect(() => {
-    updateVideos({
-      link,
-      portada,
-      front
-    })
-
-  },[link, portada, front])
+    if((videos.link !== link || videos.portada !== portada || videos.front !== front)){
+      updateVideos({
+        link,
+        portada,
+        front
+      });
+    }
+  }, [link, portada, front]);
 
   return (
     <>
@@ -63,15 +72,15 @@ const VideoOptionFiledCustom = ({updateVideos, photos}) => {
           </label>
           <div className="location-area">
             <Select
-              defaultValue={''}
+              defaultValue={""}
               name="colors"
               options={FrontOptions}
               styles={customStyles}
               className="custom-react_select"
               classNamePrefix="select"
               required
-              value={front}
-              onChange={e => setFront(e)}
+              value={FrontOptions.find(option => option.value === front)}
+              onChange={e => {setFront(e)}}
             />
           </div>
         </div>
