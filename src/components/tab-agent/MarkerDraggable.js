@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Marker, Popup } from 'react-leaflet'
 
 export default function MarkerDraggable({pos, last, updatePos, id}) {
-  const [draggable, setDraggable] = useState(false)
+  //const [draggable, setDraggable] = useState(false)
   const [position, setPosition] = useState(pos)
   const markerRef = useRef(null)
   const eventHandlers = useMemo(
@@ -13,23 +13,23 @@ export default function MarkerDraggable({pos, last, updatePos, id}) {
         if (marker != null) {
           const { lat, lng } = marker.getLatLng() 
           setPosition([lat, lng])
-          updatePos({id, position: [lat, lng]})
+          updatePos(id, {id, position: [lat, lng]})
         }
       },
     }),
     [id],
   )
-  useEffect(() => {
+  /*useEffect(() => {
     if(last.id === id) {
       setDraggable(true)
     } else {
       setDraggable(false)
     }
-  }, [last, id])
+  }, [last, id])*/
   
   return (
     <Marker
-      draggable={draggable}
+      draggable={/*draggable*/true}
       eventHandlers={eventHandlers}
       position={position} icon={Others}
       ref={markerRef}>
