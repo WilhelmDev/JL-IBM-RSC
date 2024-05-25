@@ -19,6 +19,16 @@ export const sendFormLocation = async (data: any) => {
   }
 }
 
+export const updateLocation = async (data: any, id: string) => {
+  const parsed = parseLocation(data)
+  try {
+    await ApiInstance.patch(`/localities/${id}`, parsed)
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
+
 export const sendNeighborhoodForm = async (data: any) => {
   const parsed = parseNeighborhood(data)
   try {
@@ -148,4 +158,9 @@ export const getLocalitiesElementsLocations = async function (id: number) {
 export const getLocality = async function (id: string) {
   const { data } = await ApiInstance(`/localities/${id}`)
   return data.data as Locality
+}
+
+export const getImage = async function (url: string){
+  const response = await ApiInstance(url, { responseType: 'arraybuffer' })
+  return response
 }
