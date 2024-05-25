@@ -94,7 +94,7 @@ export default function FormLocation() {
       router.push(ROUTES.locationList)
     } catch (error) {
       console.log(error)
-      toast.error('Ocurrió un error al cargar la localidad', {
+      toast.error('Ocurrió un error al actualizar la localidad', {
         toastId: 'locality-error',
         autoClose: 600
       })
