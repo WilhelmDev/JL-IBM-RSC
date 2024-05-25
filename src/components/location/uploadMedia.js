@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import UploadPhotoGallery from "../property/dashboard/dashboard-add-property/upload-media/UploadPhotoGallery";
 import VideoOptionFiledCustom from "./videoOption";
 
-const UploadMediaCustom = ({stepThree, updateStepThree, triggerForm, loading}) => {
+const UploadMediaCustom = ({id, stepThree, updateStepThree, triggerForm, loading}) => {
   const [photos, setPhotos] = useState({})
   const [videos, setVideos] = useState({})
+
   useEffect(() => {
-    if(!(Object.keys(stepThree).length === 0) && stepThree.videos !== videos){
-      updateVideos(stepThree.videos)
-    }
+    if(!(Object.keys(stepThree).length === 0)){
+      if(stepThree.videos !== videos)
+        updateVideos(stepThree.videos)
+      }
   },[stepThree])
 
   useEffect(() => {
@@ -54,7 +56,7 @@ const UploadMediaCustom = ({stepThree, updateStepThree, triggerForm, loading}) =
           <div className="col-12">
             <div className="mb30 buttton-container-custom">
               <button disabled={loading} type="submit"
-              >publicar</button>
+              >{id ? "editar" : "publicar"}</button>
             </div>
           </div>
         </div>
