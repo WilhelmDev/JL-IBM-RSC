@@ -3,7 +3,7 @@ import { Countries, NeighborhoodState, NeighborhoodTypes, Provincies } from '@/d
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 
-export default function TabDescription({updateStepOne}) {
+export default function TabDescription({updateStepOne, stepOne}) {
 
   const [title, setTitle] = useState('')
   const [refCode, setRefCode] = useState('')
@@ -43,6 +43,31 @@ export default function TabDescription({updateStepOne}) {
     description, expenses, expensesDate, state,
     notes, phone, zonification])
   
+    useEffect(() => {
+      if(!(Object.keys(stepOne).length === 0) && (
+          stepOne.title !== title ||
+          stepOne.refCode !== refCode ||
+          stepOne.type !== type ||
+          stepOne.description !== description ||
+          stepOne.expenses !== expenses ||
+          stepOne.expensesDate !== expensesDate ||
+          stepOne.state !== state ||
+          stepOne.notes !== notes ||
+          stepOne.phone !== phone ||
+          stepOne.zonification !== zonification 
+        )){
+        setTitle(stepOne?.title)
+        setRefCode(stepOne?.refCode)
+        setType(stepOne?.type)
+        setDescription(stepOne?.description)
+        setExpenses(stepOne?.expenses)
+        setExpensesDate(stepOne?.expensesDate)
+        setState(stepOne?.state)
+        setNotes(stepOne?.notes)
+        setPhone(stepOne?.phone)
+        setZonification(stepOne?.zonification)
+      }
+    }, [stepOne])
 
   return (
     <form className="form-style1" id='neigborhood-tab-one'>

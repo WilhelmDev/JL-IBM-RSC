@@ -7,7 +7,7 @@ import { PeriodsResponse, PropertyPayload } from "@/core/domain/parsed"
 import { Datum as Locality, LocalitiesResponse } from "@/core/domain/responses/localities"
 import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
-import { NeighborhoodResponse } from "@/core/domain/responses/neighborhood"
+import { Neighborhood, NeighborhoodResponse } from "@/core/domain/responses/neighborhood"
 
 export const sendFormLocation = async (data: any) => {
   const parsed = parseLocation(data)
@@ -163,4 +163,9 @@ export const getLocality = async function (id: string) {
 export const getImage = async function (url: string){
   const response = await ApiInstance(url, { responseType: 'arraybuffer' })
   return response
+}
+
+export const getNeighborhood = async function (id: string) {
+  const { data } = await ApiInstance(`/neighborhood/${id}`)
+  return data.data as Neighborhood
 }

@@ -1,11 +1,11 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TabDescription from './tabs/description'
 import TabLocalization from './tabs/localization'
 import TabDetails from './tabs/details'
 import TabMedia from './tabs/media'
-import { sendNeighborhoodForm } from '@/core/infrastructure/services/tab-agent.service'
-import { useRouter } from 'next/navigation'
+import { sendNeighborhoodForm, getNeighborhood } from '@/core/infrastructure/services/tab-agent.service'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ROUTES } from '@/utilis/routes'
 import { toast } from 'react-toastify'
 
@@ -18,6 +18,88 @@ export default function FormNeighborhood() {
   const [loading, setLoading] = useState(false)
 
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const id = searchParams.get('id')
+
+  useEffect(() => {
+    const fetchNeighborhood = async () => {
+      try {
+        const neigborhood = await getNeighborhood(id)
+        console.log(neigborhood)
+        setStepOne({
+          title: neigborhood.title,
+          refCode: neigborhood.ref_code,
+          type: {
+            label: neigborhood.type,
+            value: neigborhood.type
+          },
+          description: neigborhood.description,
+          expenses: neigborhood.expensas_amount,
+          expensesDate: neigborhood.expensas_date,
+          state: {
+            label: neigborhood.state,
+            value: neigborhood.state
+          },
+          notes: neigborhood.internal_notes,
+          phone: neigborhood.phone,
+          zonification: neigborhood.zonificacion
+        })
+        setStepTwo({
+          country: {
+            label: neigborhood.location.country,
+            value: neigborhood.location.country
+          },       
+          province: {
+            label: neigborhood.location.province,
+            value: neigborhood.location.province
+          },
+          partido: {
+            label: neigborhood.location.locality.partido.name,
+            value: neigborhood.location.locality.partido.id
+          },
+          locality: {
+            label: neigborhood.locality_title,
+            value: neigborhood.locality_title
+          },
+          neigborhood: {
+            label: (neigborhood.location.neigborhood !== null) ? 'Coutrie' : 'Barrio',
+            value: (neigborhood.location.neigborhood !== null) ? 'Coutrie' : 'Barrio'
+          },
+          street: neigborhood.location.street_or_uf,
+          lat: neigborhood.location.lat,
+          lng: neigborhood.location.long
+        });
+        setStepThree({
+          surface: neigborhood.details.neighborhood_surface,
+          lotes: neigborhood.details.lots_amount,
+          lotesConst: neigborhood.details.lots_built_year,
+          available: neigborhood.details.available_lots,
+          capDistance: neigborhood.details.capital_distance,
+          maxSize: neigborhood.details.lots_max_size,
+          minSize: neigborhood.details.lots_min_size,
+
+          propsChecked: neigborhood.details.props,
+          amenitiesChecked: neigborhood.details.amenidades,
+          servicesChecked: neigborhood.details.services
+        })
+        setStepFour({
+          photo: neigborhood.media.images,
+          airDoc: neigborhood.airDoc,
+          logoDoc: neigborhood.logoDoc,
+          ruleDoc: neigborhood.ruleDoc,
+          videoData: neigborhood.media.video_link
+        })
+      } catch (error) {
+        toast.error('Ocurrió un error al cargar el barrio', {
+          toastId: 'neigborhood-error',
+          autoClose: 600
+        })
+      }
+    }
+    if (id) {
+      fetchNeighborhood()
+    }
+  }, [id])
 
   const updateStepOne = (values) => {
     setStepOne(values)
@@ -121,7 +203,7 @@ export default function FormNeighborhood() {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <TabDescription updateStepOne={updateStepOne}/>
+            <TabDescription stepOne={stepOne} updateStepOne={updateStepOne}/>
           </div>
         </div>
         {/* End tab for neighborhood Description */}
@@ -133,7 +215,7 @@ export default function FormNeighborhood() {
           aria-labelledby="nav-item2-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <TabLocalization updateStepTwo={updateStepTwo} />
+            <TabLocalization stepTwo={stepTwo} updateStepTwo={updateStepTwo} />
           </div>
         </div>
         {/* End tab for neighborhood localization */}
@@ -145,7 +227,7 @@ export default function FormNeighborhood() {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 overflow-hidden position-relative">
-            <TabDetails updateStepThree={updateStepThree}/>
+            <TabDetails stepThree={stepThree} updateStepThree={updateStepThree}/>
           </div>
         </div>
         {/* End tab for details neighborhood */}
@@ -156,7 +238,7 @@ export default function FormNeighborhood() {
           aria-labelledby="nav-item4-tab"
         >
           <div className="ps-widget bgc-white bdrs12 p30 position-relative">
-            <TabMedia updateStepFour={updateStepFour} sendForm={sendForm} loading={loading} />
+            <TabMedia stepFour={stepFour} updateStepFour={updateStepFour} sendForm={sendForm} loading={loading} />
           </div>
         </div>
         {/* End tab for media neighborhood */}
