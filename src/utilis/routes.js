@@ -1,8 +1,8 @@
 export const ROUTES = {
-  Home: '/start',
+  Home: '/',
   Browser: '/search-map',
   Neighborhoods: '/search-map',
-  Entrepreneurship: '/entreprenureship',
+  Entrepreneurship: '/search-map',
   WhoWeAre: '/aboutus',
   Services: '/construction',
   Login: '/login',
@@ -37,4 +37,6 @@ export const ROUTES = {
   newClient: '/tab-admin',
   tabClient: '/tab-admin',
   adminProfile: "/tab-admin",
+  agentList: "/tab-admin/list-agent",
+  listUsers: "/tab-admin/list-users",
 }

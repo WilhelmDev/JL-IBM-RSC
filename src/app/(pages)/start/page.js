@@ -93,7 +93,7 @@ const Start = () => {
                                             'Análisis de Mercado',
                                             'Asesoramiento en Tasaciones'
                                         ],
-                                        "image" : '',
+                                        "image": '',
                                         "button": 'TASACIONES'
                                     },
                                     {
@@ -103,7 +103,7 @@ const Start = () => {
                                             'Comprención del estado de tu propiedad',
                                             'Mayor visualización y ofertas'
                                         ],
-                                        "image" : '',
+                                        "image": '',
                                         "button": 'DIAGNOSTICO DE PROPIEDADES'
                                     },
                                     {
@@ -113,7 +113,7 @@ const Start = () => {
                                             'Minimizar los costos a largo plazo',
                                             'Tipos: Preventivo, Correctivo y Estético.'
                                         ],
-                                        "image" : '',
+                                        "image": '',
                                         "button": 'DIAGNOSTICO DE PROPIEDADES'
                                     },
                                     {
@@ -123,7 +123,7 @@ const Start = () => {
                                             'Vinculación con Profesionales de la Zona.',
                                             'TPresupuestos personalizados.'
                                         ],
-                                        "image" : '',
+                                        "image": '',
                                         "button": 'CONSTRUCCIONES'
                                     },
                                 ]}

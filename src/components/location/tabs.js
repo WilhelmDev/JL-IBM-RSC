@@ -52,6 +52,7 @@ export default function Tabs({ items }) {
               onClick={() => handleTabClick(tab.id)}
             >
               {tab.label}{activeTab === tab.id ? ` (${activeItem.length})` : ""}
+              {tab.label}{activeTab === tab.id ? ` (${activeItem.length})` : ""}
             </button>
           </li>
         ))}

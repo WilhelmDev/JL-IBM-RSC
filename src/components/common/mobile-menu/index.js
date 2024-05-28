@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import ContactInfo from "./ContactInfo";
@@ -12,7 +11,7 @@ const MobileMenu = () => {
         <div className="header innerpage-style">
           <div className="menu_and_widgets">
             <div className="mobile_menu_bar d-flex justify-content-between align-items-center">
-              <a
+              <Link
                 className="menubar"
                 href="#"
                 data-bs-toggle="offcanvas"
@@ -25,7 +24,7 @@ const MobileMenu = () => {
                   src="/images/mobile-dark-nav-icon.svg"
                   alt="mobile icon"
                 />
-              </a>
+              </Link>
               <Link className="mobile_logo" href="/">
                 <Image
                   width={138}

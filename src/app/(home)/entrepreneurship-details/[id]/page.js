@@ -1,12 +1,30 @@
 "use client"
 import MobileMenu from "@/components/common/mobile-menu";
-import Header from "@/components/home/home-v3/Header";
 import Footer from "@/components/home/home-v3/footer";
 import Image from "next/image";
-import TableEnterprises from "@/components/home/home-v3/hero/EnterprisesTable";
-import ImageCondominium from "@/components/home/home-v3/ExclusiveCondominium";
-import Property from "@/components/location/property";
-import Tabs from "@/components/location/tabs";
+import dynamic from "next/dynamic";
+
+const TableEnterprises = dynamic(
+  () => import('@/components/home/home-v3/hero/EnterprisesTable'),
+  { ssr: false }
+)
+const ImageCondominium = dynamic(
+  () => import('@/components/home/home-v3/ExclusiveCondominium'),
+  { ssr: false }
+)
+const Property = dynamic(
+  () => import('@/components/location/property'),
+  { ssr: false }
+)
+const Tabs = dynamic(
+  () => import('@/components/location/tabs'),
+  { ssr: false }
+)
+
+const LocalityElementsMap = dynamic(
+  () => import('@/components/entrepreneurship-details/Map'),
+  { ssr: false }
+)
 import Neighborhood from '@/components/location/neighborhood';
 import Entrepreneurship from '@/components/location/entrepreneurship';
 import PropertieComponent from "@/components/home/home-v3/propertie";
@@ -15,7 +33,6 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getEntrepreneurship, getEntrepreneurships, getLocalitiesElementsLocations, getLocality, getNeighborhood, getNeighborhoods, getRealStates } from "@/core/infrastructure/services/tab-client.service";
 import { toast } from "react-toastify";
-import LocalityElementsMap from "@/components/entrepreneurship-details/Map";
 
 /*export const metadata = {
   title: "Emprendimientos",
@@ -111,7 +128,7 @@ const Home_V3 = () => {
   }, [neighborhood])
 
 
-  if(!entrepreneurship)
+  if (!entrepreneurship)
     return <></>
 
   return (
@@ -126,7 +143,7 @@ const Home_V3 = () => {
 
 
       {/* Home Banner Style V3 */}
-      {/*aspect-ratio: 4/3 o 16/9*/} 
+      {/*aspect-ratio: 4/3 o 16/9*/}
       <section className="home-banner-style3 p0">
         <div className="home-style3">
           <div className="container">
@@ -158,8 +175,8 @@ const Home_V3 = () => {
 
       {neighborhood &&
         <div className="container">
-        <PropertieComponent neighborhood={neighborhood} />
-      </div>
+          <PropertieComponent neighborhood={neighborhood} />
+        </div>
       }
 
       <div className="container mb-5">
@@ -193,7 +210,7 @@ const Home_V3 = () => {
                   </div>
                   <div className="col-9">
                     <p className="fw-bold">Agente 1</p>
-                    <p><i class="fa-regular fa-phone"></i> (920) 012-3421</p>
+                    <p><i className="fa-regular fa-phone"></i> (920) 012-3421</p>
                     <p className="fw-bold">Ver Casas Listadas</p>
                   </div>
                 </div>
@@ -218,11 +235,11 @@ const Home_V3 = () => {
               <button style={{ border: '1px solid #000', borderRadius: '0px' }} className="btn mb-3 fw-bold bg-white me-2">Llamada</button>
               <button style={{ border: '1px solid #DDDDDD', borderRadius: '0px' }} className="btn mb-3 fw-bold bg-white me-2">En persona</button>
 
-              <input type="email" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Día y hora preferido" />
-              <input type="email" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Nombre" />
-              <input type="email" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Teléfono" />
-              <input type="email" class="form-control mb-3" id="exampleFormControlInput1" placeholder="Email" />
-              <textarea class="form-control mb-3" placeholder="Escríbenos" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <input type="email" className="form-control mb-3" id="exampleFormControlInput1" placeholder="Día y hora preferido" />
+              <input type="email" className="form-control mb-3" id="exampleFormControlInput1" placeholder="Nombre" />
+              <input type="email" className="form-control mb-3" id="exampleFormControlInput1" placeholder="Teléfono" />
+              <input type="email" className="form-control mb-3" id="exampleFormControlInput1" placeholder="Email" />
+              <textarea className="form-control mb-3" placeholder="Escríbenos" id="exampleFormControlTextarea1" rows="3"></textarea>
               <button style={{ color: 'white', borderRadius: '0px' }} className="btn fw-bold btn-primary w-25 me-2">Enviar Solicitud</button>
             </div>
           </div>
@@ -235,20 +252,20 @@ const Home_V3 = () => {
             <h4>Emprendimientos Similares</h4>
             <p>Si quieres invertir en tu casa del futuro aquí encontraras los emprendimientos que te ofrecemos</p>
           </div>
-            {
-              entrepreneurships.map((entrepreneurship, index) => {
-                return (
-                  <div key={index} className="col-lg-6">
-                    <div className='content'>
-                      <div className='gallery'>
-                        <Entrepreneurship entrepreneurship={entrepreneurship} />
-                      </div>
+          {
+            entrepreneurships.map((entrepreneurship, index) => {
+              return (
+                <div key={index} className="col-lg-6">
+                  <div className='content'>
+                    <div className='gallery'>
+                      <Entrepreneurship entrepreneurship={entrepreneurship} />
                     </div>
                   </div>
-                )
-              })
-            }
-          <div className='expand-button mt-3 mb-4 fw-bold text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
+                </div>
+              )
+            })
+          }
+          <div className='expand-button mt-3 mb-4 fw-bold text-center'><button style={{ border: "none", backgroundColor: "transparent" }}><strong>Cargar Más</strong></button></div>
         </div>
       </div>
 
@@ -268,11 +285,11 @@ const Home_V3 = () => {
           {
             neighborhoods.map((neighborhood, index) => {
               return (
-                <NeighborhoodItem neighborhood={neighborhood} key={neighborhood?.id + 'neigh'}/> 
+                <NeighborhoodItem neighborhood={neighborhood} key={neighborhood?.id + 'neigh'} />
               )
             })
           }
-          <div className='expand-button mt-3 mb-4 text-center'><button style={{border: "none", backgroundColor: "transparent"}}><strong>Cargar Más</strong></button></div>
+          <div className='expand-button mt-3 mb-4 text-center'><button style={{ border: "none", backgroundColor: "transparent" }}><strong>Cargar Más</strong></button></div>
         </div>
       </div>
 
@@ -285,10 +302,10 @@ const Home_V3 = () => {
           {
             realStates.map((realState, index) => {
               return (
-                <PropItem realState={realState} key={realState.id + '-prop'}/>
+                <PropItem realState={realState} key={realState.id + '-prop'} />
               )
             })
-          }  
+          }
         </div>
       </div>
 

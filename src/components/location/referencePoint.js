@@ -111,6 +111,7 @@ export default function ReferencePoint({stepTwo, updateStepTwo}) {
       references
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [references])
 
   useEffect(() => {

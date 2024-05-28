@@ -1,13 +1,16 @@
-"use client";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Localizacion } from "@/utilis/positions";
 import { Entrepreneurship, Neighborhood, Property } from "@/utilis/markers";
-import CustomMarker from "./Marker";
-import { useRef } from "react";
+import dynamic from "next/dynamic";
+
+const CustomMarker = dynamic(
+  () => import('./Marker'),
+  { ssr: false }
+)
+
 
 export default function LocalityElementsMap({ positions }) {
-  const markerRef = useRef(null);
   return (
     <MapContainer
       id="elements-map"

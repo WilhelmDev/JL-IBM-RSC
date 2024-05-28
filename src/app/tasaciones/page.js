@@ -60,7 +60,7 @@ const About = () => {
               </p>
 
               <p className="text mb25">
-                Preferimos darte tres tasaciones y que vos elijas cuál realidad te acompaña más.  El factor diferencial es el tiempo.
+                Preferimos darte tres tasaciones y que vos elijas cuál realidad te acompaña más. El factor diferencial es el tiempo.
               </p>
 
               <p className="text mb25">

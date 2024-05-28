@@ -8,6 +8,8 @@ import { Datum as Locality, LocalitiesResponse } from "@/core/domain/responses/l
 import { PropertiesResponse } from "@/core/domain/responses/properties"
 import { EntreprenureshipsResponse } from "@/core/domain/responses/entreprenureships"
 import { NeighborhoodResponse } from "@/core/domain/responses/neighborhood"
+import { GetProperty } from "@/core/domain/responses/property"
+import { Localities } from "@/core/domain/maps/localities"
 
 export const sendFormLocation = async (data: any) => {
   const parsed = parseLocation(data)
@@ -36,6 +38,7 @@ export const sendNeighborhoodForm = async (data: any) => {
   } catch (error) {
     console.log(error)
     throw error
+    throw error
   }
 }
 
@@ -46,6 +49,7 @@ export const sendEntrepreneurshipForm = async (data: any) => {
   } catch (error) {
     console.log(error)
     throw error
+    throw error
   }
 }
 
@@ -53,14 +57,16 @@ export const sendPropertyForm = async (data: PropertyForm) => {
   let parsed = parseProperty(data)
   try {
     if (parsed.periods.data.length > 0) {
-      const { data } = await ApiInstance.post('/price-by-time', parsed.periods)
-      const parsedPeriods = parsePeriodsForm(data as PeriodsResponse)
-      parsed = {
-        ...parsed,
-        price_by_times: parsedPeriods
-      } as PropertyPayload
+      if (parsed.periods.data.length > 0) {
+        const { data } = await ApiInstance.post('/price-by-time', parsed.periods)
+        const parsedPeriods = parsePeriodsForm(data as PeriodsResponse)
+        parsed = {
+          ...parsed,
+          price_by_times: parsedPeriods
+        } as PropertyPayload
+      }
+      await ApiInstance.post('/real-state', parsed as PropertyPayload)
     }
-    await ApiInstance.post('/real-state', parsed as PropertyPayload)
   } catch (error) {
     console.log(error)
     throw error
@@ -124,6 +130,7 @@ export const getLocalizationsList = async function (page: string | number, searc
   return data as LocalitiesResponse
 }
 
+
 export const getNeighborhoods = async function () {
   const { data } = await ApiInstance('/neighborhood')
   const parsed = parseLocalities(data.data)
@@ -133,7 +140,12 @@ export const getNeighborhoods = async function () {
 export const getPropertiesList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
   const { data } = await ApiInstance(`/real-state?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as PropertiesResponse
-}  
+}
+
+export const getProperty = async function (id: number) {
+  const { data } = await ApiInstance(`/real-state/${id}?formatted=true`)
+  return data as GetProperty
+}
 
 export const getEntrepreneurshipsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
   const { data } = await ApiInstance(`/entreprenureships?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
@@ -143,7 +155,7 @@ export const getEntrepreneurshipsList = async function (page: string | number, s
 export const getNeighborhoodsList = async function (page: string | number, search: string, sort_by: string, sort_order: string) {
   const { data } = await ApiInstance(`/neighborhood?per_page=2&page=${page}&search=${search}&sort_by=${sort_by}&sort_order=${sort_order}`)
   return data as NeighborhoodResponse
-} 
+}
 
 export const getLocationId = async function (id: number) {
   const { data } = await ApiInstance(`/localities/${id}`)
@@ -153,14 +165,14 @@ export const getLocationId = async function (id: number) {
 export const getLocalitiesElementsLocations = async function (id: number) {
   const { data } = await ApiInstance(`/localities/${id}/locations`)
   return data
-}  
+}
 
 export const getLocality = async function (id: string) {
   const { data } = await ApiInstance(`/localities/${id}`)
   return data.data as Locality
 }
 
-export const getImage = async function (url: string){
+export const getImage = async function (url: string) {
   const response = await ApiInstance(url, { responseType: 'arraybuffer' })
   return response
 }

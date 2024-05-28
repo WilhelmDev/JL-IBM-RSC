@@ -56,13 +56,13 @@ export default function SidebarTabAdmin() {
           </div>
           <div className="section-link">
             <span>Usuarios</span>
-            <div className={`link-container ps-3 ${ROUTES.newAgent === pathname ? "selected" : ""}`}>
-              <Link href={ROUTES.newAgent}>
+            <div className={`link-container ps-3 ${ROUTES.agentList === pathname ? "selected" : ""}`}>
+              <Link href={ROUTES.agentList}>
                 <span>Agentes</span>
               </Link>
             </div>
-            <div className={`link-container ps-3 ${ROUTES.newClient === pathname ? "" : ""}`}>
-              <Link href={ROUTES.newClient}>
+            <div className={`link-container ps-3 ${ROUTES.listUsers === pathname ? "" : ""}`}>
+              <Link href={ROUTES.listUsers}>
                 <span>Clientes</span>
               </Link>
             </div>
