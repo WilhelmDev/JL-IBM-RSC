@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import UploadMediaCustom from '../uploadMedia'
 import UploadVideoCustom from '../uploadVideo'
 
-export default function TabMedia({updateStepFour, loading, sendForm}) {
+export default function TabMedia({stepFour, updateStepFour, loading, sendForm}) {
 
   const [photos, setPhotos] = useState([])
   const [airDoc, setAirDoc] = useState([])
@@ -53,6 +53,16 @@ export default function TabMedia({updateStepFour, loading, sendForm}) {
     e.preventDefault()
     sendForm()
   }
+
+  useEffect(() => {
+    if(!(Object.keys(stepFour).length === 0) && (
+        stepFour.photos !== photos ||
+        stepFour.videoData !== videoData 
+      )){
+      setPhotos(stepFour?.photos)
+      setVideoData(stepFour?.videoData)
+    }
+  }, [stepFour])
 
   return (
     <div className="ps-widget bgc-white bdrs12 p30 position-relative">

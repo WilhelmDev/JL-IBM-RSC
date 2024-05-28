@@ -1,7 +1,14 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 
-const Actions = () => {
+const Actions = ({ editUrl='' }) => {
+
+  const router = useRouter()
+  const editContent = () => {
+    router.push(editUrl)
+    // console.log('hello')
+  }
   return (
     <td className="actions">
       <div className="actions-container">
@@ -19,6 +26,7 @@ const Actions = () => {
             width={18}
             height={18}
             className="image"
+            onClick={editContent}
           />
         </button>
         <button>

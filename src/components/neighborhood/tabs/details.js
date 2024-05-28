@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAminities, getProps, getServices } from '@/core/infrastructure/services/tab-agent.service'
 
-export default function TabDetails({updateStepThree}) {
+export default function TabDetails({ updateStepThree, stepThree }) {
 
   const [surface, setSurface] = useState('')
   const [lotes, setLotes] = useState('')
@@ -100,7 +100,32 @@ export default function TabDetails({updateStepThree}) {
     amenitiesChecked,
     servicesChecked
   ])
-  
+
+  useEffect(() => {
+    if(!(Object.keys(stepThree).length === 0) && (
+        stepThree.surface !== surface ||
+        stepThree.lotes !== lotes ||
+        stepThree.lotesConst !== lotesConst ||
+        stepThree.available !== available ||
+        stepThree.capDistance !== capDistance ||
+        stepThree.maxSize !== maxSize ||
+        stepThree.minSize !== minSize ||
+        stepThree.props !== propsChecked ||
+        stepThree.amenities !== amenitiesChecked ||
+        stepThree.services !== servicesChecked 
+      )){
+      setSurface(stepThree?.surface)
+      setLotes(stepThree?.lotes)
+      setLotesConst(stepThree?.lotesConst)
+      setAvailable(stepThree?.available)
+      setCapDistance(stepThree?.capDistance)
+      setMaxSize(stepThree?.maxSize)
+      setMinSize(stepThree?.minSize)
+      setPropsChecked(stepThree?.propsChecked)
+      setAmenitiesChecked(stepThree?.amenitiesChecked)
+      setServicesChecked(stepThree?.servicesChecked)
+    }
+  }, [stepThree])
 
   return (
     <form className="form-style1" id='neigborhood-tab-three'>

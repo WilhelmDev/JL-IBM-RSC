@@ -12,6 +12,7 @@ interface propsItem {
 }
 
 const NeighborhoodsListItem = ({ neighborhood }: propsItem) => {
+
   return (
     <tr className="list-item">
       {/*Begin property and details section*/}
@@ -50,7 +51,7 @@ const NeighborhoodsListItem = ({ neighborhood }: propsItem) => {
       {/*End favorite and shared section*/}
 
       {/*Begin actions (delete, edit, shared) section*/}
-      <Actions />
+      <Actions editUrl={`/tab-agent/new-neighborhood?id=${neighborhood.id}`}/>
       {/*End actions (delete, edit, shared) section*/}
     </tr>
   );

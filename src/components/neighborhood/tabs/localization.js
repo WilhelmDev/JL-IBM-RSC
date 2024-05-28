@@ -7,7 +7,7 @@ import { getLocalizations, getPartidos } from '@/core/infrastructure/services/ta
 import { Localizacion } from '@/utilis/positions';
 
 
-export default function TabLocalization({updateStepTwo}) {
+export default function TabLocalization({ updateStepTwo, stepTwo }) {
   const [show, setShow] = useState(false)
   const [partidos, setPartidos] = useState([])
   const [localizations, setLocalizations] = useState([])
@@ -15,7 +15,7 @@ export default function TabLocalization({updateStepTwo}) {
   const [province, setProvince] = useState(Provincies[0])
   const [partido, setPartido] = useState(undefined)
   const [locality, setLocality] = useState(undefined)
-  const [barrio, setBarrio] = useState(undefined)
+  const [neigborhood, setNeigborhood] = useState(undefined)
   const [street, setStreet] = useState('')
   const [position, setPosition] = useState(Localizacion.buenosAires)
 
@@ -47,11 +47,11 @@ export default function TabLocalization({updateStepTwo}) {
   useEffect(() => {
     updateStepTwo({
       country, province, partido, locality,
-      barrio, street,
+      neigborhood, street,
       position
     })
   },[country, province, partido, locality,
-    barrio, street,
+    neigborhood, street,
     position])
 
   const updatePosition = (newPosition) => {
@@ -73,6 +73,25 @@ export default function TabLocalization({updateStepTwo}) {
       };
     },
   };
+
+  useEffect(() => {
+    if(!(Object.keys(stepTwo).length === 0) && (
+        stepTwo.partido !== partido ||
+        stepTwo.country !== country ||
+        stepTwo.province !== province ||
+        stepTwo.locality !== locality ||
+        stepTwo.neigborhood !== neigborhood ||
+        stepTwo.street !== street 
+      )){
+      setCountry(stepTwo?.country)
+      setProvince(stepTwo?.province)
+      setPartido(stepTwo?.partido)
+      setLocality(stepTwo?.locality)
+      setNeigborhood(stepTwo?.neigborhood)
+      setStreet(stepTwo?.street)
+      setPosition([stepTwo?.lat, stepTwo?.lng])
+    }
+  }, [stepTwo])
 
   return (
     <form className="form-style1" id='neigborhood-tab-two'>
@@ -144,7 +163,7 @@ export default function TabLocalization({updateStepTwo}) {
         <div className="col-3">
           <label className="heading-color ff-heading fw600 mb10">Barrio o countrie</label>
           <Select
-            defaultValue={[]}
+            defaultValue={''}
             name="colors"
             options={NeighborhoodTypes2}
             styles={customStyles}
@@ -153,8 +172,8 @@ export default function TabLocalization({updateStepTwo}) {
             required
             isDisabled={false}
             isClearable={false}
-            value={barrio}
-            onChange={(e) => setBarrio(e)}
+            value={(neigborhood)}
+            onChange={(e) => setNeigborhood(e)}
           />
         </div>
         <div className="col-3">
