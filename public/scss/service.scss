@@ -1,0 +1,68 @@
+#service-page{
+  line-height: 2.2rem !important;
+  input, textarea{
+    background-color: transparent;
+  }
+  .img-banner{
+    background-image: url(../images/service/banner_service.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+  }
+  .section-diagnostic{
+    background-color: #F7F7F7;
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    h3{ margin: 0; }
+    .titles{
+      margin: 4rem auto 3rem 1rem;
+    }
+    .img-diagnostic{
+      background-color: #D9D9D9;
+      height: 15rem;
+    }
+  }
+  .inputsForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    input, textarea{
+      border-radius: 0;
+    }
+    input::placeholder, textarea::placeholder{
+      color:black;
+    }
+    button{
+      border: none;
+      max-width: max-content;
+      background-color: #0451DD;
+      color: white;
+      padding: .3rem 6rem;
+    }
+    button:hover{ transform: scale(1.05); }
+    button:active{ transform: scale(0.95); }
+  }
+  li{ margin: 0;}
+  .section-service{
+    line-height: 1.85rem;
+  }
+  .section-contact{
+    .container-contact{
+      background-color: #F7F7F7;
+      margin: 0.1rem auto 5rem auto;
+    }
+  }
+  .text-side, .text-side2{
+    div{
+      margin-bottom: 1.5rem;
+    }
+  }
+  .section-info{
+    background-color: #F7F7F7;
+    padding: 3rem 0 3rem 0;
+  }
+}
+
+
