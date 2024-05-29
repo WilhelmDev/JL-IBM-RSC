@@ -1,6 +1,7 @@
 import { Period, PropertyForm } from "@/core/domain/form"
 import { LocalityForm } from "@/core/domain/forms/localities"
 import { NeighborhoodForm } from "@/core/domain/forms/neighborhood"
+import { HeroForm } from "@/core/domain/forms/servicesHero"
 import { NeighborhoodParsedForm, ParsedLocalityForm, ParsedPropertyForm, PeriodsPayload, PeriodsResponse } from "@/core/domain/parsed"
 import { Amenities } from "@/core/domain/responses"
 import { Meta } from "@/core/domain/responses/localities"
@@ -487,4 +488,18 @@ export const parsePagination = function (meta: Meta, target: string) {
     }
   }
   return { ...pages, range, lastPage: last_page }
+}
+
+export const parseHeroService = function (data: HeroForm) {
+  console.log(data)
+  return {
+    hero_type: data.hero.value,
+    video_url: data.videoData.link,
+    gallery: data.photos.map((photo, i) => {
+      return {
+        front_page: data.portada ? (Number(data.portada.value) === i) : false,
+        image: photo
+      }
+    })
+  }
 }
