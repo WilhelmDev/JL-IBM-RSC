@@ -4,6 +4,8 @@ import UploadVideoCustom from '../uploadVideo'
 import { FrontOptions } from "@/data/selects";
 import Select from "react-select";
 import UploadMediaServices from '../uploadMedia';
+import { updateHeroService } from '@/core/infrastructure/services/tab-admin.service';
+import { toast } from 'react-toastify';
 
 const customStyles = {
     option: (styles, { isFocused, isSelected, isHovered }) => {
@@ -20,20 +22,14 @@ const customStyles = {
     },
   };
 
-export default function Hero({updateStepOne, loading, sendForm}) {
+export default function Hero() {
 
   const [photos, setPhotos] = useState([])
   const [videoData, setVideoData] = useState({})
-
-  useEffect(() => {
-    updateStepOne({
-      photos,
-      videoData
-    })
-  }, [
-    photos,
-    videoData
-  ])  
+  const [hero, setHero] = useState("")
+  const [portada, setPortada] = useState('')
+  const [portadas, setPortadas] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const updatePhotos = (data) => {
     setPhotos(data)
@@ -43,31 +39,35 @@ export default function Hero({updateStepOne, loading, sendForm}) {
     setVideoData(values)
   }
 
-  // const handleUpload = (files, target) => {
-  //   const newItems = [];
-
-  //   for (const file of files) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       newItems.push(e.target.result);
-  //       if (target === 1) {
-  //         setDocPlant1(newItems);
-  //       }
-  //       if (target === 2) {
-  //         setDocPlant2(newItems);
-  //       }
-  //       if (target === 3) {
-  //         setDocPlant3(newItems);
-  //       }
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-
-  const handleSubmit = () => {
-    sendForm()
+  const handleSubmit = async () => {
+    try {
+      setLoading(true)
+      await updateHeroService({
+        photos,
+        videoData,
+        hero,
+        portada
+      });
+      toast.success("Hero actualizado correctamente")
+    } catch (error) {
+      toast.error("Ha ocurrido un error al actualizar el Hero")
+    } finally {
+      setLoading(false)
+    }
   }
 
+  useEffect(() => {
+    if (photos?.length > 0) {
+      const images = photos.map((el, i) => {
+        const parsed = {
+          label: i + 1,
+          value: i
+        }
+        return parsed
+      })
+      setPortadas(images)
+    }
+  }, [photos])
 
   return (
     <div className="ps-widget bgc-white bdrs12">
@@ -84,6 +84,8 @@ export default function Hero({updateStepOne, loading, sendForm}) {
                     styles={customStyles}
                     className="select-custom pl-0 "
                     classNamePrefix="select"
+                    value={hero}
+                    onChange={(e) => setHero(e)}
                     />
             </div>
         </div>
@@ -101,10 +103,12 @@ export default function Hero({updateStepOne, loading, sendForm}) {
                 <Select
                       defaultValue={''}
                       name="colors"
-                      options={FrontOptions}
+                      options={portadas}
                       styles={customStyles}
                       className="select-custom pl-0"
                       classNamePrefix="select"
+                      value={portada}
+                      onChange={(e) => setPortada(e)}
                       />
               </div>
               {/* end col-12 */}
