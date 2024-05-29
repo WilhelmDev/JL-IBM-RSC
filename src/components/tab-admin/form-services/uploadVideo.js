@@ -1,5 +1,5 @@
 "use client";
-import { FrontOptions } from "@/data/selects";
+import { FrontOptions, VideoPlatformsOptions } from "@/data/selects";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 
@@ -18,32 +18,16 @@ const customStyles = {
   },
 };
 
-const UploadVideoCustom = ({photos, updateVideo}) => {
+const UploadVideoCustom = ({updateVideo}) => {
   const [link, setLink] = useState('')
-  const [portada, setPortada] = useState('')
-  const [front, setFront] = useState(undefined)
-  const [portadas, setPortadas] = useState([])
-
-  useEffect(() => {
-    if (photos.length > 0) {
-      const images = photos.map((el, i) => {
-        const parsed = {
-          label: i + 1,
-          value: i
-        }
-        return parsed
-      })
-      setPortadas(images)
-    }
-  }, [photos])
+  const [videoPlatform, setVideoPlatform] = useState(undefined)
 
   useEffect(() => {
     updateVideo({
       link,
-      front,
-      portada
+      videoPlatform,
     })
-  }, [link, front, portada])
+  }, [link, videoPlatform])
 
   return (
     <>
@@ -56,12 +40,12 @@ const UploadVideoCustom = ({photos, updateVideo}) => {
             <Select
               defaultValue={''}
               name="colors"
-              options={FrontOptions}
+              options={VideoPlatformsOptions}
               styles={customStyles}
               className="select-custom pl-0"
               classNamePrefix="select"
-              onChange={(e) => setFront(e)}
-              value={front}
+              onChange={(e) => setVideoPlatform(e)}
+              value={videoPlatform}
             />
           </div>
         </div>
