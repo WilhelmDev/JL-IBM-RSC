@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ROUTES } from '@/utilis/routes'
 import Hero from './tabs/hero'
 import Diagnosis from './tabs/diagnostico'
 import Maintenance from './tabs/Maintenance'
@@ -17,10 +16,6 @@ export default function ServiceForm() {
 
   const router = useRouter()
 
-  const updateStepOne = (values) => {
-    setStepOne(values)
-  }
-
   const updateStepTwo = (values) => {
     setStepTwo(values)
   }
@@ -31,20 +26,6 @@ export default function ServiceForm() {
 
   const updateStepFour = (values) => {
     setStepFour(values)
-  }
-
-  const sendForm = async () => {
-    setLoading(true)
-    try {
-      await sendPropertyForm({
-        stepOne, stepTwo, stepThree, stepFour
-      })
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-      router.push(ROUTES.propertyList)
-    }
   }
 
   return (
@@ -112,7 +93,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white p30 position-relative">
-            <Hero updateStepOne={updateStepOne} />
+            <Hero />
           </div>
         </div>
         {/* End tab for Hero */}
