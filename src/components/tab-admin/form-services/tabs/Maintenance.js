@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import UploadMediaServices from '../uploadMedia'
 import { updateMaintenanceService } from '@/core/infrastructure/services/tab-admin.service'
 import { toast } from 'react-toastify'
