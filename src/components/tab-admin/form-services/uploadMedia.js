@@ -8,9 +8,7 @@ const UploadMediaServices = ({updatePhotos, label}) => {
   const fileInputRef = useRef(null);
 
   useEffect(() => {
-    if (uploadedImages.length > 0) {
       updatePhotos(uploadedImages)
-    }
   }, [uploadedImages])
   
 
