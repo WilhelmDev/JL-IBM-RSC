@@ -1,7 +1,7 @@
 import { Period, PropertyForm } from "@/core/domain/form"
 import { LocalityForm } from "@/core/domain/forms/localities"
 import { NeighborhoodForm } from "@/core/domain/forms/neighborhood"
-import { HeroForm } from "@/core/domain/forms/servicesHero"
+import { ServiceSectionForm, HeroForm } from "@/core/domain/forms/services"
 import { NeighborhoodParsedForm, ParsedLocalityForm, ParsedPropertyForm, PeriodsPayload, PeriodsResponse } from "@/core/domain/parsed"
 import { Amenities } from "@/core/domain/responses"
 import { Meta } from "@/core/domain/responses/localities"
@@ -498,6 +498,20 @@ export const parseHeroService = function (data: HeroForm) {
     gallery: data.photos.map((photo, i) => {
       return {
         front_page: data.portada ? (Number(data.portada.value) === i) : false,
+        image: photo
+      }
+    })
+  }
+}
+
+export const parseServiceSection = function (data: ServiceSectionForm) {
+  return {
+    title_1: data.title,
+    description_1: data.shortDescription,
+    description_2: data.description,
+    gallery: data.photos.map((photo, i) => {
+      return {
+        front_page: false,
         image: photo
       }
     })
