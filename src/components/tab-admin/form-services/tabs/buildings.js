@@ -27,7 +27,11 @@ export default function Buildings() {
       })
       toast.success("Construcción agregado correctamente")
     } catch (error) {
-      toast.error("Ha ocurrido un error al agregar la Construcción")
+      if(error.response.status === 403){
+        toast.error("No tienes permisos para agregar una Construcción")
+      } else {
+        toast.error("Ha ocurrido un error al agregar la Construcción")
+      }
     } finally {
       setLoading(false)
     }

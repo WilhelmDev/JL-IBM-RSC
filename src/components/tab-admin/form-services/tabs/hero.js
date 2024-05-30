@@ -50,7 +50,11 @@ export default function Hero() {
       });
       toast.success("Hero agregado correctamente")
     } catch (error) {
-      toast.error("Ha ocurrido un error al agregar el Hero")
+      if (error.response.status === 403){
+        toast.error("No tienes permisos para agregar un Hero")
+      } else {
+        toast.error("Ha ocurrido un error al agregar el Hero")
+    }
     } finally {
       setLoading(false)
     }

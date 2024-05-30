@@ -26,7 +26,11 @@ export default function Diagnosis() {
       })
       toast.success("Diagnóstico agregado correctamente")
     } catch (error) {
-      toast.error("Ha ocurrido un error al agregar el Diagnóstico")
+      if(error.response.status === 403){
+        toast.error("No tienes permisos para agregar un Diagnóstico")
+      } else {
+        toast.error("Ha ocurrido un error al agregar el Diagnóstico")
+      }
     } finally {
       setLoading(false)
     }

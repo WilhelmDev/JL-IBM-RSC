@@ -26,7 +26,11 @@ export default function Diagnosis() {
       })
       toast.success("Mantenimiento agregado correctamente")
     } catch (error) {
-      toast.error("Ha ocurrido un error al agregar el Mantenimiento")
+      if(error.response.status === 403){
+        toast.error("No tienes permisos para agregar un Mantenimiento")
+      } else {
+        toast.error("Ha ocurrido un error al agregar el Mantenimiento")
+      }
     } finally {
       setLoading(false)
     }
