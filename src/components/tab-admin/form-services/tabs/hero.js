@@ -48,9 +48,9 @@ export default function Hero() {
         hero,
         portada
       });
-      toast.success("Hero actualizado correctamente")
+      toast.success("Hero agregado correctamente")
     } catch (error) {
-      toast.error("Ha ocurrido un error al actualizar el Hero")
+      toast.error("Ha ocurrido un error al agregar el Hero")
     } finally {
       setLoading(false)
     }
