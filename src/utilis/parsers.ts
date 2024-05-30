@@ -491,7 +491,6 @@ export const parsePagination = function (meta: Meta, target: string) {
 }
 
 export const parseHeroService = function (data: HeroForm) {
-  console.log(data)
   return {
     hero_type: data.hero.value,
     video_url: data.videoData.link,
