@@ -4,3 +4,10 @@ export interface HeroForm {
   hero: { label: string; value: string };
   portada: { label: number; value: number };
 }
+
+export interface ServiceSectionForm {
+  photos: string[];
+  title: string;
+  shortDescription: string;
+  description: string;
+}
