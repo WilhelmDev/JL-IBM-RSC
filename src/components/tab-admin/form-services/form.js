@@ -8,17 +8,9 @@ import Buildings from './tabs/buildings'
 
 export default function ServiceForm() {
 
-  const [stepOne, setStepOne] = useState({})
-  const [stepTwo, setStepTwo] = useState({})
   const [stepThree, setStepThree] = useState({})
   const [stepFour, setStepFour] = useState({})
   const [loading, setLoading] = useState(false)
-
-  const router = useRouter()
-
-  const updateStepTwo = (values) => {
-    setStepTwo(values)
-  }
 
   const updateStepThree = (values) => {
     setStepThree(values)
@@ -105,7 +97,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item2-tab"
         >
           <div className="ps-widget bgc-white p30 ">
-            <Diagnosis updateStepTwo={updateStepTwo} />
+            <Diagnosis />
           </div>
         </div>
         {/* End tab for Diagnosis */}
