@@ -1,48 +1,35 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import UploadMediaServices from '../uploadMedia'
+import { updateMaintenanceService } from '@/core/infrastructure/services/tab-admin.service'
+import { toast } from 'react-toastify'
 
-export default function Diagnosis({updateStepThree, loading, sendForm}) {
+export default function Diagnosis() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [shortDescription, setShortDescription] = useState('')
   const [photos, setPhotos] = useState([])
-
-  useEffect(() => {
-    updateStepThree({
-      photos,
-    })
-  }, [
-    photos,
-  ])
-
+  const [loading, setLoading] = useState(false)
 
   const updatePhotos = (data) => {
     setPhotos(data)
   }
 
-  // const handleUpload = (files, target) => {
-  //   const newItems = [];
-
-  //   for (const file of files) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       newItems.push(e.target.result);
-  //       if (target === 1) {
-  //         setDocPlant1(newItems);
-  //       }
-  //       if (target === 2) {
-  //         setDocPlant2(newItems);
-  //       }
-  //       if (target === 3) {
-  //         setDocPlant3(newItems);
-  //       }
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-
-  const handleSubmit = () => {
-    sendForm()
+  const handleSubmit = async () => {
+    try {
+      setLoading(true)
+      await updateMaintenanceService({
+        title,
+        shortDescription,
+        description,
+        photos
+      })
+      toast.success("Mantenimiento agregado correctamente")
+    } catch (error) {
+      toast.error("Ha ocurrido un error al agregar el Mantenimiento")
+    } finally {
+      setLoading(false)
+    }
   }
 
 
@@ -57,6 +44,7 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
               className="form-control"
               placeholder="Nombre de la localidad"
               value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
         </div>
@@ -69,8 +57,8 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
               className="form-control mb20 h-custom-desc-small"
               placeholder='Verifica la tuya' 
               rows="" 
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={shortDescription}
+              onChange={(e) => setShortDescription(e.target.value)}
             >
             </textarea>
           </div>
@@ -85,6 +73,7 @@ export default function Diagnosis({updateStepThree, loading, sendForm}) {
             placeholder='' 
             rows="" 
             value={description}
+            onChange={(e) => setDescription(e.target.value)}
             >
             </textarea>
           </div>

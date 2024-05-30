@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Hero from './tabs/hero'
 import Diagnosis from './tabs/diagnostico'
 import Maintenance from './tabs/Maintenance'
@@ -8,13 +7,7 @@ import Buildings from './tabs/buildings'
 
 export default function ServiceForm() {
 
-  const [stepThree, setStepThree] = useState({})
   const [stepFour, setStepFour] = useState({})
-  const [loading, setLoading] = useState(false)
-
-  const updateStepThree = (values) => {
-    setStepThree(values)
-  }
 
   const updateStepFour = (values) => {
     setStepFour(values)
@@ -109,7 +102,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white p30 ">
-            <Maintenance updateStepThree={updateStepThree} />
+            <Maintenance />
           </div>
         </div>
         {/* End tab for details Maintenance */}
