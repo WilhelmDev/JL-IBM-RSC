@@ -16,6 +16,10 @@ export default function Diagnosis() {
   }
 
   const handleSubmit = async () => {
+    if(!title || !description || !shortDescription || !photos.length) {
+      toast.error("Todos los campos son requeridos")
+      return
+    }
     try {
       setLoading(true)
       await updateMaintenanceService({
@@ -26,7 +30,7 @@ export default function Diagnosis() {
       })
       toast.success("Mantenimiento agregado correctamente")
     } catch (error) {
-      if(error.response.status === 403){
+      if(error?.response?.status === 403){
         toast.error("No tienes permisos para agregar un Mantenimiento")
       } else {
         toast.error("Ha ocurrido un error al agregar el Mantenimiento")

@@ -39,7 +39,25 @@ export default function Hero() {
     setVideoData(values)
   }
 
+  const validUrl = (url) => {
+    const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi;
+    const regex = new RegExp(expression);
+
+    if (url.match(regex)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const handleSubmit = async () => {
+    if(!hero || !photos.length || !portada || !(videoData?.link)) {
+      toast.error("Todos los campos son requeridos")
+      return
+    } else if (videoData?.link && !(validUrl(videoData?.link))) {
+      toast.error("URL inválida")
+      return
+    }
     try {
       setLoading(true)
       await updateHeroService({
@@ -50,7 +68,7 @@ export default function Hero() {
       });
       toast.success("Hero agregado correctamente")
     } catch (error) {
-      if (error.response.status === 403){
+      if (error?.response?.status === 403){
         toast.error("No tienes permisos para agregar un Hero")
       } else {
         toast.error("Ha ocurrido un error al agregar el Hero")

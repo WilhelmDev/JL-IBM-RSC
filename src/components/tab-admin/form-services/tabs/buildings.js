@@ -16,6 +16,10 @@ export default function Buildings() {
   }
 
   const handleSubmit = async () => {
+    if(!title || !description || !shortDescription || !photos.length) {
+      toast.error("Todos los campos son requeridos")
+      return
+    }
     try {
       setLoading(true)
       await updateBuildingsService({
@@ -27,7 +31,7 @@ export default function Buildings() {
       })
       toast.success("Construcción agregado correctamente")
     } catch (error) {
-      if(error.response.status === 403){
+      if(error?.response?.status === 403){
         toast.error("No tienes permisos para agregar una Construcción")
       } else {
         toast.error("Ha ocurrido un error al agregar la Construcción")
