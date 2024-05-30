@@ -1,52 +1,10 @@
-'use client'
-import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { ROUTES } from '@/utilis/routes'
+import React from 'react'
 import Hero from './tabs/hero'
 import Diagnosis from './tabs/diagnostico'
 import Maintenance from './tabs/Maintenance'
 import Buildings from './tabs/buildings'
 
 export default function ServiceForm() {
-
-  const [stepOne, setStepOne] = useState({})
-  const [stepTwo, setStepTwo] = useState({})
-  const [stepThree, setStepThree] = useState({})
-  const [stepFour, setStepFour] = useState({})
-  const [loading, setLoading] = useState(false)
-
-  const router = useRouter()
-
-  const updateStepOne = (values) => {
-    setStepOne(values)
-  }
-
-  const updateStepTwo = (values) => {
-    setStepTwo(values)
-  }
-
-  const updateStepThree = (values) => {
-    setStepThree(values)
-  }
-
-  const updateStepFour = (values) => {
-    setStepFour(values)
-  }
-
-  const sendForm = async () => {
-    setLoading(true)
-    try {
-      await sendPropertyForm({
-        stepOne, stepTwo, stepThree, stepFour
-      })
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
-      router.push(ROUTES.propertyList)
-    }
-  }
-
   return (
     <>
       <nav>
@@ -112,7 +70,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item1-tab"
         >
           <div className="ps-widget bgc-white p30 position-relative">
-            <Hero updateStepOne={updateStepOne} />
+            <Hero />
           </div>
         </div>
         {/* End tab for Hero */}
@@ -124,7 +82,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item2-tab"
         >
           <div className="ps-widget bgc-white p30 ">
-            <Diagnosis updateStepTwo={updateStepTwo} />
+            <Diagnosis />
           </div>
         </div>
         {/* End tab for Diagnosis */}
@@ -136,7 +94,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item3-tab"
         >
           <div className="ps-widget bgc-white p30 ">
-            <Maintenance updateStepThree={updateStepThree} />
+            <Maintenance />
           </div>
         </div>
         {/* End tab for details Maintenance */}
@@ -147,7 +105,7 @@ export default function ServiceForm() {
           aria-labelledby="nav-item4-tab"
         >
           <div className="ps-widget bgc-white p30 ">
-            <Buildings updateStepFour={updateStepFour} />
+            <Buildings />
           </div>
         </div>
         {/* End tab for media Buildings */}

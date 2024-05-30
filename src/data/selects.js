@@ -150,6 +150,21 @@ export const customLabels = (data) => (
 
 export const FrontOptions = [
   {
+    label: 'Galeria',
+    value: 'Galeria'
+  },
+  {
+    label: 'Video',
+    value: 'Video'
+  },
+  {
+    label: 'Mapa',
+    value: 'Mapa'
+  },
+]
+
+export const VideoPlatformsOptions = [
+  {
     label: 'Youtube',
     value: 'Youtube'
   },

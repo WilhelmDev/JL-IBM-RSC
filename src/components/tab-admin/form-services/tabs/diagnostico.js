@@ -1,50 +1,44 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import UploadMediaServices from '../uploadMedia'
+import { updateDiagnosticService } from '@/core/infrastructure/services/tab-admin.service'
+import { toast } from 'react-toastify'
 
-export default function Diagnosis({updateStepTwo, loading, sendForm}) {
+export default function Diagnosis() {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [shortDescription, setShortDescription] = useState('')
   const [photos, setPhotos] = useState([])
-
-  useEffect(() => {
-    updateStepTwo({
-      photos,
-    })
-  }, [
-    photos,
-  ])
-
+  const [loading, setLoading] = useState(false)
 
   const updatePhotos = (data) => {
     setPhotos(data)
   }
 
-  // const handleUpload = (files, target) => {
-  //   const newItems = [];
-
-  //   for (const file of files) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       newItems.push(e.target.result);
-  //       if (target === 1) {
-  //         setDocPlant1(newItems);
-  //       }
-  //       if (target === 2) {
-  //         setDocPlant2(newItems);
-  //       }
-  //       if (target === 3) {
-  //         setDocPlant3(newItems);
-  //       }
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-
-  const handleSubmit = () => {
-    sendForm()
+  const handleSubmit = async () => {
+    if(!title || !description || !shortDescription || !photos.length) {
+      toast.error("Todos los campos son requeridos")
+      return
+    }
+    try {
+      setLoading(true)
+      await updateDiagnosticService({
+        title,
+        shortDescription,
+        description,
+        photos
+      })
+      toast.success("Diagnóstico agregado correctamente")
+    } catch (error) {
+      if(error?.response?.status === 403){
+        toast.error("No tienes permisos para agregar un Diagnóstico")
+      } else {
+        toast.error("Ha ocurrido un error al agregar el Diagnóstico")
+      }
+    } finally {
+      setLoading(false)
+    }
   }
-
 
   return (
     <div className="ps-widget bgc-white bdrs12">
@@ -57,6 +51,7 @@ export default function Diagnosis({updateStepTwo, loading, sendForm}) {
               className="form-control"
               placeholder="Nombre de la localidad"
               value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
         </div>
@@ -69,8 +64,8 @@ export default function Diagnosis({updateStepTwo, loading, sendForm}) {
               className="form-control mb20 h-custom-desc-small"
               placeholder='Verifica la tuya' 
               rows="" 
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={shortDescription}
+              onChange={(e) => setShortDescription(e.target.value)}
             >
             </textarea>
           </div>
