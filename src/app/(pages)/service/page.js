@@ -32,31 +32,32 @@ export default function Service() {
                   "button": 'TASACIONES'
                 },
                 {
-                  "title_info": '¿Que obtienes con el diagnostico?',
+                  "title_info": '¿Que obtienes con el diagnóstico?',
                   "content": [
                     'Sello de verificación',
                     'Comprención del estado de tu propiedad',
                     'Mayor visualización y ofertas'
                   ],
                   "image": '',
-                  "button": 'DIAGNOSTICO DE PROPIEDADES'
+                  "button": 'DIAGNÓSTICO DE PROPIEDADES'
                 },
                 {
-                  "title_info": '¿Que obtienes con el mantenimiento?',
+                  "title_info": 'Mantenimiento de Propiedad',
                   "content": [
-                    'Preservar el valor y prolongar su vida útil.',
-                    'Minimizar los costos a largo plazo',
-                    'Tipos: Preventivo, Correctivo y Estético.'
+                    'Inspecciones profesionales',
+                    'Servicios de Mantenimiento Programado',
+                    'Informe a disposición'
                   ],
                   "image": '',
-                  "button": 'DIAGNOSTICO DE PROPIEDADES'
+                  "button": 'MANTENIMIENTO'
                 },
                 {
-                  "title_info": '¿Queres construir tu casa?',
+                  "title_info": 'Renovación de propiedad',
                   "content": [
-                    'Asesoramiento.',
-                    'Vinculación con Profesionales de la Zona.',
-                    'TPresupuestos personalizados.'
+                    'Asesoramiento',
+                    'Vinculación con Profesionales de la Zona',
+                    'Asesoramiento permanente en cada etapa de la obra',
+                    'Presupuestos personalizados'
                   ],
                   "image": '',
                   "button": 'CONSTRUCCIONES'

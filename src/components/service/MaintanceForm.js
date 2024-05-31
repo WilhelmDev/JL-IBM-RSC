@@ -82,7 +82,7 @@ const LastMaintanceForm = ({ image }) => {
           <input
             type="text"
             className="form-control"
-            placeholder="¿Tienes terreno donde construir?"
+            placeholder="¿Tenes terreno donde construir?"
           />
           <input
             type="text"
