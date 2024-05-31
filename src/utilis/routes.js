@@ -4,7 +4,7 @@ export const ROUTES = {
   Neighborhoods: '/search-map',
   Entrepreneurship: '/search-map',
   WhoWeAre: '/aboutus',
-  Services: '/construction',
+  Services: '/service',
   Login: '/login',
   Appraisals: '/tasaciones',
   Contact: '/contacto',
