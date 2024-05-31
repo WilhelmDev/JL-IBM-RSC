@@ -8,7 +8,7 @@ import Partner from "@/components/common/Partner";
 import EmailSend from "@/components/tasaciones/emailsend";
 import { Contact } from "@/components/pages/start/start-components/contactcomponents";
 import SectionInfo from "@/components/service/SectionInfo";
-import MaintanceForm from "@/components/service/MaintanceForm";
+import { MaintanceForm, LastMaintanceForm } from "@/components/service/MaintanceForm";
 
 export default function Service() {
   return (
@@ -65,7 +65,15 @@ export default function Service() {
             />
           </div>
         </div>
-        <Image className='img-service' width={960} height={1015} src={"/images/image-start/inf-service-image.png"} alt='img-service' />
+        <div className="img-service position-relative">
+          <Image 
+            alt="side-img"
+            layout="fill"
+            objectFit="cover"
+            quality={100}
+            src={"/images/image-start/inf-service-image.png"}
+          />
+        </div>
       </section>
       <section className="section-diagnostic row gx-4 py-5">
         <div className="col-4 ml-2">
@@ -92,9 +100,9 @@ export default function Service() {
           +
           "<div>Mantenimiento preventivo: Se refiere a las acciones programadas y regulares que se llevan a cabo para prevenir problemas futuros. Esto puede incluir inspecciones periódicas, limpieza, ajustes, lubricación y reemplazo de componentes desgastados.</div>"
           +
-          "<div>Mantenimiento correctivo: Implica la reparación de problemas y daños existentes en la propiedad. Estas reparaciones deben realizarse de manera oportuna para evitar que los problemas empeoren y se vuelvan más costosos de resolver</div>"
+          "<div>Mantenimiento correctivo: Implica la reparación de problemas y daños existentes en la propiedad. Estas reparaciones deben realizarse de manera oportuna para evitar que los problemas empeoren y se vuelvan más costosos de resolver.</div>"
           +
-          "<div>Mantenimiento estético: Se enfoca en mantener una apariencia atractiva de la propiedad, lo que puede incluir pintura, paisajismo y limpieza general</div>"
+          "<div>Mantenimiento estético: Se enfoca en mantener una apariencia atractiva de la propiedad, lo que puede incluir pintura, paisajismo y limpieza general.</div>"
         }
       />
       <section className="pb-5">
@@ -149,7 +157,7 @@ export default function Service() {
           }
         />
         <section>
-          <MaintanceForm image={'/images/service/img_form3.png'} />
+          <LastMaintanceForm image={'/images/service/img_form3.png'} />
         </section>
       </section>
       <section className="our-partners my-5">
