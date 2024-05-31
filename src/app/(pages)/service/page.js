@@ -54,7 +54,6 @@ export default function Service() {
                 {
                   "title_info": 'Renovación de propiedad',
                   "content": [
-                    'Asesoramiento',
                     'Vinculación con Profesionales de la Zona',
                     'Asesoramiento permanente en cada etapa de la obra',
                     'Presupuestos personalizados'
@@ -126,33 +125,33 @@ export default function Service() {
             '<ul>'+
               '<li>'+
                 '<span>Proyectos a Medida</span><br/>'+
-                '<span>• Descubre cómo materializar tu visión con nuestros proyectos personalizados.</span><br/>'+
-                '<span>• Diseña y construye tu propiedad ideal con nuestro equipo de expertos.<span/><br/>'+
+                '<span>&nbsp&nbsp• Descubre cómo materializar tu visión con nuestros proyectos personalizados.</span><br/>'+
+                '<span>&nbsp&nbsp• Diseña y construye tu propiedad ideal con nuestro equipo de expertos.<span/><br/>'+
                 '</li>'+
               '<li>'+
                 '<span>Gestión Integral de Proyectos</span><br/>'+
-                '<span>• Conoce nuestro enfoque completo en la gestión de proyectos de construcción.</span><br/>'+
-                '<span>• Obtén un acompañamiento dedicado desde la planificación hasta la finalización.</span><br/>'+
+                '<span>&nbsp&nbsp• Conoce nuestro enfoque completo en la gestión de proyectos de construcción.</span><br/>'+
+                '<span>&nbsp&nbsp• Obtén un acompañamiento dedicado desde la planificación hasta la finalización.</span><br/>'+
               '</li>'+
               '<li>'+
                 '<span>Calidad y Eficiencia</span><br/>'+
-                '<span>• Garantizamos la calidad en cada etapa de la construcción de tu propiedad.</span><br/>'+
-                '<span>• Implementamos soluciones eficientes para optimizar tiempo y recursos.</span><br/>'+
+                '<span>&nbsp&nbsp• Garantizamos la calidad en cada etapa de la construcción de tu propiedad.</span><br/>'+
+                '<span>&nbsp&nbsp• Implementamos soluciones eficientes para optimizar tiempo y recursos.</span><br/>'+
               '</li>'+
               '<li>'+
                 '<span>Innovación y Tecnología</span><br/>'+
-                '<span>• Descubre nuestras técnicas y tecnologías innovadoras aplicadas en la construcción.</span><br/>'+
-                '<span>• Conoce cómo utilizamos lo último en avances tecnológicos para tu proyecto.</span><br/>'+
+                '<span>&nbsp&nbsp• Descubre nuestras técnicas y tecnologías innovadoras aplicadas en la construcción.</span><br/>'+
+                '<span>&nbsp&nbsp• Conoce cómo utilizamos lo último en avances tecnológicos para tu proyecto.</span><br/>'+
               '</li>'+
               '<li>'+
                 '<span>Construcción Sostenible</span><br/>'+
-                '<span>• Explora cómo integramos prácticas sostenibles en nuestros proyectos.</span><br/>'+
-                '<span>• Construye con nosotros de manera respetuosa con el medio ambiente.</span><br/>'+
+                '<span>&nbsp&nbsp• Explora cómo integramos prácticas sostenibles en nuestros proyectos.</span><br/>'+
+                '<span>&nbsp&nbsp• Construye con nosotros de manera respetuosa con el medio ambiente.</span><br/>'+
               '</li>'+
               '<li>'+
                 '<span>Transparencia y Comunicación</span><br/>'+
-                '<span>• Mantenemos una comunicación fluida y transparente en cada fase del proyecto.</span><br/>'+
-                '<span>• Estamos comprometidos a mantener informados a nuestros clientes en todo momento.</span><br/>'+
+                '<span>&nbsp&nbsp• Mantenemos una comunicación fluida y transparente en cada fase del proyecto.</span><br/>'+
+                '<span>&nbsp&nbsp• Estamos comprometidos a mantener informados a nuestros clientes en todo momento.</span><br/>'+
               '</li>'+
             '</ul>'
           }
