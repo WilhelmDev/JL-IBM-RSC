@@ -20,7 +20,7 @@ export default function InfElement(props) {
                         : ''
                         }
                         <div className="content">
-                            <span className='title-info'>{item.title_info}</span>
+                            <span className='title-info'><strong>{item.title_info}</strong></span>
                             <ul className='container-list-info'>
                                 {item.content.map((contentItem, i) => (
                                     <li key={i} className=''>{contentItem}</li>
